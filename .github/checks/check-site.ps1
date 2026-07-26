@@ -27,6 +27,16 @@ $script:Befunde  = @()
 $script:Cache    = @{}
 $script:Gemeldet = [System.Collections.Generic.HashSet[string]]::new()
 
+# Ein abgestuerzter Waechter darf NIE als "gruen" durchgehen. Ohne diesen Trap
+# endet das Skript beim Fehler und $LASTEXITCODE bleibt auf dem alten Wert stehen.
+trap {
+  Write-Host ""
+  Write-Host "ABBRUCH - der Check selbst ist gescheitert:" -ForegroundColor Red
+  Write-Host "  $($_.Exception.Message)" -ForegroundColor Red
+  Write-Host "  bei: $($_.InvocationInfo.ScriptLineNumber): $($_.InvocationInfo.Line.Trim())" -ForegroundColor DarkGray
+  exit 2
+}
+
 function Add-Befund {
   param([ValidateSet("FEHLER","WARNUNG","INFO")][string]$Stufe, [string]$Bereich, [string]$Text)
   $script:Befunde += [pscustomobject]@{ Stufe = $Stufe; Bereich = $Bereich; Text = $Text }
@@ -198,6 +208,33 @@ if (Soll-Laufen "AppFaecher") {
       }
       foreach ($k in $gefunden.Keys) {
         if ($k -notin $Aktive.kuerzel) { Add-Befund WARNUNG "AppFaecher" "$($f.kuerzel)-App fuehrt unbekanntes Fach '$k'" }
+      }
+
+      # Die SICHTBARE Kursliste ist eine zweite, unabhaengige Struktur (Markup, nicht
+      # CFG.FAECHER). Genau sie sieht der Nutzer beim Fachwechsel - sie muss getrennt
+      # geprueft werden, sonst faellt ein Bruch nur in einer der beiden Listen auf.
+      $kursliste = @{}
+      foreach ($e in [regex]::Matches($s.Inhalt, '<a\b([^>]*)>\s*<span>\s*<b>([A-Z]{4})</b>\s*&middot;\s*([^<]+)</span>')) {
+        $kursliste[$e.Groups[2].Value] = [pscustomobject]@{
+          Name   = $e.Groups[3].Value.Trim()
+          Aktiv  = ($e.Groups[1].Value -match 'aria-current')
+        }
+      }
+      if ($kursliste.Count -eq 0) {
+        Add-Befund WARNUNG "AppFaecher" "$($f.kuerzel)-App: sichtbare Kursliste nicht gefunden (Markup geaendert?)"
+      } else {
+        foreach ($soll in $Aktive) {
+          if (-not $kursliste.ContainsKey($soll.kuerzel)) {
+            Add-Befund FEHLER "AppFaecher" "$($f.kuerzel)-App: $($soll.kuerzel) fehlt in der sichtbaren Kursliste - der Nutzer kann nicht dorthin wechseln"
+          }
+        }
+        # NICHT $aktive nennen - das wuerde case-insensitiv $Aktive (die Fachliste) ueberschreiben.
+        $aktivMarkiert = @($kursliste.Keys | Where-Object { $kursliste[$_].Aktiv })
+        if ($aktivMarkiert.Count -ne 1) {
+          Add-Befund FEHLER "AppFaecher" "$($f.kuerzel)-App: $($aktivMarkiert.Count) Eintraege als 'aktiv' markiert (genau 1 erwartet)"
+        } elseif ($aktivMarkiert[0] -ne $f.kuerzel) {
+          Add-Befund FEHLER "AppFaecher" "$($f.kuerzel)-App markiert '$($aktivMarkiert[0])' als aktives Fach statt sich selbst"
+        }
       }
     }
   }
