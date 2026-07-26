@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <!--
-  BWL Kurse · OSTA · Statistik 1 · FORSCHUNGS-VARIANTE (Probe/Lead)
+  BWL Kurse - BMGT - Management 1 - LANDINGPAGE (Funnel)
   Design-System: Silber/Orange, zwei Modi (Hell = Standard, Dunkel = Schwarz+Orange)
-  Familien-Bruecke Firestarter: gleiche Flammen-Form (Fortschritts-Signet) + gleiches Orange
-  Erstellt 2026-07-17 · Freigabe-Mockup v01 · Inhalte 1:1 aus osta-probe-lektionen (Build 16.07.2026)
+  Struktur/CSS/Tonfall 1:1 aus osta.html (Commit dd4a7a8, "Funnel-Fixes vor den
+  Klausuren") uebernommen, nur Fachliches ersetzt. Erstellt 2026-07-26.
 
-  TRANSFER-TOKENS (vor Live-Gang ersetzen; solange Platzhalter, fuehren CTAs in die Vormerkung):
-    {{CHECKOUT_URL}}   = echter Checkout (z. B. CopeCart/Digistore24)
-    {{GRATIS_URL}}     = Gratis-Lektion (Standard: https://osta.klausurchecker.de/, relativ)
-    {{KLAUSUR_URL}}    = Kursbereich der Klausur-Variante (persoenlicher Kurslink)
-    {{OMIK_URL}}       = Forschungs-Seite Mikrooekonomik 1
-    {{OFIN_URL}}       = Forschungs-Seite Finanzen 1
+  Dokumentierte Annahme (nicht uebernommen, weil auf BMGT nicht zutreffend):
+  - BKBC-Faecher-Konfigurator + Buchungs-Modal (Termine/Handouts/Einzel-Stripe-
+    Links): das ist die Cross-Sell-Logik der OMIK/OSTA/OFIN-Familie, fuer BMGT
+    nicht verifiziert und wuerde neue, nicht belegte Fakten einfuehren.
+  - Urnen-Widget vor dem Klausurcheck (Statistik-Anschauungsstueck, hier fachfremd).
+  Alle Kauf-CTAs zeigen auf https://bmgt.klausurchecker.de/ (dort laeuft der
+  Store), BMGT-Stripe-Links sind eingetragen (26.07.2026, LIVE).
 -->
 <html lang="de">
 <head>
@@ -18,7 +19,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EAE9E5">
-<title>BWL Kurse · Klausurvorbereitung · Goethe-Uni Frankfurt</title>
+<title>BMGT · Management 1 · Prof. Friebel &amp; Dr. Sabet · Klausurchecker.de</title>
 <link rel="icon" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -103,13 +104,11 @@ button{font-family:inherit;font-size:16px}
 }
 .btn-silver:hover{box-shadow:var(--edge),0 0 0 1px var(--silver),var(--sh-2)}
 .btn-ghost{background:transparent;color:var(--text);box-shadow:inset 0 0 0 1.5px var(--hair)}
+.btn-app{background:linear-gradient(180deg,var(--premium-2),var(--premium));color:#fff;box-shadow:var(--sh-1),0 0 0 1px var(--premium-line),0 6px 16px rgba(30,33,40,.18)}
+.btn-app:hover{filter:brightness(1.08);box-shadow:var(--sh-2),0 8px 22px rgba(30,33,40,.16)}
+.btn-app:active{transform:translateY(1px)}
 .btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--silver)}
 .btn-wide{width:100%}
-.btn-navy{background:#1b3a6b;color:#fff;white-space:nowrap;box-shadow:var(--sh-1),0 0 0 1px rgba(11,26,54,.30),0 6px 16px rgba(27,58,107,.20)}
-.btn-navy:hover{background:#14304a;box-shadow:var(--sh-2),0 8px 22px rgba(27,58,107,.26)}
-.btn-navy:active{transform:translateY(1px)}
-[data-theme="dark"] .btn-navy{background:#3060a8}
-[data-theme="dark"] .btn-navy:hover{background:#3d6fbb}
 
 /* ============ Appbar ============ */
 .appbar{
@@ -148,7 +147,7 @@ button{font-family:inherit;font-size:16px}
 [data-theme="dark"] .theme-btn .sun{display:none}
 [data-theme="dark"] .theme-btn .moon{display:block}
 .appbar .btn{min-height:44px;padding:10px 18px}
-@media(max-width:560px){.appbar .btn{padding:10px 15px}}
+@media(max-width:560px){.appbar .btn span{display:none}.appbar .btn::after{content:"Schaffst du’s?"}}
 
 /* ============ Hero ============ */
 .hero{padding:56px 0 40px;background:
@@ -286,6 +285,9 @@ label.f{display:block;font-weight:600;margin:16px 0 6px;font-size:15px}
 }
 .gratis-card h3{font-size:22px;margin-bottom:6px}
 .gratis-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gratis-actions{display:flex;flex-direction:column;gap:10px}
+.gratis-actions .btn{justify-content:center;text-align:center;white-space:nowrap}
+@media(max-width:819px){.gratis-actions .btn{width:100%}}
 .chip{
   font-size:13px;font-weight:500;color:var(--text-2);
   background:var(--surface-2);border-radius:999px;padding:5px 12px;
@@ -410,7 +412,7 @@ label.f{display:block;font-weight:600;margin:16px 0 6px;font-size:15px}
   border-radius:999px;padding:5px 14px;box-shadow:var(--sh-1);
 }
 .upsells{display:grid;gap:14px;margin-top:18px}
-@media(min-width:900px){.upsells{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:900px){.upsells{grid-template-columns:repeat(auto-fit,minmax(160px,1fr))}}
 .ups{
   background:var(--surface-2);border-radius:var(--r-md);padding:18px;
   box-shadow:inset 0 0 0 1px var(--hair);display:flex;flex-direction:column;gap:6px;
@@ -534,7 +536,7 @@ footer .fbrand b{font-family:var(--serif)}
 }
 .bk-opt:hover{box-shadow:var(--edge),0 0 0 1.5px var(--silver)}
 .bk-opt input{accent-color:var(--accent);width:18px;height:18px}
-.bk-opt.bk-sel{box-shadow:var(--edge),0 0 0 2px var(--accent)}
+.bk-opt.bk-sel{box-shadow:var(--edge),0 0 0 2px var(--accent)}.bk-opt.bk-out{opacity:.55;cursor:not-allowed}.bk-opt.bk-out input{cursor:not-allowed}
 .bk-need{color:var(--wrong);font-size:14px;font-weight:600;margin:6px 0}
 .bk-actionrow{margin-top:14px}
 .bk-actionrow .bk-btn{display:flex;width:100%;font-size:15px;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;box-shadow:var(--sh-1)}
@@ -590,22 +592,6 @@ footer .fbrand b{font-family:var(--serif)}
 .course .c-cta{margin-top:10px;font-weight:700;color:var(--accent-deep);font-size:14.5px}
 [data-theme="dark"] .course .c-cta{color:var(--accent-2)}
 .course.here .c-cta::before{content:"Dein Kurs · ";color:var(--text-2);font-weight:600}
-/* In-Kachel-Buttons (Simon 23.07.) — optisch Button, ganze Kachel bleibt der Link */
-.course .c-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;min-height:46px;padding:11px 16px;border-radius:12px;font-weight:700;font-size:15.5px;line-height:1.2}
-.course .c-btn-orange{background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500}
-.course .c-btn-orange .c-btn-cap{font-size:12.5px;font-weight:600;color:#5a3200}
-[data-theme="dark"] .course .c-btn-orange .c-btn-cap{color:#3a2200}
-/* Kachel-Differenzierung ohne Preisfarbe (KANON 1.1): Farbe kodiert den Preis,
-   Unterschiede laufen ueber Rahmen, Band und Position. Navy taucht erst dort auf,
-   wo zum ersten Mal Geld im Spiel ist - auf der Startseite kostet nichts. */
-.course{position:relative}
-.course-gift{box-shadow:var(--edge),0 0 0 1.5px #20232A,var(--sh-1)}
-.c-band{position:absolute;top:0;right:18px;transform:translateY(-50%);background:#20232A;color:#fff;
-  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 11px;border-radius:999px}
-.course-ziel{box-shadow:var(--edge),0 0 0 2px var(--accent),var(--sh-2)}
-.course .c-btn-navy{flex-direction:column;gap:1px;background:#1b3a6b;color:#fff}
-.course .c-btn-navy .c-btn-sub{font-size:14px;font-weight:700;color:var(--accent-2)}
-[data-theme="dark"] .course .c-btn-navy{background:#2d5490}
 /* ==== So funktioniert's ==== */
 .steps{display:grid;gap:14px;margin-top:8px}
 @media(min-width:760px){.steps{grid-template-columns:repeat(3,1fr)}}
@@ -615,177 +601,23 @@ footer .fbrand b{font-family:var(--serif)}
 .step h3{font-size:17px;margin-bottom:4px}
 .step p{font-size:14.5px;color:var(--text-2);margin:0;max-width:none}
 </style>
-<style id="bkbc-css">
-/* ===== BKBC · Faecher-Paket-Konfigurator · identisch in App + Landing ===== */
-.bkbc-card{border:2px solid var(--accent);border-radius:14px;padding:14px;background:var(--surface-2);box-shadow:var(--sh-1)}
-.bkbc-h{font-weight:600;font-size:16px;margin:0 0 2px}
-.bkbc-sub{font-size:12px;color:var(--text-2);margin:0 0 10px;line-height:1.45}
-.bkbc-save{color:var(--done);font-size:12px;font-weight:600;margin-top:3px}
-.bkbc-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--hair);border-radius:10px;margin:0 0 8px;cursor:pointer;background:var(--surface)}
-.bkbc-row:hover{border-color:var(--accent)}
-.bkbc-row.sel{border-color:var(--accent);background:var(--glow)}
-.bkbc-row input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin:0}
-.bkbc-rt{flex:1;min-width:0}
-.bkbc-rt b{display:block;font-weight:600;font-size:14px}
-.bkbc-rt small{display:block;color:var(--text-3);font-size:12px;line-height:1.4}
-.bkbc-ho-row{margin-top:12px;border-style:dashed}
-.bkbc-sum{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:14px 2px 10px}
-.bkbc-total{font-size:26px;font-weight:600;white-space:nowrap;line-height:1.1}
-.bkbc-cta{display:flex;width:100%;align-items:center;justify-content:center;min-height:48px;cursor:pointer;border:0;border-radius:10px;font-size:15px;font-weight:600;text-align:center;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;box-shadow:var(--sh-1)}
-.bkbc-cta:disabled{background:var(--surface);color:var(--text-3);cursor:not-allowed;box-shadow:inset 0 0 0 1px var(--hair)}
-.bkbc-consent{display:flex;gap:10px;align-items:flex-start;font-size:12px;color:var(--text-2);line-height:1.45;background:var(--surface);border:1px solid var(--hair);border-radius:10px;padding:11px 12px;margin:0 0 10px;cursor:pointer}
-.bkbc-consent input{width:18px;height:18px;accent-color:var(--accent);flex:none;margin:1px 0 0}
-.bkbc-hint{font-size:12px;color:var(--text-2);text-align:center;margin-top:8px;min-height:1px}
-.bkbc-note{font-size:11.5px;color:var(--text-3);line-height:1.45;margin:10px 2px 0;text-align:center}
+<style id="welt-css">
+:root{--kauf:#102444;--kauf-2:#1D3B6E}
+[data-theme="dark"]{--kauf:#6E9BE0;--kauf-2:#8FB4EA}
+.btn-kauf{background:var(--kauf);color:#FFFFFF;box-shadow:var(--edge),0 6px 16px rgba(16,36,68,.28)}
+.btn-kauf:hover{background:var(--kauf-2)}
+[data-theme="dark"] .btn-kauf{color:#0B1220}
+@media(max-width:560px){.appbar #weltBtn::after{content:none!important}.appbar .btn-kauf span{display:inline!important}.appbar .btn-kauf::after{content:none!important}}
 </style>
-<script id="bkbc-core">
-/* =====================================================================
-   BKBC · Faecher-Paket-Konfigurator (Mehrfachauswahl + Auto-Summe)
-   ---------------------------------------------------------------------
-   ⛔ DIESER BLOCK IST IN ALLEN DATEIEN IDENTISCH:
-      App    : osta-app-vorschau/index.html (+ omik-/ofin-app-vorschau)
-      Landing: bwlkurse-lp/index.html, osta.html, omik.html, ofin.html
-   Preise NUR hier aendern - danach in alle Dateien kopieren.
-   Checkout-Hook: window.bkbcOnCheckout(payload)
-      payload = {faecher:["OSTA",...], handouts:true|false, anzahl:N, total:Zahl}
-   ===================================================================== */
-window.BKBC = (function(){
-  "use strict";
-
-  /* ================= CONFIG (einzige Preisquelle) ================= */
-  var CFG = {
-    FAECHER: [
-      {code:"OMIK", sub:"Mikro\u00f6konomik 1"},
-      {code:"OSTA", sub:"Statistik"},
-      {code:"OFIN", sub:"Finanzen 1"}
-    ],
-    /* Staffel Klausur-Check (ohne Handouts) */
-    KLAUSURCHECK: {0:0, 1:39.90, 2:69.90, 3:89.90},
-    /* Staffel mit allen Handouts */
-    MIT_HANDOUTS: {0:0, 1:79.90, 2:99.80, 3:129.70},
-    /* "vormerken" = unverbindliche Vormerkung (kein Zahlungsanbieter aktiv)
-       "bestellen" = echter Kaufabschluss, Button-Beschriftung nach \u00a7312j BGB
-       -> auf "bestellen" umstellen, SOBALD der Checkout wirklich zahlungspflichtig ist. */
-    CTA_MODUS: "vormerken"
-  };
-  /* ================================================================ */
-
-  function fmt(n){ return n.toFixed(2).replace(".", ",") + " \u20ac"; }
-  function esc(s){
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
-  }
-  function preis(anzahl, handouts){
-    var tab = handouts ? CFG.MIT_HANDOUTS : CFG.KLAUSURCHECK;
-    return (tab[anzahl] != null) ? tab[anzahl] : 0;
-  }
-
-  function markup(){
-    var rows = CFG.FAECHER.map(function(f){
-      return '<label class="bkbc-row"><input type="checkbox" class="bkbc-f" data-code="' + esc(f.code) + '">' +
-             '<span class="bkbc-rt"><b>' + esc(f.code) + '</b><small>' + esc(f.sub) + '</small></span></label>';
-    }).join("");
-    return '<div class="bkbc-card">' +
-      '<div class="bkbc-h">F\u00e4cher-Paket zusammenstellen</div>' +
-      '<p class="bkbc-sub">F\u00e4cher antippen \u2013 der Preis rechnet sich automatisch zusammen.</p>' +
-      rows +
-      '<label class="bkbc-row bkbc-ho-row"><input type="checkbox" class="bkbc-ho">' +
-        '<span class="bkbc-rt"><b>mit allen Handouts</b><small>Aufgaben-PDFs + Musterl\u00f6sungen zu jedem Kapitel</small></span></label>' +
-      '<div class="bkbc-sum">' +
-        '<div><div class="bkbc-cnt bkbc-sub" style="margin:0">Noch keine F\u00e4cher gew\u00e4hlt</div>' +
-        '<div class="bkbc-save"></div></div>' +
-        '<div class="bkbc-total">' + fmt(0) + '</div>' +
-      '</div>' +
-      /* Widerrufsverzicht (\u00a7356 Abs.6 BGB) nur im echten Kaufmodus: ohne Vertrag gibt es nichts zu verzichten */
-      (CFG.CTA_MODUS === "bestellen"
-        ? '<label class="bkbc-consent"><input type="checkbox" class="bkbc-consent-cb">' +
-          '<span>Ich verlange ausdr\u00fccklich, dass mit der Bereitstellung der Kursinhalte sofort begonnen wird. ' +
-          'Mir ist bekannt, dass ich mit Beginn der Ausf\u00fchrung mein <b>Widerrufsrecht verliere</b>.</span></label>'
-        : '') +
-      '<button type="button" class="bkbc-cta" disabled>F\u00e4cher w\u00e4hlen</button>' +
-      '<div class="bkbc-hint"></div>' +
-      '<div class="bkbc-msg bkbc-note"></div>' +
-    '</div>';
-  }
-
-  function bind(root){
-    var r = root || document;
-    var fs = Array.prototype.slice.call(r.querySelectorAll(".bkbc-f"));
-    if(!fs.length) return null;
-    var ho   = r.querySelector(".bkbc-ho"),
-        elT  = r.querySelector(".bkbc-total"),
-        elC  = r.querySelector(".bkbc-cnt"),
-        elS  = r.querySelector(".bkbc-save"),
-        cta  = r.querySelector(".bkbc-cta"),
-        cons = r.querySelector(".bkbc-consent-cb"),
-        hint = r.querySelector(".bkbc-hint"),
-        msg  = r.querySelector(".bkbc-msg");
-    var needConsent = (CFG.CTA_MODUS === "bestellen");
-    if(!ho || !elT || !cta) return null;
-
-    function upd(){
-      var picked = fs.filter(function(x){ return x.checked; });
-      var n = picked.length, h = !!ho.checked;
-      var total = preis(n, h), einzel = preis(1, h);
-      var save  = (n >= 2) ? (n * einzel - total) : 0;
-
-      fs.forEach(function(x){
-        var row = x.closest ? x.closest(".bkbc-row") : x.parentNode;
-        if(row) row.classList.toggle("sel", x.checked);
-      });
-      var hoRow = ho.closest ? ho.closest(".bkbc-row") : ho.parentNode;
-      if(hoRow) hoRow.classList.toggle("sel", h);
-
-      elT.textContent = fmt(total);
-      if(elC) elC.textContent = (n === 0)
-        ? "Noch keine F\u00e4cher gew\u00e4hlt"
-        : (n + (n === 1 ? " Fach" : " F\u00e4cher") + (h ? " \u00b7 mit allen Handouts" : " \u00b7 Klausur-Check"));
-      if(elS) elS.textContent = (save > 0) ? ("Du sparst " + fmt(save)) : "";
-
-      var verzicht = needConsent ? !!(cons && cons.checked) : false;
-      cta.disabled = (n === 0) || (needConsent && !verzicht);
-      if(hint) hint.textContent = (n > 0 && needConsent && !verzicht)
-        ? "Bitte den Hinweis zum Widerrufsrecht best\u00e4tigen, um fortzufahren." : "";
-      cta.textContent = (n === 0)
-        ? "F\u00e4cher w\u00e4hlen"
-        : ((CFG.CTA_MODUS === "bestellen" ? "Zahlungspflichtig bestellen \u00b7 " : "Paket vormerken \u00b7 ") + fmt(total));
-
-      cta._payload = {
-        faecher: picked.map(function(x){ return x.getAttribute("data-code"); }),
-        handouts: h, anzahl: n, total: total,
-        widerrufsverzicht: verzicht,
-        verzichtZeitpunkt: verzicht ? new Date().toISOString() : null
-      };
-    }
-
-    fs.forEach(function(x){ x.addEventListener("change", upd); });
-    ho.addEventListener("change", upd);
-    if(cons) cons.addEventListener("change", upd);
-    cta.addEventListener("click", function(e){
-      e.preventDefault();
-      if(cta.disabled) return;
-      var p = cta._payload;
-      if(typeof window.bkbcOnCheckout === "function"){ window.bkbcOnCheckout(p); return; }
-      if(msg) msg.textContent = "Auswahl: " + p.anzahl + (p.anzahl === 1 ? " Fach" : " F\u00e4cher") +
-        (p.handouts ? " mit allen Handouts" : "") + " = " + fmt(p.total) + " (Checkout noch nicht angebunden)";
-    });
-    upd();
-    return {update: upd};
-  }
-
-  return {cfg: CFG, fmt: fmt, preis: preis, markup: markup, bind: bind};
-})();
-</script>
 </head>
-<body data-fach="OSTA">
+<body data-fach="BMGT" data-preisziel="#preise">
 
 <!-- ============ APPBAR ============ -->
 <header class="appbar">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="BWL Kurse, zum Seitenanfang">
+    <a class="brand" href="index.html" aria-label="BWL Kurse, zum Seitenanfang">
       <span class="mark"><img class="lg-l" src="data:image/png;base64,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" alt="BWL Kurse"><img class="lg-d" src="data:image/png;base64,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" alt=""></span>
-      <span><b>BWL Kurse</b><small>Klausurvorbereitung · Goethe-Uni Frankfurt</small></span>
+      <span><b>BWL Kurse</b><small>BMGT · Management 1 · Prof. Friebel &amp; Dr. Sabet</small></span>
     </a>
     <div class="sp"></div>
     <span class="count-pill num" id="pillCount">Online&#8209;Vorteil endet in <b>…</b></span>
@@ -793,91 +625,340 @@ window.BKBC = (function(){
       <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.4"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5 5l1.7 1.7M17.3 17.3 19 19M19 5l-1.7 1.7M6.7 17.3 5 19"/></svg>
       <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 14.5A8.6 8.6 0 0 1 9.5 3.8a8.6 8.6 0 1 0 10.7 10.7z"/></svg>
     </button>
-    <button type="button" class="btn btn-navy" id="menuTrigger" aria-haspopup="true" aria-expanded="false" aria-controls="v43NavWrap"><span>seit 1999</span></button>
+    <a class="btn btn-primary" id="weltBtn" href="#vormerken"><span>Schaffst du’s?</span></a>
   </div>
 </header>
 
 <main id="top">
 
-<section class="hero" id="kurse" style="padding-bottom:32px">
-<div class="wrap">
-<span class="kicker">Klausurphase · Sommersemester 2026</span>
-<h1 style="max-width:18ch">Schaffst Du den Klausurcheck?</h1>
-<p class="lead" style="max-width:60ch">Wähle dein Gratis-Kapitel oder komm direkt ins Showroom:</p>
-<div class="courses">
-<a class="course" href="bmgt.html" data-fach="bmgt" data-klausur="2026-07-27T11:00" data-kap="6"><div class="c-k">BMGT</div><div class="c-n">Management 1 · Prof. Friebel</div><div class="c-meta"><span class="c-date num c-count">Klausur 27.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 6 Kapiteln offen · ~15 Min</span></div></a>
-<a class="course" href="osta.html" data-fach="osta" data-klausur="2026-07-28T11:00" data-kap="10"><div class="c-k">OSTA</div><div class="c-n">Statistik · Prof. Hassler</div><div class="c-meta"><span class="c-date num c-count">Klausur 28.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 10 Kapiteln offen · ~15 Min</span></div></a>
-<a class="course course-gift" href="omik.html" data-fach="omik" data-kap="10"><span class="c-band">Geschenk</span><div class="c-k">OMIK</div><div class="c-n">Mikroökonomie · Prof. Blonski</div><div class="c-meta"><span class="c-date">ohne Klausurtermin</span></div><div class="c-btn c-btn-orange">Kompletter Kurs, kostenlos<span class="c-btn-cap">alle 10 Kapitel offen</span></div></a>
-<a class="course" href="ofin.html" data-fach="ofin" data-klausur="2026-07-29T11:00" data-kap="9"><div class="c-k">OFIN</div><div class="c-n">Finanzen · Prof. Schmeling</div><div class="c-meta"><span class="c-date num c-count">Klausur 29.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 9 Kapiteln offen · ~15 Min</span></div></a>
-</div>
-</div>
+<!-- ============ HERO ============ -->
+<section class="hero" id="bmgt">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Dein Kurs &middot; BMGT &middot; Management 1</span>
+      <h1>Bist du <span class="hl">bereit</span> f&uuml;r deine BMGT&#8209;Klausur?<span style="display:block;font-size:.42em;font-weight:500;color:var(--text-2);letter-spacing:0;margin-top:10px">Montag, 27. Juli</span></h1>
+      <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Friebel &amp; Dr.&nbsp;Sabet &ndash; diese Klausur hat <b>keinen Zweittermin</b>.</p>
+      <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">gepr&uuml;fte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a>
+        <a class="btn btn-ghost" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck</a>
+      </div>
+
+
+    </div>
+
+    <!-- Premium-Pfadkarte (Graphit + Silber-Inset) -->
+
+  </div>
 </section>
 
-<script id="kachelLogik">
-/* ================= Fach-Kacheln =================
-   Drei Dinge, alle ohne Pflegeaufwand:
-   1. Sortierung nach Klausurnaehe - am Donnerstag steht nicht mehr Montag oben.
-   2. Countdown statt Datum, gekoppelt an Machbarkeit (Ziel-Gradient-Effekt);
-      reine Fristen erhoehen bei Lernenden die Vermeidung, Frist + machbarer
-      Rest erhoeht das Handeln.
-   3. ?fach=bmgt aus dem WhatsApp-Link: die richtige Kachel nach oben, markiert
-      und angesteuert. Weniger Auswahl = mehr Klick, und der Parameter macht
-      endlich sichtbar, welche Gruppe liefert.
-   Farbe bleibt aussen vor: sie kodiert den Preis, nicht die Dringlichkeit. */
-(function(){
-  "use strict";
-  var wrap = document.querySelector(".courses");
-  if(!wrap) return;
-  var kacheln = [].slice.call(wrap.querySelectorAll(".course"));
 
-  function stunden(el){
-    var k = el.getAttribute("data-klausur");
-    if(!k) return Infinity;                       // OMIK: kein Termin -> ans Ende
-    return (new Date(k) - new Date()) / 36e5;
-  }
 
-  function beschriften(){
-    kacheln.forEach(function(el){
-      var feld = el.querySelector(".c-count");
-      if(!feld) return;
-      var h = stunden(el);
-      if(h === Infinity) return;
-      if(h < 0){ feld.textContent = "Klausur geschrieben"; el.classList.add("course-vorbei"); return; }
-      feld.textContent = h < 48 ? ("noch " + Math.floor(h) + " Std")
-                                : ("noch " + Math.floor(h / 24) + " Tage");
-    });
-  }
 
-  function sortieren(){
-    kacheln.slice().sort(function(a, b){
-      var ha = stunden(a), hb = stunden(b);
-      if(ha < 0 && hb >= 0) return 1;             // Geschriebenes nach hinten
-      if(hb < 0 && ha >= 0) return -1;
-      return ha - hb;
-    }).forEach(function(el){ wrap.appendChild(el); });
+<!-- ============ KLAUSURCHECK ============ -->
+<section id="klausurcheck">
+  <div class="wrap">
 
-    kacheln.forEach(function(el){ el.classList.remove("course-ziel"); });
-    var naechste = kacheln.filter(function(el){
-      var h = stunden(el); return h >= 0 && h !== Infinity;
-    }).sort(function(a, b){ return stunden(a) - stunden(b); })[0];
-    if(naechste) naechste.classList.add("course-ziel");   // Von-Restorff, ueber Form
-  }
+    <div class="card" style="max-width:760px">
+      <div class="sc-head">
+        <h2 style="margin-bottom:4px">Wie fit bist du in Cournot, Bertrand &amp; Stackelberg?</h2>
+      </div>
+      <p class="sub" style="margin-bottom:4px">2 Fragen, 60 Sekunden. L&auml;uft komplett lokal in deinem Browser: nichts wird gespeichert, nichts &uuml;bertragen.</p>
+      <div class="sc-gate">
+        <button type="button" class="btn btn-primary" id="scStart">Check starten</button>
+      </div>
+      <div class="sc-body">
 
-  function ausLink(){
-    var m = /[?&]fach=([a-z]{4})/i.exec(location.search);
-    if(!m) return;
-    var ziel = wrap.querySelector('.course[data-fach="' + m[1].toLowerCase() + '"]');
-    if(!ziel) return;
-    wrap.insertBefore(ziel, wrap.firstChild);
-    kacheln.forEach(function(el){ el.classList.remove("course-ziel"); });
-    ziel.classList.add("course-ziel");
-    setTimeout(function(){ ziel.scrollIntoView({behavior:"smooth", block:"center"}); }, 250);
-  }
+      <div class="sc-q"><span class="qn num">1</span>Was gibt die <b>Reaktionsfunktion</b> einer Firma im Cournot&#8209;Wettbewerb an?</div>
+      <div data-sc-q="0">
+        <button type="button" class="sc-opt num" data-q="0" data-i="0">Die gewinnmaximale eigene Menge als Funktion der (erwarteten) Konkurrenzmenge</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="1">Den einheitlichen Marktpreis als Funktion der insgesamt nachgefragten Gesamtmenge</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="2">Die Kostenfunktion des Konkurrenten als Funktion der eigenen (geplanten) Kapazit&auml;t</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="3">Die abgesetzte Gesamtmenge als Funktion des eigenen (historischen) Preisniveaus</button>
+      </div>
+      <div class="sc-fb" id="scFb0"><b>Die Reaktionsfunktion gibt f&uuml;r jede Konkurrenzmenge die eigene gewinnmaximale Menge an.</b> Sie kommt aus der Bedingung erster Ordnung der eigenen Gewinnmaximierung &ndash; der Schnittpunkt beider RF ist das Cournot&#8209;Nash&#8209;Gleichgewicht.</div>
 
-  beschriften(); sortieren(); ausLink();
-  setInterval(beschriften, 60000);
-})();
-</script>
+      <div class="sc-q v2-q2"><span class="qn num">2</span>Homogenes Gut, zwei Anbieter mit identischen konstanten Grenzkosten, simultaner Preiswettbewerb (Bertrand). Was gilt im Nash&#8209;Gleichgewicht?</div>
+      <div data-sc-q="1" class="v2-q2">
+        <button type="button" class="sc-opt" data-q="1" data-i="0">p = GK &ndash; beide Firmen machen Nullgewinn (Bertrand&#8209;Paradoxon)</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="1">p = GK plus fester Aufschlag &ndash; beide Gewinne bleiben strikt positiv (Marge)</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="2">p = Monopolpreis &ndash; beide Firmen teilen sich den Monopolgewinn (halbe/halbe)</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="3">p knapp unter GK &ndash; beide Firmen machen dauerhaft Verlust (Preiskampf)</button>
+      </div>
+      <div class="sc-fb" id="scFb1"><b>Im Nash&#8209;Gleichgewicht gilt p = GK &ndash; Nullgewinn f&uuml;r beide (Bertrand&#8209;Paradoxon).</b> Jeder Preis &uuml;ber GK l&auml;dt zum minimalen Unterbieten ein &ndash; der Billigere bekommt den GANZEN Markt. Schon zwei Anbieter reichen f&uuml;r das Wettbewerbsergebnis.</div>
+
+      <div class="sc-eval"><button type="button" class="btn btn-primary" id="scEval" disabled>Auswerten</button></div>
+
+      <div class="sc-result r2" id="scR2">
+        <b class="head num">2 von 2. Stark!</b>
+        <p>Die Grundlagen sitzen, du bist bereit f&uuml;r mehr. In der Klausur geht es genau hier weiter: Cournot&#8209;Mengen ausrechnen, den Stackelberg&#8209;Vorteil des Erstziehers, Kollusion &amp; kritischer Diskontfaktor. Hol dir jetzt die komplette Gratis&#8209;Lektion und teste dich am ganzen Kapitel.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Zur Gratis&#8209;Lektion</a></div>
+      </div>
+      <div class="sc-result r1" id="scR1">
+        <b class="head num">1 von 2. Gar nicht schlecht!</b>
+        <p>Eine Frage sa&szlig;, eine noch nicht. Genau an solchen Stellen entscheidet sich die Klausur. Die kostenlose Probe&#8209;Lektion schlie&szlig;t die L&uuml;cke Schritt f&uuml;r Schritt: klarer Rechenweg, durchgerechnetes Beispiel, adaptiver Selbsttest.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a></div>
+      </div>
+      <div class="sc-result r0" id="scR0">
+        <b class="head num">0 von 2. Gut, dass du es jetzt merkst.</b>
+        <p>Kein Grund zur Panik, noch ist Zeit. Aber Oligopoltheorie (Cournot, Bertrand, Stackelberg) sicher zu beherrschen kann in der Klausur den Unterschied machen. Die kostenlose Probe&#8209;Lektion erkl&auml;rt dir alles von Grund auf, Schritt f&uuml;r Schritt.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a></div>
+      </div>
+
+      <!-- Inline-Opt-in: erscheint nach der Auswertung -->
+      <div class="sc-optin" id="scOptin" hidden>
+        <b>Dein Willkommensgeschenk: ein komplettes Fach gratis!</b>
+        <p class="fnote" style="margin:4px 0 12px">Zu deiner BMGT-Vorbereitung schalten wir dir zus&auml;tzlich das ganze Fach Mikro&ouml;konomie (OMIK) in der App frei &ndash; kostenlos und unverbindlich.</p>
+        <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="scForm">
+          <input type="hidden" name="locale" value="de">
+          <input type="hidden" name="html_type" value="simple">
+          <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
+          <input type="hidden" name="form-name" value="vormerkung">
+          <input type="hidden" name="subject" value="Neue Vormerkung &middot; BWL Kurse BMGT">
+          <input type="hidden" name="interesse" id="scInteresse" value="">
+          <div class="f-row">
+            <input type="text" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname" aria-label="Vorname">
+            <input type="email" name="EMAIL" required autocomplete="email" placeholder="name@beispiel.de" aria-label="E-Mail-Adresse">
+          </div>
+          <label class="chk"><input type="checkbox" name="datenschutz_einverstaendnis" value="ja" required>
+            <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden.&nbsp;*</span></label>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><button type="submit" class="btn btn-primary">unverbindlich testen</button><a class="btn btn-app" href="https://bmgt.klausurchecker.de/">BMGT-App &ouml;ffnen</a></div>
+          <div class="form-err" id="scErr">Da ist etwas schiefgelaufen. Bitte versuch es erneut.</div>
+        </form>
+        <div class="form-ok" id="scOk"></div>
+      </div>
+
+      <button type="button" class="sc-retry" id="scRetry" style="display:none">Nochmal versuchen</button>
+      <p class="sc-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Dein Ergebnis bleibt auf deinem Ger&auml;t: keine Speicherung, keine &Uuml;bertragung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ GRATIS-LEKTION ============ -->
+<section id="gratis" style="padding-top:0">
+  <div class="wrap">
+    <div class="card gratis-card">
+      <span class="gratis-badge">KAPITEL 2 &middot; GRATIS</span>
+      <div>
+        <h3>Oligopol: die komplette Probe&#8209;Lektion</h3>
+        <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der BMGT&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest &uuml;ber alle 16 Fragen.</p>
+        <div class="gratis-chips">
+          <span class="chip">Cournot-NE</span><span class="chip">Reaktionsfunktion</span><span class="chip">Bertrand</span><span class="chip">Stackelberg</span><span class="chip">Kollusion</span>
+        </div>
+      </div>
+      <div class="gratis-actions">
+        <a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Kostenlos starten</a>
+        <a class="btn btn-app" href="https://bmgt.klausurchecker.de/">BMGT&#8209;App &ouml;ffnen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ KAPITEL-SWIPE (V2, Selbsteinschaetzung) ============ -->
+<section id="kapitel">
+  <div class="wrap">
+    <span class="kicker">Dein Selbstcheck</span>
+    <h2>Sitzt es — oder wackelt es?</h2>
+    <div class="v2-rail" id="kapRail"></div>
+    <div class="v2-profil" id="v2Profil" hidden>
+      <div class="v2-profil-bars num" id="v2ProfilBars" role="img" aria-label="Dein Kapitel-Profil"></div>
+      <p class="v2-profil-leg">Dein Klausur-Profil: <span class="v2-lg v2-lg-ok">sitzt</span> · <span class="v2-lg v2-lg-no">wackelt</span> · <span class="v2-lg v2-lg-off">offen</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- V2: Sektion 'weiter' entfernt (redundant zu gratis/preise) -->
+
+<!-- ============ ANGEBOTS-STREIFEN (Live-Countdown) ============ -->
+<div class="offerstrip" id="offerstrip">
+  <div class="wrap">
+    <div class="os-txt">Online&#8209;Vorteil bis 26.&nbsp;Juli 2026: <b>Komplettpaket</b> f&uuml;r <span class="os-price num">49,90&nbsp;&euro;</span> &ndash; 6 Lektionen mit Selbsttest, 6 Handouts als WORKBOOK, Klausursimulator, Formelsammlung, Live&nbsp;Q&amp;A gratis, 10&nbsp;&euro; Cashback.</div>
+    <span class="os-clock num" id="osClock" aria-live="off">&#8230;</span>
+    <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
+  </div>
+</div>
+
+
+<!-- ============ SO FUNKTIONIERT'S ============ -->
+<section id="sofunktionierts">
+  <div class="wrap">
+    <span class="kicker">So l&auml;uft's</span>
+    <h2>Testen, anmelden, in der App weiterlernen.</h2>
+    <p class="sub">Der Kurs hat 6 Kapitel mit Rechenweg und adaptivem Selbsttest. Hier steigst du kostenlos ein! Alles Weitere erwartet dich in der App.</p>
+    <div class="steps v2-rail">
+      <div class="step"><span class="s-n num">1</span><h3>Gratis-Kapitel testen</h3><p>Kapitel&nbsp;2 &bdquo;Oligopol&ldquo; l&auml;uft sofort hier auf der Seite, ohne Anmeldung.</p></div>
+      <div class="step"><span class="s-n num">2</span><h3>Anmelden &rarr; Zugang zur App</h3><p>Nach der kostenlosen Anmeldung bekommst du deinen Zugang zur App per E-Mail &ndash; dazu das Handout zum Gratis-Kapitel als PDF.</p></div>
+      <div class="step"><span class="s-n num">3</span><h3>In der App weiter</h3><p>Alle 6 Kapitel, Selbsttests und Handouts schaltest du in der BWL&#8209;Kurse&#8209;App frei.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ STIMMEN (Platzhalter, Testbetrieb) ============ -->
+<section id="stimmen">
+  <div class="wrap">
+    <span class="kicker">Stimmen aus dem Kurs</span>
+    <h2>Was Teilnehmende sagen.</h2>
+    <p class="sub">Der Kurs ist im Testbetrieb. Echte Stimmen sammeln wir gerade ein und veröffentlichen sie nur mit Einverständnis.</p>
+    <div class="voices">
+      <div class="voice" style="grid-column:1/-1;max-width:620px;margin-inline:auto">
+        <div class="vstars" aria-label="5 von 5 Sternen" style="color:var(--accent);letter-spacing:3px;font-size:15px;margin-bottom:8px">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="vq">&bdquo;Ren&eacute; geht weit &uuml;ber den Lehrplan hinaus. Er hat mir nicht nur Fachwissen vermittelt, sondern beigebracht, Zusammenh&auml;nge zu erkennen.&ldquo;</p>
+        <div class="vwho">Matteo Seth &middot; Wirtschaftsstudent</div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTOR ============ -->
+<section id="autor" style="padding-top:0">
+  <div class="wrap">
+    <div class="premium-card author">
+      <img class="foto" src="rene-2026.jpg" loading="lazy" decoding="async" alt="René Flé, Diplom-Kaufmann" width="180" height="180">
+      <div>
+        <div class="pc-kicker">Wer dich vorbereitet</div>
+        <h2 style="color:var(--premium-ink)">Ren&eacute; Fl&eacute; <span style="font-size:.6em;font-weight:500;color:var(--premium-ink2)">(Dipl.&#8209;Kfm.)</span></h2>
+        <p>Ren&eacute; Fl&eacute; bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor, passgenau zur jeweiligen Vorlesung.</p>
+        <div class="astats num">
+          <div class="astat"><b>seit 1999</b><span>Goethe-Uni</span></div>
+          <div class="astat"><b data-cnt="12000" data-pre="~">~12.000</b><span>zahlende Kunden</span></div>
+          <div class="astat"><b data-cnt="25000" data-suf="+ Std.">25.000+ Std.</b><span>universit&auml;re Lehre</span></div>
+          <div class="astat"><b>seit 2012</b><span>Honorardozent (CBS)</span></div>
+        </div>
+        <p class="aq">&bdquo;Ich zeige dir Kapitel f&uuml;r Kapitel genau das, was in der Management&#8209;1&#8209;Klausur bei Prof.&nbsp;Friebel und Dr.&nbsp;Sabet wirklich z&auml;hlt: Spieltheorie, Oligopol, Anreize und Organisation mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing&#8209;Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.&ldquo;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ VORMERKEN ============ -->
+<section id="vormerken" style="padding-top:0;scroll-margin-top:90px">
+  <div class="wrap">
+    <div class="card" style="max-width:640px">
+      <span class="kicker">Kostenlos anmelden</span>
+      <h2>Dein Zugang zur App.</h2>
+      <p class="sub" style="max-width:none">Melde dich kostenlos an, deine Zugangsdaten kommen per Mail. Die Nutzung der App ist kostenfrei. Unsere Kursbausteine machen Dich zum Klausur-Checker!</p>
+      <div class="fnote" id="vmPicked" style="display:none;background:var(--surface-2);border-radius:var(--r-sm);padding:10px 14px;box-shadow:inset 0 0 0 1px var(--hair);margin-bottom:6px"></div>
+      <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="vmForm">
+        <input type="hidden" name="locale" value="de">
+        <input type="hidden" name="html_type" value="simple">
+        <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
+        <input type="hidden" name="form-name" value="vormerkung">
+        <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse BMGT">
+        <input type="hidden" name="interesse" id="vmInteresse" value="">
+        <p hidden aria-hidden="true"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1"></label></p>
+
+        <label class="f" for="vmVorname">Vorname *</label>
+        <input type="text" id="vmVorname" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname">
+
+        <label class="f" for="vmEmail">E&#8209;Mail&#8209;Adresse *</label>
+        <input type="email" id="vmEmail" name="EMAIL" required autocomplete="email" placeholder="name@beispiel.de">
+        <div class="v2-more">
+        <p class="fnote">Ohne Telefonnummer senden wir dir die WhatsApp&#8209;Einladung datenschutzkonform an diese E&#8209;Mail&#8209;Adresse.</p>
+
+        <label class="f" for="vmTel">Handynummer <span style="font-weight:400;color:var(--text-2)">(optional)</span></label>
+        <input type="tel" id="vmTel" name="handynummer" autocomplete="tel" inputmode="tel" placeholder="z. B. 0151 23456789">
+        <p class="fnote">Falls du an einer Online&#8209;Q&amp;A&#8209;Station kurz vor der Klausur teilnehmen möchtest: Lass dich schon in unsere WhatsApp&#8209;Gruppe einladen. Handynummer optional.</p>
+        </div>
+
+        <label class="chk"><input type="checkbox" name="datenschutz_einverstaendnis" value="ja" required>
+          <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden.&nbsp;*</span></label>
+        <div class="v2-more"><label class="chk"><input type="checkbox" name="whatsapp_einverstaendnis" value="ja">
+          <span>Optional: Nehmt mich zur Planung des Kursbetriebs in die <b>WhatsApp&#8209;Gruppe</b> auf bzw. sendet mir den Beitrittslink an meine E&#8209;Mail&#8209;Adresse.</span></label></div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px">
+          <button type="submit" class="btn btn-primary">App-Zugang erhalten</button>
+        </div>
+        <div class="form-err" id="vmErr">Da ist etwas schiefgelaufen. Bitte versuch es erneut.</div>
+        <p class="fnote" style="margin-top:12px">* Pflichtfelder. Die Vormerkung ist kostenlos und unverbindlich.</p>
+      </form>
+      <div class="form-ok" id="vmOk"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREISE ============ -->
+<section id="preise" style="scroll-margin-top:70px">
+  <div class="wrap">
+    <span class="kicker">Alle Optionen &amp; Preise</span>
+    <h2>Preise und Leistungen!</h2>
+    <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
+
+    <div class="ladder">
+      <div class="tier feat">
+        <span class="ribbon">Beliebteste Wahl</span>
+        <span class="rung">Komplettpaket</span>
+        <h3 style="color:var(--premium-ink)">BMGT Klausur-App + Workbook</h3>
+        <div class="price num"><span class="now">49,90&nbsp;&euro;</span></div>
+        <ul class="pd" style="margin:0;padding-left:18px">
+          <li>6 Lektionen mit Selbsttest</li>
+          <li>6 Handouts als WORKBOOK (16&ndash;22 Seiten)</li>
+          <li>Klausursimulator</li>
+          <li>Formelsammlung</li>
+          <li>Live Q&amp;A gratis</li>
+          <li>10&nbsp;&euro; Cashback f&uuml;r dein Feedback nach der Klausur</li>
+        </ul>
+        <a class="btn btn-kauf" href="https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q" target="_blank" rel="noopener">Komplettpaket freischalten</a>
+      </div>
+      <div class="tier">
+        <span class="rung">Einzelnes Kapitel</span>
+        <h3>Lektion + Handout</h3>
+        <div class="price num"><span class="now">8,90&nbsp;&euro;</span></div>
+        <p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF. Beides zusammen, nicht einzeln erh&auml;ltlich.</p>
+        <a class="btn btn-kauf" href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener">Kapitel w&auml;hlen und freischalten</a>
+      </div>
+      <div class="tier">
+        <span class="rung">F&uuml;r K&auml;ufer</span>
+        <h3>Live Q&amp;A</h3>
+        <p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten, einzeln kostet sie 10,00&nbsp;&euro;.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach &sect; 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
+  </div>
+</section>
+
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <span class="kicker">Fragen &amp; Einw&auml;nde</span>
+    <h2>Bevor du dich entscheidest.</h2>
+    <div class="faq">
+      <details>
+        <summary>Reicht die Zeit bis zur Klausur &uuml;berhaupt noch?</summary>
+        <div class="fa"><p>Die Klausur ist am Montag, 27.&nbsp;Juli, 11:00&nbsp;Uhr &ndash; und es gibt keinen Zweittermin. Der Kurs ist genau f&uuml;r diese Phase gebaut: 6 in sich geschlossene Kapitel, jedes mit Rechenweg und Selbsttest. Du startest mit dem Kapitel, das dir am meisten bringt, die Reihenfolge ist frei.</p></div>
+      </details>
+      <details>
+        <summary>Was kostet mich die Vormerkung?</summary>
+        <div class="fa"><p>Nichts. Sie ist kostenlos und unverbindlich, es entsteht keine Zahlungspflicht. Die Zahlung folgt sp&auml;ter in einem separaten Checkout, erst wenn du dich bewusst entscheidest.</p></div>
+      </details>
+      <details>
+        <summary>Ist das ein offizielles Angebot der Goethe&#8209;Uni?</summary>
+        <div class="fa"><p>Nein. BWL Kurse ist ein unabh&auml;ngiges Vorbereitungsangebot und wird nicht von der Hochschule herausgegeben. Die Inhalte sind auf die Vorlesung von Prof.&nbsp;Friebel und Dr.&nbsp;Sabet im Sommersemester 2026 zugeschnitten, alle Aufgaben sind eigenst&auml;ndig formuliert oder abgewandelt.</p></div>
+      </details>
+      <details>
+        <summary>Brauche ich Vorwissen?</summary>
+        <div class="fa"><p>Du brauchst den Stoff deiner Vorlesung, mehr nicht. Jede Lektion beginnt mit einem Einstieg aus dem Alltag und baut den Rechenweg Schritt f&uuml;r Schritt auf. Starte im Zweifel mit der Gratis&#8209;Lektion und pr&uuml;fe selbst, ob dir der Stil liegt.</p></div>
+      </details>
+      <details>
+        <summary>Warum nicht einfach YouTube und Altklausuren?</summary>
+        <div class="fa"><p>Kannst du zus&auml;tzlich nutzen. Der Unterschied: Dieser Kurs folgt der Vorlesung von Prof.&nbsp;Friebel und Dr.&nbsp;Sabet Kapitel f&uuml;r Kapitel, mit gepr&uuml;ften L&ouml;sungen und einem Selbsttest, der dir sofort zeigt, wo du stehst. So verzettelst du dich nicht in der Suche.</p></div>
+      </details>
+      <details>
+        <summary>Auf welchen Ger&auml;ten l&auml;uft das?</summary>
+        <div class="fa"><p>Im Browser auf Handy, Tablet und Laptop, ohne Installation. Dein Lernfortschritt wird auf deinem Ger&auml;t gespeichert, Details stehen in der <a href="datenschutz.html">Datenschutzerkl&auml;rung</a>.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+
+<!-- V2: Abschluss-Karte entfernt (redundant zu vormerken/gratis/offerstrip) -->
 
 </main>
 
@@ -894,63 +975,15 @@ window.BKBC = (function(){
   </div>
 </footer>
 
-<!-- ============ BUCHUNGS-MODAL ============ -->
-<div id="bkModal" class="bk-modal" hidden role="presentation">
-  <div class="bk-dialog" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
-    <button type="button" class="bk-close" aria-label="Schließen" onclick="closeBk()">&times;</button>
-    <div id="bkContent"></div>
-  </div>
-</div>
-
-<!-- ============ NAVIGATIONS-MENUE (Drawer-Navigation, geoeffnet vom Kopfzeilen-Button) ============ -->
-<style id="v43-burger-css">
-.v43-navwrap{position:fixed;inset:0;z-index:300;display:none}
-.v43-navwrap.open{display:block}
-.v43-navback{position:absolute;inset:0;background:rgba(15,17,20,.46)}
-.v43-nav{position:absolute;top:0;right:0;height:100%;width:min(87vw,344px);background:var(--surface);box-shadow:-10px 0 34px rgba(0,0,0,.24);padding:20px;overflow-y:auto;transform:translateX(100%);transition:transform .28s cubic-bezier(.22,.61,.36,1)}
-.v43-navwrap.open .v43-nav{transform:none}
-.v43-navhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-.v43-navhead strong{font-family:var(--serif);font-size:18px;color:var(--text)}
-.v43-navclose{width:40px;height:40px;border:0;background:transparent;cursor:pointer;border-radius:10px;color:var(--text-2)}
-.v43-navclose:hover{background:var(--bg-2)}
-.v43-nav h3{font-size:11.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--text-3);margin:20px 0 6px}
-.v43-nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--text);font-weight:500;font-size:15.5px}
-.v43-nav a:hover{background:var(--bg-2)}
-.v43-nav a .nk{font-family:var(--serif);font-weight:600;color:var(--accent);min-width:52px}
-</style>
-<script id="v43-burger-js">
-(function(){
-  var trigger=document.getElementById('menuTrigger');
-  if(!trigger||document.getElementById('v43NavWrap'))return;
-  var nav=document.createElement('div');nav.className='v43-navwrap';nav.id='v43NavWrap';nav.setAttribute('aria-hidden','true');
-  nav.innerHTML='<div class="v43-navback" data-close></div><nav class="v43-nav" aria-label="Men\u00fc">'
-   +'<div class="v43-navhead"><strong>Men\u00fc</strong><button type="button" class="v43-navclose" data-close aria-label="Men\u00fc schlie\u00dfen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
-   +'<h3>Kurse</h3>'
-   +'<a href="bmgt.html"><span class="nk">BMGT</span> Management&nbsp;1</a>'
-   +'<a href="osta.html"><span class="nk">OSTA</span> Statistik&nbsp;1</a>'
-   +'<a href="omik.html"><span class="nk">OMIK</span> Mikro\u00f6konomik&nbsp;1</a>'
-   +'<a href="ofin.html"><span class="nk">OFIN</span> Finanzen&nbsp;1</a>'
-   +'<h3>Rechtliches</h3><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a>'
-   +'</nav>';
-  document.body.appendChild(nav);
-  function op(){nav.classList.add('open');nav.setAttribute('aria-hidden','false');trigger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
-  function cl(){nav.classList.remove('open');nav.setAttribute('aria-hidden','true');trigger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
-  trigger.addEventListener('click',op);
-  nav.addEventListener('click',function(e){var t=e.target;if(t.hasAttribute('data-close')||(t.closest&&t.closest('[data-close]')))cl();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open'))cl();});
-})();
-</script>
 <!-- Netlify-Registrierung Fortschritts-Formular (POST kommt aus den Lektionsseiten) -->
 <form name="fortschritt" data-netlify="true" hidden>
   <input type="text" name="sid"><input type="text" name="kapitel"><input type="text" name="prozent"><input type="email" name="email">
 </form>
 
 <script>
-/* ============ Transfer-Konstanten (Platzhalter, siehe Dateikopf) ============ */
-var CHECKOUT_URL = "{{CHECKOUT_URL}}";
-var GRATIS_URL   = "https://osta.klausurchecker.de/";
-var KLAUSUR_URL  = "{{KLAUSUR_URL}}";
-var FRIST_ISO    = "2026-07-27";
+/* ============ Transfer-Konstanten ============ */
+var GRATIS_URL   = "bmgt-kap02-oligopol.html";
+var FRIST_ISO    = "2026-07-26";
 
 /* ============ Theme-Umschalter (Hell = Standard) ============ */
 (function(){
@@ -1036,7 +1069,7 @@ window.addEventListener("resize", drawRails);
 /* ============ Klausurcheck (rein lokal) ============ */
 (function(){
   "use strict";
-  var CORRECT = [1, 2];
+  var CORRECT = [0, 0];
   var picked = [null, null];
   var done = false;
   var opts = document.querySelectorAll("#klausurcheck .sc-opt");
@@ -1080,7 +1113,7 @@ window.addEventListener("resize", drawRails);
     if(optin){
       optin.hidden = false;
       var intr = document.getElementById("scInteresse");
-      if(intr) intr.value = "Klausurcheck OSTA: " + score + " von 2 richtig";
+      if(intr) intr.value = "Klausurcheck BMGT: " + score + " von 2 richtig";
     }
     retryBtn.style.display = "inline-block";
   });
@@ -1107,12 +1140,17 @@ window.addEventListener("resize", drawRails);
     if(!scForm.checkValidity()){ scForm.reportValidity(); return; }
     var data = new FormData(scForm);
     var name = (data.get("vorname") || "").replace(/[<>]/g,"");
-    fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:new URLSearchParams(data).toString()})
-      .then(function(r){ if(!r.ok) throw new Error("net");
+    var body = new URLSearchParams();
+    body.append("EMAIL", (data.get("EMAIL") || "").trim());
+    body.append("email_address_check", "");
+    body.append("locale", "de");
+    body.append("html_type", "simple");
+    fetch(scForm.getAttribute("action"), {method:"POST", mode:"no-cors", body: body})
+      .then(function(){
         document.getElementById("scErr").style.display = "none";
         scForm.style.display = "none";
         var ok = document.getElementById("scOk");
-        ok.innerHTML = "<b>Danke, " + name + "!</b> Deine Vormerkung ist eingegangen. Wir melden uns per E-Mail.";
+        ok.innerHTML = "<b>Fast geschafft" + (name ? ", " + name : "") + "!</b> Wir haben dir eine E-Mail geschickt. Bestätige kurz den Link, dann geht es los.";
         ok.style.display = "block";
       })
       .catch(function(){ document.getElementById("scErr").style.display = "block"; });
@@ -1155,12 +1193,24 @@ window.addEventListener("resize", drawRails);
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var data = new FormData(f);
     var name = (data.get("vorname") || "").replace(/[<>]/g,"");
-    fetch("/", {method:"POST", headers:{"Content-Type":"application/x-www-form-urlencoded"}, body:new URLSearchParams(data).toString()})
-      .then(function(r){ if(!r.ok) throw new Error("net");
+    var body = new URLSearchParams();
+    body.append("EMAIL", (data.get("EMAIL") || "").trim());
+    body.append("email_address_check", "");
+    body.append("locale", "de");
+    body.append("html_type", "simple");
+    var _vn = (data.get("vorname") || "").replace(/[<>]/g,"").trim();
+    if(_vn) body.append("VORNAME", _vn);
+    var _tel = (data.get("handynummer") || "").replace(/[<>]/g,"").trim();
+    if(_tel) body.append("HANDY", _tel);
+    body.append("WHATSAPP", data.get("whatsapp_einverstaendnis") ? "ja" : "nein");
+    body.append("FACH", "bmgt");
+    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:(data.get("EMAIL")||"").trim().toLowerCase(), vorname:(data.get("vorname")||"").replace(/[<>]/g,"").trim(), fach:"bmgt", t:Date.now()})); }catch(e){}
+    fetch(f.getAttribute("action"), {method:"POST", mode:"no-cors", body: body})
+      .then(function(){
         $("vmErr").style.display = "none";
         f.style.display = "none";
         var ok = $("vmOk");
-        ok.innerHTML = "<b>Danke, " + name + "!</b><br>Deine Vormerkung ist bei uns eingegangen. Wir melden uns per E-Mail, inklusive WhatsApp-Beitrittslink. Viel Erfolg beim Probearbeiten!";
+        ok.innerHTML = "<b>Geschafft" + (name ? ", " + name : "") + "!</b><br>Deine Gratis-Lektion wartet. Wir haben dir eine E-Mail geschickt \u2013 best\u00e4tige kurz den Link, dann geht\u2019s direkt los.";
         ok.style.display = "block";
         ok.scrollIntoView({behavior:"smooth", block:"center"});
       })
@@ -1168,173 +1218,700 @@ window.addEventListener("resize", drawRails);
   });
 })();
 
-/* ============ Buchungs-Overlays (datengetrieben) ============ */
 window.BK_DATA = {
-  kursKuerzel: "OSTA",
-  einzel:  "8,90 €",
-  multi:   "49,90 €",
-  bundle:  "49,90 €",
-  handout: "8,90 €",
-  lektionen: [{"n":1,"thema":"Deskriptive Statistik I: Lage & Streuung","gratis":false,"slug":"osta-kap01-lage-streuung","keywords":["Mittelwert & Median","Modus","Quantile","Varianz & Standardabweichung","Häufigkeitsverteilungen"]},{"n":2,"thema":"Deskriptive Statistik II: Zusammenhang & Regression","gratis":false,"slug":"osta-kap02-regression","keywords":["Kovarianz","Korrelationskoeffizient","KQ-Regressionsgerade","Bestimmtheitsmaß"]},{"n":3,"thema":"Wahrscheinlichkeitsrechnung","gratis":true,"slug":"osta-kap03-wahrscheinlichkeit","keywords":["Laplace","Bedingte WK","Unabhängigkeit","Satz von Bayes","Vierfeldertafel"]},{"n":4,"thema":"Zufallsvariablen","gratis":false,"slug":"osta-kap04-zufallsvariablen","keywords":["Erwartungswert","Varianz","Dichte","Verteilungsfunktion","Exponentialverteilung"]},{"n":5,"thema":"Verteilungsmodelle: Binomial & Poisson","gratis":false,"slug":"osta-kap05-verteilungsmodelle","keywords":["Bernoulli-Experiment","Binomialverteilung","Poisson-Verteilung","Approximation"]},{"n":6,"thema":"Normalverteilung & Stichprobenmittel","gratis":false,"slug":"osta-kap06-normalverteilung","keywords":["Standardisieren","z-Wert","Quantile ablesen","Stichprobenmittel","Zentraler Grenzwertsatz"]},{"n":7,"thema":"Schätzen: Punktschätzer & Maximum Likelihood","gratis":false,"slug":"osta-kap07-schaetzen","keywords":["Erwartungstreue","Momentenmethode","Maximum Likelihood","Effizienz"]},{"n":8,"thema":"Konfidenzintervalle","gratis":false,"slug":"osta-kap08-konfidenzintervalle","keywords":["Konfidenzniveau","Intervall fürs Mittel","t-Verteilung","Stichprobenumfang"]},{"n":9,"thema":"Testen I: Testprinzip & Gauß-Test","gratis":false,"slug":"osta-kap09-testen1","keywords":["Hypothesenpaar","Fehler 1. & 2. Art","Gauß-Test","p-Wert","Signifikanzniveau"]},{"n":10,"thema":"Testen II: t-Test & Chi-Quadrat","gratis":false,"slug":"osta-kap10-testen2","keywords":["t-Test","Chi-Quadrat-Anpassungstest","Unabhängigkeitstest","Testauswahl"]}],
-  faecher: [{"k":"OMIK","n":"Mikroökonomie"},{"k":"OSTA","n":"Statistik"},{"k":"OFIN","n":"Finanzen 1"},{"k":"BFIN","n":"Finanzen 2"}],
-  termine: [{"block":"Vormittag","tag":"Fr 24.07.","zeit":"10:00"},{"block":"Vormittag","tag":"Sa 25.07.","zeit":"10:00"},{"block":"Vormittag","tag":"So 26.07.","zeit":"10:00"},{"block":"Abend","tag":"Fr 24.07.","zeit":"19:00"},{"block":"Abend","tag":"Sa 25.07.","zeit":"19:00"},{"block":"Abend","tag":"So 26.07.","zeit":"19:00"}]
+  lektionen: [{"n":1,"thema":"Spieltheorie kompakt: Nash-Gleichgewicht, Spielbaum, wiederholte Spiele","gratis":false,"slug":"bmgt-kap01-spieltheorie"},{"n":2,"thema":"Oligopol: Cournot, Bertrand & Stackelberg – Reaktionsfunktionen und Gleichgewichte","gratis":true,"slug":"bmgt-kap02-oligopol"},{"n":3,"thema":"Moral Hazard & Anreizverträge: First best, Teilnahme- und Anreizbedingung","gratis":false,"slug":"bmgt-kap03-moral-hazard"},{"n":4,"thema":"Organisation & Anreize: Team, Delegation, Abstimmung, Transferpreise","gratis":false,"slug":"bmgt-kap04-organisation"},{"n":5,"thema":"MC-Wissen: Adverse Selection & Integration – Lemons, Hold-up, Five Forces","gratis":false,"slug":"bmgt-kap05-mc-wissen"},{"n":6,"thema":"Klausurtraining: Die Muster-Klausur mit vier Originalaufgaben","gratis":false,"slug":"bmgt-kap06-klausurtraining"}]
 };
 
+</script>
+<style id="v43-politur">
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none}}
+.btn{transition:transform .18s ease,box-shadow .2s ease,background-color .18s ease,filter .18s ease;will-change:transform}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary:hover{box-shadow:0 10px 26px rgba(232,118,10,.30)}
+.btn-silver:hover,.btn-app:hover{box-shadow:0 8px 20px rgba(32,35,42,.16)}
+h1,h2{letter-spacing:-.015em}
+.v43-price-note{margin:20px auto 0;max-width:860px;font-size:14.5px;line-height:1.65;color:var(--ink,#20232A);background:var(--bg,#fff);border:1px solid var(--hair,rgba(32,35,42,.12));border-radius:12px;padding:15px 17px}
+.v43-live{display:inline-flex;align-items:center;gap:8px;margin-top:4px;background:rgba(232,118,10,.10);color:#c96406;font-weight:600;font-size:14px;padding:7px 14px;border-radius:999px}
+</style>
+<script id="v43-politur-js">
+(function(){
+  var pre=document.getElementById('preise');
+  if(false){ /* Mehrere-Kurse-Kasten entfernt 22.07.2026 (V3: keine Mengenrabatte) */
+    var root=pre.querySelector(':scope > .wrap')||pre;
+    var n=document.createElement('div');n.className='v43-price-note';
+    n.innerHTML='';
+    var lad=pre.querySelector('.ladder');
+    if(lad&&lad.parentNode){lad.parentNode.insertBefore(n, lad.nextSibling);} else {root.appendChild(n);}
+  }
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+  function kids(root){var k=Array.prototype.filter.call(root.children,function(n){return n.nodeType===1;});while(k.length===1&&k[0].children.length>1){root=k[0];k=Array.prototype.filter.call(root.children,function(n){return n.nodeType===1;});}return k;}
+  function apply(root){var vh=window.innerHeight||800,i=0;kids(root).forEach(function(el){var t=el.tagName.toLowerCase();if(t==='script'||t==='style'||t==='link')return;var r=el.getBoundingClientRect();if(r.top<vh*0.85)return;el.classList.add('reveal');el.style.transitionDelay=Math.min(i*90,380)+'ms';i++;io.observe(el);});}
+  var hero=document.querySelector('.hero .wrap');if(hero)apply(hero);
+  ['klausurcheck','gratis','weiter','sofunktionierts','stimmen','autor','preise','faq','app-holen'].forEach(function(id){var s=document.getElementById(id);if(!s)return;apply(s.querySelector(':scope > .wrap')||s);});
+})();
+</script>
+<style id="v43-burger-css">
+.v43-burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:transparent;color:var(--text-2);cursor:pointer;border-radius:12px;flex:0 0 auto}
+.v43-burger:hover{background:var(--bg-2)}
+.v43-navwrap{position:fixed;inset:0;z-index:300;display:none}
+.v43-navwrap.open{display:block}
+.v43-navback{position:absolute;inset:0;background:rgba(15,17,20,.46)}
+.v43-nav{position:absolute;top:0;right:0;height:100%;width:min(87vw,344px);background:var(--surface);box-shadow:-10px 0 34px rgba(0,0,0,.24);padding:20px;overflow-y:auto;transform:translateX(100%);transition:transform .28s cubic-bezier(.22,.61,.36,1)}
+.v43-navwrap.open .v43-nav{transform:none}
+.v43-navhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.v43-navhead strong{font-family:var(--serif);font-size:18px;color:var(--text)}
+.v43-navclose{width:40px;height:40px;border:0;background:transparent;cursor:pointer;border-radius:10px;color:var(--text-2)}
+.v43-navclose:hover{background:var(--bg-2)}
+.v43-nav h3{font-size:11.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:var(--text-3);margin:20px 0 6px}
+.v43-nav a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;text-decoration:none;color:var(--text);font-weight:500;font-size:15.5px}
+.v43-nav a:hover{background:var(--bg-2)}
+.v43-nav a .nk{font-family:var(--serif);font-weight:600;color:var(--accent);min-width:52px}
+.v43-navcta{margin-top:22px !important;justify-content:center !important;background:var(--accent);color:#fff !important;font-weight:600;border-radius:999px !important}
+.v43-navcta:hover{background:var(--accent-deep) !important;color:#fff !important}
+</style>
+<script id="v43-burger-js">
+(function(){
+  var wrap=document.querySelector('.appbar .wrap'); if(!wrap||document.getElementById('v43NavWrap'))return;
+  var SEC=[['klausurcheck','Klausur-Check'],['gratis','Gratis-Lektion'],['sofunktionierts',"So funktioniert’s"],['stimmen','Stimmen'],['preise','Preise'],['faq','Fragen & Antworten'],['app-holen','App holen']];
+  var sl='';SEC.forEach(function(x){if(document.getElementById(x[0]))sl+='<a href="#'+x[0]+'" data-close>'+x[1]+'</a>';});
+  var nav=document.createElement('div');nav.className='v43-navwrap';nav.id='v43NavWrap';nav.setAttribute('aria-hidden','true');
+  nav.innerHTML='<div class="v43-navback" data-close></div><nav class="v43-nav" aria-label="Menü">'
+   +'<div class="v43-navhead"><strong>Menü</strong><button type="button" class="v43-navclose" data-close aria-label="Menü schließen"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>'
+   +'<h3>Auf dieser Seite</h3>'+sl
+   +'<h3>Kurse</h3>'
+   +'<a href="index.html"><span class="nk">⌂</span> Alle Kurse</a>'
+   +'<a href="bmgt.html"><span class="nk">BMGT</span> Management 1</a>'
+   +'<a href="osta.html"><span class="nk">OSTA</span> Statistik</a>'
+   +'<a href="omik.html"><span class="nk">OMIK</span> Mikroökonomie</a>'
+   +'<a href="ofin.html"><span class="nk">OFIN</span> Finanzen</a>'
+   +'<h3>Rechtliches</h3><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a>'
+   +(document.getElementById('preise')?'<a class="v43-navcta" href="#preise" data-close>Zu den Preisen</a>':'')
+   +'</nav>';
+  document.body.appendChild(nav);
+  var b=document.createElement('button');b.type='button';b.className='v43-burger';
+  b.setAttribute('aria-label','Menü öffnen');b.setAttribute('aria-expanded','false');b.setAttribute('aria-controls','v43NavWrap');
+  b.innerHTML='<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>';
+  wrap.appendChild(b);
+  function op(){nav.classList.add('open');nav.setAttribute('aria-hidden','false');b.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function cl(){nav.classList.remove('open');nav.setAttribute('aria-hidden','true');b.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  b.addEventListener('click',op);
+  nav.addEventListener('click',function(e){var t=e.target;if(t.hasAttribute('data-close')||(t.closest&&t.closest('[data-close]')))cl();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open'))cl();});
+})();
+</script>
+<iframe name="brevo_sink" title="Anmeldung" aria-hidden="true" tabindex="-1" style="position:absolute;width:0;height:0;border:0;left:-9999px"></iframe>
+<script>
+/* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
+   mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
+(function(){
+  var FACH = (location.pathname.match(/(bmgt|osta|omik|ofin|bfin|bmak|pfin)/) || [])[1] || "bmgt";
+  var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
+  document.addEventListener('submit', function(e){
+    var f = e.target;
+    if(!f || f.nodeName !== 'FORM') return;
+    if(!f.querySelector('input[name="EMAIL"]')) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if(f.checkValidity && !f.checkValidity()){ if(f.reportValidity) f.reportValidity(); return; }
+    var hp1 = f.querySelector('input[name="email_address_check"]');
+    var hp2 = f.querySelector('input[name="bot-field"]');
+    if((hp1 && hp1.value) || (hp2 && hp2.value)) return;
+    var data = new FormData(f);
+    var email = (data.get("EMAIL") || "").trim().toLowerCase();
+    var vorname = (data.get("vorname") || "").replace(/[<>]/g, "").trim();
+    var handy = (data.get("handynummer") || "").replace(/[<>]/g, "").trim();
+    if(email.indexOf("@") < 1) return;
+    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:email, vorname:vorname, fach:FACH, t:Date.now()})); }catch(_e){}
+    var errBox = f.querySelector('.form-err');
+    if(errBox) errBox.style.display = "none";
+    function zeigeOk(){
+      var box = f.parentNode.querySelector('.brevo-ok');
+      if(!box){
+        box = document.createElement('div');
+        box.className = 'brevo-ok';
+        box.setAttribute('role', 'status');
+        box.style.cssText = 'margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(46,125,50,.10);color:#1f5130;font-size:15px;line-height:1.5;border:1px solid rgba(46,125,50,.30)';
+        f.parentNode.insertBefore(box, f.nextSibling);
+      }
+      var vn = vorname.replace(/[<&>"]/g, "");
+      box.innerHTML = '<b>Fast geschafft' + (vn ? ', ' + vn : '') + '!</b> Wir haben dir eine E-Mail geschickt \u2013 best\u00e4tige kurz den Link darin, dann geht\u2019s direkt los. Schau auch im Spam-Ordner nach.';
+      box.style.display = 'block';
+      f.style.display = 'none';
+      /* Auto-Scroll nach Anmeldung entfernt (Simon 23.07.): Seite bleibt an der Position */
+    }
+    fetch(AN, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email, vorname:vorname, fach:FACH, handy:handy})})
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){ if(d && d.error && errBox){ errBox.style.display = 'block'; } else { zeigeOk(); } })
+      .catch(function(){ if(errBox){ errBox.style.display = 'block'; } else { zeigeOk(); } });
+  }, true);
+})();
+</script>
+
+<div id="v2Bar" aria-hidden="true"></div>
+<div class="scta" id="v2Scta"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="#preise">Ab&nbsp;8,90&nbsp;&euro;</a></div>
+<style id="v2-mobil">
+/* ============================================================
+   V2-MOBIL-LAYER · bmgt.html (uebernommen aus osta.html, Commit dd4a7a8) · Stand 26.07.
+   Preise wie in der App (nichts wischen/verstecken) · wenige, gezielte
+   Aufklapper · kompakte Abstände · einheitlicher Hintergrund.
+   ============================================================ */
+
+/* ---------- Typo-Skala: 5 Stufen ---------- */
+:root{
+  --fs-hero:clamp(30px,8vw,44px);
+  --fs-h2:clamp(22px,5.5vw,30px);
+  --fs-lead:17px;
+  --fs-body:16px;
+  --fs-meta:13px;
+}
+h1{font-size:var(--fs-hero)!important;line-height:1.08}
+h2,.tier .price .now{font-size:var(--fs-h2)!important;line-height:1.15}
+h3,.hero .lead,.sc-q,.sc-result .head,.astat b,.gratis-card h3,.wcard b,
+.step h3,.ups .up,.install .ins-h{font-size:var(--fs-lead)!important;line-height:1.35}
+p,li,.sub,.sc-opt,.sc-fb,.sc-result p,.faq summary,.faq .fa,button,.btn,
+.form-err,.fnote,.os-txt,.voice .vq,.install ol,.v43-price-note,
+.tier .pd,.ups .ud,summary,.sc-note,.v43-nav a,label.f,label.f span,.v2-urne-stat,.v2-profil-leg,.disclaimer{font-size:var(--fs-body)!important;line-height:1.6}
+.author h2 span{font-size:var(--fs-meta)!important}
+.kicker,.chip,.trust,.gratis-badge,.tier .rung,.ribbon,.vwho,.astat span,
+.chk,.chk span,.os-clock,.garantie,.tier .price .old,
+.badge-demo,.ph-badge,.part-label,footer,.ups b,.v2-dots,
+.v2-kdays,.sc-retry{font-size:var(--fs-meta)!important;line-height:1.5}
+
+/* ---------- Header schlank ---------- */
+.appbar .wrap{min-height:44px;padding-top:4px;padding-bottom:4px;gap:8px}
+.brand{min-height:44px}
+.brand small{display:none}
+.brand b{font-size:var(--fs-body)!important}
+.count-pill{display:none!important}
+.appbar .btn{padding:8px 12px;min-height:44px;white-space:nowrap}
+.appbar .mark img{width:30px;height:30px}
+.v43-navwrap:not(.open){visibility:hidden}
+
+/* Reveals: schnell und ohne Staffelung — keine Leerflaechen beim Scrollen */
+.reveal{transition-duration:.32s,.32s!important;transition-delay:0s,0s!important}
+
+/* ---------- Scroll-Fortschrittsbalken ---------- */
+#v2Bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:80}
+
+/* ---------- Karussell-Schiene (Kapitel + App-Anleitung) ---------- */
+.v2-rail{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:12px;
+  padding:4px 16px 8px;margin:12px -16px 0;
+  overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scroll-padding-inline:16px;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.v2-rail::-webkit-scrollbar{display:none}
+.v2-rail>*{scroll-snap-align:start;margin:0!important;min-width:0}
+.v2-dots{display:flex;justify-content:center;gap:6px;margin-top:8px;color:var(--text-3)}
+.v2-dots i{width:7px;height:7px;border-radius:50%;background:var(--hair);transition:background .2s,transform .2s}
+.v2-dots i.on{background:var(--accent);transform:scale(1.25)}
+@media(min-width:760px){
+  .v2-rail{grid-auto-flow:row;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-auto-columns:auto;overflow:visible;scroll-snap-type:none;margin-inline:0;padding-inline:0}
+  .v2-dots{display:none}
+}
+#kapRail{grid-auto-columns:64%}
+.steps.v2-rail .step{height:100%}
+.steps.v2-rail{grid-auto-columns:78%}
+
+/* ---------- Sticky Bottom-CTA ---------- */
+.scta{position:fixed;left:0;right:0;bottom:0;z-index:60;
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  background:var(--surface);border-top:1px solid var(--hair);
+  transform:translateY(120%);transition:transform .25s ease;
+  display:flex;gap:10px;align-items:center}
+.scta.on{transform:none}
+.scta .btn{flex:1;justify-content:center;text-align:center}
+@media(prefers-reduced-motion:reduce){.scta{transition:none}}
+@media(min-width:760px){.scta{display:none}}
+
+/* ---------- Aufklapper nur noch: FAQ + App-Anleitung ---------- */
+details.dd{margin-top:8px}
+details.dd>summary{cursor:pointer;list-style:none;display:flex;align-items:center;
+  gap:8px;min-height:44px;padding:10px 2px;font-weight:600;color:var(--text-2)}
+details.dd>summary::-webkit-details-marker{display:none}
+details.dd>summary::after{content:"";width:8px;height:8px;flex:none;
+  border-right:2px solid currentColor;border-bottom:2px solid currentColor;
+  transform:rotate(45deg);transition:transform .2s;margin-left:auto}
+details.dd[open]>summary::after{transform:rotate(-135deg)}
+.faq summary{min-height:48px}
+.faq summary::-webkit-details-marker{display:none}
+
+/* ---------- Kompakter Fluss: Lücken schließen ---------- */
+main section{padding:32px 0}
+main section .wrap>h2{margin-bottom:8px}
+.hero .wrap{padding-top:26px;padding-bottom:0}
+.hero-cta{margin:16px 0 4px}
+.hero-cta .btn{justify-content:center;text-align:center}
+@media(max-width:639px){.hero-cta .btn{width:100%}}
+.v2-heroline{display:block;margin-top:10px}
+.v2-heroline a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
+.v2-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.trust{margin-top:14px;padding-top:12px;gap:6px 14px}
+.v2-kdays{display:inline-flex;align-items:center;gap:8px;margin-top:12px;
+  background:var(--glow);color:var(--accent-deep);font-weight:700;
+  padding:8px 14px;border-radius:999px}
+#klausurcheck{padding-top:0}
+#klausurcheck .wrap{padding-top:0}
+#klausurcheck .card{padding:20px 18px}
+#gratis{padding-top:10px}
+.gratis-card{padding:18px 16px}
+.premium-card.author{padding:20px 16px}
+.author .aq{margin:10px 0 0}
+.author .foto{width:120px;height:120px}
+.astats{grid-template-columns:repeat(2,1fr);gap:8px;margin:14px 0 0}
+.astat{padding:10px 8px}
+.steps{gap:10px;margin-top:10px}
+.step{padding:14px 16px}
+.step p{margin:6px 0 0}
+.step h3{margin:2px 0 0}
+.tier{padding:18px 16px}
+.tier .pd{margin:6px 0 10px}
+.tier .price{margin:6px 0 2px}
+.ladder{gap:12px;margin-top:16px}
+.upsells{gap:8px;margin-top:12px}
+.ups{padding:12px 14px}
+.garantie{gap:4px 16px;padding:10px 14px;margin-top:12px}
+.v43-price-note{margin-top:12px!important;padding:12px 14px!important}
+.garantie svg{display:none}
+#vormerken .card{padding:22px 18px}
+.v2-more{display:none}
+#vormerken.v2-open2 .v2-more{display:block}
+.install-grid{gap:10px}
+.install-grid .card.install{padding:0 16px}
+.install-grid .ins-h{margin:0}
+footer{padding:26px 0 96px}
+.faq details{margin:8px 0}
+.faq summary{padding:14px 16px}
+.faq .fa{padding:0 16px 14px}
+.voice{padding:18px}
+
+/* Kontrast: Orange-Textrollen im Hellmodus auf lesbares Tieforange */
+.v2-kdays{color:#A04A00;background:rgba(232,118,10,.14)}
+#kapitel .kap-n{color:#A04A00}
+.v2-lg-no{color:#A04A00}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline-color:#A04A00!important}
+[data-theme="dark"] .v2-kdays{color:var(--accent-2);background:var(--glow)}
+[data-theme="dark"] #kapitel .kap-n{color:var(--accent-2)}
+[data-theme="dark"] .v2-lg-no{color:var(--accent-2)}
+[data-theme="dark"] a:focus-visible,[data-theme="dark"] button:focus-visible,
+[data-theme="dark"] summary:focus-visible,[data-theme="dark"] input:focus-visible{outline-color:var(--accent-2)!important}
+
+
+/* ---------- NEU 3 · Kapitel-Profil (persönliches Balkendiagramm) ---------- */
+.v2-profil{margin-top:14px}
+.v2-profil-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;align-items:end;height:44px}
+.v2-profil-bars b{display:block;border-radius:4px 4px 0 0;background:var(--hair);
+  height:30%;transition:height .3s ease,background-color .3s ease}
+.v2-profil-bars b.ok{background:var(--done);height:100%}
+.v2-profil-bars b.no{background:var(--accent);height:62%}
+.v2-profil-leg{margin:8px 0 0;color:var(--text-2)}
+.v2-lg{font-weight:700}
+.v2-lg-ok{color:var(--done)}
+.v2-lg-no{color:var(--accent-deep)}
+.v2-lg-off{color:var(--text-3)}
+@media(prefers-reduced-motion:reduce){.v2-profil-bars b{transition:none}}
+
+/* ---------- Quiz-Gate + Q2-Progressive ---------- */
+.sc-body{display:none}
+#klausurcheck.v2-open .sc-body{display:block}
+#klausurcheck.v2-open .sc-gate{display:none}
+.sc-gate .btn{width:100%;justify-content:center;text-align:center;margin-top:4px}
+#klausurcheck.v2-q1 .v2-q2{display:none}
+#klausurcheck.v2-q1 .sc-eval{display:none}
+
+/* ---------- Kapitel-Swipe ---------- */
+#kapitel{padding-top:26px;padding-bottom:20px}
+#kapitel .kap-card{background:var(--surface);border-radius:var(--r-md);
+  padding:16px;box-shadow:var(--edge),0 0 0 1px var(--line-2),var(--sh-1);
+  display:flex;flex-direction:column;gap:8px}
+#kapitel .kap-n{font-family:var(--serif);font-weight:700;color:#A04A00}
+[data-theme="dark"] #kapitel .kap-n{color:var(--accent-2)}
+#kapitel .kap-t{font-weight:700}
+#kapitel .kap-btns{display:flex;gap:8px;margin-top:auto}
+#kapitel .kap-btns button{flex:1;min-height:44px;border-radius:var(--r-sm);
+  border:1px solid var(--hair);background:var(--surface-2);color:var(--text-2);
+  font-weight:700;cursor:pointer}
+#kapitel .kap-btns button.on-ok{background:var(--done-bg);color:var(--done);border-color:var(--done)}
+#kapitel .kap-btns button.on-no{background:var(--glow);color:var(--accent-deep);border-color:var(--accent)}
+#kapitel .kap-card.gratis .kap-btns a{flex:1;min-height:44px;display:inline-flex;
+  align-items:center;justify-content:center;border-radius:var(--r-sm);
+  background:var(--done-bg);color:var(--done);font-weight:700;text-decoration:none}
+#kapitel .kap-sum{background:linear-gradient(180deg,var(--premium-2),var(--premium));
+  color:var(--premium-ink);border-radius:var(--r-md);padding:18px;
+  display:flex;flex-direction:column;gap:10px}
+#kapitel .kap-sum .btn{justify-content:center;text-align:center}
+
+/* ---------- Touch-Ziele: Inline-Links auf 44 px ---------- */
+.fa a,.chk a,footer a,.fnote a,.v2-heroline a,.disclaimer a,.sub a{
+  display:inline-block;padding-block:13px;margin-block:-13px}
+
+/* ---------- Checkbox: 44px Tap-Fläche ---------- */
+.chk input[type=checkbox]{appearance:none;-webkit-appearance:none;width:44px;height:44px;
+  flex:none;margin:-9px 0 0 -9px;display:grid;place-content:center;background:none;border:0;cursor:pointer}
+.chk input[type=checkbox]::before{content:"";width:24px;height:24px;border-radius:7px;
+  background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--hair)}
+.chk input[type=checkbox]:checked::before{background:var(--accent);box-shadow:none;
+  content:"\2713";color:#fff;font-size:16px;font-weight:700;display:grid;place-content:center}
+.chk{display:flex;align-items:flex-start;gap:6px}
+
+
+.wb-sub{font-size:.72em;font-weight:500;opacity:.75;white-space:nowrap}
+.cashback-hint{font-size:14px;font-weight:600;color:var(--accent,#A04A00);margin:6px 0 2px}
+@media (prefers-color-scheme:dark){.cashback-hint{color:#F0902E}}
+</style>
+<script id="v2-mobil-js">
+/* ============================================================
+   V2-MOBIL-JS · bmgt.html (uebernommen aus osta.html, Commit dd4a7a8)
+   Läuft NACH allen Original-Skripten. Nichts davon wird ersetzt.
+   ============================================================ */
 (function(){
   "use strict";
-  var lastFocus = null;
-  function $(id){ return document.getElementById(id); }
-  function esc(s){
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
-  }
+  var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var KLAUSUR_TAG = "2026-07-27";
 
-  function renderLektionen(d){
-    var rows = (d.lektionen || []).map(function(l){
-      var titel = "Kap " + esc(l.n) + " · " + esc(l.thema);
-      var right;
+  /* ---------- Scroll-Fortschrittsbalken ---------- */
+  var bar = document.getElementById("v2Bar");
+  function setBar(){
+    if(!bar) return;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + "%";
+  }
+  window.addEventListener("scroll", setBar, {passive:true});
+  window.addEventListener("resize", setBar);
+  setBar();
+
+  /* ---------- NEU 3a · Lernplan-Chip: Tage + Tagespensum ---------- */
+  var kapGesamt = (window.BK_DATA && window.BK_DATA.lektionen) ? window.BK_DATA.lektionen.length : 10;
+  function klausurTage(){
+    var heute = new Date();
+    heute.setHours(0, 0, 0, 0);
+    return Math.max(0, Math.round((new Date(KLAUSUR_TAG + "T00:00:00") - heute) / 86400000));
+  }
+  function planText(){
+    var d = klausurTage();
+    if(d === 0) return "Klausur ist heute";
+    if(d === 1) return "Morgen ist Klausur";
+    var offen = kapGesamt;
+    try{
+      var st = JSON.parse(localStorage.getItem("kc_bmgt_selbstcheck") || "{}") || {};
+      var wack = Object.keys(st).filter(function(k){ return st[k] === "no"; }).length;
+      if(wack > 0) offen = wack;
+    }catch(e){}
+    var proTag = Math.ceil(offen / d);
+    var was = offen === kapGesamt ? kapGesamt + " Kapitel" : offen + " Wackel-Kapitel";
+    return "Noch " + d + " Tage · " + was + " = " + proTag + " pro Tag";
+  }
+  function planUpdate(){
+    var els = document.querySelectorAll("[data-kdays]");
+    var t = planText();
+    Array.prototype.forEach.call(els, function(e){ e.textContent = t; });
+  }
+  planUpdate();
+
+  /* ---------- Quiz: Gate + Frage 2 erst nach Antwort 1 ---------- */
+  (function(){
+    var sec = document.getElementById("klausurcheck");
+    if(!sec) return;
+    sec.classList.add("v2-q1");
+    var start = document.getElementById("scStart");
+    function openQuiz(){ sec.classList.add("v2-open"); }
+    if(start) start.addEventListener("click", openQuiz);
+    document.addEventListener("click", function(e){
+      var a = e.target.closest ? e.target.closest('a[href="#klausurcheck"]') : null;
+      if(a) openQuiz();
+    });
+    Array.prototype.forEach.call(sec.querySelectorAll('.sc-opt[data-q="0"]'), function(b){
+      b.addEventListener("click", function(){ sec.classList.remove("v2-q1"); });
+    });
+    var retry = document.getElementById("scRetry");
+    if(retry) retry.addEventListener("click", function(){ sec.classList.add("v2-q1"); });
+  })();
+
+  /* ---------- Kapitel-Swipe + NEU 3b · persönliches Kapitel-Profil ---------- */
+  (function(){
+    var rail = document.getElementById("kapRail");
+    var data = window.BK_DATA && window.BK_DATA.lektionen;
+    if(!rail || !data || !data.length) return;
+    var LS = "kc_bmgt_selbstcheck";
+    var state = {};
+    try{ state = JSON.parse(localStorage.getItem(LS) || "{}") || {}; }catch(e){}
+    function kurz(t){
+      var i = t.indexOf(":");
+      return i > -1 ? t.slice(i + 1).trim() : t;
+    }
+    function save(){ try{ localStorage.setItem(LS, JSON.stringify(state)); }catch(e){} }
+    function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+    var html = data.map(function(l){
       if(l.gratis){
-        right = '<a class="bk-badge" href="' + esc(l.slug) + '.html">gratis · ansehen</a>';
-      } else {
-        var merk = esc("Einzellektion Kap " + l.n + " · " + l.thema);
-        right = '<span class="bk-preis num">' + esc(d.einzel) + '</span>' +
-                '<button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken</button>';
+        return '<div class="kap-card gratis"><span class="kap-n num">' + l.n + ' · gratis</span>' +
+          '<span class="kap-t">' + esc(kurz(l.thema)) + '</span>' +
+          '<div class="kap-btns"><a href="' + esc(l.slug) + '.html">ansehen</a></div></div>';
       }
-      return '<li class="bk-row"><span class="bk-row-t">' + titel + '</span><span class="bk-row-r">' + right + '</span></li>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Alle ' + esc(d.kursKuerzel) + '-Lektionen einzeln buchen</h2><ul class="bk-list">' + rows + '</ul>';
-  }
+      return '<div class="kap-card" data-n="' + l.n + '"><span class="kap-n num">' + l.n + '</span>' +
+        '<span class="kap-t">' + esc(kurz(l.thema)) + '</span>' +
+        '<div class="kap-btns">' +
+        '<button type="button" data-v="ok" aria-pressed="false">sitzt</button>' +
+        '<button type="button" data-v="no" aria-pressed="false">wackelt</button></div></div>';
+    }).join("") +
+    '<div class="kap-sum"><b class="kap-t" id="kapSumT">Bewerte alle 6 Kapitel.</b>' +
+    '<span id="kapSumS" class="chk"></span>' +
+    '<a class="btn btn-primary" href="#vormerken" id="kapSumBtn" data-merken="">Jetzt kostenlos anmelden</a></div>';
+    rail.innerHTML = html;
 
-  function renderFaecher(d){
-    return '<h2 id="bkTitle" class="bk-h">Fächer-Paket zusammenstellen</h2>' + window.BKBC.markup();
-  }
+    var profil = document.getElementById("v2Profil");
+    var bars = document.getElementById("v2ProfilBars");
+    if(bars){
+      bars.innerHTML = data.map(function(l){ return '<b data-p="' + l.n + '" title="Kap ' + l.n + '"></b>'; }).join("");
+    }
 
-  function renderTermine(d){
-    var termine = d.termine || [];
-    var order = [], groups = {};
-    termine.forEach(function(t){
-      var b = t.block || "Termine";
-      if(!groups[b]){ groups[b] = []; order.push(b); }
-      groups[b].push(t);
+    function paint(){
+      Array.prototype.forEach.call(rail.querySelectorAll(".kap-card[data-n]"), function(c){
+        var n = c.getAttribute("data-n"), v = state[n];
+        var ok = c.querySelector('[data-v="ok"]'), no = c.querySelector('[data-v="no"]');
+        ok.classList.toggle("on-ok", v === "ok");
+        no.classList.toggle("on-no", v === "no");
+        ok.setAttribute("aria-pressed", v === "ok" ? "true" : "false");
+        no.setAttribute("aria-pressed", v === "no" ? "true" : "false");
+      });
+      var wack = data.filter(function(l){ return state[l.n] === "no"; });
+      var sitzt = data.filter(function(l){ return state[l.n] === "ok"; });
+      if(bars){
+        Array.prototype.forEach.call(bars.children, function(b){
+          var v = state[b.getAttribute("data-p")];
+          b.className = v === "ok" ? "ok" : v === "no" ? "no" : "";
+        });
+      }
+      if(profil) profil.hidden = !(wack.length || sitzt.length);
+      if(bars) bars.setAttribute("aria-label", "Dein Kapitel-Profil: " + sitzt.length + " sitzen, " + wack.length + " wackeln, " + (data.length - sitzt.length - wack.length) + " offen");
+      var t = document.getElementById("kapSumT");
+      var s = document.getElementById("kapSumS");
+      var b = document.getElementById("kapSumBtn");
+      if(wack.length){
+        t.textContent = wack.length + "× wackelt · " + sitzt.length + "× sitzt";
+        s.textContent = "Wackelt bei: " + wack.map(function(l){ return "Kap " + l.n; }).join(", ");
+        b.setAttribute("data-merken", "Selbstcheck: wackelt bei " + wack.map(function(l){ return "Kap " + l.n + " " + kurz(l.thema); }).join(", "));
+        b.textContent = "Genau diese Kapitel angehen";
+      } else if(sitzt.length){
+        t.textContent = sitzt.length + " von " + data.length + " sitzen. Stark!";
+        s.textContent = "";
+        b.setAttribute("data-merken", "Selbstcheck: alles sitzt (" + sitzt.length + " bewertet)");
+        b.textContent = "Jetzt kostenlos anmelden";
+      }
+      planUpdate();
+    }
+    rail.addEventListener("click", function(e){
+      var btn = e.target.closest ? e.target.closest("button[data-v]") : null;
+      if(!btn) return;
+      var card = btn.closest(".kap-card");
+      var n = card.getAttribute("data-n");
+      var v = btn.getAttribute("data-v") === "ok" ? "ok" : "no";
+      state[n] = state[n] === v ? undefined : v;
+      save(); paint();
     });
-    var blocks = order.map(function(b){
-      var opts = groups[b].map(function(t){
-        var val = esc(t.tag + ", " + t.zeit + " Uhr");
-        return '<label class="bk-opt num"><input type="radio" name="bkTermin" value="' + val + '"><span>' + esc(t.tag) + ", " + esc(t.zeit) + " Uhr</span></label>";
-      }).join("");
-      return '<div class="bk-tgroup"><h3 class="bk-tgroup-h">' + esc(b) + '</h3>' + opts + '</div>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Wähle deinen Termin: Live-Q&amp;A / Klausurtraining</h2>' + blocks +
-           '<p class="bk-need" hidden>Bitte wähle zuerst einen Termin aus.</p>' +
-           '<div class="bk-actionrow"><button type="button" class="bk-btn" data-bk-action="termin-submit">Diesen Termin vormerken</button></div>' +
-           '<p class="bk-foot">Alle Termine nach der letzten Vorlesung und vor der Klausur.</p>';
-  }
+    paint();
+  })();
 
-  function renderHandouts(d){
-    var preis = esc(d.handout);
-    var rows = (d.lektionen || []).map(function(l){
-      var titel = "Kap " + esc(l.n) + " · " + esc(l.thema);
-      var merk = esc("Handout-PDF Kap " + l.n + " · " + l.thema);
-      var chips = (l.keywords || []).map(function(k){ return '<span class="chip">' + esc(k) + '</span>'; }).join("");
-      var details = chips ? '<details class="bk-details"><summary>Inhalt</summary><div class="bk-chips">' + chips + '</div></details>' : "";
-      return '<li class="bk-row"><span class="bk-row-t">' + titel + details + '</span>' +
-             '<span class="bk-row-r"><button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken (' + preis + ')</button></span></li>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Handout-PDFs je Kapitel (' + preis + ')</h2><ul class="bk-list">' + rows + '</ul>';
-  }
-
-  var RENDER = {lektionen:renderLektionen, faecher:renderFaecher, termine:renderTermine, handouts:renderHandouts};
-
-  function focusables(modal){
-    var sel = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
-    return Array.prototype.filter.call(modal.querySelectorAll(sel), function(el){
-      return el.offsetParent !== null || el === document.activeElement;
-    });
-  }
-  function onKey(e){
-    if(e.key === "Escape" || e.key === "Esc"){ closeBk(); return; }
-    if(e.key !== "Tab") return;
-    var modal = $("bkModal"); if(!modal) return;
-    var f = focusables(modal); if(!f.length) return;
-    var first = f[0], last = f[f.length-1];
-    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-  }
-
-  window.openBk = function(typ){
-    var modal = $("bkModal"), content = $("bkContent");
-    var render = RENDER[typ];
-    if(!modal || !content || !render) return;
-    content.innerHTML = render(window.BK_DATA || {});
-    if(typ === "faecher" && window.BKBC) window.BKBC.bind(content);
-    lastFocus = document.activeElement;
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
-    var closeBtn = modal.querySelector(".bk-close");
-    if(closeBtn) closeBtn.focus();
-  };
-  window.closeBk = function(){
-    var modal = $("bkModal");
-    if(!modal || modal.hidden) return;
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    document.removeEventListener("keydown", onKey);
-    if(lastFocus && typeof lastFocus.focus === "function"){ try{ lastFocus.focus(); }catch(e){} }
-    lastFocus = null;
-  };
-
-  document.addEventListener("click", function(e){
-    var t = e.target.closest ? e.target.closest("[data-bk]") : null;
-    if(t){ window.openBk(t.getAttribute("data-bk")); }
+  /* ---------- Punkt-Anzeige unter jeder Schiene ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".v2-rail"), function(rail){
+    var dots = document.createElement("div");
+    dots.className = "v2-dots";
+    dots.setAttribute("aria-hidden", "true");
+    var n = rail.children.length;
+    for(var i = 0; i < n; i++) dots.appendChild(document.createElement("i"));
+    rail.parentNode.insertBefore(dots, rail.nextSibling);
+    function upd(){
+      var card = rail.children[0];
+      if(!card) return;
+      var w = card.getBoundingClientRect().width + 12;
+      var idx = Math.min(n - 1, Math.max(0, Math.round(rail.scrollLeft / w)));
+      Array.prototype.forEach.call(dots.children, function(d, i){
+        d.classList.toggle("on", i === idx);
+      });
+    }
+    rail.addEventListener("scroll", upd, {passive:true});
+    upd();
   });
 
-  var modal = $("bkModal"), content = $("bkContent");
-  if(modal) modal.addEventListener("click", function(e){ if(e.target === modal) closeBk(); });
-  if(content){
-    content.addEventListener("click", function(e){
-      var m = e.target.closest ? e.target.closest("[data-bk-merken]") : null;
-      if(m){
-        var txt = m.getAttribute("data-bk-merken");
-        closeBk();
-        window.merken(txt);
+  /* ---------- Sticky Bottom-CTA (scroll-basiert) ---------- */
+  (function(){
+    var scta = document.getElementById("v2Scta");
+    var heroCta = document.querySelector(".hero-cta");
+    if(!scta || !heroCta) return;
+    function inView(el, marge){
+      var r = el.getBoundingClientRect();
+      return r.bottom > (marge || 0) && r.top < window.innerHeight - (marge || 0);
+    }
+    function upd(){
+      var heroVis = inView(heroCta);
+      var formVis = false;
+      ["vormerken", "preise"].forEach(function(id){
+        var el = document.getElementById(id);
+        if(el && inView(el, 40)) formVis = true;
+      });
+      scta.classList.toggle("on", !heroVis && !formVis);
+    }
+    window.addEventListener("scroll", upd, {passive:true});
+    window.addEventListener("resize", upd);
+    upd();
+  })();
+
+  /* ---------- Zählanimation der Autor-Zahlen (mit Fallback) ---------- */
+  (function(){
+    var els = document.querySelectorAll("[data-cnt]");
+    if(!els.length) return;
+    function run(el){
+      var end = parseInt(el.getAttribute("data-cnt"), 10);
+      var pre = el.getAttribute("data-pre") || "";
+      var suf = el.getAttribute("data-suf") || "";
+      if(RM){
+        el.textContent = pre + end.toLocaleString("de-DE") + suf;
         return;
       }
-      var sub = e.target.closest ? e.target.closest('[data-bk-action="termin-submit"]') : null;
-      if(sub){
-        var sel = content.querySelector('input[name="bkTermin"]:checked');
-        if(!sel){
-          var need = content.querySelector(".bk-need");
-          if(need) need.hidden = false;
-          return;
-        }
-        closeBk();
-        window.merken("Live-Termin: " + sel.value);
-        return;
+      var t0 = null;
+      function step(t){
+        if(!t0) t0 = t;
+        var p = Math.min(1, (t - t0) / 900);
+        var v = Math.round(end * (1 - Math.pow(1 - p, 3)));
+        el.textContent = pre + v.toLocaleString("de-DE") + suf;
+        if(p < 1) requestAnimationFrame(step);
       }
-    });
-    content.addEventListener("change", function(e){
-      if(e.target && e.target.name === "bkTermin"){
-        Array.prototype.forEach.call(content.querySelectorAll(".bk-opt"), function(o){
-          var r = o.querySelector("input");
-          o.classList.toggle("bk-sel", !!(r && r.checked));
-        });
-        var need = content.querySelector(".bk-need");
-        if(need) need.hidden = true;
-      }
-    });
-  }
+      requestAnimationFrame(step);
+    }
+    var done = {};
+    function runOnce(el){
+      var k = el.getAttribute("data-cnt");
+      if(!done[k]){ done[k] = true; run(el); }
+    }
+    if(RM || !("IntersectionObserver" in window)){
+      Array.prototype.forEach.call(els, runOnce);
+      return;
+    }
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){ runOnce(e.target); io.unobserve(e.target); }
+      });
+    }, {threshold:0.4});
+    Array.prototype.forEach.call(els, function(el){ io.observe(el); });
+    setTimeout(function(){ Array.prototype.forEach.call(els, runOnce); }, 3000);
+  })();
+
+  /* ---------- Formular: weitere Felder nach E-Mail-Eingabe ---------- */
+  (function(){
+    var sec = document.getElementById("vormerken");
+    var mail = document.getElementById("vmEmail");
+    if(!sec || !mail) return;
+    function open2(){ sec.classList.add("v2-open2"); }
+    mail.addEventListener("input", function(){ if(mail.value.length > 2) open2(); });
+    mail.addEventListener("focus", function(){ if(mail.value.length > 2) open2(); });
+  })();
+
+  /* ---------- Reveals früher + schneller (gegen Leerflächen beim Scrollen) ---------- */
+  (function(){
+    if(RM || !("IntersectionObserver" in window)) return;
+    var io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, {rootMargin:"0px 0px 22% 0px", threshold:0});
+    Array.prototype.forEach.call(document.querySelectorAll(".reveal:not(.in)"), function(el){ io.observe(el); });
+  })();
+
+  /* ---------- Theme-Umschalter ins Burger-Menü ---------- */
+  (function(){
+    var btn = document.getElementById("themeBtn");
+    var head = document.querySelector(".v43-navhead");
+    if(btn && head) head.insertBefore(btn, head.lastElementChild);
+  })();
 })();
 
-/* ---- BKBC-Konfigurator: Checkout-Hook an den bestehenden Merken-Flow ---- */
-window.bkbcOnCheckout = function(p){
-  var art = p.handouts ? "Klausur-Check + alle Handouts" : "Klausur-Check";
-  var txt = "Fächer-Paket: " + p.faecher.join(" + ") + " · " + art + " · " + window.BKBC.fmt(p.total);
-  if(typeof window.closeBk === "function") window.closeBk();
-  if(typeof window.merken === "function") window.merken(txt);
-};
 </script>
-<style id="v43-guard">html{overflow-x:clip}body{overflow-x:clip}</style>
+
+<script>
+/* V3 (22.07.): Kauf-Links mit der Anmelde-E-Mail vorbelegen (bwlk-signup, selbes Geraet).
+   Stripe zeigt die Adresse dann vorausgefuellt — weniger Tippfehler, weniger Kaeufe auf
+   versehentlich falscher Adresse (Lehre aus dem 22.07.). */
+(function(){
+  try{
+    var sg = JSON.parse(localStorage.getItem("bwlk-signup") || "{}");
+    var mail = (sg && sg.email || "").trim().toLowerCase();
+    if(mail.indexOf("@") < 1) return;
+    document.querySelectorAll('a[href^="https://buy.stripe.com/"]').forEach(function(a){
+      if(a.href.indexOf("prefilled_email=") === -1){
+        a.href += (a.href.indexOf("?") === -1 ? "?" : "&") + "prefilled_email=" + encodeURIComponent(mail);
+      }
+    });
+  }catch(e){}
+})();
+</script>
+<script id="welt-js">
+/* =====================================================================
+   ZWEI-WELTEN-LOGIK (Simon, 22.07.2026)
+   Orange = Gratiswelt (anschauen, testen, kostenlos)
+   Blau   = Bezahlwelt (hier gibt man Geld aus)
+
+   Start: Kopf orange + untere Leiste orange/blau  = 2x orange, 1x blau
+   Erster Klick auf irgendeinen Button oder in eine Produktwelt:
+   Kopf-Button wird dauerhaft blau                 = 2x blau,  1x orange
+   Der Wechsel ist endgueltig, es geht nie zurueck auf Orange.
+
+   >>> TEXT SPAETER AENDERN: nur die naechsten zwei Zeilen anfassen. <<<
+   ===================================================================== */
+(function(){
+  "use strict";
+  var TEXT_GRATIS = "Schaffst du’s?";   /* <-- Klausurphase. Danach z.B. "Kurs ansehen" */
+  var TEXT_KAUF   = "Ab 8,90 €";   /* <-- Einstieg in die Bezahlwelt */
+
+  var KEY = "bwlk-welt";
+  var ZIEL = document.body.getAttribute("data-preisziel") || "#preise";
+
+  function istKaufwelt(){
+    try { return localStorage.getItem(KEY) === "kauf"; } catch(e){ return false; }
+  }
+  function merkeKaufwelt(){
+    try { localStorage.setItem(KEY, "kauf"); } catch(e){}
+    zeichne();
+  }
+  function zeichne(){
+    var b = document.getElementById("weltBtn");
+    if(!b) return;
+    if(istKaufwelt()){
+      b.className = "btn btn-kauf";
+      b.setAttribute("href", ZIEL);
+      b.innerHTML = TEXT_KAUF;
+      b.setAttribute("aria-label", "Zu den Preisen");
+    } else {
+      b.className = "btn btn-primary";
+      b.setAttribute("href", "#vormerken");
+      b.innerHTML = TEXT_GRATIS;
+    }
+  }
+
+  /* Was den Wechsel ausloest: jeder Button, jeder Weg in eine Produktwelt. */
+  function istAusloeser(el){
+    var a = el.closest ? el.closest("a,button") : null;
+    if(!a) return false;
+    if(a.classList && a.classList.contains("btn")) return true;
+    var h = a.getAttribute("href") || "";
+    if(!h) return false;
+    if(h.indexOf("buy.stripe.com") > -1) return true;
+    if(h.indexOf("preise.html") > -1) return true;
+    if(h.indexOf("/app/") > -1) return true;
+    if(/-kap\d/.test(h)) return true;          /* Probelektionen */
+    return false;
+  }
+
+  document.addEventListener("click", function(ev){
+    if(istAusloeser(ev.target)) merkeKaufwelt();
+  }, true);
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", zeichne);
+  } else { zeichne(); }
+})();
+</script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8f1261b869214e90b82cb2a1d5683f5c"}'></script><!-- End Cloudflare Web Analytics --></body>
 </html>

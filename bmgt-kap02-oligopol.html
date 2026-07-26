@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <!--
 ================================================================================
-  OSTA · Kapitel 3 – Wahrscheinlichkeitsrechnung (GRATIS-Probe-Lektion) · Struktur v2 (10 Kapitel)
-  Gebaut aus _KURSSYSTEM/vorlagen/Lektion_VORLAGE.html (CSS/Quiz-Engine/Tooltip-JS
-  und Preismodul BLOCK A–E wörtlich übernommen).
+  BMGT · Kapitel 2 – Oligopol: Cournot, Bertrand & Stackelberg (GRATIS-Probe-Lektion)
+  Rahmen (Kopf/CSS/Preismodul/Buchungsmodul/vm-Anmeldemodal/Sticky-Bar/Quiz-Huelle/
+  Tooltip-JS) uebernommen aus der LP-Form-Referenz osta-kap03-wahrscheinlichkeit.html
+  (live, V3-Preise) · Lehrinhalt (Einstieg/Fahrplan/①-④/FAQ/Fragenbank/Grafik-JS/
+  Person-Bio) unveraendert aus BMGT/lektionen/bmgt-kap02-oligopol.html uebernommen -
+  siehe dort fuer Quellenangaben/Zahlen-Verifikation. Umbau V2->V3 (26.07.2026):
+  Preise V3, KEIN Streichpreis (Option A - 6 Kap. x 8,90 = 53,40, Ersparnis 6,6 %
+  < 15 %-Schwelle, KANON 2.2 -> Leistungsliste statt Streichpreis), Praesenzseminar
+  ersatzlos raus, Kauf-Farblogik (--kauf), Kauf-CTAs -> https://bmgt.klausurchecker.de/
+  (BMGT-Stripe-Links eingetragen, 26.07.2026, LIVE).
 --------------------------------------------------------------------------------
-  Eingesetzte Platzhalter:
-    MARKE=BWL Kurse · FARBE_NAVY=#3a4a5e · FARBE_AKZENT=#4e769c · FARBE_GOLD=#ffc041 ·
-    LOGO_PFAD=bwlkurse-mark.png · LOGO_ALT=BWL Kurse · FACH_NAME=Statistik ·
-    FACH_KUERZEL=OSTA · VORLESUNGSTEIL=Statistik (OSTA) Goethe-Uni Frankfurt ·
-    KAPITEL_NR=3 · KAPITEL_THEMA=Wahrscheinlichkeitsrechnung ·
-    KAPITEL_SLUG=osta-kap03-wahrscheinlichkeit · LIVEQ_KEY=liveQ_osta-kap03-wahrscheinlichkeit ·
-    PREIS_KOMPLETT=49,90 € · PREIS_STREICH=89,00 € (Einzelkauf 10 × 8,90 €) · PREIS_FRUEHBUCHER=49,90 € ·
-    FRUEHBUCHER_FRIST=2026-07-27 · FRUEHBUCHER_FRIST_TEXT=27. Juli 2026 ·
-    CTA_TEXT=weitere Kapitel · PERSON_NAME=René Flé · PERSON_FOTO=rene-2026.jpg.
-  Prof-USP (Verkaufsargument, faktisch belegt): "Passgenau zur Vorlesung von Prof. Hassler · SoSe 2026".
+  Eingesetzte Werte:
+    MARKE=BWL Kurse · FARBE_NAVY=#20232A (Redesign) · FARBE_AKZENT=#E8760A ·
+    LOGO_PFAD=bwlkurse-mark.png · LOGO_ALT=BWL Kurse · FACH_NAME=Management 1 ·
+    FACH_KUERZEL=BMGT · VORLESUNGSTEIL=Management 1 (BMGT) Goethe-Uni Frankfurt ·
+    KAPITEL_NR=2 · KAPITEL_THEMA=Oligopol: Cournot, Bertrand & Stackelberg ·
+    KAPITEL_SLUG=bmgt-kap02-oligopol · LIVEQ_KEY=liveQ_bmgt-kap02-oligopol ·
+    PREIS_KOMPLETT=49,90 EUR (V3, kein Streichpreis) · PREIS_EINZELLEKTION=8,90 EUR
+    (Lektion+Handout untrennbar) · PREIS_QA=10,00 EUR (im Komplettpaket gratis) ·
+    CASHBACK=10,00 EUR nach Klausur-Feedback · CTA_TEXT=weitere Kapitel (btn kauf) ·
+    KLAUSUR=Mo 27.07.2026, 11:00 Uhr (Prof. Friebel & Dr. Sabet) · FRIST=26.07.2026 ·
+    PERSON_NAME=René Flé · PERSON_FOTO=rene-2026.jpg.
+  Prof-USP (Verkaufsargument, faktisch belegt): "Passgenau zur Vorlesung von
+  Prof. Friebel & Dr. Sabet · Sommersemester 2026".
 ================================================================================
 -->
 <html lang="de">
@@ -24,7 +34,7 @@
 <link rel="icon" type="image/png" href="bwlkurse-mark.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<title>BWL Kurse · Statistik · Kapitel 3: Wahrscheinlichkeitsrechnung</title>
+<title>BWL Kurse · Management 1 · Kapitel 2: Oligopol: Cournot, Bertrand &amp; Stackelberg</title>
 <style>
 :root{
   --navy:#3a4a5e; --navy2:#4e769c; --blue:#4e769c; --blue-d:#3d5d7d;
@@ -417,7 +427,7 @@ ul.check li.off:before{content:"\2013";color:var(--grey, #586a80)}
   body{padding-bottom:78px}
 </style>
 </head>
-<body data-fach="OSTA" data-kapitel-slug="osta-kap03-wahrscheinlichkeit">
+<body data-fach="BMGT" data-kapitel-slug="bmgt-kap02-oligopol">
 
 <style id="redesign-override">
 :root{--navy:#20232A;--navy2:#2A2E36;--blue:#E8760A;--blue-d:#B85E00;--grey:#5F6169;--line:#DEDCD4;--bg:#EAE9E5;--card:#F8F7F4;--ink:#1B1D21;--gold:#E8760A;--gold-bg:#FBEAD4;--accent:#E8760A;--se:"Fraunces",Georgia,serif;--sa:"Inter",system-ui,-apple-system,sans-serif}
@@ -440,6 +450,9 @@ a{color:var(--blue-d)}
 .btn.kauf{background:var(--kauf);color:#FFFFFF}
 .btn.kauf:hover{background:var(--kauf-2);filter:none}
 .bk-btn[href^="https://buy.stripe.com/"]{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+/* Kauf-Farbe explizit per Klasse: die href-Regel greift nur bei buy.stripe.com-Zielen */
+.bk-btn.kauf{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+.bk-btn.kauf:hover{background:var(--kauf-2);border-color:var(--kauf-2)}
 .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.ghost:hover{background:#EFECE4;color:var(--ink)}
 .topbar{background:var(--card);color:var(--ink);border-bottom:1px solid var(--line)}
@@ -554,17 +567,19 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 .tby b{display:block;font-size:.95rem}.tby span{font-size:.82rem;color:var(--grey)}
 </style>
 <div class="topbar"><div class="wrap">
+  <a href="bmgt.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;min-width:0">
   <img src="data:image/png;base64,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" alt="BWL Kurse">
   <div class="brand">BWL Kurse</div>
+  </a>
   <div class="spacer"></div>
   <!-- PREISMODUL · BLOCK A (Header-Preis-Pill): führt per Anker zur Angebots-Sektion #angebot -->
-  <a class="pill" href="#angebot">Schaffst du’s?</a>
+  <a class="pill" href="#angebot">weitere Kapitel</a>
 </div></div>
 
 <section class="hero"><div class="wrap">
-  
-  <h1>Wahrscheinlichkeitsrechnung</h1>
-  <p class="lead">Wie wahrscheinlich ist das wirklich? Hier lernst du, mit Wahrscheinlichkeiten sauber zu rechnen – von Laplace und den Ereignisoperationen über die bedingte Wahrscheinlichkeit bis zum Satz von Bayes und der Vierfeldertafel. Ein klarer Rechenweg für einen klausurtypischen Aufgabentyp.</p>
+  <span class="badge">Management 1 (BMGT) · Goethe-Uni Frankfurt · Kapitel 2</span><span class="profbadge">Passgenau zur Vorlesung von Prof. Friebel &amp; Dr. Sabet · Sommersemester 2026</span>
+  <h1>Oligopol: Cournot, Bertrand &amp; Stackelberg</h1>
+  <p class="lead">Die große Rechenaufgabe der BMGT-Klausur: Reaktionsfunktionen aufstellen, Cournot-Nash-Mengen bestimmen, den Stackelberg-Vorteil des Erstziehers ausrechnen &ndash; und verstehen, warum eine Fusion den Preis hebt und trotzdem ein Verlustgeschäft sein kann. Komplett durchgerechnet an einem Beispiel, mit adaptivem Selbsttest.</p>
   <p class="tagline">Deine Klausurvorbereitung an der Goethe-Uni – seit 1999, passgenau zu deiner Vorlesung.</p>
   <div class="cta">
     <a class="btn kauf" href="#angebot">weitere Kapitel</a>
@@ -573,7 +588,7 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 <!-- PREISMODUL · BLOCK C (Freebar, optional): schmaler Hinweisstreifen direkt unter dem Hero.
      Wird bei Fristablauf per Block-D-JS ausgeblendet. -->
 <div class="freebar" id="freebar">
-  ★ Online-Vorteil bis 27. Juli 2026 – sichere dir jetzt den vergünstigten Preis.
+  ★ Klausur Mo 27.07.2026, 11:00 Uhr (Prof. Friebel &amp; Dr. Sabet) – sichere dir deine Unterlagen bis 26. Juli 2026.
 </div>
 
 <div class="wrap">
@@ -582,77 +597,85 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
   <div id="lernpfad">
   <h2 id="einstieg">Einstieg</h2>
   <div class="callout birken">
-    <p>Ein Arzt sagt dir: Du hast einen Test auf eine <b>seltene</b> Krankheit gemacht – und er ist <b>positiv</b>. Der Test gilt als &bdquo;sehr zuverlässig&ldquo;. Wie sicher bist du jetzt wirklich krank? Die meisten schätzen &bdquo;fast sicher&ldquo;. Die überraschende Antwort: oft nur rund <b>ein Viertel</b>. Der Grund steckt nicht im Test, sondern darin, wie <i>selten</i> die Krankheit von vornherein ist.</p>
-    <p>Genau dasselbe Muster steckt hinter Spamfiltern, Qualitätskontrollen und jedem Glücksspiel: Man muss <b>Wahrscheinlichkeiten richtig verknüpfen</b>. In diesem Kapitel bekommst du dafür das Werkzeug – von der einfachen Laplace-Formel bis zum Satz von Bayes, mit dem sich das Test-Rätsel oben in zwei Zeilen auflöst.</p>
+    <p><b>Stell dir zwei Food-Trucks vor deiner Uni vor.</b> Jeden Morgen entscheiden beide, wie viele Bowls sie vorbereiten &ndash; und erst mittags zeigt sich der Preis: Haben beide viel dabei, müssen beide Rabatte geben; hat einer wenig dabei, bleibt der Preis stabil. Bevor Truck 1 seine Menge festlegt, fragt er sich also automatisch: <i>&bdquo;Wie viel kocht wohl der andere?&ldquo;</i> &ndash; und plant dagegen. Genau dieses Gegeneinander-Planen gießt dieses Kapitel in eine Formel: die Reaktionsfunktion.</p>
+    <p>Und wenn Truck 1 schon am Vorabend öffentlich postet, dass er morgen mit doppelter Menge anrückt? Dann bleibt Truck 2 nur, klein beizugeben und weniger vorzubereiten &ndash; der Erstzieher hat sich einen Vorteil <i>erzwungen</i>. Aus dem Mensa-Vorplatz wird gleich ein Markt mit zwei E-Scooter-Verleihern &ndash; die Logik bleibt exakt dieselbe.</p>
     <p class="muted" style="margin:.6rem 0 0"><b>Kurz erklärt – „Neugier-Fragen":</b> kleine Fragen, die du dir <i>selbst</i> stellst, um aktiv mitzudenken – nicht zum Googeln, sondern zum inneren Beantworten, während die Lektion läuft. <b>So funktioniert's</b> – an einer Frage einmal vorgemacht (Frage → Denk-Schritt → Antwort, die du gleich prüfst):</p>
-  <ul class="neugier-list muted"><li><b>Frage:</b> Warum kann ein positiver Test bei einer seltenen Krankheit trotzdem nur mit rund 25 % bedeuten, dass man krank ist? <b>→ Denk-Schritt:</b> Rechne nicht mit dem Test allein, sondern denk an 10.000 Menschen: wenige echte Kranke, aber viele Gesunde, von denen ein kleiner Anteil fälschlich positiv testet. <b>→ Antwort:</b> Die vielen falsch-positiven Gesunden überwiegen die wenigen echten Kranken – das rechnen wir gleich mit Bayes nach.</li><li>Zwei Ereignisse schließen sich gegenseitig aus – sind sie deshalb auch stochastisch unabhängig?</li><li>Ist P(A|B) immer gleich P(B|A) – oder kann derselbe Zusammenhang &bdquo;von der anderen Seite&ldquo; ganz anders aussehen?</li></ul>
+  <ul class="neugier-list muted"><li><b>Vorgemacht:</b> Teilen sich zwei identische Anbieter einfach brav die Monopolmenge (jeder die Hälfte)? &rarr; <i>Denk-Schritt:</i> Bei der halben Monopolmenge lohnt es sich für jeden Einzelnen, heimlich mehr anzubieten &ndash; den Preisrückgang trägt ja zur Hälfte der andere. &rarr; <i>Antwort:</i> Nein &ndash; im Cournot-Gleichgewicht bieten beide zusammen <b>mehr</b> an als ein Monopolist (unten: 40 statt 30). Das rechnest du gleich selbst nach.</li><li>Warum kann es besser sein, sich <i>zuerst</i> festzulegen &ndash; obwohl der Zweitzieher beim Entscheiden mehr Informationen hat?</li><li>Aus drei Anbietern werden per Fusion zwei, der Marktpreis steigt. Wer profitiert am stärksten &ndash; die fusionierte Firma oder der unbeteiligte Außenseiter?</li></ul>
   </div>
 
   <!-- FAHRPLAN (Roter Faden) -->
-  <div class="callout fahrplan" style="border-left-color:var(--gold);background:#fbf6ee;margin-top:1.2rem"><b>Dein Fahrplan durch dieses Thema:</b><div class="fp-step">① Grundbegriffe klären und mit der Laplace-Formel einfache Wahrscheinlichkeiten berechnen.</div><div class="fp-step">② Ereignisse verknüpfen: Vereinigung, Schnitt, Komplement, Differenz – mit Additionssatz und De Morgan.</div><div class="fp-step">③ Bedingte Wahrscheinlichkeit, Multiplikationssatz und stochastische Unabhängigkeit unterscheiden.</div><div class="fp-step">④ Alles zusammenführen: Satz der totalen Wahrscheinlichkeit, Satz von Bayes und die Vierfeldertafel.</div></div>
+  <div class="callout fahrplan" style="border-left-color:var(--gold);background:#fbf6ee;margin-top:1.2rem"><b>Dein Fahrplan durch dieses Thema:</b><div class="fp-step">① Reaktionsfunktion aufstellen &ndash; aus der Gewinnfunktion die beste Antwort auf jede Konkurrenzmenge ableiten.</div><div class="fp-step">② Cournot-Nash-Gleichgewicht berechnen &ndash; beide Reaktionsfunktionen schneiden: Mengen, Preis, Gewinne.</div><div class="fp-step">③ Stackelberg per Rückwärtsinduktion lösen &ndash; Folger-Reaktion einsetzen, First-Mover-Vorteil beziffern.</div><div class="fp-step">④ Bertrand, n Firmen &amp; Fusion &ndash; Preiskampf bis p = GK, die n-Firmen-Formel und das Fusionsparadoxon.</div></div>
 
-  <p>Wir gehen den Fahrplan Schritt für Schritt entlang und lösen am Ende an einem einzigen durchgerechneten Beispiel das Test-Rätsel aus dem Einstieg – so siehst du, wie die Bausteine ineinandergreifen.</p>
-
-  <!-- ===================== LERNINHALT ===================== -->
-  <h2>① Grundbegriffe und Laplace-Wahrscheinlichkeit</h2>
-  <p>Ein Zufallsvorgang hat mehrere mögliche <b>Ergebnisse</b>; die Menge aller Ergebnisse ist der <span class="term" tabindex="0">Ergebnisraum<span class="tip">Ω (Omega): die Menge aller möglichen Ergebnisse eines Zufallsvorgangs. Beim Würfel Ω = {1, 2, 3, 4, 5, 6}. Es gilt stets P(Ω) = 1.</span></span> &Omega;. Ein <b>Ereignis</b> A ist eine Teilmenge davon – z.&nbsp;B. beim Würfel A = &bdquo;gerade Augenzahl&ldquo; = {2, 4, 6}. Sind alle Ergebnisse gleich wahrscheinlich, greift die <span class="term" tabindex="0">Laplace-Wahrscheinlichkeit<span class="tip">P(A) = Anzahl der für A günstigen Ergebnisse / Anzahl aller möglichen Ergebnisse. Setzt gleich wahrscheinliche Ergebnisse voraus (fairer Würfel, faire Münze).</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A) = günstige Ergebnisse / mögliche Ergebnisse = |A| / |&Omega;|</span></p>
-  <p>Beispiel Würfel: P(gerade) = 3/6 = 1/2. Jede Wahrscheinlichkeit liegt zwischen 0 (unmögliches Ereignis) und 1 (sicheres Ereignis, P(&Omega;) = 1). Beim mehrstufigen Vorgang gilt die Merkregel: <b>&bdquo;UND&ldquo; heißt multiplizieren, &bdquo;ODER&ldquo; heißt addieren</b> – dazu gleich mehr.</p>
-
-  <h2>② Ereignisse verknüpfen</h2>
-  <p>Aus zwei Ereignissen A und B bildet man neue. Das <b>Venn-Diagramm</b> macht sie anschaulich: der Schnitt A&cap;B (&bdquo;A und B&ldquo;), die Vereinigung A&cup;B (&bdquo;A oder B oder beides&ldquo;) und das <span class="term" tabindex="0">Komplement<span class="tip">A&#772; (&bdquo;nicht A&ldquo;) = Gegenereignis. Es gilt P(A&#772;) = 1 − P(A), denn A und A&#772; füllen zusammen den ganzen Ergebnisraum.</span></span> A&#772;. Für die Vereinigung gilt der <span class="term" tabindex="0">Additionssatz<span class="tip">P(A&cup;B) = P(A) + P(B) − P(A&cap;B). Der Schnitt wird abgezogen, weil er sonst doppelt gezählt würde.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A&cup;B) = P(A) + P(B) &minus; P(A&cap;B)</span> &nbsp;&nbsp; <span class="formula">P(A&#772;) = 1 &minus; P(A)</span></p>
-  <p>Zwei weitere nützliche Bausteine: die Differenz P(A&#92;B) = P(A) &minus; P(A&cap;B) (&bdquo;A ohne B&ldquo;) und die Regeln von <span class="term" tabindex="0">De Morgan<span class="tip">&bdquo;Weder A noch B&ldquo;: P(A&#772;&cap;B&#772;) = 1 − P(A&cup;B). &bdquo;Nicht beide gleichzeitig&ldquo;: P(A&#772;&cup;B&#772;) = 1 − P(A&cap;B).</span></span>, mit denen sich &bdquo;weder noch&ldquo; sauber umformen lässt: P(A&#772;&cap;B&#772;) = 1 &minus; P(A&cup;B).</p>
-
-  <h2>③ Bedingte Wahrscheinlichkeit und Unabhängigkeit</h2>
-  <p>Oft weiß man schon, dass ein Ereignis B eingetreten ist, und fragt nach A <i>unter dieser Bedingung</i>. Das ist die <span class="term" tabindex="0">bedingte Wahrscheinlichkeit<span class="tip">P(A|B) = P(A&cap;B) / P(B): die Wahrscheinlichkeit von A, wenn bekannt ist, dass B eingetreten ist. Der Ergebnisraum &bdquo;schrumpft&ldquo; auf B.</span></span> P(A|B). Stellt man diese Formel um, erhält man den <span class="term" tabindex="0">Multiplikationssatz<span class="tip">P(A&cap;B) = P(A|B)·P(B) = P(B|A)·P(A). Gilt immer – auch bei abhängigen Ereignissen.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A|B) = P(A&cap;B) / P(B)</span> &nbsp;&nbsp; <span class="formula">P(A&cap;B) = P(A|B) &middot; P(B) = P(B|A) &middot; P(A)</span></p>
-  <p>Wichtig: P(A|B) und P(B|A) sind im Allgemeinen <b>verschieden</b> – gleicher Zähler P(A&cap;B), aber verschiedene Nenner. Ein Sonderfall ist die <span class="term" tabindex="0">stochastische Unabhängigkeit<span class="tip">A und B sind unabhängig, wenn P(A|B) = P(A), gleichbedeutend mit P(A&cap;B) = P(A)·P(B). Achtung: „unabhängig" ist NICHT dasselbe wie „schließt sich aus".</span></span>: Weiß man über A nichts Neues, wenn B eingetreten ist, dann gilt der einfache Produktsatz P(A&cap;B) = P(A) &middot; P(B).</p>
-
-  <h2>④ Totale Wahrscheinlichkeit und Satz von Bayes</h2>
-  <p>Zerlegt man den Ergebnisraum in disjunkte Fälle A&#8321;, A&#8322;, …, liefert der <span class="term" tabindex="0">Satz der totalen Wahrscheinlichkeit<span class="tip">P(B) = Σ P(B|Aᵢ)·P(Aᵢ): die Gesamtwahrscheinlichkeit von B als gewichtete Summe über alle Fälle Aᵢ.</span></span> die Gesamtwahrscheinlichkeit eines Ereignisses B. Dreht man die Bedingung um – von P(B|A) zu P(A|B) –, hilft der <span class="term" tabindex="0">Satz von Bayes<span class="tip">P(A|B) = P(B|A)·P(A) / P(B). Rechnet von der bekannten Richtung P(B|A) auf die gesuchte P(A|B) zurück.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(B) = Σ P(B|Aᵢ) &middot; P(Aᵢ)</span> &nbsp;&nbsp; <span class="formula">P(A|B) = P(B|A) &middot; P(A) / P(B)</span></p>
-  <p>Bei genau zwei Fällen (A und A&#772;) lässt sich alles bequem in einer <b>Vierfeldertafel</b> anordnen: die vier gemeinsamen Wahrscheinlichkeiten P(A&cap;B), P(A&cap;B&#772;), P(A&#772;&cap;B), P(A&#772;&cap;B&#772;) im Inneren, die Rand­summen außen. Genau das nutzen wir jetzt.</p>
-
+  <h2>&#9312; Vom Alleinherrscher zum Strategen: das Duopol</h2>
+  <p>Im Monopol brauchst du nur Nachfrage und Kosten &ndash; im <span class="term" tabindex="0">Oligopol<span class="tip">Marktform mit wenigen Anbietern, deren Entscheidungen sich gegenseitig spürbar beeinflussen. Spezialfall mit genau zwei Anbietern: Duopol.</span></span> kommt ein dritter Faktor dazu: die Entscheidung deiner Konkurrenz. Der Marktpreis hängt an der <b>Gesamtmenge aller Anbieter</b> &ndash; wer seine Menge plant, plant deshalb immer gegen die (erwartete) Menge des anderen. Beim <b>Cournot-Wettbewerb</b> sind die Spielregeln: homogenes Gut, beide wählen ihre <b>Mengen</b> gleichzeitig und unabhängig, der Preis bildet sich über die Gesamtmenge.</p>
   <div class="card">
-    <h3 style="margin-top:.2rem">Durchgerechnetes Lehrbeispiel: der positive Krankheitstest</h3>
-    <p>Eine Krankheit tritt bei <b>2&nbsp;%</b> der Bevölkerung auf: P(K) = 0,02. Ein Test erkennt Kranke mit Wahrscheinlichkeit <b>0,90</b> (Sensitivität P(T|K) = 0,90). Bei Gesunden schlägt er fälschlich mit <b>0,05</b> an (P(T|K&#772;) = 0,05). Gesucht: Wie wahrscheinlich ist man wirklich krank, wenn der Test positiv ist – also P(K|T)?</p>
-    <p><b>Schritt 1 – Vierfeldertafel füllen</b> (gemeinsame Wahrscheinlichkeiten über den Multiplikationssatz P(K&cap;T) = P(T|K)&middot;P(K), Rest analog; P(K&#772;) = 0,98):</p>
-    <div class="tw"><table class="mx">
-      <tr><th class="rowlab"></th><th>Test&nbsp;+ (T)</th><th>Test&nbsp;− (T&#772;)</th><th>Rand</th></tr>
-      <tr><td class="rowlab">krank (K)</td><td class="hi">0,018</td><td>0,002</td><td>0,020</td></tr>
-      <tr><td class="rowlab">gesund (K&#772;)</td><td>0,049</td><td>0,931</td><td>0,980</td></tr>
-      <tr><td class="rowlab">Rand</td><td class="himax">0,067</td><td>0,933</td><td>1,000</td></tr>
-    </table></div>
-    <p><b>Schritt 2 – totale Wahrscheinlichkeit eines positiven Tests</b> (Randsumme der Spalte T):</p>
-    <p class="fblock"><span class="formula">P(T) = P(T|K)&middot;P(K) + P(T|K&#772;)&middot;P(K&#772;) = 0,90&middot;0,02 + 0,05&middot;0,98 = 0,018 + 0,049 = <b>0,067</b></span></p>
-    <p><b>Schritt 3 – Satz von Bayes:</b></p>
-    <p class="fblock"><span class="formula">P(K|T) = P(K&cap;T) / P(T) = 0,018 / 0,067 &asymp; <b>0,2687</b> (26,87&nbsp;%)</span></p>
-    <p class="muted">Lies die Kernaussage ab: Trotz positivem Test ist man mit rund <b>73&nbsp;%</b> gesund. Der positive Test hebt die Wahrscheinlichkeit zwar von 2&nbsp;% auf knapp 27&nbsp;% – aber die niedrige Basisrate lässt sie klein bleiben. Genau das ist die Bayes-Pointe aus dem Einstieg.</p>
+    <h3 style="margin-top:.2rem">Lehrbeispiel: zwei E-Scooter-Verleiher</h3>
+    <p>Zwei Verleiher legen im Frühjahr fest, wie viele hundert Scooter sie in einer Unistadt aufstellen (q<sub>1</sub>, q<sub>2</sub>). Der Tagespass-Preis bildet sich über die Gesamtflotte Q:</p>
+    <p class="fblock"><span class="formula">p = 160 &minus; 2Q&nbsp;&nbsp;&nbsp; mit &nbsp;&nbsp;&nbsp;Q = q<sub>1</sub> + q<sub>2</sub></span></p>
+    <p>Beide betreiben ihre Flotte mit konstanten <span class="term" tabindex="0">Grenzkosten<span class="tip">Kosten der letzten zusätzlichen Einheit &ndash; hier: was eine weitere Flotteneinheit pro Saison kostet. Im Lehrbeispiel konstant: c = 40, keine Fixkosten.</span></span> von c = 40, Fixkosten fallen keine an.</p>
+    <p><b>Schritt 1 &ndash; Gewinnfunktion von Anbieter 1</b> (Preis einsetzen, Kosten abziehen):</p>
+    <p class="fblock"><span class="formula">&pi;<sub>1</sub> = (160 &minus; 2q<sub>1</sub> &minus; 2q<sub>2</sub>) &middot; q<sub>1</sub> &minus; 40 &middot; q<sub>1</sub></span></p>
+    <p><b>Schritt 2 &ndash; ableiten und nullsetzen</b> (q<sub>2</sub> ist aus Sicht von Anbieter 1 beim Ableiten eine Konstante!):</p>
+    <p class="fblock"><span class="formula">&part;&pi;<sub>1</sub>/&part;q<sub>1</sub> = 120 &minus; 4q<sub>1</sub> &minus; 2q<sub>2</sub> = 0 &nbsp;&rArr;&nbsp; <b>q<sub>1</sub> = 30 &minus; &frac12;q<sub>2</sub></b></span></p>
+    <p>Diese beste Antwort auf jede denkbare Konkurrenzmenge ist die <span class="term" tabindex="0">Reaktionsfunktion<span class="tip">Gibt für jede mögliche Menge des Konkurrenten die eigene gewinnmaximale Menge an. Sie folgt aus der Bedingung erster Ordnung der Gewinnmaximierung.</span></span> (RF) von Anbieter 1. Lesebeispiel: Stellt der Konkurrent q<sub>2</sub> = 10 auf, ist q<sub>1</sub> = 30 &minus; 5 = 25 optimal.</p>
   </div>
+  <div class="callout"><b>Klausur-Routine RF:</b> <i>ausmultiplizieren &rarr; nur nach der eigenen Menge ableiten &rarr; nullsetzen &rarr; nach der eigenen Menge auflösen.</i> Der häufigste Fehler: q<sub>2</sub> wird mit abgeleitet &ndash; die Konkurrenzmenge ist beim Ableiten eine Zahl, keine Variable.</div>
 
-  <p>Das Baumdiagramm zeigt denselben Sachverhalt: Die zwei Äste mit positivem Test (grün markiert) führen zu den Wahrscheinlichkeiten 0,018 (krank) und 0,049 (gesund). Ihre Summe ist P(T) = 0,067; der Anteil des krank-Astes daran ist der gesuchte Bayes-Wert.</p>
-  <svg id="chart" viewBox="0 0 640 356" role="img" aria-label="Baumdiagramm des Krankheitstests mit den vier Pfadwahrscheinlichkeiten und markierten positiven Testästen" style="width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px"></svg>
+  <h2>&#9313; Der Schnittpunkt: das Cournot-Nash-Gleichgewicht</h2>
+  <p>Anbieter 2 rechnet spiegelbildlich und erhält q<sub>2</sub> = 30 &minus; &frac12;q<sub>1</sub>. Beide RF <b>fallen</b>: Je mehr der eine anbietet, desto weniger lohnt sich für den anderen &ndash; Mengen sind <span class="term" tabindex="0">strategische Substitute<span class="tip">Die beste Antwort auf &bdquo;mehr&ldquo; des Konkurrenten ist &bdquo;weniger&ldquo; von dir &ndash; die Reaktionsfunktion fällt. Gegenstück: strategische Komplemente (Preise im Bertrand-Wettbewerb).</span></span>. Stabil ist genau der Punkt, in dem <b>beide gleichzeitig auf ihrer RF</b> liegen &ndash; dort will niemand mehr abweichen. Das ist das <span class="term" tabindex="0">Cournot-Nash-Gleichgewicht<span class="tip">Mengenpaar, bei dem jede Firma die beste Antwort auf die Menge der anderen spielt (Schnittpunkt der Reaktionsfunktionen) &ndash; ein Nash-Gleichgewicht in Mengen.</span></span>:</p>
+  <p class="fblock"><span class="formula">q<sub>1</sub> = 30 &minus; &frac12; &middot; (30 &minus; &frac12;q<sub>1</sub>) &nbsp;&rArr;&nbsp; q<sub>1</sub>* = q<sub>2</sub>* = 20</span></p>
+  <p>Gesamtmenge Q = 40, Preis p = 160 &minus; 80 = <b>80</b>, Gewinn je Anbieter &pi; = (80 &minus; 40) &middot; 20 = <b>800</b>. Zum Vergleich: Ein Monopolist (oder ein perfektes Kartell) würde nur Q = 30 aufstellen, den Preis auf 100 treiben und insgesamt 1.800 verdienen. Das Duopol liefert also mehr Menge zum niedrigeren Preis als das Monopol &ndash; aber noch lange keinen Wettbewerbspreis.</p>
+  <svg id="chart" viewBox="0 0 640 340" role="img" aria-label="Reaktionsfunktionen beider Anbieter mit Cournot-Nash-Gleichgewicht bei (20, 20) und Stackelberg-Punkt bei (30, 15)" style="width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px"></svg>
+  <p class="muted">Beide Reaktionsfunktionen im Mengendiagramm. Im Schnittpunkt <b>C</b> liegt das Cournot-Nash-Gleichgewicht (20, 20). Der goldene Punkt <b>S</b> (30, 15) ist das Stackelberg-Ergebnis aus Abschnitt &#9314;: Er liegt auf der RF des <i>Folgers</i>, aber nicht mehr auf der RF des Führers.</p>
+  <div class="callout"><b>Beliebte Klausur-Variante (rückwärts!):</b> Du bekommst fertige Reaktionsfunktionen samt Nachfragefunktion &ndash; und sollst den Wettbewerbstyp benennen, die Gleichgewichtsmengen bestimmen oder die Grenzkosten <i>zurückrechnen</i> (RF-Achsenabschnitt = (a &minus; c)/(2b) nach c auflösen). Alles dafür steckt in Schritt &#9312; &ndash; nur in Gegenrichtung gelesen.</div>
 
-  <div class="callout" style="border-left-color:var(--ok)">
-    <b>Kern-Erkenntnis:</b> Der Satz von Bayes verknüpft <b>Basisrate</b> und <b>Testgüte</b> – und die Vierfeldertafel ist dabei dein sicherstes Werkzeug. Das baut direkt auf der <b>bedingten Häufigkeit</b> aus der deskriptiven Statistik (Kapitel 1 und 2) auf und liefert die Grundlage für <b>Zufallsvariablen und Verteilungen</b> (ab Kapitel 4). Wer P(A&cap;B), P(A|B) und P(B|A) sauber trennt, hat den halben Aufgabentyp schon gelöst.
+  <h2>&#9314; Wer zuerst zieht, gewinnt: Stackelberg</h2>
+  <p>Jetzt wird dasselbe Spiel sequentiell: Anbieter 1 legt seine Flotte <b>zuerst</b> verbindlich fest (Stackelberg-Führer), Anbieter 2 beobachtet das und reagiert (Folger). Gelöst wird von hinten &ndash; per <span class="term" tabindex="0">Rückwärtsinduktion<span class="tip">Sequentielle Spiele &bdquo;von hinten nach vorne&ldquo; lösen: erst die optimale Reaktion des Letztziehenden bestimmen, dann die Entscheidung des Erstziehenden unter Einbeziehung dieser Reaktion. Ergebnis: das teilspielperfekte Gleichgewicht.</span></span>: Der Führer kennt die RF des Folgers und <b>setzt sie in seine eigene Gewinnfunktion ein</b>:</p>
+  <p class="fblock"><span class="formula">&pi;<sub>1</sub> = (160 &minus; 2q<sub>1</sub> &minus; 2 &middot; (30 &minus; &frac12;q<sub>1</sub>) &minus; 40) &middot; q<sub>1</sub> = (60 &minus; q<sub>1</sub>) &middot; q<sub>1</sub></span></p>
+  <p class="fblock"><span class="formula">&part;&pi;<sub>1</sub>/&part;q<sub>1</sub> = 60 &minus; 2q<sub>1</sub> = 0 &nbsp;&rArr;&nbsp; q<sub>1</sub>* = 30, &nbsp;&nbsp;q<sub>2</sub>* = 30 &minus; 15 = 15</span></p>
+  <p>Gesamtmenge Q = 45 &gt; 40, Preis p = <b>70</b> &lt; 80. Gewinne: Führer &pi;<sub>1</sub> = (70 &minus; 40) &middot; 30 = <b>900</b>, Folger &pi;<sub>2</sub> = (70 &minus; 40) &middot; 15 = <b>450</b>. Der <b>First-Mover-Vorteil</b> ist dabei kein Informationsvorteil &ndash; der Folger weiß ja sogar mehr! Es ist ein <i>Verpflichtungsvorteil</i>: Wer sich glaubwürdig zuerst auf &bdquo;viel&ldquo; festlegt, zwingt den anderen entlang dessen fallender RF zum Zurückweichen.</p>
+  <div class="callout"><b>Verblüffend:</b> Der Führer verdient mit 900 exakt so viel wie ein braves Kartellmitglied (1.800 / 2) &ndash; ganz ohne verbotene Absprache. Der Preis dafür: Der Folger fällt auf 450, und der Marktpreis sinkt sogar unter das Cournot-Niveau. Stackelberg ist damit <i>gut für die Konsumenten</i> &ndash; ein Kartell nicht.</div>
+
+  <h2>&#9315; Preiskampf, n Firmen &amp; Fusion</h2>
+  <p>Was, wenn beide statt der Mengen die <b>Preise</b> setzen (Bertrand-Wettbewerb)? Beim homogenen Gut wandert die gesamte Nachfrage zum billigeren Anbieter. Jeder Preis über den Grenzkosten lädt deshalb zum minimalen Unterbieten ein &ndash; bis bei <b>p = GK = 40</b> Schluss ist: Nullgewinne für beide, das <span class="term" tabindex="0">Bertrand-Paradoxon<span class="tip">Schon zwei Anbieter genügen beim homogenen Gut im Preiswettbewerb, um das Ergebnis vollständigen Wettbewerbs zu erzeugen: p = Grenzkosten, Gewinne null.</span></span>. In der Realität wird das abgemildert: durch Produktdifferenzierung (dann sind Preise über GK haltbar), durch Kapazitätsgrenzen &ndash; oder durch Wiederholung: Treffen sich die Anbieter jede Periode erneut, kann eine stillschweigende <span class="term" tabindex="0">Kollusion<span class="tip">Stillschweigende oder explizite Preis-/Mengenabsprache. Im unendlich wiederholten Spiel stabil, wenn der Diskontfaktor &delta; = 1/(1 + i) über dem kritischen Wert liegt &ndash; das Kalkül dazu steht in Kapitel 1 (wiederholte Spiele).</span></span> stabil werden, wenn zukünftige Gewinne wichtig genug sind.</p>
+  <h3>Die n-Firmen-Formel</h3>
+  <p>Für n identische Cournot-Anbieter (Nachfrage p = a &minus; bQ, Grenzkosten c) gilt im Gleichgewicht:</p>
+  <p class="fblock"><span class="formula">q<sub>i</sub> = (a &minus; c) / (b &middot; (n + 1)) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; p = (a + n &middot; c) / (n + 1)</span></p>
+  <p>Das Duopol ist der Spezialfall n = 2, das Monopol n = 1. Mit jedem zusätzlichen Anbieter rückt der Preis näher an die Grenzkosten. Im Lehrbeispiel mit <b>n = 3</b> Verleihern: q<sub>i</sub> = 120/8 = 15, Q = 45, p = 70, Gewinn je Firma (70 &minus; 40) &middot; 15 = 450.</p>
+  <h3>Fusion: aus 3 mach 2 &ndash; und ein Paradoxon</h3>
+  <p>Schließen sich zwei der drei Anbieter zusammen &ndash; ohne Kosten- oder Kapazitätsvorteile &ndash;, stehen sich danach nur noch zwei Cournot-Spieler gegenüber. Das Ergebnis kennst du schon aus Abschnitt &#9313;: je 20, Q = 40, <b>der Preis steigt von 70 auf 80</b>. Und jetzt genau hinsehen:</p>
+  <div class="rulegrid">
+    <div class="rulecard"><h4>Fusionierte Firma</h4>vorher (2 Firmen): 450 + 450 = 900<div class="res">nachher: 800 &nbsp;&rarr;&nbsp; &minus;100</div></div>
+    <div class="rulecard"><h4>Außenseiter</h4>vorher: 450<div class="res">nachher: 800 &nbsp;&rarr;&nbsp; +350</div></div>
+    <div class="rulecard"><h4>Konsumenten</h4>Preis vorher: 70<div class="res">nachher: 80 &nbsp;&rarr;&nbsp; zahlen drauf</div></div>
   </div>
+  <p>Die fusionierte Firma verdient <b>weniger</b> als ihre beiden Teile zusammen vorher (800 &lt; 900) &ndash; das <b>Fusionsparadoxon</b>: Nach dem Zusammenschluss ist sie nur noch <i>einer</i> von zwei Spielern und drosselt ihre Menge, während der Außenseiter mitexpandiert und als lachender Dritter den höheren Preis kassiert. Erst Synergien (echte Kostenvorteile) oder ein Strukturwechsel &ndash; etwa wenn die fusionierte Einheit zum Stackelberg-Führer wird, eine beliebte Klausur-Wendung &ndash; drehen das Vorzeichen. Wettbewerbsbehörden schauen trotzdem genau hin: Für die Konsumenten steigt der Preis in jedem Fall.</p>
+  <h3>Das große Bild</h3>
+  <div class="tw"><table class="mx">
+    <tr><th class="rowlab">Marktlösung (Lehrbeispiel)</th><th>q<sub>1</sub></th><th>q<sub>2</sub></th><th>Q</th><th>p</th><th>&pi;<sub>1</sub></th><th>&pi;<sub>2</sub></th></tr>
+    <tr><td class="rowlab txt">Kartell / Monopol</td><td>15</td><td>15</td><td>30</td><td class="himax">100</td><td>900</td><td>900</td></tr>
+    <tr><td class="rowlab txt">Cournot (simultan, Mengen)</td><td>20</td><td>20</td><td>40</td><td>80</td><td>800</td><td>800</td></tr>
+    <tr><td class="rowlab txt">Stackelberg (sequentiell)</td><td>30</td><td>15</td><td>45</td><td>70</td><td class="hi">900</td><td>450</td></tr>
+    <tr><td class="rowlab txt">Bertrand (simultan, Preise)</td><td>30</td><td>30</td><td>60</td><td>40</td><td>0</td><td>0</td></tr>
+  </table></div>
+  <p class="muted">Alle Werte für das Lehrbeispiel p = 160 &minus; 2Q, c = 40 (code-verifiziert im Compute-Skript). Merksatz Preise: <b>Kartell &gt; Cournot &gt; Stackelberg &gt; Bertrand (= GK)</b> &ndash; die Mengenreihenfolge ist exakt spiegelbildlich.</p>
+  <div class="callout" style="border-left-color:var(--ok)"><b>Kern-Erkenntnis:</b> Alle vier Marktlösungen sind <i>dasselbe Spiel mit anderen Regeln</i> &ndash; simultan oder sequentiell, Mengen oder Preise, mit oder ohne Absprache. Die Werkzeuge dafür (Nash-Gleichgewicht, Rückwärtsinduktion, wiederholte Spiele samt Diskontfaktor) kommen direkt aus <b>Kapitel 1</b>. Ab <b>Kapitel 3</b> drehst du den Blick um 180 Grad: vom Wettbewerb <i>zwischen</i> Unternehmen zu den Anreizproblemen <i>im</i> Unternehmen (Moral Hazard &amp; Anreizverträge).</div>
 
   <!-- FAQ -->
   </div>
 
   <h2>Häufige Fragen (kurz &amp; klar)</h2>
-  <details class="faq"><summary>Wann darf ich einfach multiplizieren – P(A&cap;B) = P(A)·P(B)?</summary><p>Nur wenn A und B <b>stochastisch unabhängig</b> sind. Im Allgemeinen gilt stattdessen der Multiplikationssatz P(A&cap;B) = P(A|B)·P(B). Die kurze Produktform ist also ein Sonderfall – prüfe in der Klausur meist zuerst, ob Unabhängigkeit wirklich gegeben ist.</p></details>
-  <details class="faq"><summary>Ist der Unterschied zwischen P(A|B) und P(B|A) wirklich so wichtig?</summary><p>Ja, sehr. Beide haben denselben Zähler P(A&cap;B), aber verschiedene Nenner (P(B) bzw. P(A)) und sind daher in der Regel verschieden. Das Vertauschen dieser beiden ist einer der häufigsten Klausurfehler – der Satz von Bayes ist genau das Werkzeug, um sauber von der einen auf die andere Richtung umzurechnen.</p></details>
-  <details class="faq"><summary>Muss ich immer eine Vierfeldertafel zeichnen?</summary><p>Nicht zwingend, aber bei zwei Ereignissen ist sie meist der sicherste Weg: Du trägst die gemeinsamen Wahrscheinlichkeiten ein, die Ränder ergeben sich durch Zeilen- und Spaltensummen, und bedingte Wahrscheinlichkeiten liest du direkt als Anteil ab. Gerade unter Zeitdruck vermeidet die Tafel viele Flüchtigkeitsfehler.</p></details>
-  <details class="faq"><summary>&bdquo;Disjunkt&ldquo; und &bdquo;unabhängig&ldquo; – ist das dasselbe?</summary><p>Nein, das wird oft verwechselt. Disjunkt (unvereinbar) heißt P(A&cap;B) = 0 – die Ereignisse können nicht zusammen eintreten. Unabhängig heißt P(A&cap;B) = P(A)·P(B). Zwei Ereignisse mit positiver Wahrscheinlichkeit, die disjunkt sind, sind sogar immer <i>abhängig</i>, weil das Eintreten des einen das andere ausschließt.</p></details>
-  <details class="faq"><summary>Ich habe eine konkrete inhaltliche Rückfrage – wohin damit?</summary><p>Bring sie ins <b>Live Q&A</b> ein: Dort besprechen wir deine Fragen in kleiner Gruppe und vertiefen die kniffligen Aufgabentypen. Tipp weiter unten das Eingabefeld nutzen – dann geht deine Frage nicht verloren und wird in der nächsten Live-Session aufgegriffen.</p></details>
+  <details class="faq"><summary>Reicht das Duopol &ndash; oder muss ich auch mit n Firmen rechnen können?</summary><p>Sicherer ist beides: In den uns vorliegenden älteren Klausuren tauchten sowohl klassische Duopole als auch vier Anbieter samt Fusion auf. Die gute Nachricht: Die n-Firmen-Formel q<sub>i</sub> = (a &minus; c)/(b &middot; (n + 1)) enthält das Duopol als Spezialfall n = 2 und das Monopol als n = 1 &ndash; im Kern merkst du dir also eine Formel plus die RF-Routine.</p></details>
+  <details class="faq"><summary>Woran erkenne ich, ob Cournot, Bertrand oder Stackelberg gefragt ist?</summary><p>Meist an Signalwörtern: &bdquo;Mengenwettbewerb&ldquo; bzw. Reaktionsfunktionen über Mengen &rarr; Cournot. &bdquo;Setzen ihre Preise&ldquo; bei homogenem Gut &rarr; Bertrand (p = GK, oft ganz ohne Rechnung). &bdquo;Zuerst &hellip; danach&ldquo; bzw. Führer/Folger &rarr; Stackelberg mit Rückwärtsinduktion. In der Regel steht der Wettbewerbstyp fast wörtlich in der Aufgabe.</p></details>
+  <details class="faq"><summary>Was ist der häufigste Rechenfehler in diesem Kapitel?</summary><p>Erfahrungsgemäß das Ableiten der Gewinnfunktion: Entweder wird die Konkurrenzmenge q<sub>j</sub> mit abgeleitet (sie ist beim Ableiten eine Konstante!) oder der Faktor 2 vor der eigenen Menge vergessen. Zweiter Klassiker beim Stackelberg: die falsche RF einsetzen &ndash; eingesetzt wird immer die RF des <i>Folgers</i> in den Gewinn des <i>Führers</i>, nie umgekehrt.</p></details>
+  <details class="faq"><summary>Lohnt sich eine Fusion im Cournot-Modell denn nie?</summary><p>Ohne Synergien meist nicht &ndash; das ist gerade das Fusionsparadoxon: Der Zusammenschluss drosselt die eigene Menge, und ausgerechnet der Außenseiter profitiert. Mit echten Kostenvorteilen oder wenn die Fusion die Marktstruktur verändert &ndash; etwa die neue Einheit zum Stackelberg-Führer macht &ndash; kann sich das Blatt aber wenden. Genau solche Varianten sind beliebte Klausur-Wendungen.</p></details>
+  <details class="faq"><summary>Ich habe eine konkrete inhaltliche Rückfrage – wohin damit?</summary><p>Tippe sie direkt unten in das Eingabefeld &ndash; sie wird lokal auf deinem Gerät gespeichert, und du bringst sie in die nächste Live-Q&amp;A-Session mit. Dort rechnen wir sie gemeinsam durch; in der Regel klären wir dabei auch Schritt-für-Schritt-Fragen zu alten Klausuraufgaben.</p></details>
 
   <div class="card">
-    <h3 style="margin-top:.2rem">Gib deine komplexeste aktuelle Frage direkt hier ein – bring sie ins nächste Live Q&A mit.</h3>
-    <textarea class="live" id="liveQ" rows="3" placeholder="Deine Frage zu &bdquo;Wahrscheinlichkeitsrechnung&ldquo; &hellip;"></textarea>
-    <div style="margin-top:.6rem"><button class="btn" id="liveQbtn">Frage für die Live-Session notieren</button>
-      <span id="liveQok" class="muted" style="margin-left:.6rem;display:none;color:var(--ok)">✓ Notiert – bring sie ins nächste Live Q&A mit.</span></div>
+    <h3 style="margin-top:.2rem">Gib deine komplexeste aktuelle Frage direkt hier ein – bring sie in die nächste Live-Q&amp;A mit.</h3>
+    <textarea class="live" id="liveQ" rows="3" placeholder="Deine Frage zu &bdquo;Oligopol: Cournot, Bertrand &amp; Stackelberg&ldquo; &hellip;"></textarea>
+    <div style="margin-top:.6rem"><button class="btn" id="liveQbtn">Für die Live-Session vormerken</button>
+      <span id="liveQok" class="muted" style="margin-left:.6rem;display:none;color:var(--ok)">✓ Notiert – bring sie ins nächste Live-Q&amp;A mit.</span></div>
     <p class="note" style="margin-top:.5rem">Wird lokal auf deinem Gerät gespeichert – keine automatische Antwort auf dieser Seite.</p>
   </div>
 
@@ -671,30 +694,20 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 
   <!-- PERSON -->
   <h2>Wer dich begleitet</h2>
-  <div class="card person-v2">
-    <div class="pv-head">
-      <img class="mono" src="rene-2026.jpg" alt="René Flé">
-      <div><h3>René Flé</h3><p class="pv-bio">Dipl.-Kfm. &middot; bereitet seit 1999 Studierende der Goethe-Uni passgenau auf ihre Klausuren vor.</p></div>
+  <div class="card person">
+    <img class="mono" src="rene-2026.jpg" alt="René Flé" style="object-fit:cover">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:.1rem 0">René Flé</h3>
+      <p>René Flé (Dipl.-Kfm.) bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor – passgenau zur jeweiligen Vorlesung.</p><div class="stats"><div class="stat"><b>seit 1999</b>Frankfurter Examens-Repetitorien</div><div class="stat"><b>~12.000</b>vorbereitete Studierende</div><div class="stat"><b>25.000+ Std.</b>universitäre Lehre</div><div class="stat"><b>seit 2012</b>Honorardozent (CBS)</div></div>
+      <p class="muted">Ich zeige dir Kapitel für Kapitel genau das, was in der Management-1-Klausur bei Prof. Friebel und Dr. Sabet wirklich zählt – Spieltheorie, Oligopol, Anreize und Organisation mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing-Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.</p>
     </div>
-    <div class="pv-stats">
-      <div class="stat"><b>seit 1999</b>Goethe-Uni</div>
-      <div class="stat"><b>~12.000</b>zahlende Kunden</div>
-      <div class="stat"><b>25.000+ Std.</b>universitäre Lehre</div>
-      <div class="stat"><b>seit 2012</b>Ausbilder Wirtschaftsprüfung</div>
-    </div>
-    <p class="muted" style="margin:.2rem 0 0">Ich zeige dir Kapitel für Kapitel genau das, was in der OSTA-Klausur bei Prof. Hassler wirklich zählt &ndash; mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing-Zauber, sondern solide Vorbereitung.</p>
-  </div>
-  <div class="tcard">
-    <div class="tstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <p class="tquote">&bdquo;René geht weit über den Lehrplan hinaus. Er hat mir nicht nur Fachwissen vermittelt, sondern beigebracht, Zusammenhänge zu erkennen.&ldquo;</p>
-    <div class="tby"><span class="tav">MS</span><div><b>Matteo Seth</b><span>Wirtschaftsstudent</span></div></div>
   </div>
 
   <!-- ANGEBOT · BWL Kurse (Online-Value-Ladder) -->
   <h2 id="angebot">Dein Weg durch die Klausur &ndash; mit BWL Kurse</h2>
   <div class="offer">
     <p>Diese Probe-Lektion ist ein Ausschnitt. <b>BWL Kurse</b> bringt dich Kapitel
-       für Kapitel durch den gesamten OSTA-Stoff &ndash; mit geprüften Lösungen,
+       für Kapitel durch den gesamten BMGT-Stoff &ndash; mit geprüften Lösungen,
        einem <b>Live Q&A</b> kurz vor der Klausur.</p>
 
     <ul class="check">
@@ -706,15 +719,15 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
     <a class="btn alt cta-wide" id="offerCta" href="#" onclick="vmOpen();return false;">unverbindlich testen</a>
 
     <h3 style="margin-top:1.6rem">Alle Optionen &amp; Preise</h3>
-    <p class="note" style="margin:.2rem 0 1rem">Preise und Leistungen! Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; statt 89,00&nbsp;&euro; und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
+    <p class="note" style="margin:.2rem 0 1rem">Preise und Leistungen! Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Das Komplettpaket b&uuml;ndelt alle 6 Kapitel inkl. Live Q&amp;A. Freigeschaltet wird in der App.</p>
 
     <div class="pgroup">Pakete &middot; das Rundum-Sorglos</div>
-    <div class="pk feat"><span class="pkrb">Beliebteste Wahl</span><h4>Komplettpaket OSTA</h4><small>Klausur-App + Workbook (alle Handouts)</small><div class="pkpr">49,90 &euro;<s>89,00 &euro;</s></div><div class="pksub">Alle 10 Kapitel als interaktive Lektionen &middot; alle Handout-PDFs mit Aufgaben und Musterl&ouml;sungen &middot; Live Q&amp;A gratis dazu.</div><p class="bk-cashback">10&nbsp;&euro; Cashback f&uuml;r dein Feedback nach der Klausur.</p><div class="pksub" style="display:none"></div><a class="bk-btn pkbtn" style="min-height:44px;display:inline-flex;align-items:center;justify-content:center" href="https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l">Komplettpaket freischalten</a></div>
+    <div class="pk feat"><span class="pkrb">Beliebteste Wahl</span><h4>Komplettpaket BMGT</h4><small>Klausur-App + Workbook (alle Handouts)</small><div class="pkpr">49,90 &euro;</div><div class="pksub">6 Lektionen mit Selbsttest &middot; 6 Handouts als WORKBOOK (16&ndash;22 Seiten) &middot; Klausursimulator &middot; Formelsammlung &middot; Live Q&amp;A gratis &middot; 10&nbsp;&euro; Cashback.</div><div class="pksub" style="display:none"></div><a class="bk-btn pkbtn kauf" style="min-height:44px;display:inline-flex;align-items:center;justify-content:center" href="https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q" target="_blank" rel="noopener">Komplettpaket freischalten</a></div>
 
     <div class="pgroup k2">Einzeln buchbar</div>
     <div class="ez"><span class="ezn">Einzelnes Kapitel<small>Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erh&auml;ltlich. Ab 6 Kapiteln ist das Komplettpaket g&uuml;nstiger.</small></span><span class="ezr"><span class="ezp">8,90 &euro;</span></span></div>
-    <details class="pl-akk"><summary>Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;01</span> Deskriptive Statistik I: Lage &amp; Streuung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;02</span> Deskriptive Statistik II: Zusammenhang &amp; Regression</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;03</span> Wahrscheinlich&shy;keits&shy;rechnung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;04</span> Zufallsvariablen</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;05</span> Verteilungsmodelle: Binomial &amp; Poisson</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;06</span> Normalverteilung &amp; Stichprobenmittel</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;07</span> Schätzen: Punktschätzer &amp; Maximum Likelihood</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;08</span> Konfidenzintervalle</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;09</span> Testen I: Testprinzip &amp; Gauß-Test</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;10</span> Testen II: t-Test &amp; Chi-Quadrat</a></div></details>
-    <div class="ez"><span class="ezn">Live Q&amp;A<small>Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen Sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten! Den Termin stimmen wir in der WhatsApp-Gruppe ab.</small></span><span class="ezr"></span></div>
+    <details class="pl-akk"><summary>Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;01</span> Spieltheorie kompakt: simultane, sequentielle &amp; wiederholte Spiele</a><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;02</span> Oligopol: Cournot, Bertrand &amp; Stackelberg</a><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;03</span> Moral Hazard &amp; Anreizvertr&auml;ge</a><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;04</span> Organisation &amp; Anreize: Team, Delegation &amp; Transferpreise</a><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;05</span> MC-Wissen: Adverse Selection, Integration &amp; Begriffe</a><a href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;06</span> Klausurtraining</a></div></details>
+    <div class="ez"><span class="ezn">Live Q&amp;A<small>Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen Sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten! Den Termin stimmen wir in der WhatsApp-Gruppe ab.</small></span><span class="ezr"><span class="ezp">10,00 &euro;</span></span></div>
     <p class="note">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit. Freigeschaltet wird in deinem Konto in der App.</p>
   </div>
 
@@ -727,14 +740,14 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 </div></footer>
 
 <!-- FRAGENBANK: wird von build/_inject_qbank.py ersetzt. -->
-<script id="qbank" type="application/json">{"topic": "Statistik (OSTA) · Kapitel 3 – Wahrscheinlichkeitsrechnung", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Laplace-Wahrscheinlichkeit", "type": "single", "stem": "Ein Laplace-Experiment hat lauter gleich wahrscheinliche Ergebnisse. Wie berechnet man dort die Wahrscheinlichkeit eines Ereignisses A?", "options": ["Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl aller möglichen Ergebnisse", "Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl der ungünstigen Ergebnisse", "Summe der für A günstigen Ergebnisse, ganz ohne Bezug zur Anzahl aller Ergebnisse", "Anzahl aller möglichen Ergebnisse geteilt durch die Anzahl der für A günstigen Ergebnisse"], "answer": "Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl aller möglichen Ergebnisse", "feedback": "Laplace: P(A) = <b>günstige / mögliche</b> Ergebnisse = |A| / |&Omega;|. Setzt voraus, dass alle Ergebnisse gleich wahrscheinlich sind."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Bedingte Wahrscheinlichkeit", "type": "single", "stem": "Wie ist die bedingte Wahrscheinlichkeit P(A|B) definiert (mit P(B) &gt; 0)?", "options": ["P(A&cap;B) geteilt durch P(A)", "P(A) multipliziert mit P(B), ganz ohne den Schnitt der Ereignisse", "P(A) geteilt durch P(A&cap;B)", "P(A&cap;B) geteilt durch P(B)"], "answer": "P(A&cap;B) geteilt durch P(B)", "feedback": "Definition: P(A|B) = <b>P(A&cap;B) / P(B)</b> &ndash; der gemeinsame Fall, relativ zur eingehaltenen Bedingung B."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Additionssatz", "type": "numeric", "stem": "Für zwei Ereignisse gilt P(A) = 0,5, P(B) = 0,3 und P(A&cap;B) = 0,2. Wie groß ist P(A&cup;B)?", "answer": 0.6, "tolerance": 0.01, "feedback": "Additionssatz: P(A&cup;B) = P(A) + P(B) &minus; P(A&cap;B) = 0,5 + 0,3 &minus; 0,2 = <b>0,6</b>."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Gegenereignis", "type": "single", "stem": "Ereignis A tritt mit Wahrscheinlichkeit P(A) ein. Wie groß ist die Wahrscheinlichkeit des Gegenereignisses A&#772; (&bdquo;nicht A&ldquo;)?", "options": ["1 &minus; P(A)", "P(A) &minus; 1", "1 &minus; P(A&cap;B)", "1 geteilt durch den Wert von P(A)"], "answer": "1 &minus; P(A)", "feedback": "Gegenereignis: P(A&#772;) = <b>1 &minus; P(A)</b>, denn P(A) + P(A&#772;) = P(&Omega;) = 1."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Bedingte Wahrscheinlichkeit berechnen", "type": "numeric", "stem": "Gegeben sind P(A&cap;B) = 0,12 und P(B) = 0,3. Wie groß ist die bedingte Wahrscheinlichkeit P(A|B)?", "answer": 0.4, "tolerance": 0.01, "feedback": "P(A|B) = P(A&cap;B) / P(B) = 0,12 / 0,3 = <b>0,4</b>."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Totale Wahrscheinlichkeit", "type": "numeric", "stem": "Zwei Zulieferer liefern Bauteile: A1 mit Anteil 0,7 und A2 mit Anteil 0,3. Die Ausschussquoten sind P(B|A1) = 0,2 und P(B|A2) = 0,5. Wie groß ist die Gesamt-Ausschusswahrscheinlichkeit P(B)?", "answer": 0.29, "tolerance": 0.01, "feedback": "Satz der totalen Wahrscheinlichkeit: P(B) = P(B|A1)&middot;P(A1) + P(B|A2)&middot;P(A2) = 0,2&middot;0,7 + 0,5&middot;0,3 = 0,14 + 0,15 = <b>0,29</b>."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Satz von Bayes", "type": "numeric", "stem": "Ein Spamfilter: P(Spam) = 0,4 und P(Wort|Spam) = 0,8. Über beide Fälle ergibt sich die Gesamtwahrscheinlichkeit des Wortes zu P(Wort) = 0,38. Wie groß ist P(Spam|Wort)?", "answer": 0.8421, "tolerance": 0.01, "feedback": "Bayes: P(Spam|Wort) = P(Wort|Spam)&middot;P(Spam) / P(Wort) = 0,8&middot;0,4 / 0,38 = 0,32 / 0,38 &asymp; <b>0,8421</b>."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Stochastische Unabhängigkeit", "type": "numeric", "stem": "Zwei Ereignisse sind stochastisch unabhängig mit P(A) = 0,25 und P(B) = 0,4. Wie groß ist P(A&cap;B)?", "answer": 0.1, "tolerance": 0.01, "feedback": "Bei Unabhängigkeit gilt der Produktsatz: P(A&cap;B) = P(A)&middot;P(B) = 0,25&middot;0,4 = <b>0,1</b>."}, {"id": "s4", "difficulty": "schwer", "subtopic": "De Morgan", "type": "single", "stem": "Wie groß ist die Wahrscheinlichkeit, dass &bdquo;weder A noch B&ldquo; eintritt?", "options": ["1 &minus; P(A) &minus; P(B), ganz unabhängig vom Schnitt der beiden Ereignisse", "1 &minus; P(A&cap;B), gleichbedeutend mit P(A&#772;&cup;B&#772;)", "1 &minus; P(A&cup;B), gleichbedeutend mit P(A&#772;&cap;B&#772;)", "P(A) + P(B), also die schlichte Summe der beiden Einzelwahrscheinlichkeiten"], "answer": "1 &minus; P(A&cup;B), gleichbedeutend mit P(A&#772;&cap;B&#772;)", "feedback": "&bdquo;Weder noch&ldquo; = Komplement der Vereinigung: P(A&#772;&cap;B&#772;) = <b>1 &minus; P(A&cup;B)</b> (Regel von De Morgan)."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Multiplikationssatz", "type": "single", "stem": "Zwei Ereignisse A, B sind voneinander abhängig. Wie berechnet man dann P(A&cap;B) korrekt?", "options": ["P(A) + P(B) &minus; P(A&cup;B), gemittelt über beide möglichen Bedingungen", "P(A) &middot; P(B), also schlicht das Produkt der beiden Einzelwahrscheinlichkeiten", "P(A|B) + P(B), also die Summe aus bedingter und einfacher Wahrscheinlichkeit", "P(A|B) &middot; P(B), gleichwertig auch P(B|A) &middot; P(A)"], "answer": "P(A|B) &middot; P(B), gleichwertig auch P(B|A) &middot; P(A)", "feedback": "Multiplikationssatz (allgemein gültig): P(A&cap;B) = <b>P(A|B)&middot;P(B) = P(B|A)&middot;P(A)</b>. Nur bei Unabhängigkeit vereinfacht sich das zu P(A)&middot;P(B)."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Bayes deuten (Basisrate)", "type": "single", "stem": "Ein sehr treffsicherer Test schlägt bei einer seltenen Krankheit an. Warum kann P(krank | Test positiv) trotzdem klein sein?", "options": ["Weil ein einzelner positiver Test die Wahrscheinlichkeit der Krankheit grundsätzlich völlig unverändert bestehen lässt", "Weil bei niedriger Basisrate die vielen falsch-positiven Gesunden die wenigen echten Kranken zahlenmäßig überwiegen", "Weil die Sensitivität eines jeden Tests bei sehr seltenen Krankheiten automatisch immer gegen den Wert null geht", "Weil der Satz von Bayes bei sehr seltenen Krankheiten grundsätzlich seine gesamte Gültigkeit vollständig einbüßt und versagt"], "answer": "Weil bei niedriger Basisrate die vielen falsch-positiven Gesunden die wenigen echten Kranken zahlenmäßig überwiegen", "feedback": "Basisraten-Effekt: Ist P(K) winzig, erzeugen die vielen Gesunden trotz kleiner Falsch-Positiv-Rate mehr positive Tests als die wenigen Kranken &ndash; darum bleibt P(K|T) klein."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Sicheres Ereignis", "type": "single", "stem": "Was gilt für das sichere Ereignis, also den gesamten Ergebnisraum &Omega;?", "options": ["P(&Omega;) hängt allein von der Anzahl der Ergebnisse ab", "P(&Omega;) = 0,5", "P(&Omega;) = 1", "P(&Omega;) = 0"], "answer": "P(&Omega;) = 1", "feedback": "Das sichere Ereignis hat Wahrscheinlichkeit <b>P(&Omega;) = 1</b> (100 %) &ndash; irgendein Ergebnis tritt garantiert ein."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Laplace-Annahme", "type": "single", "stem": "Bei einem fairen Würfel &ndash; was besagt die Laplace-Annahme?", "options": ["Die Augenzahl 6 ist am wahrscheinlichsten, weil sie den größten Zahlenwert trägt", "Nur die geraden Augenzahlen sind überhaupt möglich, jede mit Wahrscheinlichkeit 1/3", "Die höheren Augenzahlen sind etwas wahrscheinlicher als die niedrigeren Augenzahlen", "Alle sechs Augenzahlen sind gleich wahrscheinlich, jede mit Wahrscheinlichkeit 1/6"], "answer": "Alle sechs Augenzahlen sind gleich wahrscheinlich, jede mit Wahrscheinlichkeit 1/6", "feedback": "Laplace-Annahme: alle Ergebnisse <b>gleich wahrscheinlich</b> &ndash; beim Würfel je 1/6."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Laplace berechnen", "type": "numeric", "stem": "Eine faire Münze wird zweimal geworfen. Wie groß ist die Wahrscheinlichkeit, zweimal Kopf zu werfen?", "answer": 0.25, "tolerance": 0.01, "feedback": "Beide Würfe unabhängig: P(2&times;Kopf) = 1/2 &middot; 1/2 = 1/4 = <b>0,25</b>."}, {"id": "l4", "difficulty": "leicht", "subtopic": "P(A|B) vs. P(B|A)", "type": "single", "stem": "Warum darf man P(A|B) und P(B|A) im Allgemeinen nicht gleichsetzen?", "options": ["Weil beide immer denselben Zahlenwert liefern &ndash; die Reihenfolge spielt dabei gar keine Rolle", "Weil P(B|A) nur bei stochastisch unabhängigen Ereignissen überhaupt sinnvoll definiert ist", "Weil beide durch unterschiedliche Nenner geteilt werden &ndash; P(B) beim einen, P(A) beim anderen", "Weil P(A|B) grundsätzlich stets größer ausfällt als P(B|A), egal um welche Ereignisse es geht"], "answer": "Weil beide durch unterschiedliche Nenner geteilt werden &ndash; P(B) beim einen, P(A) beim anderen", "feedback": "P(A|B) = P(A&cap;B)/P(B) und P(B|A) = P(A&cap;B)/P(A) haben denselben Zähler, aber <b>verschiedene Nenner</b> &ndash; deshalb im Allgemeinen ungleich."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Vereinigung", "type": "single", "stem": "Das Ereignis A&cup;B beschreibt, dass &hellip;", "options": ["beide Ereignisse A und B stets zwingend gleichzeitig miteinander gemeinsam eintreten müssen", "genau eines der beiden Ereignisse A oder B eintritt, aber niemals beide davon gemeinsam", "keines der beiden Ereignisse A oder B unter irgendwelchen denkbaren Umständen eintreten darf", "mindestens eines der beiden Ereignisse A oder B eintritt, also gerne auch beide zusammen"], "answer": "mindestens eines der beiden Ereignisse A oder B eintritt, also gerne auch beide zusammen", "feedback": "Vereinigung A&cup;B = &bdquo;A oder B oder beides&ldquo; = <b>mindestens eines</b> der Ereignisse tritt ein."}]}</script>
+<script id="qbank" type="application/json">{"topic": "Management 1 (BMGT) · Goethe-Uni Frankfurt · Kapitel 2 – Oligopol: Cournot, Bertrand & Stackelberg", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Cournot-NE", "type": "numeric", "stem": "Zwei Anbieter eines homogenen Gutes stehen im Cournot-Mengenwettbewerb. Inverse Nachfrage: p = 90 &minus; Q mit Q = q<sub>1</sub> + q<sub>2</sub>; beide produzieren mit konstanten Grenzkosten c = 18 (keine Fixkosten). Welche Menge stellt jede Firma im Nash-Gleichgewicht her?", "answer": 24.0, "tolerance": 0.01, "feedback": "FOC: 90 &minus; 2q<sub>i</sub> &minus; q<sub>j</sub> &minus; 18 = 0 &rarr; RF: q<sub>i</sub> = 72/2 &minus; &frac12;q<sub>j</sub> = 36 &minus; &frac12;q<sub>j</sub>. Symmetrie (q<sub>i</sub> = q<sub>j</sub>) &rarr; q = (90 &minus; 18)/3 = <b>24</b>. Kontrolle: Q = 48, p = 42 &gt; c."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Reaktionsfunktion", "type": "single", "stem": "Was gibt die <b>Reaktionsfunktion</b> einer Firma im Cournot-Wettbewerb an?", "options": ["Die gewinnmaximale eigene Menge als Funktion der (erwarteten) Konkurrenzmenge", "Den einheitlichen Marktpreis als Funktion der insgesamt nachgefragten Gesamtmenge", "Die Kostenfunktion des Konkurrenten als Funktion der eigenen (geplanten) Kapazitaet", "Die abgesetzte Gesamtmenge als Funktion des eigenen (historischen) Preisniveaus"], "answer": "Die gewinnmaximale eigene Menge als Funktion der (erwarteten) Konkurrenzmenge", "feedback": "Die RF beantwortet fuer jede denkbare Menge des Konkurrenten die Frage: &bdquo;Was ist MEINE beste Menge?&ldquo; Sie kommt aus der Bedingung erster Ordnung der eigenen Gewinnmaximierung &ndash; der Schnittpunkt beider RF ist das Cournot-Nash-Gleichgewicht."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Reaktionsfunktion", "type": "numeric", "stem": "Die Reaktionsfunktion von Firma 1 lautet q<sub>1</sub> = 36 &minus; &frac12;q<sub>2</sub>. Die Konkurrentin kuendigt glaubhaft q<sub>2</sub> = 14 an. Welche Menge ist die beste Antwort von Firma 1?", "answer": 29.0, "tolerance": 0.01, "feedback": "Einsetzen: q<sub>1</sub> = 36 &minus; &frac12; &middot; 14 = 36 &minus; 7 = <b>29</b>. Genau das leistet die RF: Konkurrenzmenge rein &rarr; eigene Optimalmenge raus."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Bertrand", "type": "single", "stem": "Homogenes Gut, zwei Anbieter mit identischen konstanten Grenzkosten, simultaner Preiswettbewerb (Bertrand). Was gilt im Nash-Gleichgewicht?", "options": ["p = GK &ndash; beide Firmen machen Nullgewinn (Bertrand-Paradoxon)", "p = GK plus fester Aufschlag &ndash; beide Gewinne bleiben strikt positiv (Marge)", "p = Monopolpreis &ndash; beide Firmen teilen sich den Monopolgewinn (halbe/halbe)", "p knapp unter GK &ndash; beide Firmen machen dauerhaft Verlust (Preiskampf)"], "answer": "p = GK &ndash; beide Firmen machen Nullgewinn (Bertrand-Paradoxon)", "feedback": "Jeder Preis ueber GK laedt zum minimalen Unterbieten ein &ndash; der Billigere bekommt den GANZEN Markt. Das treibt beide auf p = GK und Nullgewinn: das Bertrand-Paradoxon. Schon zwei Anbieter reichen fuer das Wettbewerbsergebnis."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Stackelberg", "type": "single", "stem": "Vom simultanen Cournot- zum sequentiellen Stackelberg-Wettbewerb (gleicher Markt, gleiche Kosten): Was aendert sich im Gleichgewicht?", "options": ["Beide Firmen drosseln auf die halbe Monopolmenge &ndash; der Preis steigt auf das Kartellniveau", "Der Folger weitet seine Menge aus, der Fuehrer weicht zurueck &ndash; Gesamtmenge sinkt, Preis steigt", "Der Fuehrer weitet seine Menge aus, der Folger weicht zurueck &ndash; Gesamtmenge steigt, Preis sinkt", "Beide Firmen waehlen weiterhin exakt die Cournot-Mengen &ndash; die Zugreihenfolge aendert nichts"], "answer": "Der Fuehrer weitet seine Menge aus, der Folger weicht zurueck &ndash; Gesamtmenge steigt, Preis sinkt", "feedback": "Der Fuehrer legt sich zuerst auf eine grosse Menge fest; der Folger antwortet entlang seiner fallenden RF mit weniger. Netto steigt die Gesamtmenge &ndash; der Preis liegt unter dem Cournot-Niveau. Der Fuehrergewinn steigt, der Folgergewinn sinkt (First-Mover-Vorteil)."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Stackelberg", "type": "numeric", "stem": "Markt: p = 90 &minus; Q, beide Firmen mit Grenzkosten c = 18. Firma 1 legt ihre Menge zuerst fest (Stackelberg-Fuehrer), Firma 2 reagiert per Reaktionsfunktion. Welche Menge waehlt der Fuehrer im teilspielperfekten Gleichgewicht?", "answer": 36.0, "tolerance": 0.01, "feedback": "RF des Folgers: q<sub>2</sub> = 36 &minus; &frac12;q<sub>1</sub>. In den Fuehrergewinn einsetzen: &pi;<sub>1</sub> = (90 &minus; q<sub>1</sub> &minus; (36 &minus; &frac12;q<sub>1</sub>) &minus; 18) &middot; q<sub>1</sub> = (36 &minus; &frac12;q<sub>1</sub>) &middot; q<sub>1</sub> &rarr; FOC: 36 &minus; q<sub>1</sub> = 0 &rarr; q<sub>1</sub> = <b>36</b> (Folger: 18, p = 36)."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Cournot-NE", "type": "numeric", "stem": "Asymmetrisches Duopol: p = 80 &minus; Q, Grenzkosten c<sub>1</sub> = 8 und c<sub>2</sub> = 20. Welche Menge q<sub>1</sub> stellt die kostenguenstigere Firma 1 im Cournot-Nash-Gleichgewicht her?", "answer": 28.0, "tolerance": 0.01, "feedback": "RF<sub>1</sub>: q<sub>1</sub> = 36 &minus; &frac12;q<sub>2</sub>; RF<sub>2</sub>: q<sub>2</sub> = 30 &minus; &frac12;q<sub>1</sub>. Ineinander einsetzen &rarr; q<sub>1</sub> = <b>28</b>, q<sub>2</sub> = 16, p = 36. Der Kostenvorteil verschafft Firma 1 die groessere Menge und &pi;<sub>1</sub> = 784 &gt; &pi;<sub>2</sub> = 256."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Fusion", "type": "single", "stem": "Drei symmetrische Cournot-Anbieter; zwei davon fusionieren ohne Kosten- oder Kapazitaetsvorteile (aus 3 Anbietern werden 2). Was gilt im neuen Gleichgewicht?", "options": ["Preis und Gewinne bleiben unveraendert &ndash; die Anbieterzahl spielt im Cournot-Modell keine echte Rolle", "Der Marktpreis steigt &ndash; und der nicht fusionierte Aussenseiter verliert dadurch deutlich an Gewinn", "Der Marktpreis steigt &ndash; der Gewinn der fusionierten Firma bleibt aber unter der Summe ihrer alten Gewinne", "Der Marktpreis sinkt &ndash; der Gewinn der fusionierten Firma steigt exakt auf die Summe ihrer beiden alten Gewinne"], "answer": "Der Marktpreis steigt &ndash; der Gewinn der fusionierten Firma bleibt aber unter der Summe ihrer alten Gewinne", "feedback": "Weniger Anbieter &rarr; kleinere Gesamtmenge &rarr; hoeherer Preis. Aber: Die fusionierte Firma ist nur noch EINER von zwei Spielern und verdient weniger als die Summe ihrer beiden Vorgaenger (Fusionsparadoxon) &ndash; der lachende Dritte ist der Aussenseiter, der vom hoeheren Preis profitiert. Ohne Synergien lohnt die Fusion oft nicht."}, {"id": "s4", "difficulty": "schwer", "subtopic": "n-Firmen-Cournot", "type": "numeric", "stem": "Auf einem Markt mit p = 90 &minus; Q bieten n = 5 identische Firmen (Grenzkosten c = 18) im Cournot-Wettbewerb an. Wie hoch ist der Marktpreis im Nash-Gleichgewicht?", "answer": 30.0, "tolerance": 0.01, "feedback": "n-Firmen-Formel: q<sub>i</sub> = (a &minus; c)/(n + 1) = 72/6 = 12 &rarr; Q = 60 &rarr; p = 90 &minus; 60 = <b>30</b> (gleich p = (a + n &middot; c)/(n + 1) = (90 + 5 &middot; 18)/6). Je mehr Firmen, desto naeher ruecken Preis und Grenzkosten zusammen."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Strategische Substitute", "type": "single", "stem": "Warum nennt man die Mengen im Cournot-Wettbewerb <b>strategische Substitute</b>?", "options": ["Jede Firma kann die Menge des Konkurrenten jederzeit vollstaendig durch eigene Menge ersetzen (Homogenitaet)", "Die Produkte beider Anbieter sind Substitute im Sinne der Haushaltstheorie (positiver Kreuzpreiseffekt)", "Erhoeht der Konkurrent seine Menge, ist die beste Antwort eine groessere eigene Menge (steigende RF)", "Erhoeht der Konkurrent seine Menge, ist die beste Antwort eine kleinere eigene Menge (fallende RF)"], "answer": "Erhoeht der Konkurrent seine Menge, ist die beste Antwort eine kleinere eigene Menge (fallende RF)", "feedback": "&bdquo;Strategisch&ldquo; beschreibt die Richtung der besten Antwort: Im Mengenwettbewerb reagiert man auf Aggression mit Rueckzug (RF faellt) &ndash; Mengen sind strategische Substitute. Im Preiswettbewerb zieht man dagegen mit (Preise = strategische Komplemente)."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Kollusion", "type": "single", "stem": "Unendlich wiederholter Wettbewerb: Was bedeutet ein <b>niedriger kritischer Diskontfaktor</b> &delta;* fuer eine Preisabsprache?", "options": ["Die Absprache ist gar nicht betroffen &ndash; &delta;* wirkt nur in einmaligen, statischen Spielen", "Die Absprache wird voellig unmoeglich &ndash; ein niedriges &delta;* steht fuer einen negativen Zins", "Die Absprache ist schwerer stabil zu halten &ndash; nur noch extrem geduldige Firmen halten sich daran", "Die Absprache ist leichter stabil zu halten &ndash; schon relativ ungeduldige Firmen halten sich daran"], "answer": "Die Absprache ist leichter stabil zu halten &ndash; schon relativ ungeduldige Firmen halten sich daran", "feedback": "Stabil ist die Absprache fuer alle &delta; &ge; &delta;*. Ein niedriges &delta;* heisst: Die Bedingung ist leicht erfuellt &ndash; selbst Firmen, die die Zukunft stark abzinsen (hoher Zins i, &delta; = 1/(1 + i)), brechen nicht aus. Kollusion wird wahrscheinlicher."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Modell-Zuordnung", "type": "single", "stem": "Welche Beschreibung passt zum <b>Stackelberg-Wettbewerb</b>?", "options": ["Kooperativer Wettbewerb &ndash; beide Firmen maximieren gemeinsam den Branchengewinn wie ein Kartell", "Simultaner Preiswettbewerb &ndash; beide Firmen setzen gleichzeitig ihre Preise fuer das homogene Gut", "Sequentieller Mengenwettbewerb &ndash; erst legt der Fuehrer seine Menge fest, dann reagiert der Folger", "Simultaner Mengenwettbewerb &ndash; beide Firmen legen ihre Mengen gleichzeitig und unabhaengig voneinander fest"], "answer": "Sequentieller Mengenwettbewerb &ndash; erst legt der Fuehrer seine Menge fest, dann reagiert der Folger", "feedback": "Stackelberg = Cournot in Zeitlupe: gleiche Zutaten (Mengen, homogenes Gut), aber nacheinander gezogen. Simultane Mengen = Cournot, simultane Preise = Bertrand, gemeinsame Maximierung = Kartell/Kollusion."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Bertrand", "type": "numeric", "stem": "Homogenes Gut, simultaner Preiswettbewerb (Bertrand), beide Firmen mit konstanten Grenzkosten von 25 &euro;. Welcher Preis (in &euro;) stellt sich im Nash-Gleichgewicht ein?", "answer": 25, "tolerance": 0.01, "feedback": "Beide unterbieten sich, bis der Preis auf den Grenzkosten liegt: p = GK = <b>25 &euro;</b>. Noch tiefer lohnt nie (Verlust je Stueck), hoeher haelt nicht (der Konkurrent schnappt sich den ganzen Markt)."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Reaktionsfunktion", "type": "single", "stem": "Wie verlaeuft die Reaktionsfunktion einer Firma im Cournot-Mengenwettbewerb?", "options": ["Steigend &ndash; je mehr der Konkurrent anbietet, desto groesser die eigene optimale Menge", "Waagerecht &ndash; die eigene optimale Menge haengt gar nicht von der Konkurrenzmenge ab", "Senkrecht &ndash; die eigene Menge steht fest, nur der eigene Preis reagiert auf den Konkurrenten", "Fallend &ndash; je mehr der Konkurrent anbietet, desto kleiner die eigene optimale Menge"], "answer": "Fallend &ndash; je mehr der Konkurrent anbietet, desto kleiner die eigene optimale Menge", "feedback": "Mehr Konkurrenzmenge drueckt den Preis &ndash; ein Teil des eigenen Angebots lohnt sich dann nicht mehr, die optimale eigene Menge sinkt. Deshalb fallen Cournot-RF (typische Steigung &minus;&frac12; bei linearer Nachfrage)."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Stackelberg", "type": "single", "stem": "Mit welchem Verfahren loest man das Stackelberg-Spiel?", "options": ["Dominanzpruefung &ndash; strikt dominierte Mengen so lange streichen, bis genau eine uebrig bleibt", "Vorwaertsinduktion &ndash; erst die Menge des Fuehrers raten, dann die Folger-Reaktion iterativ anpassen", "Simultanes Gleichsetzen &ndash; beide RF schneiden, exakt wie beim Cournot-Nash-Gleichgewicht", "Rueckwaertsinduktion &ndash; erst die RF des Folgers bestimmen, dann in den Fuehrergewinn einsetzen"], "answer": "Rueckwaertsinduktion &ndash; erst die RF des Folgers bestimmen, dann in den Fuehrergewinn einsetzen", "feedback": "Sequentielles Spiel &rarr; von hinten loesen: Zuerst die Antwort des Folgers (seine RF) berechnen, dann kalkuliert der Fuehrer diese Antwort in seinen eigenen Gewinn ein. Das Ergebnis ist das teilspielperfekte Gleichgewicht."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Marktformen-Vergleich", "type": "single", "stem": "Gleicher Markt, gleiche konstante Grenzkosten &ndash; wie ordnen sich die Marktpreise der vier Loesungen typischerweise?", "options": ["Stackelberg &gt; Bertrand &gt; Kartell/Monopol &gt; Cournot (p = GK)", "Kartell/Monopol &gt; Cournot &gt; Stackelberg &gt; Bertrand (p = GK)", "Cournot &gt; Kartell/Monopol &gt; Bertrand &gt; Stackelberg (p = GK)", "Bertrand &gt; Stackelberg &gt; Cournot &gt; Kartell/Monopol (p = GK)"], "answer": "Kartell/Monopol &gt; Cournot &gt; Stackelberg &gt; Bertrand (p = GK)", "feedback": "Merkreihe ueber die Gesamtmenge: Kartell drosselt am staerksten (hoechster Preis), Cournot bietet mehr, Stackelberg noch mehr (Fuehrer expandiert), Bertrand liefert die Wettbewerbsmenge mit p = GK. Preis- und Mengenreihenfolge sind exakt spiegelbildlich."}]}</script>
 
 <script>
 /* Frage für Live-Session lokal vormerken */
 document.getElementById('liveQbtn').addEventListener('click', function(){
   var t=document.getElementById('liveQ').value.trim();
   if(!t) return;
-  try{ var k='liveQ_osta-kap03-wahrscheinlichkeit'; var arr=JSON.parse(localStorage.getItem(k)||'[]'); arr.push(t); localStorage.setItem(k, JSON.stringify(arr)); }catch(e){}
+  try{ var k='liveQ_bmgt-kap02-oligopol'; var arr=JSON.parse(localStorage.getItem(k)||'[]'); arr.push(t); localStorage.setItem(k, JSON.stringify(arr)); }catch(e){}
   document.getElementById('liveQok').style.display='inline';
 });
 
@@ -746,45 +759,50 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
   var pools = {mittel:[],schwer:[],leicht:[]};
   bank.questions.forEach(function(q){ if(pools[q.difficulty]) pools[q.difficulty].push(q); });
 
-  /* GRAFIK_JS: Baumdiagramm Krankheitstest (Pfadwahrscheinlichkeiten + Bayes) */
+  /* GRAFIK_JS: Reaktionsfunktionen beider Anbieter + Cournot-NE + Stackelberg-Punkt */
   (function buildChart(){
     var svg=document.getElementById('chart'); if(!svg) return;
-    var GREEN='#1c8c5a', NAVY='#20232A', BLUE='#E8760A', GREY='#8a95a3', INK='#1B1D21';
-    var s="";
-    /* Legende OBERHALB der Zeichnung (keine Ueberlappung mit dem Baum) */
-    s+='<rect x="70" y="12" width="18" height="10" rx="2" fill="'+GREEN+'"/>';
-    s+='<text x="94" y="21" font-size="12" fill="'+INK+'">positiver Test (T): 0,018 + 0,049 = P(T) = 0,067</text>';
-    s+='<text x="70" y="40" font-size="12" fill="'+INK+'">Satz von Bayes: P(krank | T) = 0,018 / 0,067 &#8776; 0,2687</text>';
-    /* Knoten-Koordinaten */
-    var rootX=64, rootY=185;
-    var kX=286,  kY=104,  kqX=286, kqY=266;
-    var lx=486;
-    var t1Y=70, t1qY=138, t2Y=232, t2qY=300;
-    function edge(x1,y1,x2,y2,col,w){ return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+col+'" stroke-width="'+w+'"/>'; }
-    function dot(x,y,c){ return '<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+c+'"/>'; }
-    /* Stufe 1: Start -> krank / gesund */
-    s+=edge(rootX,rootY,kX,kY,NAVY,2)+edge(rootX,rootY,kqX,kqY,NAVY,2);
-    s+='<text x="150" y="132" font-size="11" fill="'+NAVY+'">P(krank)=0,02</text>';
-    s+='<text x="150" y="243" font-size="11" fill="'+NAVY+'">P(gesund)=0,98</text>';
-    /* Stufe 2: von krank */
-    s+=edge(kX,kY,lx,t1Y,GREEN,2.4)+edge(kX,kY,lx,t1qY,GREY,1.4);
-    s+='<text x="360" y="80" font-size="11" fill="'+NAVY+'">0,90</text>';
-    s+='<text x="360" y="128" font-size="11" fill="'+NAVY+'">0,10</text>';
-    /* Stufe 2: von gesund */
-    s+=edge(kqX,kqY,lx,t2Y,GREEN,2.4)+edge(kqX,kqY,lx,t2qY,GREY,1.4);
-    s+='<text x="360" y="242" font-size="11" fill="'+NAVY+'">0,05</text>';
-    s+='<text x="360" y="292" font-size="11" fill="'+NAVY+'">0,95</text>';
-    /* Knotenpunkte */
-    s+=dot(rootX,rootY,BLUE)+dot(kX,kY,BLUE)+dot(kqX,kqY,BLUE);
-    s+='<text x="'+(rootX)+'" y="'+(rootY-12)+'" font-size="11" text-anchor="middle" fill="'+INK+'">Start</text>';
-    s+='<text x="'+(kX-10)+'" y="'+(kY+4)+'" font-size="12" text-anchor="end" fill="'+INK+'">krank</text>';
-    s+='<text x="'+(kqX-10)+'" y="'+(kqY+4)+'" font-size="12" text-anchor="end" fill="'+INK+'">gesund</text>';
-    /* Blaetter mit Pfadwahrscheinlichkeiten */
-    s+=dot(lx,t1Y,GREEN)+dot(lx,t2Y,GREEN)+dot(lx,t1qY,GREY)+dot(lx,t2qY,GREY);
-    s+='<text x="'+(lx+10)+'" y="'+(t1Y+4)+'" font-size="11" fill="'+GREEN+'" font-weight="700">krank | T+ = 0,018</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t1qY+4)+'" font-size="11" fill="'+GREY+'">krank | T&#8722; = 0,002</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t2Y+4)+'" font-size="11" fill="'+GREEN+'" font-weight="700">gesund | T+ = 0,049</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t2qY+4)+'" font-size="11" fill="'+GREY+'">gesund | T&#8722; = 0,931</text>';
+    /* Werte code-verifiziert in BMGT/compute/compute_bmgt-kap02-oligopol.py:
+       Lehrbeispiel p = 160-2Q, c = 40. RF1: q2 = 60-2*q1 (aequiv. q1 = 30-q2/2),
+       RF2: q2 = 30-q1/2, Cournot-NE (20,20), Stackelberg-Punkt (30,15). */
+    var X0=70, Y0=300, SX=8, SY=4;
+    function px(q){ return X0+q*SX; }
+    function py(q){ return Y0-q*SY; }
+    var s='';
+    /* Legende OBERHALB der Zeichnung */
+    s+='<line x1="76" y1="24" x2="104" y2="24" stroke="#2f6db5" stroke-width="3"/>';
+    s+='<text x="110" y="28" font-size="13" fill="#1b2733">RF Anbieter 1</text>';
+    s+='<line x1="226" y1="24" x2="254" y2="24" stroke="#cf4b34" stroke-width="3"/>';
+    s+='<text x="260" y="28" font-size="13" fill="#1b2733">RF Anbieter 2</text>';
+    s+='<circle cx="384" cy="24" r="6" fill="#1c8c5a"/>';
+    s+='<text x="394" y="28" font-size="13" fill="#1b2733">C = Cournot-NE</text>';
+    s+='<circle cx="516" cy="24" r="6" fill="#d98a1f"/>';
+    s+='<text x="526" y="28" font-size="13" fill="#1b2733">S = Stackelberg</text>';
+    /* Achsen */
+    s+='<line x1="'+X0+'" y1="'+Y0+'" x2="605" y2="'+Y0+'" stroke="#586a80" stroke-width="1.5"/>';
+    s+='<line x1="'+X0+'" y1="'+Y0+'" x2="'+X0+'" y2="46" stroke="#586a80" stroke-width="1.5"/>';
+    var t;
+    for(t=10;t<=60;t+=10){
+      s+='<line x1="'+px(t)+'" y1="'+Y0+'" x2="'+px(t)+'" y2="'+(Y0+4)+'" stroke="#586a80"/>';
+      s+='<text x="'+px(t)+'" y="'+(Y0+18)+'" font-size="11" fill="#586a80" text-anchor="middle">'+t+'</text>';
+      s+='<line x1="'+(X0-4)+'" y1="'+py(t)+'" x2="'+X0+'" y2="'+py(t)+'" stroke="#586a80"/>';
+      s+='<text x="'+(X0-8)+'" y="'+(py(t)+4)+'" font-size="11" fill="#586a80" text-anchor="end">'+t+'</text>';
+    }
+    s+='<text x="600" y="'+(Y0+32)+'" font-size="12" fill="#1b2733" text-anchor="end">q&#8321; (Menge Anbieter 1)</text>';
+    s+='<text x="22" y="170" font-size="12" fill="#1b2733" transform="rotate(-90 22 170)" text-anchor="middle">q&#8322; (Menge Anbieter 2)</text>';
+    /* Hilfslinien zum Cournot-NE (gestrichelt) */
+    s+='<line x1="'+px(20)+'" y1="'+Y0+'" x2="'+px(20)+'" y2="'+py(20)+'" stroke="#9fb2c8" stroke-dasharray="4 3"/>';
+    s+='<line x1="'+X0+'" y1="'+py(20)+'" x2="'+px(20)+'" y2="'+py(20)+'" stroke="#9fb2c8" stroke-dasharray="4 3"/>';
+    /* RF1: (0,60) -> (30,0) blau */
+    s+='<line x1="'+px(0)+'" y1="'+py(60)+'" x2="'+px(30)+'" y2="'+py(0)+'" stroke="#2f6db5" stroke-width="3"/>';
+    /* RF2: (0,30) -> (60,0) rot */
+    s+='<line x1="'+px(0)+'" y1="'+py(30)+'" x2="'+px(60)+'" y2="'+py(0)+'" stroke="#cf4b34" stroke-width="3"/>';
+    /* Cournot-NE C(20,20) gruen */
+    s+='<circle cx="'+px(20)+'" cy="'+py(20)+'" r="7" fill="#1c8c5a"/>';
+    s+='<text x="'+(px(20)+12)+'" y="'+(py(20)-8)+'" font-size="13" font-weight="bold" fill="#1c8c5a">C (20, 20)</text>';
+    /* Stackelberg S(30,15) gold - liegt auf RF2 */
+    s+='<circle cx="'+px(30)+'" cy="'+py(15)+'" r="7" fill="#d98a1f"/>';
+    s+='<text x="'+(px(30)+12)+'" y="'+(py(15)+4)+'" font-size="13" font-weight="bold" fill="#b8740f">S (30, 15)</text>';
     svg.innerHTML=s;
   })();
 
@@ -910,7 +928,7 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
 (function(){
   "use strict";
 
-  var FRIST_ISO = "2026-07-27";
+  var FRIST_ISO = "2026-07-26";
 
   function $(id){ return document.getElementById(id); }
 
@@ -960,25 +978,22 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
 </script>
 
 <!-- ============================================================ -->
-<!-- BUCHUNGSMODUL · DATEN (window.BK_DATA) – identisch fuer alle  -->
-<!-- OSTA-Lektionen verwendet.                                    -->
+<!-- BUCHUNGSMODUL · DATEN (window.BK_DATA) – fuer BMGT angepasst;   -->
+<!-- Struktur identisch zu den OSTA/OFIN-Lektionen.                -->
 <!-- ============================================================ -->
 <script id="bk-data">
 window.BK_DATA = {
-  preise: { gratis:'gratis', einzel:'8,90 €', bundle:'49,90 €', bundle_streich:'89,00 €', bundle_handouts:'49,90 €', bundle_handouts_streich:'89,00 €', multi:'49,90 €', klausur:'10,00 €', handout:'8,90 €' },
+  kursKuerzel: 'BMGT',
+  preise: { gratis:'gratis', einzel:'8,90 €', bundle:'49,90 €', klausur:'10,00 €', handout:'8,90 €', cashback:'10,00 €' },
   lektionen: [
-    { nr:1, thema:'Deskriptive Statistik I: Lage & Streuung', slug:'osta-kap01-lage-streuung', gratis:false, keywords:['Mittelwert & Median','Modus','Quantile','Varianz & Standardabweichung','Häufigkeitsverteilungen'] },
-    { nr:2, thema:'Deskriptive Statistik II: Zusammenhang & Regression', slug:'osta-kap02-regression', gratis:false, keywords:['Kovarianz','Korrelationskoeffizient','KQ-Regressionsgerade','Bestimmtheitsmaß'] },
-    { nr:3, thema:'Wahrscheinlichkeitsrechnung', slug:'osta-kap03-wahrscheinlichkeit', gratis:true, keywords:['Laplace','Bedingte WK','Unabhängigkeit','Satz von Bayes','Vierfeldertafel'] },
-    { nr:4, thema:'Zufallsvariablen', slug:'osta-kap04-zufallsvariablen', gratis:false, keywords:['Erwartungswert','Varianz','Dichte','Verteilungsfunktion','Exponentialverteilung'] },
-    { nr:5, thema:'Verteilungsmodelle: Binomial & Poisson', slug:'osta-kap05-verteilungsmodelle', gratis:false, keywords:['Bernoulli-Experiment','Binomialverteilung','Poisson-Verteilung','Approximation'] },
-    { nr:6, thema:'Normalverteilung & Stichprobenmittel', slug:'osta-kap06-normalverteilung', gratis:false, keywords:['Standardisieren','z-Wert','Quantile ablesen','Stichprobenmittel','Zentraler Grenzwertsatz'] },
-    { nr:7, thema:'Schätzen: Punktschätzer & Maximum Likelihood', slug:'osta-kap07-schaetzen', gratis:false, keywords:['Erwartungstreue','Momentenmethode','Maximum Likelihood','Effizienz'] },
-    { nr:8, thema:'Konfidenzintervalle', slug:'osta-kap08-konfidenzintervalle', gratis:false, keywords:['Konfidenzniveau','Intervall fürs Mittel','t-Verteilung','Stichprobenumfang'] },
-    { nr:9, thema:'Testen I: Testprinzip & Gauß-Test', slug:'osta-kap09-testen1', gratis:false, keywords:['Hypothesenpaar','Fehler 1. & 2. Art','Gauß-Test','p-Wert','Signifikanzniveau'] },
-    { nr:10, thema:'Testen II: t-Test & Chi-Quadrat', slug:'osta-kap10-testen2', gratis:false, keywords:['t-Test','Chi-Quadrat-Anpassungstest','Unabhängigkeitstest','Testauswahl'] }
+    { nr:1, thema:'Spieltheorie kompakt: simultane, sequentielle & wiederholte Spiele', gratis:false, keywords:['Nash-Gleichgewicht','dominante Strategien','SPNE/Rückwärtsinduktion','wiederholte Spiele','kritischer Diskontfaktor'] },
+    { nr:2, thema:'Oligopol: Cournot, Bertrand & Stackelberg', slug:'bmgt-kap02-oligopol', gratis:true, keywords:['Reaktionsfunktion','Cournot','Bertrand','Stackelberg','Fusion'] },
+    { nr:3, thema:'Moral Hazard & Anreizverträge', gratis:false, keywords:['Prinzipal-Agent','Hidden Action','Anreizbedingung','Teilnahmebedingung','first best/second best'] },
+    { nr:4, thema:'Organisation & Anreize: Team, Delegation & Transferpreise', gratis:false, keywords:['Teamanreize/Free-Riding','Delegation','Transferpreise','Profit-Center','Abstimmung/Voting'] },
+    { nr:5, thema:'MC-Wissen: Adverse Selection, Integration & Begriffe', gratis:false, keywords:['Adverse Selection','Market for Lemons','Hold-up','Make-or-Buy','Five Forces'] },
+    { nr:6, thema:'Klausurtraining', gratis:false, keywords:['90-Punkte-Format','offene Rechenaufgaben','MC-Block','Zeitmanagement'] }
   ],
-  faecher: [ {k:'OMIK',n:'Mikroökonomie'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'} ],
+  faecher: [ {k:'OMIK',n:'Mikroökonomik 1'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'}, {k:'BFIN',n:'Finanzen 2'}, {k:'BMGT',n:'Management 1'} ],
   termine: [
     {tag:'Fr 24.07.2026', zeit:'10:00', block:'Vormittag'}, {tag:'Sa 25.07.2026', zeit:'10:00', block:'Vormittag'}, {tag:'So 26.07.2026', zeit:'10:00', block:'Vormittag'},
     {tag:'Fr 24.07.2026', zeit:'19:00', block:'Abend'}, {tag:'Sa 25.07.2026', zeit:'19:00', block:'Abend'}, {tag:'So 26.07.2026', zeit:'19:00', block:'Abend'}
@@ -1348,7 +1363,7 @@ function vmClose(){var o=document.getElementById('vmOv');if(o){o.classList.remov
 /* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
    mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
 (function(){
-  var FACH = (location.pathname.match(/(osta|omik|ofin)/) || [])[1] || "osta";
+  var FACH = (location.pathname.match(/(osta|omik|ofin|bmgt)/) || [])[1] || "bmgt";
   var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
   document.addEventListener('submit', function(e){
     var f = e.target;
