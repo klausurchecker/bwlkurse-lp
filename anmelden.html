@@ -16,8 +16,9 @@
   .spin{width:34px;height:34px;margin:16px auto 6px;border:3px solid #DEDCD4;border-top-color:#E8760A;
         border-radius:50%;animation:r .9s linear infinite}
   @keyframes r{to{transform:rotate(360deg)}}
-  a.btn{display:inline-block;margin-top:14px;padding:13px 26px;border-radius:12px;background:#E8760A;color:#fff;
+  a.btn{display:block;margin:10px auto 0;max-width:300px;padding:13px 26px;border-radius:12px;background:#E8760A;color:#fff;
         text-decoration:none;font-weight:700;font-size:16px}
+  #manuell a.btn{max-width:none;display:inline-block;margin-top:14px}
   .apps{margin-top:16px;font-size:13px;color:#6b6f76}
   .apps a{color:#B85E00}
   small{display:block;margin-top:18px;color:#6b7280;font-size:12px;line-height:1.6}
@@ -45,11 +46,11 @@
     <p id="fehlerText">Dieser Anmelde-Link ist nicht mehr gültig.</p>
     <p>Du kommst trotzdem rein: Öffne deine App, tippe auf <b>Anmelden</b> und dann auf
        <b>„Passwort vergessen?“</b> – du bekommst sofort ein neues Einmalpasswort per E-Mail.</p>
-    <a class="btn" href="https://www.klausurchecker.de/app/osta/">Zur App</a>
-    <div class="apps">Dein Konto gilt für alle Fächer:
-      <a href="https://www.klausurchecker.de/app/osta/">OSTA</a> ·
-      <a href="https://www.klausurchecker.de/app/omik/">OMIK</a> ·
-      <a href="https://www.klausurchecker.de/app/ofin/">OFIN</a></div>
+    <div class="apps">Dein Konto gilt für alle Fächer – öffne deins:</div>
+    <a class="btn" href="https://www.klausurchecker.de/app/bmgt/">BMGT · Management 1</a>
+    <a class="btn" href="https://www.klausurchecker.de/app/osta/">OSTA · Statistik 1</a>
+    <a class="btn" href="https://www.klausurchecker.de/app/omik/">OMIK · Mikroökonomie</a>
+    <a class="btn" href="https://www.klausurchecker.de/app/ofin/">OFIN · Finanzen 1</a>
   </div>
 
   <small>Fragen? Schreib an <a href="mailto:info@klausurchecker.de" style="color:#6b7280">info@klausurchecker.de</a>.</small>

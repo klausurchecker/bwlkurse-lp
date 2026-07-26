@@ -34,15 +34,16 @@
     <div class="brand-sub">powered by BWLKurse</div>
     <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
     <h1>Deine Anmeldung ist bestätigt</h1>
-    <p class="sub">Danke! Deine E-Mail ist bestätigt. Deine Zugangsdaten kommen jetzt per E-Mail — damit kommst du in alle drei Kurse.</p>
+    <p class="sub">Danke! Deine E-Mail ist bestätigt. Deine Zugangsdaten kommen jetzt per E-Mail — damit kommst du in alle vier Kurse.</p>
     <div class="hint" id="zgBox">
       <span id="zgTxt">Dein App-Zugang wird eingerichtet &hellip;</span>
     </div>
-    <div class="waehle">Alle drei mit einem Login</div>
+    <div class="waehle">Alle vier mit einem Login</div>
+    <div class="fachinfo">BMGT · Management 1<small>Dein Management-Kurs</small></div>
     <div class="fachinfo">OSTA · Statistik 1<small>Dein Statistik-Kurs</small></div>
     <div class="fachinfo">OMIK · Mikroökonomie<small>Gratis-Showroom · ganzer Kurs frei</small></div>
     <div class="fachinfo">OFIN · Finanzen 1<small>Dein Finanzen-Kurs</small></div>
-    <p class="tipp">Dein Login aus der E-Mail schaltet alle drei Kurse frei.</p>
+    <p class="tipp">Dein Login aus der E-Mail schaltet alle vier Kurse frei.</p>
     <p class="foot">BWL Kurse · Klausurvorbereitung für die Goethe-Universität Frankfurt · <a href="mailto:info@klausurchecker.de">info@klausurchecker.de</a><br>
     <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a> · <a href="widerruf.html">Widerruf</a></p>
   </div>
@@ -74,7 +75,7 @@
   function handle(d, mail){
     if(d && d.status==="created"){
       var an = mail ? " an "+esc(mail) : "";
-      txt.innerHTML="<b>Deine Zugangsdaten sind unterwegs"+an+".</b> Benutzername ist deine E-Mail-Adresse, das Einmalpasswort steht in der Mail \u2013 schau auch im Spam-Ordner nach. Dein Login gilt f\u00fcr alle drei Kurse.";
+      txt.innerHTML="<b>Deine Zugangsdaten sind unterwegs"+an+".</b> Benutzername ist deine E-Mail-Adresse, das Einmalpasswort steht in der Mail \u2013 schau auch im Spam-Ordner nach. Dein Login gilt f\u00fcr alle vier Kurse.";
     } else if(d && d.status==="exists"){ txt.innerHTML=M_EXISTS; }
     else { txt.innerHTML=M_UNSICHER; }   // 400 (Doppelklick/abgelaufen) oder Fehler -> immer freundlich
   }
