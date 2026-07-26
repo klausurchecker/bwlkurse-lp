@@ -98,6 +98,8 @@
     "fachMussVorkommenAuf": ["index.html", "preise.html", "bestaetigt.html", "anmelden.html"],
     "fachMussAufAnderenFachseitenVorkommen": true,
     "appsMuessenAlleFaecherFuehren": true,
+    "preiszielMussPreisseiteSein": true,
+    "_hinweisPreisziel": "Der Kauf-Einstieg (Header-Button 'Ab 8,90 EUR' und der Sticky-Balken) liest sein Ziel aus <body data-preisziel>. Steht dort der Seitenanker '#preise' statt preise.html, springt der Nutzer nur innerhalb der Fachseite und sieht die gemeinsame Preisliste nie. Genau das war auf bmgt.html der Fall - '#preise' ist der Fallback-Wert, den die Fabrik nie ersetzt hat.",
     "kaufButtonKlassen": ["btn-kauf", "pkbtn"],
     "_hinweisKauf": "btn-kauf = Fachseiten/preise.html (statisch im HTML). pkbtn = Lektionsseiten; dort haengt JS zur Laufzeit zusaetzlich 'kauf' an, was die blaue Farbe #102444 setzt. Beide gelten als korrekt gekennzeichneter Kauf-CTA.",
     "keineFremdenStripeLinksAufFachseite": true,

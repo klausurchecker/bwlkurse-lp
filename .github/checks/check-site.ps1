@@ -266,6 +266,34 @@ if (Soll-Laufen "Farblogik") {
   Write-Host " fertig"
 }
 
+# ------------------------------- 5b Kauf-Einstieg zeigt auf die Preisliste
+if ((Soll-Laufen "Farblogik") -and $Cfg.regeln.preiszielMussPreisseiteSein) {
+  foreach ($f in $Aktive) {
+    $s = Get-SeiteFuerPruefung "$Basis/$($f.fachseite)" "Farblogik" $f.fachseite
+    if (-not $s.Ok) { continue }
+    $pz = [regex]::Match($s.Inhalt, '<body[^>]*data-preisziel="([^"]*)"')
+    if (-not $pz.Success) {
+      Add-Befund WARNUNG "Farblogik" "$($f.fachseite): kein data-preisziel am body - der Kauf-Button faellt auf den Seitenanker zurueck"
+    } else {
+      $ziel = $pz.Groups[1].Value
+      if ($ziel -notmatch 'preise\.html') {
+        Add-Befund FEHLER "Farblogik" "$($f.fachseite): data-preisziel='$ziel' zeigt nicht auf preise.html - der Kauf-Button springt nur innerhalb der Seite, die Preisliste wird nie erreicht"
+      } elseif (-not $f.gratisFach -and $ziel -notmatch "kurs=$($f.kuerzel.ToLower())") {
+        Add-Befund WARNUNG "Farblogik" "$($f.fachseite): data-preisziel='$ziel' ohne 'kurs=$($f.kuerzel.ToLower())' - auf preise.html steht dann ein fremdes Fach oben"
+      }
+    }
+    # Der Sticky-Balken traegt seinen Kauf-Link fest im Markup, unabhaengig vom body-Attribut.
+    $sticky = [regex]::Match($s.Inhalt, '(?s)<div class="scta" id="v2Scta">(.*?)</div>')
+    if ($sticky.Success) {
+      foreach ($a in [regex]::Matches($sticky.Groups[1].Value, '<a\b[^>]*class="[^"]*btn-kauf[^"]*"[^>]*href="([^"]+)"')) {
+        if ($a.Groups[1].Value -notmatch 'preise\.html') {
+          Add-Befund FEHLER "Farblogik" "$($f.fachseite): Sticky-Kaufbutton zeigt auf '$($a.Groups[1].Value)' statt auf preise.html"
+        }
+      }
+    }
+  }
+}
+
 # ----------------------------------------- 6 Stripe-Links fachrein halten
 if (Soll-Laufen "StripeZuordnung") {
   Write-Host "6/8  Stripe-Zuordnung ..." -NoNewline
