@@ -1,0 +1,110 @@
+{
+  "version": 1,
+  "beschreibung": "Soll-Zustand von Landingpage + Apps. Einzige Wahrheit fuer check-site.ps1. Beim Anlegen eines neuen Fachs HIER den Eintrag ergaenzen - dann prueft die Automatik das Fach ab sofort mit.",
+  "stand": "2026-07-26",
+  "basis": "https://www.klausurchecker.de",
+
+  "globaleSeiten": [
+    { "pfad": "index.html",       "titelEnthaelt": "BWL Kurse" },
+    { "pfad": "preise.html",      "titelEnthaelt": "" },
+    { "pfad": "anmelden.html",    "titelEnthaelt": "Anmelden" },
+    { "pfad": "bestaetigt.html",  "titelEnthaelt": "best" },
+    { "pfad": "impressum.html",   "titelEnthaelt": "" },
+    { "pfad": "datenschutz.html", "titelEnthaelt": "" },
+    { "pfad": "agb.html",         "titelEnthaelt": "" },
+    { "pfad": "widerruf.html",    "titelEnthaelt": "" },
+    { "pfad": "zahlung-erfolg.html", "titelEnthaelt": "" }
+  ],
+
+  "faecher": [
+    {
+      "kuerzel": "BMGT",
+      "name": "Management 1",
+      "appName": "Management 1",
+      "prof": "Prof. Friebel",
+      "aktiv": true,
+      "gratisFach": false,
+      "fachseite": "bmgt.html",
+      "gratislektion": "bmgt-kap02-oligopol.html",
+      "app": "https://bmgt.klausurchecker.de/",
+      "appRedirect": "app/bmgt/",
+      "stripe": {
+        "bundle": "https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p",
+        "paket":  "https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q",
+        "qa":     "https://buy.stripe.com/4gMeVdc0T8isf158n78bS0r"
+      }
+    },
+    {
+      "kuerzel": "OSTA",
+      "name": "Statistik 1",
+      "appName": "Statistik 1",
+      "prof": "Prof. Hassler",
+      "aktiv": true,
+      "gratisFach": false,
+      "fachseite": "osta.html",
+      "gratislektion": "osta-kap03-wahrscheinlichkeit.html",
+      "app": "https://osta.klausurchecker.de/",
+      "appRedirect": "app/osta/",
+      "stripe": {
+        "bundle": "https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j",
+        "paket":  "https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l",
+        "qa":     "https://buy.stripe.com/9B600j6Gz42ccSX0UF8bS0m"
+      }
+    },
+    {
+      "kuerzel": "OFIN",
+      "name": "Finanzen 1",
+      "appName": "Finanzen 1",
+      "prof": "Prof. Schmeling",
+      "aktiv": true,
+      "gratisFach": false,
+      "fachseite": "ofin.html",
+      "gratislektion": "ofin-kap03-anleihen.html",
+      "app": "https://ofin.klausurchecker.de/",
+      "appRedirect": "app/ofin/",
+      "stripe": {
+        "bundle": "https://buy.stripe.com/5kQcN5e911U44mreLv8bS0n",
+        "paket":  "https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k",
+        "qa":     "https://buy.stripe.com/bJe5kDaWP8is4mrbzj8bS0o"
+      }
+    },
+    {
+      "kuerzel": "OMIK",
+      "name": "Mikrooekonomie",
+      "appName": "Mikrooekonomie",
+      "prof": "Prof. Blonski",
+      "aktiv": true,
+      "gratisFach": true,
+      "fachseite": "omik.html",
+      "gratislektion": "omik-kap02-unsicherheit-erwartungsnutzen.html",
+      "app": "https://omik.klausurchecker.de/",
+      "appRedirect": "app/omik/",
+      "stripe": {}
+    }
+  ],
+
+  "nichtLive": ["bfin", "bmak"],
+
+  "signup": {
+    "_hinweis": "Die Kette LP-Formular -> Bestaetigungsmail -> bestaetigt.html -> Zugangsdaten -> App-Login. Bricht sie fuer EIN Fach, merkt es niemand, weil die anderen Faecher weiter funktionieren.",
+    "funktionsBasis": "https://adrfijztnbebzghumdxn.supabase.co/functions/v1",
+    "funktionen": ["anmeldung", "free-signup", "magic-login", "passwort-reset"],
+    "formularAktionEnthaelt": "functions/v1/anmeldung",
+    "appBackendUrl": "https://adrfijztnbebzghumdxn.supabase.co",
+    "appAnonPraefix": "sb_publishable_"
+  },
+
+  "regeln": {
+    "fachMussVorkommenAuf": ["index.html", "preise.html", "bestaetigt.html", "anmelden.html"],
+    "fachMussAufAnderenFachseitenVorkommen": true,
+    "appsMuessenAlleFaecherFuehren": true,
+    "kaufButtonKlassen": ["btn-kauf", "pkbtn"],
+    "_hinweisKauf": "btn-kauf = Fachseiten/preise.html (statisch im HTML). pkbtn = Lektionsseiten; dort haengt JS zur Laufzeit zusaetzlich 'kauf' an, was die blaue Farbe #102444 setzt. Beide gelten als korrekt gekennzeichneter Kauf-CTA.",
+    "keineFremdenStripeLinksAufFachseite": true,
+    "verboteneStrings": [
+      { "text": "alle drei",  "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 },
+      { "text": "Alle drei",  "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 },
+      { "text": "drei Kurse", "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 }
+    ]
+  }
+}
