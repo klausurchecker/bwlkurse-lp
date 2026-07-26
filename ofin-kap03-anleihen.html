@@ -430,6 +430,16 @@ a{color:var(--blue-d)}
 .btn:hover{filter:brightness(1.05);background:linear-gradient(180deg,#F59440,#E8760A)}
 .btn.alt{background:linear-gradient(180deg,#F59440,#E8760A);color:#2A1500}
 .btn.alt:hover{filter:brightness(1.05)}
+/* Farblogik: orange = kostet nichts, blau = kostet Geld.
+   ACHTUNG: --blue zeigt in dieser Datei historisch auf Orange (#E8760A),
+   deshalb eigene Variable --kauf, identisch zu den Landingpages. */
+/* Diese Seite hat (noch) keinen Dark Mode. Explizit hell deklarieren, damit der
+   Browser Formularfelder, Scrollbars und Auswahlmenues nicht dunkel dazumischt. */
+:root{color-scheme:light}
+:root{--kauf:#102444;--kauf-2:#1D3B6E}
+.btn.kauf{background:var(--kauf);color:#FFFFFF}
+.btn.kauf:hover{background:var(--kauf-2);filter:none}
+.bk-btn[href^="https://buy.stripe.com/"]{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
 .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.ghost:hover{background:#EFECE4;color:var(--ink)}
 .topbar{background:var(--card);color:var(--ink);border-bottom:1px solid var(--line)}
@@ -557,7 +567,7 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
   <p class="lead">Was ist eine Zahlung wert, die erst in Jahren fließt? Hier lernst du, künftige Zahlungen sauber auf heute abzuzinsen, von Barwert und Rentenformeln über die Bewertung von Anleihen bis zu Zinsstruktur und Effektivrendite. Ein klarer Rechenweg für einen klausurtypischen Aufgabentyp.</p>
   <p class="tagline">Passgenau zur Vorlesung von Prof. Schmeling · SoSe 2026 · deine OFIN-Klausurvorbereitung an der Goethe-Uni.</p>
   <div class="cta">
-    <a class="btn alt" href="#angebot">Jetzt vormerken</a>
+    <a class="btn kauf" href="#angebot">weitere Kapitel</a>
   </div>
 </div></section>
 <!-- PREISMODUL · BLOCK C (Freebar, optional): schmaler Hinweisstreifen direkt unter dem Hero.
@@ -831,7 +841,7 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
     var done=document.createElement('div'); done.className='callout'; done.style.borderLeftColor='#1c8c5a';
     done.innerHTML="<b>Dein Ergebnis: "+totalCorrect+" / "+totalAnswered+" richtig ("+pct+" %).</b><br>"+
       "Den Feinschliff, und deine persönlichen Fragen, machen wir im <b>Live Q&A</b>."+
-      "<div style='margin-top:.7rem'><a class='btn alt' href='#angebot'>Bestehe Deine Klausur, Platz sichern</a></div>";
+      "<div style='margin-top:.7rem'><a class='btn kauf' href='#angebot'>Bestehe Deine Klausur, Platz sichern</a></div>";
     qarea.appendChild(done); scoreTag.textContent="Endergebnis: "+totalCorrect+" / "+totalAnswered+" richtig";
   }
   roundIndex=1; renderSet(take('mittel',cfg.startCount), 'Runde 1 · '+cfg.startCount+' Fragen', null);

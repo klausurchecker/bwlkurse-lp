@@ -284,6 +284,9 @@ label.f{display:block;font-weight:600;margin:16px 0 6px;font-size:15px}
 }
 .gratis-card h3{font-size:22px;margin-bottom:6px}
 .gratis-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gratis-actions{display:flex;flex-direction:column;gap:10px}
+.gratis-actions .btn{justify-content:center;text-align:center;white-space:nowrap}
+@media(max-width:819px){.gratis-actions .btn{width:100%}}
 .chip{
   font-size:13px;font-weight:500;color:var(--text-2);
   background:var(--surface-2);border-radius:999px;padding:5px 12px;
@@ -792,7 +795,8 @@ window.BKBC = (function(){
       <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Schmeling.</p>
       <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">geprüfte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck starten</a>
+        <a class="btn btn-primary" href="ofin-kap03-anleihen.html">Gratis&#8209;Lektion starten</a>
+        <a class="btn btn-ghost" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck</a>
       </div>
       
       
@@ -861,8 +865,8 @@ window.BKBC = (function(){
 
       <!-- Inline-Opt-in: erscheint nach der Auswertung -->
       <div class="sc-optin" id="scOptin" hidden>
-        <b>Ein Fach komplett gratis – kostenlos und unverbindlich!</b>
-        <p class="fnote" style="margin:4px 0 12px">Mit deiner Anmeldung schaltest du Mikroökonomie in der App vollständig frei.</p>
+        <b>Dein Willkommensgeschenk: ein komplettes Fach gratis!</b>
+        <p class="fnote" style="margin:4px 0 12px">Zu deiner OFIN-Vorbereitung schalten wir dir zusätzlich das ganze Fach Mikroökonomie (OMIK) in der App frei – kostenlos und unverbindlich.</p>
         <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="scForm">
           <input type="hidden" name="locale" value="de">
           <input type="hidden" name="html_type" value="simple">
@@ -898,10 +902,13 @@ window.BKBC = (function(){
         <h3>Anleihen, Renten &amp; Zinsstruktur: die komplette Probe&#8209;Lektion</h3>
         <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der OFIN&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest mit 16 Fragen.</p>
         <div class="gratis-chips">
-          <span class="chip">Laplace</span><span class="chip">Bedingte WK</span><span class="chip">Unabhängigkeit</span><span class="chip">Satz von Bayes</span><span class="chip">Vierfeldertafel</span>
+          <span class="chip">Barwert</span><span class="chip">Rentenformel</span><span class="chip">Kupon</span><span class="chip">Zinsstruktur</span><span class="chip">Effektivrendite</span>
         </div>
       </div>
-      <a class="btn btn-primary" href="ofin-kap03-anleihen.html">Kostenlos starten</a>
+      <div class="gratis-actions">
+        <a class="btn btn-primary" href="ofin-kap03-anleihen.html">Kostenlos starten</a>
+        <a class="btn btn-app" href="https://ofin.klausurchecker.de/">OFIN&#8209;App öffnen</a>
+      </div>
     </div>
   </div>
 </section>
@@ -924,9 +931,9 @@ window.BKBC = (function(){
 <!-- ============ ANGEBOTS-STREIFEN (Live-Countdown) ============ -->
 <div class="offerstrip" id="offerstrip">
   <div class="wrap">
-    <div class="os-txt">Online&#8209;Vorteil bis 28.&nbsp;Juli 2026: <b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">80,10&nbsp;€</span> im Einzelkauf <span class="num">(9&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
+    <div class="os-txt">Online&#8209;Vorteil bis 28.&nbsp;Juli 2026:<br><b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">80,10&nbsp;€</span> im Einzelkauf <span class="num">(9&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
     <span class="os-clock num" id="osClock" aria-live="off">…</span>
-    <a class="btn btn-primary" href="#preise">Zu den Preisen</a>
+    <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
   </div>
 </div>
 
@@ -1035,7 +1042,7 @@ window.BKBC = (function(){
     <h2>Preise und Leistungen!</h2>
     <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;€ je Kapitel. Wer alles will, zahlt 49,90&nbsp;€ statt 80,10&nbsp;€ und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
 
-    <div class="ladder"><div class="tier feat"><span class="ribbon">Beliebteste Wahl</span><span class="rung">Komplettpaket</span><h3 style="color:var(--premium-ink)">OFIN Klausur-App + Workbook <span class="wb-sub">(alle Handouts)</span></h3><div class="price num"><span class="now">49,90&nbsp;€</span><span class="old">80,10&nbsp;€</span></div><p class="pd">Alle <b>9 Kapitel</b> als interaktive Lektionen · alle Handout-PDFs mit Aufgaben und Musterlösungen · Live Q&amp;A gratis dazu.</p><p class="cashback-hint">10&nbsp;€ Cashback für dein Feedback nach der Klausur (bis&nbsp;7.&nbsp;August).</p><a class="btn btn-primary" href="https://buy.stripe.com/5kQcN5e911U44mreLv8bS0n">Komplettpaket freischalten</a></div><div class="tier"><span class="rung">Einzelnes Kapitel</span><h3>Lektion + Handout</h3><div class="price num"><span class="now">8,90&nbsp;€</span></div><p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich.</p><p class="pd" style="margin-top:-4px">Ab <b>6 Kapiteln</b> ist das Komplettpaket günstiger.</p><details class="pl-akk"><summary class="btn btn-kauf">Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;01</span> Grundlagen: Arbitrage &amp; Barwert</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;02</span> Aktienbewertung</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;03</span> Anleihen, Renten &amp; Zinsstruktur</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;04</span> Risiko &amp; riskante Zahlungsströme</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;05</span> Portfoliotheorie &amp; Diversifikation</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;06</span> CAPM &amp; Kapitalkosten</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;07</span> Optionsbewertung</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;08</span> Kapitalstruktur: Modigliani-Miller</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;09</span> Klausurtraining</a></div></details></div><div class="tier"><span class="rung">Für Käufer</span><h3>Live Q&amp;A</h3><p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten!</p><p class="pd" style="margin-top:-4px">Den Termin stimmen wir in der WhatsApp-Gruppe ab.</p></div></div>
+    <div class="ladder"><div class="tier feat"><span class="ribbon">Beliebteste Wahl</span><span class="rung">Komplettpaket</span><h3 style="color:var(--premium-ink)">OFIN Klausur-App + Workbook <span class="wb-sub">(alle Handouts)</span></h3><div class="price num"><span class="now">49,90&nbsp;€</span><span class="old">80,10&nbsp;€</span></div><p class="pd">Alle <b>9 Kapitel</b> als interaktive Lektionen · alle Handout-PDFs mit Aufgaben und Musterlösungen · Live Q&amp;A gratis dazu.</p><p class="cashback-hint">10&nbsp;€ Cashback für dein Feedback nach der Klausur (bis&nbsp;7.&nbsp;August).</p><a class="btn btn-kauf" href="https://buy.stripe.com/5kQcN5e911U44mreLv8bS0n">Komplettpaket freischalten</a></div><div class="tier"><span class="rung">Einzelnes Kapitel</span><h3>Lektion + Handout</h3><div class="price num"><span class="now">8,90&nbsp;€</span></div><p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich.</p><p class="pd" style="margin-top:-4px">Ab <b>6 Kapiteln</b> ist das Komplettpaket günstiger.</p><details class="pl-akk"><summary class="btn btn-kauf">Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;01</span> Grundlagen: Arbitrage &amp; Barwert</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;02</span> Aktienbewertung</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;03</span> Anleihen, Renten &amp; Zinsstruktur</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;04</span> Risiko &amp; riskante Zahlungsströme</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;05</span> Portfoliotheorie &amp; Diversifikation</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;06</span> CAPM &amp; Kapitalkosten</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;07</span> Optionsbewertung</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;08</span> Kapitalstruktur: Modigliani-Miller</a><a href="https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k"><span class="kn">Kap.&nbsp;09</span> Klausurtraining</a></div></details></div><div class="tier"><span class="rung">Für Käufer</span><h3>Live Q&amp;A</h3><p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten!</p><p class="pd" style="margin-top:-4px">Den Termin stimmen wir in der WhatsApp-Gruppe ab.</p></div></div>
     <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
   </section>
 
@@ -1674,7 +1681,7 @@ h1,h2{letter-spacing:-.015em}
 </script>
 
 <div id="v2Bar" aria-hidden="true"></div>
-<div class="scta" id="v2Scta"><a class="btn btn-primary" href="#vormerken">Schaffst du’s?</a><a class="btn btn-kauf" href="preise.html?kurs=ofin">Ab&nbsp;8,90&nbsp;&euro;</a></div>
+<div class="scta" id="v2Scta"><a class="btn btn-primary" href="ofin-kap03-anleihen.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=ofin">Ab&nbsp;8,90&nbsp;&euro;</a></div>
 <style id="v2-mobil">
 /* ============================================================
    V2-MOBIL-LAYER · ofin.html (Livegang 22.07., V3) · Stand 22.07. (V3 nach Simons Feedback)
@@ -1767,7 +1774,8 @@ main section{padding:32px 0}
 main section .wrap>h2{margin-bottom:8px}
 .hero .wrap{padding-top:26px;padding-bottom:0}
 .hero-cta{margin:16px 0 4px}
-.hero-cta .btn-primary{width:100%;justify-content:center;text-align:center}
+.hero-cta .btn{justify-content:center;text-align:center}
+@media(max-width:639px){.hero-cta .btn{width:100%}}
 .v2-heroline{display:block;margin-top:10px}
 .v2-heroline a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .v2-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
@@ -1884,7 +1892,8 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 #kapitel .kap-sum{background:linear-gradient(180deg,var(--premium-2),var(--premium));
   color:var(--premium-ink);border-radius:var(--r-md);padding:18px;
   display:flex;flex-direction:column;gap:10px}
-#kapitel .kap-sum .btn{justify-content:center;text-align:center}
+#kapitel .kap-sum .btn{justify-content:center;text-align:center;width:100%}
+#kapitel .kap-sum{margin-top:12px}
 
 /* ---------- Touch-Ziele: Inline-Links auf 44 px ---------- */
 .fa a,.chk a,footer a,.fnote a,.v2-heroline a,.disclaimer a,.sub a{
@@ -2022,11 +2031,14 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
         '<div class="kap-btns">' +
         '<button type="button" data-v="ok" aria-pressed="false">sitzt</button>' +
         '<button type="button" data-v="no" aria-pressed="false">wackelt</button></div></div>';
-    }).join("") +
-    '<div class="kap-sum"><b class="kap-t" id="kapSumT">Bewerte alle 10 Kapitel.</b>' +
-    '<span id="kapSumS" class="chk"></span>' +
-    '<a class="btn btn-primary" href="#vormerken" id="kapSumBtn" data-merken="">Jetzt kostenlos anmelden</a></div>';
+    }).join("");
+    /* Summary bewusst NICHT im Rail: dort waere sie nur eine 64%-Karte der
+       Scroll-Schiene. Ausserhalb nimmt sie die volle Breite des Wraps ein. */
+    var sumHtml = '<div class="kap-sum"><b class="kap-t" id="kapSumT">Wie ist Dein Stand?</b>' +
+      '<span id="kapSumS" class="chk"></span>' +
+      '<a class="btn btn-primary" href="#vormerken" id="kapSumBtn" data-merken="">Jetzt kostenlos anmelden</a></div>';
     rail.innerHTML = html;
+    if(!document.querySelector("#kapitel .kap-sum")) rail.insertAdjacentHTML("afterend", sumHtml);
 
     var profil = document.getElementById("v2Profil");
     var bars = document.getElementById("v2ProfilBars");

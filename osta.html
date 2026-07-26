@@ -284,6 +284,9 @@ label.f{display:block;font-weight:600;margin:16px 0 6px;font-size:15px}
 }
 .gratis-card h3{font-size:22px;margin-bottom:6px}
 .gratis-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gratis-actions{display:flex;flex-direction:column;gap:10px}
+.gratis-actions .btn{justify-content:center;text-align:center;white-space:nowrap}
+@media(max-width:819px){.gratis-actions .btn{width:100%}}
 .chip{
   font-size:13px;font-weight:500;color:var(--text-2);
   background:var(--surface-2);border-radius:999px;padding:5px 12px;
@@ -792,7 +795,8 @@ window.BKBC = (function(){
       <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Hassler.</p>
       <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">geprüfte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck starten</a>
+        <a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion starten</a>
+        <a class="btn btn-ghost" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck</a>
       </div>
       
       
@@ -864,8 +868,8 @@ window.BKBC = (function(){
 
       <!-- Inline-Opt-in: erscheint nach der Auswertung -->
       <div class="sc-optin" id="scOptin" hidden>
-        <b>Ein Fach komplett gratis – kostenlos und unverbindlich!</b>
-        <p class="fnote" style="margin:4px 0 12px">Mit deiner Anmeldung schaltest du Mikroökonomie in der App vollständig frei.</p>
+        <b>Dein Willkommensgeschenk: ein komplettes Fach gratis!</b>
+        <p class="fnote" style="margin:4px 0 12px">Zu deiner OSTA-Vorbereitung schalten wir dir zusätzlich das ganze Fach Mikroökonomie (OMIK) in der App frei – kostenlos und unverbindlich.</p>
         <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="scForm">
           <input type="hidden" name="locale" value="de">
           <input type="hidden" name="html_type" value="simple">
@@ -904,7 +908,10 @@ window.BKBC = (function(){
           <span class="chip">Laplace</span><span class="chip">Bedingte WK</span><span class="chip">Unabhängigkeit</span><span class="chip">Satz von Bayes</span><span class="chip">Vierfeldertafel</span>
         </div>
       </div>
-      <a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Kostenlos starten</a>
+      <div class="gratis-actions">
+        <a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Kostenlos starten</a>
+        <a class="btn btn-app" href="https://osta.klausurchecker.de/">OSTA&#8209;App öffnen</a>
+      </div>
     </div>
   </div>
 </section>
@@ -929,7 +936,7 @@ window.BKBC = (function(){
   <div class="wrap">
     <div class="os-txt">Online&#8209;Vorteil bis 27.&nbsp;Juli 2026: <b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">89,00&nbsp;€</span> im Einzelkauf <span class="num">(10&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
     <span class="os-clock num" id="osClock" aria-live="off">…</span>
-    <a class="btn btn-primary" href="#preise">Zu den Preisen</a>
+    <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
   </div>
 </div>
 
@@ -1038,7 +1045,7 @@ window.BKBC = (function(){
     <h2>Preise und Leistungen!</h2>
     <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;€ je Kapitel. Wer alles will, zahlt 49,90&nbsp;€ statt 89,00&nbsp;€ und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
 
-    <div class="ladder"><div class="tier feat"><span class="ribbon">Beliebteste Wahl</span><span class="rung">Komplettpaket</span><h3 style="color:var(--premium-ink)">OSTA Klausur-App + Workbook <span class="wb-sub">(alle Handouts)</span></h3><div class="price num"><span class="now">49,90&nbsp;€</span><span class="old">89,00&nbsp;€</span></div><p class="pd">Alle <b>10 Kapitel</b> als interaktive Lektionen · alle Handout-PDFs mit Aufgaben und Musterlösungen · Live Q&amp;A gratis dazu.</p><p class="cashback-hint">10&nbsp;€ Cashback für dein Feedback nach der Klausur (bis&nbsp;7.&nbsp;August).</p><a class="btn btn-primary" href="https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l">Komplettpaket freischalten</a></div><div class="tier"><span class="rung">Einzelnes Kapitel</span><h3>Lektion + Handout</h3><div class="price num"><span class="now">8,90&nbsp;€</span></div><p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich.</p><p class="pd" style="margin-top:-4px">Ab <b>6 Kapiteln</b> ist das Komplettpaket günstiger.</p><details class="pl-akk"><summary class="btn btn-kauf">Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;01</span> Deskriptive Statistik I: Lage &amp; Streuung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;02</span> Deskriptive Statistik II: Zusammenhang &amp; Regression</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;03</span> Wahrscheinlich&shy;keits&shy;rechnung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;04</span> Zufallsvariablen</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;05</span> Verteilungsmodelle: Binomial &amp; Poisson</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;06</span> Normalverteilung &amp; Stichprobenmittel</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;07</span> Schätzen: Punktschätzer &amp; Maximum Likelihood</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;08</span> Konfidenzintervalle</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;09</span> Testen I: Testprinzip &amp; Gauß-Test</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;10</span> Testen II: t-Test &amp; Chi-Quadrat</a></div></details></div><div class="tier"><span class="rung">Für Käufer</span><h3>Live Q&amp;A</h3><p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten!</p><p class="pd" style="margin-top:-4px">Den Termin stimmen wir in der WhatsApp-Gruppe ab.</p></div></div>
+    <div class="ladder"><div class="tier feat"><span class="ribbon">Beliebteste Wahl</span><span class="rung">Komplettpaket</span><h3 style="color:var(--premium-ink)">OSTA Klausur-App + Workbook <span class="wb-sub">(alle Handouts)</span></h3><div class="price num"><span class="now">49,90&nbsp;€</span><span class="old">89,00&nbsp;€</span></div><p class="pd">Alle <b>10 Kapitel</b> als interaktive Lektionen · alle Handout-PDFs mit Aufgaben und Musterlösungen · Live Q&amp;A gratis dazu.</p><p class="cashback-hint">10&nbsp;€ Cashback für dein Feedback nach der Klausur (bis&nbsp;7.&nbsp;August).</p><a class="btn btn-kauf" href="https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l">Komplettpaket freischalten</a></div><div class="tier"><span class="rung">Einzelnes Kapitel</span><h3>Lektion + Handout</h3><div class="price num"><span class="now">8,90&nbsp;€</span></div><p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich.</p><p class="pd" style="margin-top:-4px">Ab <b>6 Kapiteln</b> ist das Komplettpaket günstiger.</p><details class="pl-akk"><summary class="btn btn-kauf">Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;01</span> Deskriptive Statistik I: Lage &amp; Streuung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;02</span> Deskriptive Statistik II: Zusammenhang &amp; Regression</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;03</span> Wahrscheinlich&shy;keits&shy;rechnung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;04</span> Zufallsvariablen</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;05</span> Verteilungsmodelle: Binomial &amp; Poisson</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;06</span> Normalverteilung &amp; Stichprobenmittel</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;07</span> Schätzen: Punktschätzer &amp; Maximum Likelihood</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;08</span> Konfidenzintervalle</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;09</span> Testen I: Testprinzip &amp; Gauß-Test</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;10</span> Testen II: t-Test &amp; Chi-Quadrat</a></div></details></div><div class="tier"><span class="rung">Für Käufer</span><h3>Live Q&amp;A</h3><p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten!</p><p class="pd" style="margin-top:-4px">Den Termin stimmen wir in der WhatsApp-Gruppe ab.</p></div></div>
     <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
   </section>
 
@@ -1677,7 +1684,7 @@ h1,h2{letter-spacing:-.015em}
 </script>
 
 <div id="v2Bar" aria-hidden="true"></div>
-<div class="scta" id="v2Scta"><a class="btn btn-primary" href="#vormerken">Schaffst du’s?</a><a class="btn btn-kauf" href="preise.html?kurs=osta">Ab&nbsp;8,90&nbsp;&euro;</a></div>
+<div class="scta" id="v2Scta"><a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=osta">Ab&nbsp;8,90&nbsp;&euro;</a></div>
 <style id="v2-mobil">
 /* ============================================================
    V2-MOBIL-LAYER · osta.html (Livegang 22.07., V3) · Stand 22.07. (V3 nach Simons Feedback)
@@ -1770,7 +1777,8 @@ main section{padding:32px 0}
 main section .wrap>h2{margin-bottom:8px}
 .hero .wrap{padding-top:26px;padding-bottom:0}
 .hero-cta{margin:16px 0 4px}
-.hero-cta .btn-primary{width:100%;justify-content:center;text-align:center}
+.hero-cta .btn{justify-content:center;text-align:center}
+@media(max-width:639px){.hero-cta .btn{width:100%}}
 .v2-heroline{display:block;margin-top:10px}
 .v2-heroline a{color:var(--text-2);text-decoration:underline;text-underline-offset:3px}
 .v2-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
