@@ -91,7 +91,10 @@
     "funktionen": ["anmeldung", "free-signup", "magic-login", "passwort-reset"],
     "formularAktionEnthaelt": "functions/v1/anmeldung",
     "appBackendUrl": "https://adrfijztnbebzghumdxn.supabase.co",
-    "appAnonPraefix": "sb_publishable_"
+    "appAnonPraefix": "sb_publishable_",
+    "verboteneAppMuster": ["start2026", "Vorschau-Demo", "Demo-Passwort"],
+    "_hinweisDemo": "Die Apps enthielten ein zweites, aelteres Login-Modul mit hartcodiertem Start-Passwort. Es sollte sich per Flag abschalten, aber sein Guard las window.BK_BACKEND, das erst SPAETER im Dokument gesetzt wurde - der Guard griff also nie. Folge: ein Klick auf 'Anmelden' fuehrte auf die Erstanmeldung, wo 'start2026' plus ein frei gewaehltes Passwort ein lokales Schein-Konto anlegte und die App oeffnete. Bezahlinhalte blieben zu, aber ein zahlender Kunde konnte sich dort ein Phantom-Konto bauen.",
+    "skriptReihenfolge": { "zuerst": "bkBackendCfg", "danach": "bklgScript" }
   },
 
   "regeln": {

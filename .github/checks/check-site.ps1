@@ -446,6 +446,25 @@ if ((Soll-Laufen "Signup") -and $Cfg.signup) {
     if ($s.Inhalt -notmatch [regex]::Escape($sg.appAnonPraefix)) {
       Add-Befund FEHLER "Signup" "$($f.kuerzel)-App nutzt keinen Key mit Praefix '$($sg.appAnonPraefix)' (alter Legacy-JWT?) - Login bricht bei der Key-Rotation"
     }
+    # Kein Demo-Passwort und kein Vorschau-Rest darf ausgeliefert werden.
+    foreach ($muster in $sg.verboteneAppMuster) {
+      if ($s.Inhalt -match [regex]::Escape($muster)) {
+        Add-Befund FEHLER "Signup" "$($f.kuerzel)-App liefert '$muster' aus - Demo-Rest im produktiven Login"
+      }
+    }
+    # Der Flag-Guard des alten Demo-Login-Moduls liest window.BK_BACKEND. Steht die
+    # Konfiguration im Dokument HINTER dem Modul, ist sie zur Laufzeit noch undefined
+    # und der Guard greift nicht - dann laeuft ein zweiter Anmeldeweg parallel mit.
+    if ($sg.skriptReihenfolge) {
+      $posZuerst = $s.Inhalt.IndexOf("id=`"$($sg.skriptReihenfolge.zuerst)`"")
+      $posDanach = $s.Inhalt.IndexOf("id=`"$($sg.skriptReihenfolge.danach)`"")
+      if ($posZuerst -ge 0 -and $posDanach -ge 0 -and $posZuerst -gt $posDanach) {
+        Add-Befund FEHLER "Signup" "$($f.kuerzel)-App: '$($sg.skriptReihenfolge.zuerst)' steht hinter '$($sg.skriptReihenfolge.danach)' - der Flag-Guard des alten Demo-Logins greift nicht, ein zweiter Anmeldeweg ist aktiv"
+      }
+    }
+    if ($s.Inhalt -notmatch 'BK_BACKEND\s*=\s*\{\s*enabled\s*:\s*true') {
+      Add-Befund FEHLER "Signup" "$($f.kuerzel)-App: BK_BACKEND ist nicht auf enabled:true - die App laeuft im Demo-Modus statt gegen Supabase"
+    }
     $fc = [regex]::Match($s.Inhalt, 'data-fachcode="([A-Z]+)"')
     if (-not $fc.Success) {
       Add-Befund WARNUNG "Signup" "$($f.kuerzel)-App: kein data-fachcode im Login-Overlay gefunden"
