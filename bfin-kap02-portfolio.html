@@ -1,20 +1,34 @@
-<!DOCTYPE html>
 <!--
 ================================================================================
-  OSTA · Kapitel 3 – Wahrscheinlichkeitsrechnung (GRATIS-Probe-Lektion) · Struktur v2 (10 Kapitel)
-  Gebaut aus _KURSSYSTEM/vorlagen/Lektion_VORLAGE.html (CSS/Quiz-Engine/Tooltip-JS
-  und Preismodul BLOCK A–E wörtlich übernommen).
+  BFIN . Kapitel 2 - Aktien & Portfoliotheorie (GRATIS-Probe-Lektion)
+  Rahmen (Kopf/CSS/Preismodul/Buchungsmodul/vm-Anmeldemodal/Sticky-Bar/Quiz-Huelle/
+  Tooltip-JS) uebernommen aus der LP-Form-Referenz bmgt-kap02-oligopol.html
+  (live, V3-Preise, Kanon-gruen, 26.07.2026) . Lehrinhalt (Einstieg/Fahrplan/
+  (1)-(4)/FAQ/Fragenbank/Grafik-JS/Person-Bio) unveraendert aus
+  BFIN/lektionen/bfin-kap02-portfolio.html uebernommen - siehe dort fuer
+  Quellenangaben/Zahlen-Verifikation (BFIN/compute/compute_bfin-kap02-portfolio.py).
+  Umbau V2->V3 (28.07.2026): Preise V3, MIT Streichpreis (KANON 2.2: 7 Kap. x
+  8,90 EUR = 62,30 EUR gegen 49,90 EUR = -20,0 % Ersparnis, ueber der 15-%-Schwelle
+  -> Streichpreis zeigen, anders als bei BMGT/BMAK/PFIN mit nur 6 Kapiteln).
+  Fruehbucher-/Modus-Umschalter (Praesenzseminar) ersatzlos raus. Kauf-Farblogik
+  (--kauf). Kauf-CTAs -> https://bfin.klausurchecker.de/ (BFIN-Stripe-Links
+  existieren noch nicht, 28.07.2026 - Platzhalter mit TODO-PLINK-Markern:
+  paket = Komplettpaket-Button, bundle = Kapitel-Auswahl-Akkordeon).
 --------------------------------------------------------------------------------
-  Eingesetzte Platzhalter:
-    MARKE=BWL Kurse · FARBE_NAVY=#3a4a5e · FARBE_AKZENT=#4e769c · FARBE_GOLD=#ffc041 ·
-    LOGO_PFAD=bwlkurse-mark.png · LOGO_ALT=BWL Kurse · FACH_NAME=Statistik ·
-    FACH_KUERZEL=OSTA · VORLESUNGSTEIL=Statistik (OSTA) Goethe-Uni Frankfurt ·
-    KAPITEL_NR=3 · KAPITEL_THEMA=Wahrscheinlichkeitsrechnung ·
-    KAPITEL_SLUG=osta-kap03-wahrscheinlichkeit · LIVEQ_KEY=liveQ_osta-kap03-wahrscheinlichkeit ·
-    PREIS_KOMPLETT=49,90 € · PREIS_STREICH=89,00 € (Einzelkauf 10 × 8,90 €) · PREIS_FRUEHBUCHER=49,90 € ·
-    FRUEHBUCHER_FRIST=2026-07-27 · FRUEHBUCHER_FRIST_TEXT=27. Juli 2026 ·
-    CTA_TEXT=weitere Kapitel · PERSON_NAME=René Flé · PERSON_FOTO=rene-2026.jpg.
-  Prof-USP (Verkaufsargument, faktisch belegt): "Passgenau zur Vorlesung von Prof. Hassler · SoSe 2026".
+  Eingesetzte Werte:
+    MARKE=BWL Kurse . FARBE_NAVY=#20232A (Redesign) . FARBE_AKZENT=#E8760A .
+    LOGO_PFAD=bwlkurse-mark.png . LOGO_ALT=BWL Kurse . FACH_NAME=Finanzen 2 .
+    FACH_KUERZEL=BFIN . VORLESUNGSTEIL=Finanzen 2 (BFIN) Goethe-Uni Frankfurt .
+    KAPITEL_NR=2 . KAPITEL_THEMA=Aktien & Portfoliotheorie .
+    KAPITEL_SLUG=bfin-kap02-portfolio . LIVEQ_KEY=liveQ_bfin-kap02-portfolio .
+    PREIS_KOMPLETT=49,90 EUR (V3, Streichpreis 62,30 EUR = 7 x 8,90 EUR, -20,0 %) .
+    PREIS_EINZELLEKTION=8,90 EUR (Lektion+Handout untrennbar) .
+    PREIS_QA=10,00 EUR (im Komplettpaket gratis) .
+    CASHBACK=10,00 EUR nach Klausur-Feedback . CTA_TEXT=weitere Kapitel (btn kauf) .
+    KLAUSUR=Mi 29.07.2026, 11:00 Uhr (Prof. Hackethal & Prof. Maurer) .
+    FRIST=28.07.2026 . PERSON_NAME=Rene Fle . PERSON_FOTO=rene-2026.jpg.
+  Prof-USP (Verkaufsargument, faktisch belegt): "Passgenau zur Vorlesung von
+  Prof. Hackethal & Prof. Maurer . Sommersemester 2026".
 ================================================================================
 -->
 <html lang="de">
@@ -24,7 +38,7 @@
 <link rel="icon" type="image/png" href="bwlkurse-mark.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
-<title>BWL Kurse · Statistik · Kapitel 3: Wahrscheinlichkeitsrechnung</title>
+<title>BWL Kurse · Finanzen 2 · Kapitel 2: Aktien &amp; Portfoliotheorie</title>
 <style>
 :root{
   --navy:#3a4a5e; --navy2:#4e769c; --blue:#4e769c; --blue-d:#3d5d7d;
@@ -417,7 +431,7 @@ ul.check li.off:before{content:"\2013";color:var(--grey, #586a80)}
   body{padding-bottom:78px}
 </style>
 </head>
-<body data-fach="OSTA" data-kapitel-slug="osta-kap03-wahrscheinlichkeit">
+<body data-fach="BFIN" data-kapitel-slug="bfin-kap02-portfolio">
 
 <style id="redesign-override">
 :root{--navy:#20232A;--navy2:#2A2E36;--blue:#E8760A;--blue-d:#B85E00;--grey:#5F6169;--line:#DEDCD4;--bg:#EAE9E5;--card:#F8F7F4;--ink:#1B1D21;--gold:#E8760A;--gold-bg:#FBEAD4;--accent:#E8760A;--se:"Fraunces",Georgia,serif;--sa:"Inter",system-ui,-apple-system,sans-serif}
@@ -440,6 +454,9 @@ a{color:var(--blue-d)}
 .btn.kauf{background:var(--kauf);color:#FFFFFF}
 .btn.kauf:hover{background:var(--kauf-2);filter:none}
 .bk-btn[href^="https://buy.stripe.com/"]{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+/* Kauf-Farbe explizit per Klasse: die href-Regel greift nur bei buy.stripe.com-Zielen */
+.bk-btn.kauf{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+.bk-btn.kauf:hover{background:var(--kauf-2);border-color:var(--kauf-2)}
 .btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
 .btn.ghost:hover{background:#EFECE4;color:var(--ink)}
 .topbar{background:var(--card);color:var(--ink);border-bottom:1px solid var(--line)}
@@ -554,17 +571,19 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 .tby b{display:block;font-size:.95rem}.tby span{font-size:.82rem;color:var(--grey)}
 </style>
 <div class="topbar"><div class="wrap">
+  <a href="bfin.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;min-width:0">
   <img src="data:image/png;base64,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" alt="BWL Kurse">
   <div class="brand">BWL Kurse</div>
+  </a>
   <div class="spacer"></div>
   <!-- PREISMODUL · BLOCK A (Header-Preis-Pill): führt per Anker zur Angebots-Sektion #angebot -->
-  <a class="pill" href="#angebot">Schaffst du’s?</a>
+  <a class="pill" href="#angebot">weitere Kapitel</a>
 </div></div>
 
 <section class="hero"><div class="wrap">
-  
-  <h1>Wahrscheinlichkeitsrechnung</h1>
-  <p class="lead">Wie wahrscheinlich ist das wirklich? Hier lernst du, mit Wahrscheinlichkeiten sauber zu rechnen – von Laplace und den Ereignisoperationen über die bedingte Wahrscheinlichkeit bis zum Satz von Bayes und der Vierfeldertafel. Ein klarer Rechenweg für einen klausurtypischen Aufgabentyp.</p>
+  <span class="badge">Finanzen 2 (BFIN) · Goethe-Uni Frankfurt · Kapitel 2</span><span class="profbadge">Passgenau zur Vorlesung von Prof. Hackethal &amp; Prof. Maurer · Sommersemester 2026</span>
+  <h1>Aktien &amp; Portfoliotheorie</h1>
+  <p class="lead">Warum ist ein Aktienkorb mehr als die Summe seiner Teile? Du lernst, wie Kovarianz und Korrelation das Portfoliorisiko drücken, wie du das Minimum-Varianz-Portfolio findest und wie aus Effizienzlinie, Tangentialportfolio und Kapitalmarktlinie das optimale Depot nach Markowitz entsteht – inklusive Leerverkäufen und Sharpe Ratio.</p>
   <p class="tagline">Deine Klausurvorbereitung an der Goethe-Uni – seit 1999, passgenau zu deiner Vorlesung.</p>
   <div class="cta">
     <a class="btn kauf" href="#angebot">weitere Kapitel</a>
@@ -573,7 +592,7 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 <!-- PREISMODUL · BLOCK C (Freebar, optional): schmaler Hinweisstreifen direkt unter dem Hero.
      Wird bei Fristablauf per Block-D-JS ausgeblendet. -->
 <div class="freebar" id="freebar">
-  ★ Online-Vorteil bis 27. Juli 2026 – sichere dir jetzt den vergünstigten Preis.
+  ★ Klausur Mi 29.07.2026, 11:00 Uhr (Prof. Hackethal &amp; Prof. Maurer) – sichere dir deine Unterlagen bis 28. Juli 2026.
 </div>
 
 <div class="wrap">
@@ -582,80 +601,98 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
   <div id="lernpfad">
   <h2 id="einstieg">Einstieg</h2>
   <div class="callout birken">
-    <p>Ein Arzt sagt dir: Du hast einen Test auf eine <b>seltene</b> Krankheit gemacht – und er ist <b>positiv</b>. Der Test gilt als &bdquo;sehr zuverlässig&ldquo;. Wie sicher bist du jetzt wirklich krank? Die meisten schätzen &bdquo;fast sicher&ldquo;. Die überraschende Antwort: oft nur rund <b>ein Viertel</b>. Der Grund steckt nicht im Test, sondern darin, wie <i>selten</i> die Krankheit von vornherein ist.</p>
-    <p>Genau dasselbe Muster steckt hinter Spamfiltern, Qualitätskontrollen und jedem Glücksspiel: Man muss <b>Wahrscheinlichkeiten richtig verknüpfen</b>. In diesem Kapitel bekommst du dafür das Werkzeug – von der einfachen Laplace-Formel bis zum Satz von Bayes, mit dem sich das Test-Rätsel oben in zwei Zeilen auflöst.</p>
+    <p><b>Stell dir zwei Buden auf dem Campus-Sommerfest vor:</b> Die eine verkauft Eis, die andere Regenponchos. Setzt du dein ganzes Standgeld auf die Eisbude, entscheidet allein das Wetter über deinen Gewinn. Teilst du es auf beide Buden auf, gilt: Scheint die Sonne, brummt das Eisgeschäft – schüttet es, rettet der Ponchostand den Tag. Dein <i>Gesamtergebnis</i> schwankt viel weniger, obwohl jede einzelne Bude ein Wackelkandidat bleibt.</p>
+<p>Genau das ist die Kernidee der Portfoliotheorie nach Markowitz: Aktien nicht einzeln beurteilen, sondern als Team. Wie stark der Beruhigungseffekt ist, hängt davon ab, wie die Renditen <i>zusammen</i> schwanken – und dafür brauchst du genau zwei neue Werkzeuge: Kovarianz und Korrelation.</p>
     <p class="muted" style="margin:.6rem 0 0"><b>Kurz erklärt – „Neugier-Fragen":</b> kleine Fragen, die du dir <i>selbst</i> stellst, um aktiv mitzudenken – nicht zum Googeln, sondern zum inneren Beantworten, während die Lektion läuft. <b>So funktioniert's</b> – an einer Frage einmal vorgemacht (Frage → Denk-Schritt → Antwort, die du gleich prüfst):</p>
-  <ul class="neugier-list muted"><li><b>Frage:</b> Warum kann ein positiver Test bei einer seltenen Krankheit trotzdem nur mit rund 25 % bedeuten, dass man krank ist? <b>→ Denk-Schritt:</b> Rechne nicht mit dem Test allein, sondern denk an 10.000 Menschen: wenige echte Kranke, aber viele Gesunde, von denen ein kleiner Anteil fälschlich positiv testet. <b>→ Antwort:</b> Die vielen falsch-positiven Gesunden überwiegen die wenigen echten Kranken – das rechnen wir gleich mit Bayes nach.</li><li>Zwei Ereignisse schließen sich gegenseitig aus – sind sie deshalb auch stochastisch unabhängig?</li><li>Ist P(A|B) immer gleich P(B|A) – oder kann derselbe Zusammenhang &bdquo;von der anderen Seite&ldquo; ganz anders aussehen?</li></ul>
+  <ul class="neugier-list muted"><li><b>Einmal vorgemacht – Frage:</b> Zwei Aktien schwanken jede um 20 %. Schwankt ein 50/50-Portfolio dann auch um 20 %? <b>Denk-Schritt:</b> Nur wenn beide Kurse immer exakt im Gleichschritt laufen (ρ = +1), addieren sich die Ausschläge voll – sonst gleicht ein Teil der Ausschläge sich gegenseitig aus. <b>Antwort:</b> In der Regel nein, das Portfolio schwankt weniger – wie viel weniger, bestimmt die Korrelation (prüfst du gleich in Abschnitt ① und ②).</li><li>Warum halten nach der Tobin-Separation vorsichtige Sparer und risikofreudige Anleger <i>dasselbe</i> Aktienportfolio – und worin unterscheiden sie sich dann überhaupt? (Abschnitt ④)</li><li>Wieso lässt sich ausgerechnet mit zwei <i>perfekt gleichlaufenden</i> Aktien (ρ = +1) über einen Leerverkauf ein nahezu risikoloses Portfolio bauen? (Abschnitt ②)</li></ul>
   </div>
 
   <!-- FAHRPLAN (Roter Faden) -->
-  <div class="callout fahrplan" style="border-left-color:var(--gold);background:#fbf6ee;margin-top:1.2rem"><b>Dein Fahrplan durch dieses Thema:</b><div class="fp-step">① Grundbegriffe klären und mit der Laplace-Formel einfache Wahrscheinlichkeiten berechnen.</div><div class="fp-step">② Ereignisse verknüpfen: Vereinigung, Schnitt, Komplement, Differenz – mit Additionssatz und De Morgan.</div><div class="fp-step">③ Bedingte Wahrscheinlichkeit, Multiplikationssatz und stochastische Unabhängigkeit unterscheiden.</div><div class="fp-step">④ Alles zusammenführen: Satz der totalen Wahrscheinlichkeit, Satz von Bayes und die Vierfeldertafel.</div></div>
+  <div class="callout fahrplan"n" style="border-left-color:var(--gold);background:#fbf6ee;margin-top:1.2rem"><b>Dein Fahrplan durch dieses Thema:</b><div class="fp-step">① Rendite und Risiko im Portfolio: Kovarianz und Korrelation als Stellschrauben verstehen</div><div class="fp-step">② Diversifikation im μ-σ-Diagramm: Grenzfälle ρ = ±1, Minimum-Varianz-Portfolio und der Spezialfall Leerverkäufe</div><div class="fp-step">③ Von 2 auf N Aktien: die Varianz-Kovarianz-Matrix als Rechenschema</div><div class="fp-step">④ Effizienzlinie, Tangentialportfolio und Kapitalmarktlinie – bis zur Sharpe Ratio</div></div>
 
-  <p>Wir gehen den Fahrplan Schritt für Schritt entlang und lösen am Ende an einem einzigen durchgerechneten Beispiel das Test-Rätsel aus dem Einstieg – so siehst du, wie die Bausteine ineinandergreifen.</p>
-
-  <!-- ===================== LERNINHALT ===================== -->
-  <h2>① Grundbegriffe und Laplace-Wahrscheinlichkeit</h2>
-  <p>Ein Zufallsvorgang hat mehrere mögliche <b>Ergebnisse</b>; die Menge aller Ergebnisse ist der <span class="term" tabindex="0">Ergebnisraum<span class="tip">Ω (Omega): die Menge aller möglichen Ergebnisse eines Zufallsvorgangs. Beim Würfel Ω = {1, 2, 3, 4, 5, 6}. Es gilt stets P(Ω) = 1.</span></span> &Omega;. Ein <b>Ereignis</b> A ist eine Teilmenge davon – z.&nbsp;B. beim Würfel A = &bdquo;gerade Augenzahl&ldquo; = {2, 4, 6}. Sind alle Ergebnisse gleich wahrscheinlich, greift die <span class="term" tabindex="0">Laplace-Wahrscheinlichkeit<span class="tip">P(A) = Anzahl der für A günstigen Ergebnisse / Anzahl aller möglichen Ergebnisse. Setzt gleich wahrscheinliche Ergebnisse voraus (fairer Würfel, faire Münze).</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A) = günstige Ergebnisse / mögliche Ergebnisse = |A| / |&Omega;|</span></p>
-  <p>Beispiel Würfel: P(gerade) = 3/6 = 1/2. Jede Wahrscheinlichkeit liegt zwischen 0 (unmögliches Ereignis) und 1 (sicheres Ereignis, P(&Omega;) = 1). Beim mehrstufigen Vorgang gilt die Merkregel: <b>&bdquo;UND&ldquo; heißt multiplizieren, &bdquo;ODER&ldquo; heißt addieren</b> – dazu gleich mehr.</p>
-
-  <h2>② Ereignisse verknüpfen</h2>
-  <p>Aus zwei Ereignissen A und B bildet man neue. Das <b>Venn-Diagramm</b> macht sie anschaulich: der Schnitt A&cap;B (&bdquo;A und B&ldquo;), die Vereinigung A&cup;B (&bdquo;A oder B oder beides&ldquo;) und das <span class="term" tabindex="0">Komplement<span class="tip">A&#772; (&bdquo;nicht A&ldquo;) = Gegenereignis. Es gilt P(A&#772;) = 1 − P(A), denn A und A&#772; füllen zusammen den ganzen Ergebnisraum.</span></span> A&#772;. Für die Vereinigung gilt der <span class="term" tabindex="0">Additionssatz<span class="tip">P(A&cup;B) = P(A) + P(B) − P(A&cap;B). Der Schnitt wird abgezogen, weil er sonst doppelt gezählt würde.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A&cup;B) = P(A) + P(B) &minus; P(A&cap;B)</span> &nbsp;&nbsp; <span class="formula">P(A&#772;) = 1 &minus; P(A)</span></p>
-  <p>Zwei weitere nützliche Bausteine: die Differenz P(A&#92;B) = P(A) &minus; P(A&cap;B) (&bdquo;A ohne B&ldquo;) und die Regeln von <span class="term" tabindex="0">De Morgan<span class="tip">&bdquo;Weder A noch B&ldquo;: P(A&#772;&cap;B&#772;) = 1 − P(A&cup;B). &bdquo;Nicht beide gleichzeitig&ldquo;: P(A&#772;&cup;B&#772;) = 1 − P(A&cap;B).</span></span>, mit denen sich &bdquo;weder noch&ldquo; sauber umformen lässt: P(A&#772;&cap;B&#772;) = 1 &minus; P(A&cup;B).</p>
-
-  <h2>③ Bedingte Wahrscheinlichkeit und Unabhängigkeit</h2>
-  <p>Oft weiß man schon, dass ein Ereignis B eingetreten ist, und fragt nach A <i>unter dieser Bedingung</i>. Das ist die <span class="term" tabindex="0">bedingte Wahrscheinlichkeit<span class="tip">P(A|B) = P(A&cap;B) / P(B): die Wahrscheinlichkeit von A, wenn bekannt ist, dass B eingetreten ist. Der Ergebnisraum &bdquo;schrumpft&ldquo; auf B.</span></span> P(A|B). Stellt man diese Formel um, erhält man den <span class="term" tabindex="0">Multiplikationssatz<span class="tip">P(A&cap;B) = P(A|B)·P(B) = P(B|A)·P(A). Gilt immer – auch bei abhängigen Ereignissen.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(A|B) = P(A&cap;B) / P(B)</span> &nbsp;&nbsp; <span class="formula">P(A&cap;B) = P(A|B) &middot; P(B) = P(B|A) &middot; P(A)</span></p>
-  <p>Wichtig: P(A|B) und P(B|A) sind im Allgemeinen <b>verschieden</b> – gleicher Zähler P(A&cap;B), aber verschiedene Nenner. Ein Sonderfall ist die <span class="term" tabindex="0">stochastische Unabhängigkeit<span class="tip">A und B sind unabhängig, wenn P(A|B) = P(A), gleichbedeutend mit P(A&cap;B) = P(A)·P(B). Achtung: „unabhängig" ist NICHT dasselbe wie „schließt sich aus".</span></span>: Weiß man über A nichts Neues, wenn B eingetreten ist, dann gilt der einfache Produktsatz P(A&cap;B) = P(A) &middot; P(B).</p>
-
-  <h2>④ Totale Wahrscheinlichkeit und Satz von Bayes</h2>
-  <p>Zerlegt man den Ergebnisraum in disjunkte Fälle A&#8321;, A&#8322;, …, liefert der <span class="term" tabindex="0">Satz der totalen Wahrscheinlichkeit<span class="tip">P(B) = Σ P(B|Aᵢ)·P(Aᵢ): die Gesamtwahrscheinlichkeit von B als gewichtete Summe über alle Fälle Aᵢ.</span></span> die Gesamtwahrscheinlichkeit eines Ereignisses B. Dreht man die Bedingung um – von P(B|A) zu P(A|B) –, hilft der <span class="term" tabindex="0">Satz von Bayes<span class="tip">P(A|B) = P(B|A)·P(A) / P(B). Rechnet von der bekannten Richtung P(B|A) auf die gesuchte P(A|B) zurück.</span></span>:</p>
-  <p class="fblock"><span class="formula">P(B) = Σ P(B|Aᵢ) &middot; P(Aᵢ)</span> &nbsp;&nbsp; <span class="formula">P(A|B) = P(B|A) &middot; P(A) / P(B)</span></p>
-  <p>Bei genau zwei Fällen (A und A&#772;) lässt sich alles bequem in einer <b>Vierfeldertafel</b> anordnen: die vier gemeinsamen Wahrscheinlichkeiten P(A&cap;B), P(A&cap;B&#772;), P(A&#772;&cap;B), P(A&#772;&cap;B&#772;) im Inneren, die Rand­summen außen. Genau das nutzen wir jetzt.</p>
+  <h2>① Rendite und Risiko im Portfolio: Kovarianz &amp; Korrelation</h2>
+  <p>Bei der <b>erwarteten Rendite</b> ist die Portfolio-Welt noch bequem: Sie ist einfach der mit den Anlagegewichten gewichtete Durchschnitt der Einzelrenditen.</p>
+  <p class="fblock"><span class="formula">μ<sub>P</sub> = x<sub>A</sub> · μ<sub>A</sub> + x<sub>B</sub> · μ<sub>B</sub></span></p>
+  <p>Beim <b>Risiko</b> funktioniert genau das nicht – und das ist die wichtigste Botschaft dieses Kapitels. In der Portfoliovarianz zweier Aktien taucht neben den Einzelvarianzen ein dritter Summand auf, in dem die <span class="term" tabindex="0">Kovarianz<span class="tip">σ<sub>AB</sub> misst, ob die Renditen von A und B tendenziell gemeinsam nach oben/unten ausschlagen (σ<sub>AB</sub> &gt; 0) oder gegenläufig (σ<sub>AB</sub> &lt; 0). Einheit: Prozent zum Quadrat – deshalb schwer zu interpretieren.</span></span> σ<sub>AB</sub> der beiden Renditen steckt:</p>
+  <p class="fblock"><span class="formula">σ<sub>P</sub><sup>2</sup> = x<sub>A</sub><sup>2</sup> · σ<sub>A</sub><sup>2</sup> + x<sub>B</sub><sup>2</sup> · σ<sub>B</sub><sup>2</sup> + 2 · x<sub>A</sub> · x<sub>B</sub> · σ<sub>AB</sub></span></p>
+  <p class="muted">Mit x<sub>B</sub> = 1 − x<sub>A</sub>, wenn das ganze Budget auf A und B verteilt wird. Aus Renditereihen schätzt du die Kovarianz nach dem Schema d<sub>xy</sub> = <span style="text-decoration:overline">x·y</span> − <span style="text-decoration:overline">x</span> · <span style="text-decoration:overline">y</span> („Durchschnitt der Produkte minus Produkt der Durchschnitte").</p>
+  <p>Weil die Kovarianz als „Prozent zum Quadrat" unhandlich ist, normiert man sie zum <span class="term" tabindex="0">Korrelationskoeffizienten<span class="tip">ρ<sub>AB</sub> = σ<sub>AB</sub> / (σ<sub>A</sub> · σ<sub>B</sub>). Dimensionslose Richtungs- und Stärkekennzahl des Gleichlaufs, immer zwischen −1 und +1.</span></span> ρ<sub>AB</sub>:</p>
+  <p class="fblock"><span class="formula">σ<sub>AB</sub> = ρ<sub>AB</sub> · σ<sub>A</sub> · σ<sub>B</sub>&nbsp;&nbsp;&nbsp;mit&nbsp;&nbsp;&nbsp;−1 ≤ ρ<sub>AB</sub> ≤ +1</span></p>
 
   <div class="card">
-    <h3 style="margin-top:.2rem">Durchgerechnetes Lehrbeispiel: der positive Krankheitstest</h3>
-    <p>Eine Krankheit tritt bei <b>2&nbsp;%</b> der Bevölkerung auf: P(K) = 0,02. Ein Test erkennt Kranke mit Wahrscheinlichkeit <b>0,90</b> (Sensitivität P(T|K) = 0,90). Bei Gesunden schlägt er fälschlich mit <b>0,05</b> an (P(T|K&#772;) = 0,05). Gesucht: Wie wahrscheinlich ist man wirklich krank, wenn der Test positiv ist – also P(K|T)?</p>
-    <p><b>Schritt 1 – Vierfeldertafel füllen</b> (gemeinsame Wahrscheinlichkeiten über den Multiplikationssatz P(K&cap;T) = P(T|K)&middot;P(K), Rest analog; P(K&#772;) = 0,98):</p>
-    <div class="tw"><table class="mx">
-      <tr><th class="rowlab"></th><th>Test&nbsp;+ (T)</th><th>Test&nbsp;− (T&#772;)</th><th>Rand</th></tr>
-      <tr><td class="rowlab">krank (K)</td><td class="hi">0,018</td><td>0,002</td><td>0,020</td></tr>
-      <tr><td class="rowlab">gesund (K&#772;)</td><td>0,049</td><td>0,931</td><td>0,980</td></tr>
-      <tr><td class="rowlab">Rand</td><td class="himax">0,067</td><td>0,933</td><td>1,000</td></tr>
-    </table></div>
-    <p><b>Schritt 2 – totale Wahrscheinlichkeit eines positiven Tests</b> (Randsumme der Spalte T):</p>
-    <p class="fblock"><span class="formula">P(T) = P(T|K)&middot;P(K) + P(T|K&#772;)&middot;P(K&#772;) = 0,90&middot;0,02 + 0,05&middot;0,98 = 0,018 + 0,049 = <b>0,067</b></span></p>
-    <p><b>Schritt 3 – Satz von Bayes:</b></p>
-    <p class="fblock"><span class="formula">P(K|T) = P(K&cap;T) / P(T) = 0,018 / 0,067 &asymp; <b>0,2687</b> (26,87&nbsp;%)</span></p>
-    <p class="muted">Lies die Kernaussage ab: Trotz positivem Test ist man mit rund <b>73&nbsp;%</b> gesund. Der positive Test hebt die Wahrscheinlichkeit zwar von 2&nbsp;% auf knapp 27&nbsp;% – aber die niedrige Basisrate lässt sie klein bleiben. Genau das ist die Bayes-Pointe aus dem Einstieg.</p>
+    <h3 style="margin-top:.2rem">Durchgerechnetes Lehrbeispiel: 60/40-Portfolio aus zwei Aktien</h3>
+    <p>Du investierst <b>60 %</b> in die Software-Aktie S (μ<sub>S</sub> = 9 %, σ<sub>S</sub> = 22 %) und <b>40 %</b> in die Logistik-Aktie L (μ<sub>L</sub> = 14 %, σ<sub>L</sub> = 30 %). Die Korrelation beträgt ρ<sub>SL</sub> = 0,2.</p>
+    <p><b>Schritt 1 – Kovarianz:</b> σ<sub>SL</sub> = 0,2 · 0,22 · 0,30 = <b>0,0132</b></p>
+    <p><b>Schritt 2 – Portfoliorendite:</b> μ<sub>P</sub> = 0,6 · 9 % + 0,4 · 14 % = 5,4 % + 5,6 % = <b>11 %</b></p>
+    <p><b>Schritt 3 – Portfoliovarianz:</b> σ<sub>P</sub><sup>2</sup> = 0,6<sup>2</sup> · 0,22<sup>2</sup> + 0,4<sup>2</sup> · 0,30<sup>2</sup> + 2 · 0,6 · 0,4 · 0,0132 = 0,017424 + 0,0144 + 0,006336 = <b>0,03816</b></p>
+    <p><b>Schritt 4 – Portfoliorisiko:</b> σ<sub>P</sub> = √0,03816 ≈ <b>19,53 %</b></p>
+    <p><b>Einordnung:</b> Der „naive" gewichtete Schnitt der Einzelrisiken wäre 0,6 · 22 % + 0,4 · 30 % = <b>25,2 %</b>. Dein Portfolio schwankt mit 19,53 % deutlich weniger – und sogar weniger als die risikoärmere Aktie S allein (22 %), obwohl 40 % in der schwankungsstärkeren Aktie L stecken. Diese Lücke von gut 5½ Prozentpunkten ist der Diversifikationsgewinn aus ρ = 0,2.</p>
   </div>
 
-  <p>Das Baumdiagramm zeigt denselben Sachverhalt: Die zwei Äste mit positivem Test (grün markiert) führen zu den Wahrscheinlichkeiten 0,018 (krank) und 0,049 (gesund). Ihre Summe ist P(T) = 0,067; der Anteil des krank-Astes daran ist der gesuchte Bayes-Wert.</p>
-  <svg id="chart" viewBox="0 0 640 356" role="img" aria-label="Baumdiagramm des Krankheitstests mit den vier Pfadwahrscheinlichkeiten und markierten positiven Testästen" style="width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px"></svg>
-
-  <div class="callout" style="border-left-color:var(--ok)">
-    <b>Kern-Erkenntnis:</b> Der Satz von Bayes verknüpft <b>Basisrate</b> und <b>Testgüte</b> – und die Vierfeldertafel ist dabei dein sicherstes Werkzeug. Das baut direkt auf der <b>bedingten Häufigkeit</b> aus der deskriptiven Statistik (Kapitel 1 und 2) auf und liefert die Grundlage für <b>Zufallsvariablen und Verteilungen</b> (ab Kapitel 4). Wer P(A&cap;B), P(A|B) und P(B|A) sauber trennt, hat den halben Aufgabentyp schon gelöst.
+  <h2>② Diversifikation im μ-σ-Diagramm: Grenzfälle, Minimum-Varianz-Portfolio, Leerverkäufe</h2>
+  <p>Lässt du das Gewicht x<sub>S</sub> von 0 bis 1 laufen, wandert das Portfolio im μ-σ-Diagramm auf einer Linie von L nach S. Ihre Form hängt allein an ρ – und genau hier entsteht die <span class="term" tabindex="0">Diversifikation<span class="tip">Risikostreuung über mehrere Anlagen: Das unsystematische Risiko der Einzeltitel gleicht sich teilweise aus, das Portfoliorisiko sinkt unter den gewichteten Schnitt der Einzelrisiken – ohne Renditeverzicht.</span></span>swirkung:</p>
+  <div class="rulegrid">
+    <div class="rulecard"><h4>ρ = +1: Gerade</h4><p>Perfekter Gleichlauf – die Portfolios liegen auf der Verbindungsgeraden zwischen S und L.</p><p class="res">Kein Diversifikationseffekt.</p></div>
+    <div class="rulecard"><h4>−1 &lt; ρ &lt; +1: Bauch nach links</h4><p>Je kleiner ρ, desto weiter beult sich die Kurve Richtung „weniger Risiko" aus – bei gleichen Renditen.</p><p class="res">Gratis-Risikosenkung, je niedriger ρ, desto mehr.</p></div>
+    <div class="rulecard"><h4>ρ = −1: Knick bis σ = 0</h4><p>Perfekte Gegenläufigkeit – eine Mischung existiert, deren Ausschläge sich vollständig aufheben.</p><p class="res">Bestenfalls: Risiko komplett eliminierbar.</p></div>
   </div>
+  <p>Der am weitesten links liegende Punkt der Kurve ist das <span class="term" tabindex="0">Minimum-Varianz-Portfolio<span class="tip">Das Portfolio mit dem kleinstmöglichen Risiko aller S/L-Mischungen – der „Wendepunkt" der Kurve. Mischungen darunter (mehr Rendite-Verzicht bei mehr Risiko) sind ineffizient.</span></span> (MVP). Für zwei Aktien findest du es mit der Gewichtsformel (hergeleitet aus ∂σ<sub>P</sub><sup>2</sup>/∂x = 0):</p>
+  <p class="fblock"><span class="formula">x<sub>S</sub><sup>MVP</sup> = (σ<sub>L</sub><sup>2</sup> − σ<sub>SL</sub>) / (σ<sub>S</sub><sup>2</sup> + σ<sub>L</sub><sup>2</sup> − 2 · σ<sub>SL</sub>)</span></p>
+  <p>Im Lehrbeispiel: x<sub>S</sub><sup>MVP</sup> = (0,09 − 0,0132) / (0,0484 + 0,09 − 0,0264) = 0,0768 / 0,112 ≈ <b>68,6 %</b> in S – das MVP bringt μ ≈ 10,57 % bei σ ≈ 19,32 %. Die Grafik zeigt die komplette Kurve:</p>
+
+  <svg id="chart" viewBox="0 0 640 360" role="img" aria-label="Mu-Sigma-Diagramm: Portfoliokurve aus den Aktien S und L bei Korrelation 0,2, Vergleichsgerade bei Korrelation +1, Minimum-Varianz-Portfolio, Kapitalmarktlinie vom risikolosen Zins zum Tangentialportfolio" style="width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px"></svg>
+  <p class="muted" style="margin-top:.4rem">Alle Kurvenpunkte stammen aus dem geprüften Rechenskript des Kapitels; die rote Kapitalmarktlinie gehört zu Abschnitt ④ – sie liegt oberhalb der 2-Aktien-Kurve, weil ihr Tangentialportfolio aus <i>allen</i> Aktien des Marktes gebaut ist.</p>
+
+  <div class="callout"><b>Spezialfall ρ = +1 + Leerverkauf:</b> Perfekter Gleichlauf klingt nutzlos für die Diversifikation – es sei denn, du drehst eine Position um. Bei einem <span class="term" tabindex="0">Leerverkauf<span class="tip">Verkauf einer geliehenen Aktie: Du leihst die Aktie, verkaufst sie sofort und musst sie später zurückkaufen und zurückgeben. Gewinn, wenn der Kurs bis dahin fällt – die Position wirkt „umgedreht".</span></span> läuft der Ablauf wie auf der Vorlesungsfolie: ① Aktie B leihen → ② B verkaufen → ③ mit dem Erlös Aktie A kaufen → <b>warten</b> → ④ A verkaufen → ⑤ B zurückkaufen → ⑥ B zurückgeben. Long in A und Short in B heben sich bei ρ = +1 in ihren Schwankungen gegenseitig auf – die Kombination wird (nahezu) risikolos, und die Renditedifferenz bleibt dir.</div>
+
+  <div class="callout"><b>Merke (wörtlich aus der Vorlesung):</b> Je <b>mehr Aktien</b> im Portfolio, desto größer der Risikodiversifikations<b>effekt</b> – desto kleiner das <span class="term" tabindex="0">unsystematische Risiko<span class="tip">Firmenspezifisches Risiko (z. B. Folgen schlechter Unternehmensentscheidungen), das sich durch Streuung über viele Titel wegdiversifizieren lässt. Gegenstück: systematisches Marktrisiko, das alle Aktien gemeinsam trifft und bestehen bleibt.</span></span> σ. Diversifiziert wird also das Einzeltitel-Pech – das Marktrisiko bleibt.</div>
+
+  <h2>③ Von 2 auf N Aktien: die Varianz-Kovarianz-Matrix</h2>
+  <p>Ab drei Aktien wird die Varianzformel länger – das Prinzip bleibt: <b>jede Aktie</b> steuert ihren Varianzterm bei, <b>jedes Aktienpaar</b> seinen doppelten Kovarianzterm:</p>
+  <p class="fblock"><span class="formula">σ<sub>P</sub><sup>2</sup> = x<sub>A</sub><sup>2</sup>σ<sub>A</sub><sup>2</sup> + x<sub>B</sub><sup>2</sup>σ<sub>B</sub><sup>2</sup> + x<sub>C</sub><sup>2</sup>σ<sub>C</sub><sup>2</sup> + 2x<sub>A</sub>x<sub>B</sub>σ<sub>AB</sub> + 2x<sub>A</sub>x<sub>C</sub>σ<sub>AC</sub> + 2x<sub>B</sub>x<sub>C</sub>σ<sub>BC</sub></span></p>
+  <p>Damit du nichts vergisst, ordnet man alles im Rechenschema der Vorlesung – der Varianz-Kovarianz-Matrix. Auf der Diagonalen stehen die Varianzen, außerhalb symmetrisch die Kovarianzen; jedes Feld wird mit den Gewichten seiner Zeile und Spalte multipliziert, die Summe aller Felder ist σ<sub>P</sub><sup>2</sup>:</p>
+  <div class="tw"><table class="mx">
+    <tr><th class="rowlab"></th><th>x<sub>A</sub></th><th>x<sub>B</sub></th><th>x<sub>C</sub></th></tr>
+    <tr><td class="rowlab">x<sub>A</sub></td><td class="hi">σ<sub>A</sub><sup>2</sup></td><td>σ<sub>AB</sub></td><td>σ<sub>AC</sub></td></tr>
+    <tr><td class="rowlab">x<sub>B</sub></td><td>σ<sub>AB</sub></td><td class="hi">σ<sub>B</sub><sup>2</sup></td><td>σ<sub>BC</sub></td></tr>
+    <tr><td class="rowlab">x<sub>C</sub></td><td>σ<sub>AC</sub></td><td>σ<sub>BC</sub></td><td class="hi">σ<sub>C</sub><sup>2</sup></td></tr>
+  </table></div>
+  <p>Bei N Aktien enthält das Schema N Varianzen und N·(N−1)/2 <i>verschiedene</i> Kovarianzen (bei 3 Aktien also 3: σ<sub>AB</sub>, σ<sub>AC</sub>, σ<sub>BC</sub> – jede kommt in der Matrix zweimal vor). Je größer N, desto stärker dominieren die Kovarianzen das Portfoliorisiko – noch ein Grund, warum die Korrelationen wichtiger sind als die Einzelrisiken.</p>
+  <p class="muted"><b>Wofür das Ganze?</b> Zum Beispiel für das Minimum-Varianz-Portfolio bei mehreren Aktien: Man leitet σ<sub>P</sub><sup>2</sup> nach den Gewichten ab (∂σ<sub>P</sub><sup>2</sup>/∂x<sub>i</sub> = 0) und löst das Gleichungssystem – in der Klausur meist nur für den 2-Aktien-Fall, das Matrix-Schema hilft beim sauberen Aufstellen.</p>
+
+  <h2>④ Effizienzlinie, Tangentialportfolio und Kapitalmarktlinie</h2>
+  <p>Mit vielen Aktien wird aus der Kurve ein ganzes Bündel erreichbarer μ-σ-Kombinationen. Sein oberer linker Rand ist die <span class="term" tabindex="0">Effizienzlinie<span class="tip">Auch „effizienter Rand": alle Portfolios, die bei gegebenem Risiko die maximale erwartete Rendite bieten (bzw. bei gegebener Rendite das minimale Risiko). Beginnt im Minimum-Varianz-Portfolio; der Ast darunter ist ineffizient.</span></span>: Nur dort holst du für jedes Risikoniveau die maximale erwartete Rendite heraus.</p>
+  <p>Jetzt kommt die <b>risikolose Anlage</b> ins Spiel (Zins r<sub>f</sub>, σ = 0). Du mischst einen Anteil a eines riskanten Portfolios mit 1 − a risikoloser Anlage. Für dieses Misch-Portfolio gilt (Herleitung wie auf der Folie – alle Terme mit σ der risikolosen Anlage fallen weg):</p>
+  <p class="fblock"><span class="formula">μ<sub>a</sub> = a · μ<sub>P</sub> + (1 − a) · r<sub>f</sub></span>&nbsp;&nbsp;&nbsp;<span class="formula">σ<sub>a</sub><sup>2</sup> = a<sup>2</sup> · σ<sub>P</sub><sup>2</sup>&nbsp;&nbsp;⇒&nbsp;&nbsp;σ<sub>a</sub> = a · σ<sub>P</sub></span></p>
+  <p>Alle Mischungen liegen also auf einer <b>Geraden</b> durch r<sub>f</sub> und das riskante Portfolio. Die beste dieser Geraden ist die steilste, die den effizienten Rand gerade noch berührt – ihr Berührpunkt ist das <span class="term" tabindex="0">Tangentialportfolio<span class="tip">TPF: das riskante Portfolio, in dem die Gerade durch r<sub>f</sub> den effizienten Rand tangiert. Es hat die höchste Sharpe Ratio aller riskanten Portfolios – „mehr Gerade" geht nicht.</span></span> (TPF), die Gerade selbst die <b>Kapitalmarktlinie</b> (KML). Setzt du a = σ<sub>a</sub>/σ<sub>P</sub> in die Renditegleichung ein, erhältst du ihre Geradengleichung:</p>
+  <p class="fblock"><span class="formula">μ<sub>a</sub> = r<sub>f</sub> + [(μ<sub>P</sub> − r<sub>f</sub>) / σ<sub>P</sub>] · σ<sub>a</sub></span></p>
+  <p>Die Steigung – Überrendite pro Einheit Risiko – heißt <span class="term" tabindex="0">Sharpe Ratio<span class="tip">SR = (μ<sub>P</sub> − r<sub>f</sub>) / σ<sub>P</sub>: erwartete Überrendite über den risikolosen Zins je Einheit Gesamtrisiko. Das Tangentialportfolio maximiert diese Kennzahl; die Sharpe Ratio des TPF ist die Steigung der KML.</span></span>. Links vom TPF (a &lt; 1) bist du Sparer: ein Teil des Geldes liegt risikolos als <b>Anlage</b>. Rechts vom TPF (a &gt; 1) nimmst du <b>Kredit</b> zu r<sub>f</sub> auf und hebelst das TPF.</p>
+  <div class="card">
+    <h3 style="margin-top:.2rem">Mini-Beispiel: Hebeln auf der KML</h3>
+    <p>r<sub>f</sub> = 3 %, Tangentialportfolio mit μ<sub>TPF</sub> = 12 % und σ<sub>TPF</sub> = 20 %. Die Sharpe Ratio ist (12 % − 3 %) / 20 % = <b>0,45</b>.</p>
+    <p>Wählst du a = 1,4 (140 % des Vermögens im TPF, 40 % Kredit): μ<sub>a</sub> = 1,4 · 12 % − 0,4 · 3 % = <b>15,6 %</b> bei σ<sub>a</sub> = 1,4 · 20 % = <b>28 %</b>. Kontrolle über die Geradengleichung: 3 % + 0,45 · 28 % = 15,6 % ✓ – der Punkt liegt exakt auf der KML.</p>
+  </div>
+  <p>Und wer wählt welches a? Hier greift die <b>Tobin-Separation</b> der Vorlesung: <b>Alle</b> Investoren halten dasselbe TPF (dieselben Gewichte!) – <b>unabhängig von ihrer Risikoaversion</b>. Die Risikoaversion entscheidet nur über a, also über die Mischung aus TPF und risikoloser Anlage bzw. Kredit. Die Aktienauswahl und die Risikoeinstellung sind damit sauber getrennte Entscheidungen.</p>
+
+  <div class="callout" style="border-left-color:var(--ok)"><b>Kern-Erkenntnis:</b> Portfoliorisiko ist keine Durchschnittsrechnung – es wird von den Kovarianzen regiert. Deshalb zählt für eine Aktie nicht, wie stark sie allein schwankt, sondern was sie <i>im Team</i> anrichtet. <b>Brücke:</b> Kapitel 1 hat dir die Anlageklassen und Märkte geliefert, aus denen solche Portfolios gebaut werden. Und wenn nach Tobin ohnehin alle das Tangentialportfolio halten, bleibt eine spannende Frage offen: Welche Rendite „verdient" dann eine <i>einzelne</i> Aktie in diesem Portfolio? Genau dort startet Kapitel 3 – das CAPM ersetzt das Gesamtrisiko σ durch das Marktrisiko β.</div>
 
   <!-- FAQ -->
   </div>
 
   <h2>Häufige Fragen (kurz &amp; klar)</h2>
-  <details class="faq"><summary>Wann darf ich einfach multiplizieren – P(A&cap;B) = P(A)·P(B)?</summary><p>Nur wenn A und B <b>stochastisch unabhängig</b> sind. Im Allgemeinen gilt stattdessen der Multiplikationssatz P(A&cap;B) = P(A|B)·P(B). Die kurze Produktform ist also ein Sonderfall – prüfe in der Klausur meist zuerst, ob Unabhängigkeit wirklich gegeben ist.</p></details>
-  <details class="faq"><summary>Ist der Unterschied zwischen P(A|B) und P(B|A) wirklich so wichtig?</summary><p>Ja, sehr. Beide haben denselben Zähler P(A&cap;B), aber verschiedene Nenner (P(B) bzw. P(A)) und sind daher in der Regel verschieden. Das Vertauschen dieser beiden ist einer der häufigsten Klausurfehler – der Satz von Bayes ist genau das Werkzeug, um sauber von der einen auf die andere Richtung umzurechnen.</p></details>
-  <details class="faq"><summary>Muss ich immer eine Vierfeldertafel zeichnen?</summary><p>Nicht zwingend, aber bei zwei Ereignissen ist sie meist der sicherste Weg: Du trägst die gemeinsamen Wahrscheinlichkeiten ein, die Ränder ergeben sich durch Zeilen- und Spaltensummen, und bedingte Wahrscheinlichkeiten liest du direkt als Anteil ab. Gerade unter Zeitdruck vermeidet die Tafel viele Flüchtigkeitsfehler.</p></details>
-  <details class="faq"><summary>&bdquo;Disjunkt&ldquo; und &bdquo;unabhängig&ldquo; – ist das dasselbe?</summary><p>Nein, das wird oft verwechselt. Disjunkt (unvereinbar) heißt P(A&cap;B) = 0 – die Ereignisse können nicht zusammen eintreten. Unabhängig heißt P(A&cap;B) = P(A)·P(B). Zwei Ereignisse mit positiver Wahrscheinlichkeit, die disjunkt sind, sind sogar immer <i>abhängig</i>, weil das Eintreten des einen das andere ausschließt.</p></details>
-  <details class="faq"><summary>Ich habe eine konkrete inhaltliche Rückfrage – wohin damit?</summary><p>Bring sie ins <b>Live Q&A</b> ein: Dort besprechen wir deine Fragen in kleiner Gruppe und vertiefen die kniffligen Aufgabentypen. Tipp weiter unten das Eingabefeld nutzen – dann geht deine Frage nicht verloren und wird in der nächsten Live-Session aufgegriffen.</p></details>
+  <details class="faq"><summary>Reicht es, wenn ich nur die 2-Aktien-Formel sicher kann?</summary><p>Für die meisten Rechenaufgaben ja &ndash; der 2-Aktien-Fall (Rendite, Varianz mit Kovarianzterm, MVP-Gewicht) ist in der Regel das Herzstück. Das 3-Aktien-Schema über die Varianz-Kovarianz-Matrix solltest du aber aufstellen können: Es wird gern als Verständnis- oder Teilaufgabe geprüft, meist ohne dass du es komplett durchrechnen musst.</p></details>
+  <details class="faq"><summary>Woher bekomme ich die Kovarianz, wenn nur Renditereihen gegeben sind?</summary><p>Meist über eines von zwei Rechenwegen: Entweder ist ρ<sub>AB</sub> gegeben, dann gilt σ<sub>AB</sub> = ρ<sub>AB</sub> · σ<sub>A</sub> · σ<sub>B</sub>. Oder du schätzt direkt aus den Reihen nach dem Verschiebungsschema d<sub>xy</sub> = Durchschnitt der Produkte minus Produkt der Durchschnitte (so stand es auch auf der Vorlesungsfolie). Beide Wege führen zum selben Wert.</p></details>
+  <details class="faq"><summary>Was ist der Unterschied zwischen Effizienzlinie und Kapitalmarktlinie?</summary><p>Die Effizienzlinie ist der gekrümmte obere Rand aller rein riskanten Portfolios &ndash; sie existiert ganz ohne risikolose Anlage. Die Kapitalmarktlinie ist eine Gerade: Sie entsteht erst, wenn du eine risikolose Anlage (oder Kredit) zu r<sub>f</sub> mit dem Tangentialportfolio mischen kannst, und liegt ab dann in der Regel über der Effizienzlinie &ndash; nur im TPF berühren sich beide.</p></details>
+  <details class="faq"><summary>Ist die Kapitalmarktlinie schon das CAPM?</summary><p>Noch nicht ganz. Die KML bewertet nur <i>effiziente Mischungen</i> aus TPF und risikoloser Anlage &ndash; ihr Risikomaß ist das Gesamtrisiko σ. Das CAPM in Kapitel 3 geht einen Schritt weiter und fragt, welche Rendite eine <i>einzelne</i> Aktie verdient; dort tritt an die Stelle von σ das Marktrisiko β und an die Stelle der KML die Wertpapiermarktlinie.</p></details>
+  <details class="faq"><summary>Ich habe eine konkrete inhaltliche Rückfrage – wohin damit?</summary><p>Nutze das Eingabefeld direkt unter dieser FAQ: Schreib deine Frage hinein und bring sie in die nächste Live-Q&amp;A-Session mit &ndash; dort rechnen wir sie gemeinsam durch. Die Frage bleibt lokal auf deinem Gerät gespeichert, bis du sie stellst.</p></details>
 
   <div class="card">
-    <h3 style="margin-top:.2rem">Gib deine komplexeste aktuelle Frage direkt hier ein – bring sie ins nächste Live Q&A mit.</h3>
-    <textarea class="live" id="liveQ" rows="3" placeholder="Deine Frage zu &bdquo;Wahrscheinlichkeitsrechnung&ldquo; &hellip;"></textarea>
-    <div style="margin-top:.6rem"><button class="btn" id="liveQbtn">Frage für die Live-Session notieren</button>
-      <span id="liveQok" class="muted" style="margin-left:.6rem;display:none;color:var(--ok)">✓ Notiert – bring sie ins nächste Live Q&A mit.</span></div>
+    <h3 style="margin-top:.2rem">Gib deine komplexeste aktuelle Frage direkt hier ein – bring sie in die nächste Live-Q&amp;A mit.</h3>
+    <textarea class="live" id="liveQ" rows="3" placeholder="Deine Frage zu &bdquo;Aktien &amp; Portfoliotheorie&ldquo; &hellip;"></textarea>
+    <div style="margin-top:.6rem"><button class="btn" id="liveQbtn">Für die Live-Session vormerken</button>
+      <span id="liveQok" class="muted" style="margin-left:.6rem;display:none;color:var(--ok)">✓ Notiert – bring sie ins nächste Live-Q&amp;A mit.</span></div>
     <p class="note" style="margin-top:.5rem">Wird lokal auf deinem Gerät gespeichert – keine automatische Antwort auf dieser Seite.</p>
   </div>
-
   <!-- QUIZ -->
   <h2>Teste dich – adaptive Fragerunde</h2>
   <p>Starte mit 5 Fragen. <b>3 oder mehr richtig</b> → es geht schwerer weiter, sonst bekommst du Festigungsfragen. Danach kannst du beliebig oft <b>weitere Fragen</b> anfordern – dein Gesamtergebnis bleibt immer sichtbar.</p>
@@ -671,30 +708,20 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 
   <!-- PERSON -->
   <h2>Wer dich begleitet</h2>
-  <div class="card person-v2">
-    <div class="pv-head">
-      <img class="mono" src="rene-2026.jpg" alt="René Flé">
-      <div><h3>René Flé</h3><p class="pv-bio">Dipl.-Kfm. &middot; bereitet seit 1999 Studierende der Goethe-Uni passgenau auf ihre Klausuren vor.</p></div>
+  <div class="card person">
+    <img class="mono" src="rene-2026.jpg" alt="René Flé" style="object-fit:cover">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:.1rem 0">René Flé</h3>
+      <p>René Flé (Dipl.-Kfm.) bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor – passgenau zur jeweiligen Vorlesung.</p><div class="stats"><div class="stat"><b>seit 1999</b>Frankfurter Examens-Repetitorien</div><div class="stat"><b>~12.000</b>vorbereitete Studierende</div><div class="stat"><b>25.000+ Std.</b>universitäre Lehre</div><div class="stat"><b>seit 2012</b>Honorardozent (CBS)</div></div>
+      <p class="muted">Ich zeige dir Kapitel für Kapitel genau das, was in der Finanzen-2-Klausur bei Prof. Hackethal und Prof. Maurer wirklich zählt – Portfolio, CAPM, Anleihen und Derivate mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing-Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.</p>
     </div>
-    <div class="pv-stats">
-      <div class="stat"><b>seit 1999</b>Goethe-Uni</div>
-      <div class="stat"><b>~12.000</b>zahlende Kunden</div>
-      <div class="stat"><b>25.000+ Std.</b>universitäre Lehre</div>
-      <div class="stat"><b>seit 2012</b>Ausbilder Wirtschaftsprüfung</div>
-    </div>
-    <p class="muted" style="margin:.2rem 0 0">Ich zeige dir Kapitel für Kapitel genau das, was in der OSTA-Klausur bei Prof. Hassler wirklich zählt &ndash; mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing-Zauber, sondern solide Vorbereitung.</p>
-  </div>
-  <div class="tcard">
-    <div class="tstars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-    <p class="tquote">&bdquo;René geht weit über den Lehrplan hinaus. Er hat mir nicht nur Fachwissen vermittelt, sondern beigebracht, Zusammenhänge zu erkennen.&ldquo;</p>
-    <div class="tby"><span class="tav">MS</span><div><b>Matteo Seth</b><span>Wirtschaftsstudent</span></div></div>
   </div>
 
   <!-- ANGEBOT · BWL Kurse (Online-Value-Ladder) -->
-  <h2 id="angebot">Dein Weg durch die Klausur &ndash; mit BWL Kurse</h2>
+  <h2 id="angebot">Dein Weg durch die Klausur – mit BWL Kurse</h2>
   <div class="offer">
     <p>Diese Probe-Lektion ist ein Ausschnitt. <b>BWL Kurse</b> bringt dich Kapitel
-       für Kapitel durch den gesamten OSTA-Stoff &ndash; mit geprüften Lösungen,
+       für Kapitel durch den gesamten BFIN-Stoff – mit geprüften Lösungen,
        einem <b>Live Q&A</b> kurz vor der Klausur.</p>
 
     <ul class="check">
@@ -706,15 +733,15 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
     <a class="btn alt cta-wide" id="offerCta" href="#" onclick="vmOpen();return false;">unverbindlich testen</a>
 
     <h3 style="margin-top:1.6rem">Alle Optionen &amp; Preise</h3>
-    <p class="note" style="margin:.2rem 0 1rem">Preise und Leistungen! Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; statt 89,00&nbsp;&euro; und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
+    <p class="note" style="margin:.2rem 0 1rem">Preise und Leistungen! Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; statt 62,30&nbsp;&euro; (im Einzelkauf, 7&nbsp;&times;&nbsp;8,90&nbsp;&euro;) und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
 
     <div class="pgroup">Pakete &middot; das Rundum-Sorglos</div>
-    <div class="pk feat"><span class="pkrb">Beliebteste Wahl</span><h4>Komplettpaket OSTA</h4><small>Klausur-App + Workbook (alle Handouts)</small><div class="pkpr">49,90 &euro;<s>89,00 &euro;</s></div><div class="pksub">Alle 10 Kapitel als interaktive Lektionen &middot; alle Handout-PDFs mit Aufgaben und Musterl&ouml;sungen &middot; Live Q&amp;A gratis dazu.</div><p class="bk-cashback">10&nbsp;&euro; Cashback f&uuml;r dein Feedback nach der Klausur.</p><div class="pksub" style="display:none"></div><a class="bk-btn pkbtn" style="min-height:44px;display:inline-flex;align-items:center;justify-content:center" href="https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l">Komplettpaket freischalten</a></div>
+    <div class="pk feat"><span class="pkrb">Beliebteste Wahl</span><h4>Komplettpaket BFIN</h4><small>Klausur-App + Workbook (alle Handouts)</small><div class="pkpr">49,90 &euro;<s>62,30 &euro;</s></div><div class="pksub">Alle 7 Kapitel als interaktive Lektionen &middot; alle Handout-PDFs mit Aufgaben und Musterlösungen &middot; Live Q&amp;A gratis dazu.</div><p class="bk-cashback">10&nbsp;&euro; Cashback für dein Feedback nach der Klausur.</p><div class="pksub" style="display:none"></div><!-- TODO-PLINK paket --><a class="bk-btn pkbtn kauf" style="min-height:44px;display:inline-flex;align-items:center;justify-content:center" href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener">Komplettpaket freischalten</a></div>
 
     <div class="pgroup k2">Einzeln buchbar</div>
-    <div class="ez"><span class="ezn">Einzelnes Kapitel<small>Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erh&auml;ltlich. Ab 6 Kapiteln ist das Komplettpaket g&uuml;nstiger.</small></span><span class="ezr"><span class="ezp">8,90 &euro;</span></span></div>
-    <details class="pl-akk"><summary>Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;01</span> Deskriptive Statistik I: Lage &amp; Streuung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;02</span> Deskriptive Statistik II: Zusammenhang &amp; Regression</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;03</span> Wahrscheinlich&shy;keits&shy;rechnung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;04</span> Zufallsvariablen</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;05</span> Verteilungsmodelle: Binomial &amp; Poisson</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;06</span> Normalverteilung &amp; Stichprobenmittel</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;07</span> Schätzen: Punktschätzer &amp; Maximum Likelihood</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;08</span> Konfidenzintervalle</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;09</span> Testen I: Testprinzip &amp; Gauß-Test</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;10</span> Testen II: t-Test &amp; Chi-Quadrat</a></div></details>
-    <div class="ez"><span class="ezn">Live Q&amp;A<small>Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen Sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten! Den Termin stimmen wir in der WhatsApp-Gruppe ab.</small></span><span class="ezr"></span></div>
+    <div class="ez"><span class="ezn">Einzelnes Kapitel<small>Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich. Ab 6 Kapiteln ist das Komplettpaket günstiger.</small></span><span class="ezr"><span class="ezp">8,90 &euro;</span></span></div>
+    <!-- TODO-PLINK bundle --><details class="pl-akk"><summary>Kapitel wählen und freischalten</summary><div class="pl-akk-list"><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;01</span> Grundlagen: Finanzinstrumente &amp; Märkte</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;02</span> Aktien &amp; Portfoliotheorie</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;03</span> CAPM, Multifaktormodelle &amp; Bewertung</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;04</span> Anleihen / Fixed Income</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;05</span> Derivate I: Forwards &amp; Futures</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;06</span> Derivate II: Optionen &amp; Risikomanagement</a><a href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;07</span> Klausurtraining</a></div></details>
+    <div class="ez"><span class="ezn">Live Q&amp;A<small>Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten! Den Termin stimmen wir in der WhatsApp-Gruppe ab.</small></span><span class="ezr"><span class="ezp">10,00 &euro;</span></span></div>
     <p class="note">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit. Freigeschaltet wird in deinem Konto in der App.</p>
   </div>
 
@@ -727,14 +754,14 @@ h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
 </div></footer>
 
 <!-- FRAGENBANK: wird von build/_inject_qbank.py ersetzt. -->
-<script id="qbank" type="application/json">{"topic": "Statistik (OSTA) · Kapitel 3 – Wahrscheinlichkeitsrechnung", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Laplace-Wahrscheinlichkeit", "type": "single", "stem": "Ein Laplace-Experiment hat lauter gleich wahrscheinliche Ergebnisse. Wie berechnet man dort die Wahrscheinlichkeit eines Ereignisses A?", "options": ["Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl aller möglichen Ergebnisse", "Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl der ungünstigen Ergebnisse", "Summe der für A günstigen Ergebnisse, ganz ohne Bezug zur Anzahl aller Ergebnisse", "Anzahl aller möglichen Ergebnisse geteilt durch die Anzahl der für A günstigen Ergebnisse"], "answer": "Anzahl der für A günstigen Ergebnisse geteilt durch die Anzahl aller möglichen Ergebnisse", "feedback": "Laplace: P(A) = <b>günstige / mögliche</b> Ergebnisse = |A| / |&Omega;|. Setzt voraus, dass alle Ergebnisse gleich wahrscheinlich sind."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Bedingte Wahrscheinlichkeit", "type": "single", "stem": "Wie ist die bedingte Wahrscheinlichkeit P(A|B) definiert (mit P(B) &gt; 0)?", "options": ["P(A&cap;B) geteilt durch P(A)", "P(A) multipliziert mit P(B), ganz ohne den Schnitt der Ereignisse", "P(A) geteilt durch P(A&cap;B)", "P(A&cap;B) geteilt durch P(B)"], "answer": "P(A&cap;B) geteilt durch P(B)", "feedback": "Definition: P(A|B) = <b>P(A&cap;B) / P(B)</b> &ndash; der gemeinsame Fall, relativ zur eingehaltenen Bedingung B."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Additionssatz", "type": "numeric", "stem": "Für zwei Ereignisse gilt P(A) = 0,5, P(B) = 0,3 und P(A&cap;B) = 0,2. Wie groß ist P(A&cup;B)?", "answer": 0.6, "tolerance": 0.01, "feedback": "Additionssatz: P(A&cup;B) = P(A) + P(B) &minus; P(A&cap;B) = 0,5 + 0,3 &minus; 0,2 = <b>0,6</b>."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Gegenereignis", "type": "single", "stem": "Ereignis A tritt mit Wahrscheinlichkeit P(A) ein. Wie groß ist die Wahrscheinlichkeit des Gegenereignisses A&#772; (&bdquo;nicht A&ldquo;)?", "options": ["1 &minus; P(A)", "P(A) &minus; 1", "1 &minus; P(A&cap;B)", "1 geteilt durch den Wert von P(A)"], "answer": "1 &minus; P(A)", "feedback": "Gegenereignis: P(A&#772;) = <b>1 &minus; P(A)</b>, denn P(A) + P(A&#772;) = P(&Omega;) = 1."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Bedingte Wahrscheinlichkeit berechnen", "type": "numeric", "stem": "Gegeben sind P(A&cap;B) = 0,12 und P(B) = 0,3. Wie groß ist die bedingte Wahrscheinlichkeit P(A|B)?", "answer": 0.4, "tolerance": 0.01, "feedback": "P(A|B) = P(A&cap;B) / P(B) = 0,12 / 0,3 = <b>0,4</b>."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Totale Wahrscheinlichkeit", "type": "numeric", "stem": "Zwei Zulieferer liefern Bauteile: A1 mit Anteil 0,7 und A2 mit Anteil 0,3. Die Ausschussquoten sind P(B|A1) = 0,2 und P(B|A2) = 0,5. Wie groß ist die Gesamt-Ausschusswahrscheinlichkeit P(B)?", "answer": 0.29, "tolerance": 0.01, "feedback": "Satz der totalen Wahrscheinlichkeit: P(B) = P(B|A1)&middot;P(A1) + P(B|A2)&middot;P(A2) = 0,2&middot;0,7 + 0,5&middot;0,3 = 0,14 + 0,15 = <b>0,29</b>."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Satz von Bayes", "type": "numeric", "stem": "Ein Spamfilter: P(Spam) = 0,4 und P(Wort|Spam) = 0,8. Über beide Fälle ergibt sich die Gesamtwahrscheinlichkeit des Wortes zu P(Wort) = 0,38. Wie groß ist P(Spam|Wort)?", "answer": 0.8421, "tolerance": 0.01, "feedback": "Bayes: P(Spam|Wort) = P(Wort|Spam)&middot;P(Spam) / P(Wort) = 0,8&middot;0,4 / 0,38 = 0,32 / 0,38 &asymp; <b>0,8421</b>."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Stochastische Unabhängigkeit", "type": "numeric", "stem": "Zwei Ereignisse sind stochastisch unabhängig mit P(A) = 0,25 und P(B) = 0,4. Wie groß ist P(A&cap;B)?", "answer": 0.1, "tolerance": 0.01, "feedback": "Bei Unabhängigkeit gilt der Produktsatz: P(A&cap;B) = P(A)&middot;P(B) = 0,25&middot;0,4 = <b>0,1</b>."}, {"id": "s4", "difficulty": "schwer", "subtopic": "De Morgan", "type": "single", "stem": "Wie groß ist die Wahrscheinlichkeit, dass &bdquo;weder A noch B&ldquo; eintritt?", "options": ["1 &minus; P(A) &minus; P(B), ganz unabhängig vom Schnitt der beiden Ereignisse", "1 &minus; P(A&cap;B), gleichbedeutend mit P(A&#772;&cup;B&#772;)", "1 &minus; P(A&cup;B), gleichbedeutend mit P(A&#772;&cap;B&#772;)", "P(A) + P(B), also die schlichte Summe der beiden Einzelwahrscheinlichkeiten"], "answer": "1 &minus; P(A&cup;B), gleichbedeutend mit P(A&#772;&cap;B&#772;)", "feedback": "&bdquo;Weder noch&ldquo; = Komplement der Vereinigung: P(A&#772;&cap;B&#772;) = <b>1 &minus; P(A&cup;B)</b> (Regel von De Morgan)."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Multiplikationssatz", "type": "single", "stem": "Zwei Ereignisse A, B sind voneinander abhängig. Wie berechnet man dann P(A&cap;B) korrekt?", "options": ["P(A) + P(B) &minus; P(A&cup;B), gemittelt über beide möglichen Bedingungen", "P(A) &middot; P(B), also schlicht das Produkt der beiden Einzelwahrscheinlichkeiten", "P(A|B) + P(B), also die Summe aus bedingter und einfacher Wahrscheinlichkeit", "P(A|B) &middot; P(B), gleichwertig auch P(B|A) &middot; P(A)"], "answer": "P(A|B) &middot; P(B), gleichwertig auch P(B|A) &middot; P(A)", "feedback": "Multiplikationssatz (allgemein gültig): P(A&cap;B) = <b>P(A|B)&middot;P(B) = P(B|A)&middot;P(A)</b>. Nur bei Unabhängigkeit vereinfacht sich das zu P(A)&middot;P(B)."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Bayes deuten (Basisrate)", "type": "single", "stem": "Ein sehr treffsicherer Test schlägt bei einer seltenen Krankheit an. Warum kann P(krank | Test positiv) trotzdem klein sein?", "options": ["Weil ein einzelner positiver Test die Wahrscheinlichkeit der Krankheit grundsätzlich völlig unverändert bestehen lässt", "Weil bei niedriger Basisrate die vielen falsch-positiven Gesunden die wenigen echten Kranken zahlenmäßig überwiegen", "Weil die Sensitivität eines jeden Tests bei sehr seltenen Krankheiten automatisch immer gegen den Wert null geht", "Weil der Satz von Bayes bei sehr seltenen Krankheiten grundsätzlich seine gesamte Gültigkeit vollständig einbüßt und versagt"], "answer": "Weil bei niedriger Basisrate die vielen falsch-positiven Gesunden die wenigen echten Kranken zahlenmäßig überwiegen", "feedback": "Basisraten-Effekt: Ist P(K) winzig, erzeugen die vielen Gesunden trotz kleiner Falsch-Positiv-Rate mehr positive Tests als die wenigen Kranken &ndash; darum bleibt P(K|T) klein."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Sicheres Ereignis", "type": "single", "stem": "Was gilt für das sichere Ereignis, also den gesamten Ergebnisraum &Omega;?", "options": ["P(&Omega;) hängt allein von der Anzahl der Ergebnisse ab", "P(&Omega;) = 0,5", "P(&Omega;) = 1", "P(&Omega;) = 0"], "answer": "P(&Omega;) = 1", "feedback": "Das sichere Ereignis hat Wahrscheinlichkeit <b>P(&Omega;) = 1</b> (100 %) &ndash; irgendein Ergebnis tritt garantiert ein."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Laplace-Annahme", "type": "single", "stem": "Bei einem fairen Würfel &ndash; was besagt die Laplace-Annahme?", "options": ["Die Augenzahl 6 ist am wahrscheinlichsten, weil sie den größten Zahlenwert trägt", "Nur die geraden Augenzahlen sind überhaupt möglich, jede mit Wahrscheinlichkeit 1/3", "Die höheren Augenzahlen sind etwas wahrscheinlicher als die niedrigeren Augenzahlen", "Alle sechs Augenzahlen sind gleich wahrscheinlich, jede mit Wahrscheinlichkeit 1/6"], "answer": "Alle sechs Augenzahlen sind gleich wahrscheinlich, jede mit Wahrscheinlichkeit 1/6", "feedback": "Laplace-Annahme: alle Ergebnisse <b>gleich wahrscheinlich</b> &ndash; beim Würfel je 1/6."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Laplace berechnen", "type": "numeric", "stem": "Eine faire Münze wird zweimal geworfen. Wie groß ist die Wahrscheinlichkeit, zweimal Kopf zu werfen?", "answer": 0.25, "tolerance": 0.01, "feedback": "Beide Würfe unabhängig: P(2&times;Kopf) = 1/2 &middot; 1/2 = 1/4 = <b>0,25</b>."}, {"id": "l4", "difficulty": "leicht", "subtopic": "P(A|B) vs. P(B|A)", "type": "single", "stem": "Warum darf man P(A|B) und P(B|A) im Allgemeinen nicht gleichsetzen?", "options": ["Weil beide immer denselben Zahlenwert liefern &ndash; die Reihenfolge spielt dabei gar keine Rolle", "Weil P(B|A) nur bei stochastisch unabhängigen Ereignissen überhaupt sinnvoll definiert ist", "Weil beide durch unterschiedliche Nenner geteilt werden &ndash; P(B) beim einen, P(A) beim anderen", "Weil P(A|B) grundsätzlich stets größer ausfällt als P(B|A), egal um welche Ereignisse es geht"], "answer": "Weil beide durch unterschiedliche Nenner geteilt werden &ndash; P(B) beim einen, P(A) beim anderen", "feedback": "P(A|B) = P(A&cap;B)/P(B) und P(B|A) = P(A&cap;B)/P(A) haben denselben Zähler, aber <b>verschiedene Nenner</b> &ndash; deshalb im Allgemeinen ungleich."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Vereinigung", "type": "single", "stem": "Das Ereignis A&cup;B beschreibt, dass &hellip;", "options": ["beide Ereignisse A und B stets zwingend gleichzeitig miteinander gemeinsam eintreten müssen", "genau eines der beiden Ereignisse A oder B eintritt, aber niemals beide davon gemeinsam", "keines der beiden Ereignisse A oder B unter irgendwelchen denkbaren Umständen eintreten darf", "mindestens eines der beiden Ereignisse A oder B eintritt, also gerne auch beide zusammen"], "answer": "mindestens eines der beiden Ereignisse A oder B eintritt, also gerne auch beide zusammen", "feedback": "Vereinigung A&cup;B = &bdquo;A oder B oder beides&ldquo; = <b>mindestens eines</b> der Ereignisse tritt ein."}]}</script>
+<script id="qbank" type="application/json">{"topic": "Finanzen 2 (BFIN) · Goethe-Uni Frankfurt · Kapitel 2 – Aktien & Portfoliotheorie", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "PF-Rendite", "type": "numeric", "stem": "Ein Portfolio ist zu 70&nbsp;% in Aktie X (&mu;<sub>X</sub> = 6&nbsp;%) und zu 30&nbsp;% in Aktie Y (&mu;<sub>Y</sub> = 16&nbsp;%) investiert. Wie hoch ist die erwartete Portfoliorendite &mu;<sub>P</sub> in Prozent?", "answer": 9.0, "tolerance": 0.1, "feedback": "&mu;<sub>P</sub> = 0,7 &middot; 6&nbsp;% + 0,3 &middot; 16&nbsp;% = 4,2&nbsp;% + 4,8&nbsp;% = <b>9&nbsp;%</b>. Die PF-Rendite ist immer der gewichtete Durchschnitt der Einzelrenditen."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Diversifikation", "type": "single", "stem": "Zwei Aktien mit festen Einzelrisiken &sigma;<sub>A</sub> und &sigma;<sub>B</sub> werden gemischt. Was passiert mit dem Portfoliorisiko, wenn der Korrelationskoeffizient &rho;<sub>AB</sub> sinkt?", "options": ["Es sinkt &ndash; je kleiner &rho;<sub>AB</sub>, desto st&auml;rker die Diversifikation", "Es bleibt konstant &ndash; &rho;<sub>AB</sub> wirkt nur auf die erwartete Rendite", "Es sinkt nur im Sonderfall &rho;<sub>AB</sub> = 0, sonst bleibt es konstant", "Es steigt &ndash; je kleiner &rho;<sub>AB</sub>, desto gr&ouml;&szlig;er die Schwankung"], "answer": "Es sinkt &ndash; je kleiner &rho;<sub>AB</sub>, desto st&auml;rker die Diversifikation", "feedback": "Der Kovarianzterm 2&nbsp;x<sub>A</sub>x<sub>B</sub>&rho;<sub>AB</sub>&sigma;<sub>A</sub>&sigma;<sub>B</sub> wird mit sinkendem &rho;<sub>AB</sub> kleiner &ndash; das PF-Risiko f&auml;llt, die Renditen bleiben unber&uuml;hrt (Folie: m&ouml;glichst geringe Korrelationen w&auml;hlen)."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Effizienzlinie", "type": "single", "stem": "Was zeichnet Portfolios auf der Effizienzlinie aus?", "options": ["Maximale erwartete Rendite f&uuml;r ihr jeweiliges Risikoniveau", "Stets die absolut h&ouml;chste Rendite aller denkbaren Portfolios", "Minimale erwartete Rendite f&uuml;r ihr jeweiliges Risikoniveau", "Stets das absolut kleinste Risiko aller denkbaren Portfolios"], "answer": "Maximale erwartete Rendite f&uuml;r ihr jeweiliges Risikoniveau", "feedback": "Effizient = bei gegebenem Risiko ist keine h&ouml;here Rendite erreichbar (bzw. bei gegebener Rendite kein kleineres Risiko). Der untere Ast der PF-Kurve ist deshalb ineffizient."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Kovarianz & Korrelation", "type": "numeric", "stem": "Zwei Aktien: &sigma;<sub>A</sub> = 0,16, &sigma;<sub>B</sub> = 0,25, Korrelation &rho;<sub>AB</sub> = 0,5. Berechne die Kovarianz &sigma;<sub>AB</sub> (als Dezimalzahl).", "answer": 0.02, "tolerance": 0.001, "feedback": "&sigma;<sub>AB</sub> = &rho;<sub>AB</sub> &middot; &sigma;<sub>A</sub> &middot; &sigma;<sub>B</sub> = 0,5 &middot; 0,16 &middot; 0,25 = <b>0,02</b>."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Unsyst. vs. syst. Risiko", "type": "single", "stem": "Welchen Teil des Gesamtrisikos kann breite Streuung &uuml;ber viele Aktien beseitigen?", "options": ["Keines von beiden (Streuung wirkt allein auf die erwartete Rendite)", "Nur das systematische Marktrisiko (Konjunktur und Zinsniveau)", "Nur das unsystematische Risiko (firmenspezifisches Pech)", "Beide Risikoarten zusammen (das Portfolio wird damit risikolos)"], "answer": "Nur das unsystematische Risiko (firmenspezifisches Pech)", "feedback": "Diversifiziert wird das unsystematische Risiko einzelner Titel &ndash; z.&nbsp;B. die Folgen schlechter Unternehmensentscheidungen (Folie). Das Marktrisiko trifft alle Aktien gemeinsam und bleibt bestehen."}, {"id": "s1", "difficulty": "schwer", "subtopic": "PF-Risiko", "type": "numeric", "stem": "Ein Portfolio liegt je zur H&auml;lfte in Aktie A (&sigma;<sub>A</sub> = 0,20) und Aktie B (&sigma;<sub>B</sub> = 0,24); &rho;<sub>AB</sub> = &minus;0,4. Wie gro&szlig; ist das Portfoliorisiko &sigma;<sub>P</sub> in Prozent?", "answer": 12.17, "tolerance": 0.15, "feedback": "&sigma;<sub>AB</sub> = &minus;0,4 &middot; 0,20 &middot; 0,24 = &minus;0,0192. &sigma;<sub>P</sub><sup>2</sup> = 0,5<sup>2</sup> &middot; 0,20<sup>2</sup> + 0,5<sup>2</sup> &middot; 0,24<sup>2</sup> + 2 &middot; 0,5 &middot; 0,5 &middot; (&minus;0,0192) = 0,01 + 0,0144 &minus; 0,0096 = 0,0148 &rarr; &sigma;<sub>P</sub> = <b>&asymp; 12,17&nbsp;%</b> &ndash; dank negativer Korrelation deutlich unter beiden Einzelrisiken."}, {"id": "s2", "difficulty": "schwer", "subtopic": "KML & Sharpe Ratio", "type": "numeric", "stem": "Kapitalmarktlinie: r<sub>f</sub> = 2&nbsp;%, Tangentialportfolio mit &mu;<sub>TPF</sub> = 10&nbsp;% und &sigma;<sub>TPF</sub> = 16&nbsp;%. Welches Risiko &sigma; (in Prozent) musst du tragen, um eine erwartete Rendite von 13&nbsp;% zu erreichen?", "answer": 22.0, "tolerance": 0.2, "feedback": "Steigung der KML = (10&nbsp;&minus;&nbsp;2)/16 = 0,5. Aus 13 = 2 + 0,5 &middot; &sigma; folgt &sigma; = 11/0,5 = <b>22&nbsp;%</b>."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Tobin-Separation", "type": "single", "stem": "Was folgt aus der Tobin-Separation f&uuml;r Investoren mit unterschiedlicher Risikoaversion?", "options": ["Die Gewichte im Tangentialportfolio werden &ndash; je nach Risikoaversion &ndash; individuell verschoben", "Nur sehr risikoscheue Anleger kombinieren ihr Aktienportfolio mit der risikolosen Anlage zu r<sub>f</sub>", "Alle halten dasselbe Tangentialportfolio &ndash; die Risikoaversion steuert nur die Mischung mit r<sub>f</sub>", "Jeder Anleger mischt sich ein eigenes Aktienportfolio, das exakt zu seiner pers&ouml;nlichen Risikoaversion passt"], "answer": "Alle halten dasselbe Tangentialportfolio &ndash; die Risikoaversion steuert nur die Mischung mit r<sub>f</sub>", "feedback": "Folie: ALLE Investoren w&auml;hlen das gleiche TPF, unabh&auml;ngig von ihrer Risikoaversion. Individuell ist nur der Anteil a im TPF vs. risikolose Anlage bzw. Kredit."}, {"id": "s4", "difficulty": "schwer", "subtopic": "Varianz-Kovarianz-Matrix", "type": "single", "stem": "Ein Portfolio besteht aus 3 Aktien (A, B, C). Wie viele <b>verschiedene</b> Kovarianzen stecken in der Varianz-Kovarianz-Matrix?", "options": ["2 &ndash; nur die benachbarten Paare (AB, BC)", "9 &ndash; eine f&uuml;r jedes Feld der Matrix (3 &times; 3)", "6 &ndash; jedes Aktienpaar z&auml;hlt doppelt (oberhalb und unterhalb)", "3 &ndash; eine je Aktienpaar (AB, AC, BC)"], "answer": "3 &ndash; eine je Aktienpaar (AB, AC, BC)", "feedback": "Auf der Diagonalen stehen die 3 Varianzen, daneben symmetrisch die Kovarianzen &sigma;<sub>AB</sub>, &sigma;<sub>AC</sub>, &sigma;<sub>BC</sub> &ndash; jede kommt zweimal vor, verschieden sind also genau 3. In der PF-Varianz erscheinen sie jeweils mit Faktor 2."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Misch-PF", "type": "numeric", "stem": "Misch-Portfolio auf der KML: a = 1,25 im Tangentialportfolio (&mu;<sub>TPF</sub> = 11,2&nbsp;%), der Rest &uuml;ber Kredit zu r<sub>f</sub> = 3,2&nbsp;%. Erwartete Rendite &mu;<sub>a</sub> in Prozent?", "answer": 13.2, "tolerance": 0.1, "feedback": "&mu;<sub>a</sub> = a &middot; &mu;<sub>TPF</sub> + (1 &minus; a) &middot; r<sub>f</sub> = 1,25 &middot; 11,2&nbsp;% &minus; 0,25 &middot; 3,2&nbsp;% = 14&nbsp;% &minus; 0,8&nbsp;% = <b>13,2&nbsp;%</b>. Bei a &gt; 1 wird der Kreditzins abgezogen."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Leerverkäufe", "type": "single", "stem": "Zwei Aktien laufen perfekt im Gleichschritt (&rho;<sub>AB</sub> = +1), Aktie A hat das bessere Rendite-Risiko-Profil. Wie nutzt ein Investor das per Leerverkauf aus?", "options": ["Beide Aktien auf Kredit kaufen und auf steigende Kurse der gesamten Branche setzen", "Beide Aktien sofort verkaufen und den gesamten Erl&ouml;s risikolos zu r<sub>f</sub> anlegen", "Aktie A leihen und verkaufen, mit dem Erl&ouml;s Aktie B kaufen &ndash; sp&auml;ter r&uuml;ckabwickeln", "Aktie B leihen und verkaufen, mit dem Erl&ouml;s Aktie A kaufen &ndash; sp&auml;ter r&uuml;ckabwickeln"], "answer": "Aktie B leihen und verkaufen, mit dem Erl&ouml;s Aktie A kaufen &ndash; sp&auml;ter r&uuml;ckabwickeln", "feedback": "Folien-Ablauf: &#9312; B leihen &#9313; B verkaufen &#9314; A kaufen &ndash; warten &ndash; &#9315; A verkaufen &#9316; B kaufen &#9317; B zur&uuml;ckgeben. Die Long-Position in der besseren Aktie A und die Short-Position in B gleichen sich bei &rho; = +1 aus."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Kovarianz & Korrelation", "type": "single", "stem": "In welchem Bereich liegt der Korrelationskoeffizient &rho;<sub>AB</sub> immer?", "options": ["Ohne feste Grenzen (jede reelle Zahl ist m&ouml;glich)", "Zwischen &minus;100 und +100 (Angabe in Prozent)", "Zwischen &minus;1 und +1 (Grenzen eingeschlossen)", "Zwischen 0 und +1 (negative Werte sind unm&ouml;glich)"], "answer": "Zwischen &minus;1 und +1 (Grenzen eingeschlossen)", "feedback": "Es gilt &minus;1 &le; &rho;<sub>AB</sub> &le; +1 (Folie). Bei +1 laufen die Renditen perfekt gleich, bei &minus;1 perfekt gegenl&auml;ufig."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Diversifikation", "type": "single", "stem": "Welcher Korrelationswert w&auml;re f&uuml;r die Risikodiversifikation im besten Fall ideal?", "options": ["&rho;<sub>AB</sub> = +1 &ndash; perfekt gleichlaufende Kursbewegungen", "&rho;<sub>AB</sub> = 0 &ndash; nur v&ouml;llig unabh&auml;ngige Aktien helfen wirklich", "&rho;<sub>AB</sub> = +0,5 &ndash; moderat gleichgerichtete Kursbewegungen", "&rho;<sub>AB</sub> = &minus;1 &ndash; perfekt gegenl&auml;ufige Kursbewegungen"], "answer": "&rho;<sub>AB</sub> = &minus;1 &ndash; perfekt gegenl&auml;ufige Kursbewegungen", "feedback": "Bestenfalls &rho;<sub>AB</sub> = &minus;1 (Folie): Verluste der einen Aktie werden durch Gewinne der anderen ausgeglichen &ndash; das Risiko l&auml;sst sich im Extremfall sogar auf null dr&uuml;cken."}, {"id": "l3", "difficulty": "leicht", "subtopic": "KML & Sharpe Ratio", "type": "numeric", "stem": "Tangentialportfolio: &mu;<sub>TPF</sub> = 10&nbsp;%, &sigma;<sub>TPF</sub> = 16&nbsp;%, risikoloser Zins r<sub>f</sub> = 2&nbsp;%. Berechne die Sharpe Ratio (Steigung der Kapitalmarktlinie, als Dezimalzahl).", "answer": 0.5, "tolerance": 0.01, "feedback": "Sharpe Ratio = (&mu;<sub>TPF</sub> &minus; r<sub>f</sub>) / &sigma;<sub>TPF</sub> = (0,10 &minus; 0,02) / 0,16 = <b>0,5</b> &ndash; je Einheit Risiko gibt es 0,5 Einheiten &Uuml;berrendite."}, {"id": "l4", "difficulty": "leicht", "subtopic": "PF-Rendite", "type": "single", "stem": "Ein Portfolio mischt zwei Aktien. Welche Aussage zu Rendite und Risiko stimmt in der Regel?", "options": ["Rendite: meist unter dem gewichteten Schnitt &ndash; Risiko: exakt der gewichtete Schnitt", "Rendite: gewichteter Schnitt &ndash; Risiko: immer exakt der gewichtete Schnitt der Einzelrisiken", "Rendite wie Risiko liegen beide stets &uuml;ber dem jeweiligen gewichteten Schnitt", "Rendite: gewichteter Schnitt &ndash; Risiko: meist kleiner als der gewichtete Schnitt"], "answer": "Rendite: gewichteter Schnitt &ndash; Risiko: meist kleiner als der gewichtete Schnitt", "feedback": "Die Rendite mittelt sich exakt; beim Risiko dr&uuml;ckt der Kovarianzterm das Ergebnis unter den gewichteten Schnitt, sobald &rho;<sub>AB</sub> &lt; +1 ist &ndash; das ist der Diversifikationsgewinn."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Misch-PF", "type": "single", "stem": "Im Misch-Portfolio aus Tangentialportfolio (TPF) und risikoloser Anlage gilt a = 1,5. Was hei&szlig;t das?", "options": ["15&nbsp;% des Verm&ouml;gens im TPF, der Rest wird risikolos zu r<sub>f</sub> geparkt", "150&nbsp;% des Verm&ouml;gens im TPF, finanziert mit 50&nbsp;% Kredit zu r<sub>f</sub>", "50&nbsp;% des Verm&ouml;gens im TPF und 150&nbsp;% in der Anlage zu r<sub>f</sub>", "150&nbsp;% des Verm&ouml;gens risikolos angelegt, 50&nbsp;% des TPF leerverkauft"], "answer": "150&nbsp;% des Verm&ouml;gens im TPF, finanziert mit 50&nbsp;% Kredit zu r<sub>f</sub>", "feedback": "a &gt; 1 hei&szlig;t Kredit (Folie: a = 1,5 &rarr; 150&nbsp;% des Verm&ouml;gens im TPF mit &minus;50&nbsp;% Kredit); a &lt; 1 hei&szlig;t: Teil des Verm&ouml;gens risikolos anlegen."}]}</script>
 
 <script>
 /* Frage für Live-Session lokal vormerken */
 document.getElementById('liveQbtn').addEventListener('click', function(){
   var t=document.getElementById('liveQ').value.trim();
   if(!t) return;
-  try{ var k='liveQ_osta-kap03-wahrscheinlichkeit'; var arr=JSON.parse(localStorage.getItem(k)||'[]'); arr.push(t); localStorage.setItem(k, JSON.stringify(arr)); }catch(e){}
+  try{ var k='liveQ_bfin-kap02-portfolio'; var arr=JSON.parse(localStorage.getItem(k)||'[]'); arr.push(t); localStorage.setItem(k, JSON.stringify(arr)); }catch(e){}
   document.getElementById('liveQok').style.display='inline';
 });
 
@@ -746,45 +773,54 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
   var pools = {mittel:[],schwer:[],leicht:[]};
   bank.questions.forEach(function(q){ if(pools[q.difficulty]) pools[q.difficulty].push(q); });
 
-  /* GRAFIK_JS: Baumdiagramm Krankheitstest (Pfadwahrscheinlichkeiten + Bayes) */
+  /* GRAFIK_JS: Mu-Sigma-Diagramm - Portfoliokurve S/L, Minimum-Varianz-Portfolio und Kapitalmarktlinie */
   (function buildChart(){
     var svg=document.getElementById('chart'); if(!svg) return;
-    var GREEN='#1c8c5a', NAVY='#20232A', BLUE='#E8760A', GREY='#8a95a3', INK='#1B1D21';
-    var s="";
-    /* Legende OBERHALB der Zeichnung (keine Ueberlappung mit dem Baum) */
-    s+='<rect x="70" y="12" width="18" height="10" rx="2" fill="'+GREEN+'"/>';
-    s+='<text x="94" y="21" font-size="12" fill="'+INK+'">positiver Test (T): 0,018 + 0,049 = P(T) = 0,067</text>';
-    s+='<text x="70" y="40" font-size="12" fill="'+INK+'">Satz von Bayes: P(krank | T) = 0,018 / 0,067 &#8776; 0,2687</text>';
-    /* Knoten-Koordinaten */
-    var rootX=64, rootY=185;
-    var kX=286,  kY=104,  kqX=286, kqY=266;
-    var lx=486;
-    var t1Y=70, t1qY=138, t2Y=232, t2qY=300;
-    function edge(x1,y1,x2,y2,col,w){ return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+col+'" stroke-width="'+w+'"/>'; }
-    function dot(x,y,c){ return '<circle cx="'+x+'" cy="'+y+'" r="5" fill="'+c+'"/>'; }
-    /* Stufe 1: Start -> krank / gesund */
-    s+=edge(rootX,rootY,kX,kY,NAVY,2)+edge(rootX,rootY,kqX,kqY,NAVY,2);
-    s+='<text x="150" y="132" font-size="11" fill="'+NAVY+'">P(krank)=0,02</text>';
-    s+='<text x="150" y="243" font-size="11" fill="'+NAVY+'">P(gesund)=0,98</text>';
-    /* Stufe 2: von krank */
-    s+=edge(kX,kY,lx,t1Y,GREEN,2.4)+edge(kX,kY,lx,t1qY,GREY,1.4);
-    s+='<text x="360" y="80" font-size="11" fill="'+NAVY+'">0,90</text>';
-    s+='<text x="360" y="128" font-size="11" fill="'+NAVY+'">0,10</text>';
-    /* Stufe 2: von gesund */
-    s+=edge(kqX,kqY,lx,t2Y,GREEN,2.4)+edge(kqX,kqY,lx,t2qY,GREY,1.4);
-    s+='<text x="360" y="242" font-size="11" fill="'+NAVY+'">0,05</text>';
-    s+='<text x="360" y="292" font-size="11" fill="'+NAVY+'">0,95</text>';
-    /* Knotenpunkte */
-    s+=dot(rootX,rootY,BLUE)+dot(kX,kY,BLUE)+dot(kqX,kqY,BLUE);
-    s+='<text x="'+(rootX)+'" y="'+(rootY-12)+'" font-size="11" text-anchor="middle" fill="'+INK+'">Start</text>';
-    s+='<text x="'+(kX-10)+'" y="'+(kY+4)+'" font-size="12" text-anchor="end" fill="'+INK+'">krank</text>';
-    s+='<text x="'+(kqX-10)+'" y="'+(kqY+4)+'" font-size="12" text-anchor="end" fill="'+INK+'">gesund</text>';
-    /* Blaetter mit Pfadwahrscheinlichkeiten */
-    s+=dot(lx,t1Y,GREEN)+dot(lx,t2Y,GREEN)+dot(lx,t1qY,GREY)+dot(lx,t2qY,GREY);
-    s+='<text x="'+(lx+10)+'" y="'+(t1Y+4)+'" font-size="11" fill="'+GREEN+'" font-weight="700">krank | T+ = 0,018</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t1qY+4)+'" font-size="11" fill="'+GREY+'">krank | T&#8722; = 0,002</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t2Y+4)+'" font-size="11" fill="'+GREEN+'" font-weight="700">gesund | T+ = 0,049</text>';
-    s+='<text x="'+(lx+10)+'" y="'+(t2qY+4)+'" font-size="11" fill="'+GREY+'">gesund | T&#8722; = 0,931</text>';
+    /* Alle Ankerwerte code-verifiziert in BFIN/compute/compute_bfin-kap02-portfolio.py:
+       Aktien S(sigma 22, mu 9) und L(30, 14), rho=0,2 -> Kurve; MVP(19.32, 10.57);
+       r_f=3 %, TPF(20, 12), KML: mu = 3 + 0.45*sigma (liegt komplett oberhalb der Kurve). */
+    var muS=9, muL=14, sgS=22, sgL=30, cov=0.2*sgS*sgL;      // cov in %^2 = 132
+    var RF=3, TPFS=20, TPFM=12, SR=0.45;
+    var X0=60, X1=620, Y0=315, Y1=60, SMAX=32, MMAX=17;
+    function X(s){ return X0+(X1-X0)*s/SMAX; }
+    function Y(m){ return Y0-(Y0-Y1)*m/MMAX; }
+    function pf(x){ var v=x*x*sgS*sgS+(1-x)*(1-x)*sgL*sgL+2*x*(1-x)*cov;
+                    return [Math.sqrt(v), x*muS+(1-x)*muL]; }
+    var s='';
+    /* Legende OBERHALB der Zeichnung */
+    s+='<g font-size="11" font-family="Segoe UI,Arial,sans-serif" fill="#1b2733">';
+    s+='<line x1="12" y1="18" x2="40" y2="18" stroke="#2f6db5" stroke-width="3"/><text x="46" y="22">PF-Kurve aus S und L (ρ = 0,2)</text>';
+    s+='<line x1="252" y1="18" x2="280" y2="18" stroke="#586a80" stroke-width="2" stroke-dasharray="6 4"/><text x="286" y="22">ρ = +1 (keine Diversifikation)</text>';
+    s+='<line x1="482" y1="18" x2="510" y2="18" stroke="#cf4b34" stroke-width="3"/><text x="516" y="22">KML zum TPF</text>';
+    s+='<circle cx="26" cy="38" r="5" fill="#1c8c5a"/><text x="46" y="42">Minimum-Varianz-PF (MVP)</text>';
+    s+='<circle cx="266" cy="38" r="5" fill="#16273f"/><text x="286" y="42">Einzelaktien S und L</text>';
+    s+='<circle cx="496" cy="38" r="5" fill="#cf4b34"/><text x="516" y="42">TPF und r</text><text x="559" y="45" font-size="8">f</text>';
+    s+='</g>';
+    /* Achsen + Ticks */
+    s+='<line x1="'+X0+'" y1="'+Y0+'" x2="'+X1+'" y2="'+Y0+'" stroke="#1b2733" stroke-width="1.5"/>';
+    s+='<line x1="'+X0+'" y1="'+Y0+'" x2="'+X0+'" y2="'+Y1+'" stroke="#1b2733" stroke-width="1.5"/>';
+    var i;
+    for(i=0;i<=30;i+=5){ s+='<line x1="'+X(i)+'" y1="'+Y0+'" x2="'+X(i)+'" y2="'+(Y0+5)+'" stroke="#1b2733"/>'+
+      '<text x="'+X(i)+'" y="'+(Y0+18)+'" font-size="11" text-anchor="middle" fill="#586a80">'+i+'</text>'; }
+    for(i=0;i<=15;i+=3){ s+='<line x1="'+(X0-5)+'" y1="'+Y(i)+'" x2="'+X0+'" y2="'+Y(i)+'" stroke="#1b2733"/>'+
+      '<text x="'+(X0-9)+'" y="'+(Y(i)+4)+'" font-size="11" text-anchor="end" fill="#586a80">'+i+'</text>'; }
+    s+='<text x="'+((X0+X1)/2)+'" y="352" font-size="12" text-anchor="middle" fill="#1b2733">Risiko σ (%)</text>';
+    s+='<text transform="rotate(-90 16 190)" x="16" y="190" font-size="12" text-anchor="middle" fill="#1b2733">erwartete Rendite μ (%)</text>';
+    /* rho = +1: Verbindungsgerade S-L (gestrichelt) */
+    s+='<line x1="'+X(sgS)+'" y1="'+Y(muS)+'" x2="'+X(sgL)+'" y2="'+Y(muL)+'" stroke="#586a80" stroke-width="2" stroke-dasharray="6 4"/>';
+    /* PF-Kurve rho = 0,2 */
+    var pts=[], k;
+    for(k=0;k<=50;k++){ var p=pf(k/50); pts.push(X(p[0]).toFixed(1)+','+Y(p[1]).toFixed(1)); }
+    s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="#2f6db5" stroke-width="3"/>';
+    /* KML: von r_f zum Rand (mu = 3 + 0,45*sigma) */
+    var sEnd=30, mEnd=RF+SR*sEnd;
+    s+='<line x1="'+X(0)+'" y1="'+Y(RF)+'" x2="'+X(sEnd)+'" y2="'+Y(mEnd)+'" stroke="#cf4b34" stroke-width="3"/>';
+    /* Punkte + Beschriftungen */
+    s+='<circle cx="'+X(sgS)+'" cy="'+Y(muS)+'" r="6" fill="#16273f"/><text x="'+(X(sgS)+10)+'" y="'+(Y(muS)+14)+'" font-size="12" font-weight="bold" fill="#16273f">S (22 | 9)</text>';
+    s+='<circle cx="'+X(sgL)+'" cy="'+Y(muL)+'" r="6" fill="#16273f"/><text x="'+(X(sgL)-8)+'" y="'+(Y(muL)+20)+'" font-size="12" font-weight="bold" fill="#16273f">L (30 | 14)</text>';
+    s+='<circle cx="'+X(19.32)+'" cy="'+Y(10.57)+'" r="6" fill="#1c8c5a"/><text x="'+(X(19.32)-70)+'" y="'+(Y(10.57)+4)+'" font-size="12" font-weight="bold" fill="#1c8c5a">MVP</text>';
+    s+='<circle cx="'+X(TPFS)+'" cy="'+Y(TPFM)+'" r="6" fill="#cf4b34"/><text x="'+(X(TPFS)+8)+'" y="'+(Y(TPFM)-9)+'" font-size="12" font-weight="bold" fill="#cf4b34">TPF (20 | 12)</text>';
+    s+='<circle cx="'+X(0)+'" cy="'+Y(RF)+'" r="5" fill="#cf4b34"/><text x="'+(X(0)+8)+'" y="'+(Y(RF)-8)+'" font-size="12" font-weight="bold" fill="#cf4b34">r</text><text x="'+(X(0)+15)+'" y="'+(Y(RF)-5)+'" font-size="9" fill="#cf4b34">f</text><text x="'+(X(0)+21)+'" y="'+(Y(RF)-8)+'" font-size="12" fill="#cf4b34"> = 3 %</text>';
     svg.innerHTML=s;
   })();
 
@@ -910,7 +946,7 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
 (function(){
   "use strict";
 
-  var FRIST_ISO = "2026-07-27";
+  var FRIST_ISO = "2026-07-28";
 
   function $(id){ return document.getElementById(id); }
 
@@ -960,25 +996,23 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
 </script>
 
 <!-- ============================================================ -->
-<!-- BUCHUNGSMODUL · DATEN (window.BK_DATA) – identisch fuer alle  -->
-<!-- OSTA-Lektionen verwendet.                                    -->
+<!-- BUCHUNGSMODUL · DATEN (window.BK_DATA) - fuer BFIN angepasst;   -->
+<!-- Struktur identisch zu den OSTA/OFIN/BMGT-Lektionen.           -->
 <!-- ============================================================ -->
 <script id="bk-data">
 window.BK_DATA = {
-  preise: { gratis:'gratis', einzel:'8,90 €', bundle:'49,90 €', bundle_streich:'89,00 €', bundle_handouts:'49,90 €', bundle_handouts_streich:'89,00 €', multi:'49,90 €', klausur:'10,00 €', handout:'8,90 €' },
+  kursKuerzel: 'BFIN',
+  preise: { gratis:'gratis', einzel:'8,90 €', bundle:'49,90 €', klausur:'10,00 €', handout:'8,90 €', cashback:'10,00 €' },
   lektionen: [
-    { nr:1, thema:'Deskriptive Statistik I: Lage & Streuung', slug:'osta-kap01-lage-streuung', gratis:false, keywords:['Mittelwert & Median','Modus','Quantile','Varianz & Standardabweichung','Häufigkeitsverteilungen'] },
-    { nr:2, thema:'Deskriptive Statistik II: Zusammenhang & Regression', slug:'osta-kap02-regression', gratis:false, keywords:['Kovarianz','Korrelationskoeffizient','KQ-Regressionsgerade','Bestimmtheitsmaß'] },
-    { nr:3, thema:'Wahrscheinlichkeitsrechnung', slug:'osta-kap03-wahrscheinlichkeit', gratis:true, keywords:['Laplace','Bedingte WK','Unabhängigkeit','Satz von Bayes','Vierfeldertafel'] },
-    { nr:4, thema:'Zufallsvariablen', slug:'osta-kap04-zufallsvariablen', gratis:false, keywords:['Erwartungswert','Varianz','Dichte','Verteilungsfunktion','Exponentialverteilung'] },
-    { nr:5, thema:'Verteilungsmodelle: Binomial & Poisson', slug:'osta-kap05-verteilungsmodelle', gratis:false, keywords:['Bernoulli-Experiment','Binomialverteilung','Poisson-Verteilung','Approximation'] },
-    { nr:6, thema:'Normalverteilung & Stichprobenmittel', slug:'osta-kap06-normalverteilung', gratis:false, keywords:['Standardisieren','z-Wert','Quantile ablesen','Stichprobenmittel','Zentraler Grenzwertsatz'] },
-    { nr:7, thema:'Schätzen: Punktschätzer & Maximum Likelihood', slug:'osta-kap07-schaetzen', gratis:false, keywords:['Erwartungstreue','Momentenmethode','Maximum Likelihood','Effizienz'] },
-    { nr:8, thema:'Konfidenzintervalle', slug:'osta-kap08-konfidenzintervalle', gratis:false, keywords:['Konfidenzniveau','Intervall fürs Mittel','t-Verteilung','Stichprobenumfang'] },
-    { nr:9, thema:'Testen I: Testprinzip & Gauß-Test', slug:'osta-kap09-testen1', gratis:false, keywords:['Hypothesenpaar','Fehler 1. & 2. Art','Gauß-Test','p-Wert','Signifikanzniveau'] },
-    { nr:10, thema:'Testen II: t-Test & Chi-Quadrat', slug:'osta-kap10-testen2', gratis:false, keywords:['t-Test','Chi-Quadrat-Anpassungstest','Unabhängigkeitstest','Testauswahl'] }
+    { nr:1, thema:'Grundlagen: Finanzinstrumente & Märkte', gratis:false, keywords:['Asset-Klassen','Kapitalwert/NPV','Dividend Discount Model','KGV & PVGO','ewige Rente'] },
+    { nr:2, thema:'Aktien & Portfoliotheorie', slug:'bfin-kap02-portfolio', gratis:true, keywords:['Kovarianz & Korrelation','Diversifikation','Minimum-Varianz-Portfolio','Effizienzlinie','Tangentialportfolio & Sharpe Ratio'] },
+    { nr:3, thema:'CAPM, Multifaktormodelle & Bewertung', gratis:false, keywords:['Beta & Marktrisiko','Wertpapiermarktlinie','Eigenkapitalkosten','Unternehmensbewertung','APT & Multifaktormodelle'] },
+    { nr:4, thema:'Anleihen / Fixed Income', gratis:false, keywords:['Kursformel & YTM','Duration','Konvexität','Zinsstrukturkurve','Kupon vs. Zerobond'] },
+    { nr:5, thema:'Derivate I: Forwards & Futures', gratis:false, keywords:['Forward-Preis','Cost-of-Carry','Hedging','Basis','Kontraktspezifikation'] },
+    { nr:6, thema:'Derivate II: Optionen & Risikomanagement', gratis:false, keywords:['Call & Put','Put-Call-Parität','Binomialmodell','Black-Scholes','Hedging-Strategien'] },
+    { nr:7, thema:'Klausurtraining', gratis:false, keywords:['Musteraufgaben','Aktien & Portfolio','Anleihen-Rechnung','Derivate-Rechnung','Zeitmanagement'] }
   ],
-  faecher: [ {k:'BMGT',n:'Management 1'}, {k:'OMIK',n:'Mikroökonomie'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'} ],
+  faecher: [ {k:'OMIK',n:'Mikroökonomik 1'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'}, {k:'BFIN',n:'Finanzen 2'}, {k:'BMGT',n:'Management 1'} ],
   termine: [
     {tag:'Fr 24.07.2026', zeit:'10:00', block:'Vormittag'}, {tag:'Sa 25.07.2026', zeit:'10:00', block:'Vormittag'}, {tag:'So 26.07.2026', zeit:'10:00', block:'Vormittag'},
     {tag:'Fr 24.07.2026', zeit:'19:00', block:'Abend'}, {tag:'Sa 25.07.2026', zeit:'19:00', block:'Abend'}, {tag:'So 26.07.2026', zeit:'19:00', block:'Abend'}
@@ -1343,7 +1377,7 @@ function vmClose(){var o=document.getElementById('vmOv');if(o){o.classList.remov
 /* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
    mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
 (function(){
-  var FACH = (location.pathname.match(/(osta|omik|ofin)/) || [])[1] || "osta";
+  var FACH = (location.pathname.match(/(osta|omik|ofin|bmgt|bfin)/) || [])[1] || "bfin";
   var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
   document.addEventListener('submit', function(e){
     var f = e.target;

@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <!--
-  BWL Kurse · OSTA · Statistik · FORSCHUNGS-VARIANTE (Probe/Lead)
+  BWL Kurse - BFIN - Finanzen 2 - LANDINGPAGE (Funnel)
   Design-System: Silber/Orange, zwei Modi (Hell = Standard, Dunkel = Schwarz+Orange)
-  Familien-Bruecke Firestarter: gleiche Flammen-Form (Fortschritts-Signet) + gleiches Orange
-  Erstellt 2026-07-17 · Freigabe-Mockup v01 · Inhalte 1:1 aus osta-probe-lektionen (Build 16.07.2026)
+  Struktur/CSS/Tonfall 1:1 aus bmgt.html (Vorlage laut Auftrag, Kanon-gruen seit
+  2026-07-26) uebernommen, nur Fachliches ersetzt. Erstellt 2026-07-28.
 
-  TRANSFER-TOKENS (vor Live-Gang ersetzen; solange Platzhalter, fuehren CTAs in die Vormerkung):
-    {{CHECKOUT_URL}}   = echter Checkout (z. B. CopeCart/Digistore24)
-    {{GRATIS_URL}}     = Gratis-Lektion (Standard: osta-kap03-wahrscheinlichkeit.html, relativ)
-    {{KLAUSUR_URL}}    = Kursbereich der Klausur-Variante (persoenlicher Kurslink)
-    {{OMIK_URL}}       = Forschungs-Seite Mikrooekonomik 1
-    {{OFIN_URL}}       = Forschungs-Seite Finanzen
+  Dokumentierte Annahme (Zeitdruck: Klausur 29.07.2026, 11:00):
+  - BFIN behaelt den Streichpreis (49,90 EUR statt 62,30 EUR, 7 Kapitel x 8,90 EUR,
+    -19,9 % - ueber der 15-%-Schwelle des Kanons), anders als die Vorlage (6 Kapitel,
+    nur -6,6 %, dort daher ohne Streichpreis).
+  - Stripe-Links fuer BFIN existieren beim Schreiben noch nicht: alle Kauf-CTAs
+    zeigen auf https://bfin.klausurchecker.de/, je Stelle ein Marker
+    <!-- TODO-PLINK paket/bundle --> zum Nachtragen, sobald die Links da sind.
+  - BKBC-Faecher-Konfigurator + Buchungs-Modal sowie Urnen-Widget bleiben wie in
+    der Vorlage ausgeschlossen (nicht fuer BFIN verifiziert).
 -->
 <html lang="de">
 <head>
@@ -18,7 +21,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EAE9E5">
-<title>OSTA · Statistik · Prof. Hassler · Klausurchecker.de</title>
+<title>BFIN · Finanzen 2 · Prof. Hackethal &amp; Prof. Maurer · Klausurchecker.de</title>
 <link rel="icon" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -600,149 +603,6 @@ footer .fbrand b{font-family:var(--serif)}
 .step h3{font-size:17px;margin-bottom:4px}
 .step p{font-size:14.5px;color:var(--text-2);margin:0;max-width:none}
 </style>
-<style id="bkbc-css">
-/* ===== BKBC · Faecher-Paket-Konfigurator · identisch in App + Landing ===== */
-.bkbc-card{border:2px solid var(--accent);border-radius:14px;padding:14px;background:var(--surface-2);box-shadow:var(--sh-1)}
-.bkbc-h{font-weight:600;font-size:16px;margin:0 0 2px}
-.bkbc-sub{font-size:12px;color:var(--text-2);margin:0 0 10px;line-height:1.45}
-.bkbc-save{color:var(--done);font-size:12px;font-weight:600;margin-top:3px}
-.bkbc-row{display:flex;align-items:center;gap:12px;padding:11px 12px;border:1px solid var(--hair);border-radius:10px;margin:0 0 8px;cursor:pointer;background:var(--surface)}
-.bkbc-row:hover{border-color:var(--accent)}
-.bkbc-row.sel{border-color:var(--accent);background:var(--glow)}
-.bkbc-row input{width:20px;height:20px;accent-color:var(--accent);flex:none;margin:0}
-.bkbc-rt{flex:1;min-width:0}
-.bkbc-rt b{display:block;font-weight:600;font-size:14px}
-.bkbc-rt small{display:block;color:var(--text-3);font-size:12px;line-height:1.4}
-.bkbc-ho-row{margin-top:12px;border-style:dashed}
-.bkbc-sum{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin:14px 2px 10px}
-.bkbc-total{font-size:26px;font-weight:600;white-space:nowrap;line-height:1.1}
-.bkbc-cta{display:flex;width:100%;align-items:center;justify-content:center;min-height:48px;cursor:pointer;border:0;border-radius:10px;font-size:15px;font-weight:600;text-align:center;background:linear-gradient(180deg,var(--accent-2),var(--accent));color:#2A1500;box-shadow:var(--sh-1)}
-.bkbc-cta:disabled{background:var(--surface);color:var(--text-3);cursor:not-allowed;box-shadow:inset 0 0 0 1px var(--hair)}
-.bkbc-note{font-size:11.5px;color:var(--text-3);line-height:1.45;margin:10px 2px 0;text-align:center}
-</style>
-<script id="bkbc-core">
-/* =====================================================================
-   BKBC · Faecher-Paket-Konfigurator (Mehrfachauswahl + Auto-Summe)
-   ---------------------------------------------------------------------
-   ⛔ DIESER BLOCK IST IN ALLEN DATEIEN IDENTISCH:
-      App    : osta-app-vorschau/index.html (+ omik-/ofin-app-vorschau)
-      Landing: bwlkurse-lp/index.html, osta.html, omik.html, ofin.html
-   Preise NUR hier aendern - danach in alle Dateien kopieren.
-   Checkout-Hook: window.bkbcOnCheckout(payload)
-      payload = {faecher:["OSTA",...], handouts:true|false, anzahl:N, total:Zahl}
-   ===================================================================== */
-window.BKBC = (function(){
-  "use strict";
-
-  /* ================= CONFIG (einzige Preisquelle) ================= */
-  var CFG = {
-    FAECHER: [
-      {code:"OMIK", sub:"Mikro\u00f6konomik 1"},
-      {code:"OSTA", sub:"Statistik"},
-      {code:"OFIN", sub:"Finanzen"}
-    ],
-    /* Staffel Klausur-Check (ohne Handouts) */
-    KLAUSURCHECK: {0:0, 1:39.90, 2:69.90, 3:89.90},
-    /* Staffel mit allen Handouts */
-    MIT_HANDOUTS: {0:0, 1:79.90, 2:99.80, 3:129.70},
-    /* "vormerken" = unverbindliche Vormerkung (kein Zahlungsanbieter aktiv)
-       "bestellen" = echter Kaufabschluss, Button-Beschriftung nach \u00a7312j BGB
-       -> auf "bestellen" umstellen, SOBALD der Checkout wirklich zahlungspflichtig ist. */
-    CTA_MODUS: "vormerken"
-  };
-  /* ================================================================ */
-
-  function fmt(n){ return n.toFixed(2).replace(".", ",") + " \u20ac"; }
-  function esc(s){
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
-  }
-  function preis(anzahl, handouts){
-    var tab = handouts ? CFG.MIT_HANDOUTS : CFG.KLAUSURCHECK;
-    return (tab[anzahl] != null) ? tab[anzahl] : 0;
-  }
-
-  function markup(){
-    var rows = CFG.FAECHER.map(function(f){
-      return '<label class="bkbc-row"><input type="checkbox" class="bkbc-f" data-code="' + esc(f.code) + '">' +
-             '<span class="bkbc-rt"><b>' + esc(f.code) + '</b><small>' + esc(f.sub) + '</small></span></label>';
-    }).join("");
-    return '<div class="bkbc-card">' +
-      '<div class="bkbc-h">F\u00e4cher-Paket zusammenstellen</div>' +
-      '<p class="bkbc-sub">F\u00e4cher antippen \u2013 der Preis rechnet sich automatisch zusammen.</p>' +
-      rows +
-      '<label class="bkbc-row bkbc-ho-row"><input type="checkbox" class="bkbc-ho">' +
-        '<span class="bkbc-rt"><b>mit allen Handouts</b><small>Aufgaben-PDFs + Musterl\u00f6sungen zu jedem Kapitel</small></span></label>' +
-      '<div class="bkbc-sum">' +
-        '<div><div class="bkbc-cnt bkbc-sub" style="margin:0">Noch keine F\u00e4cher gew\u00e4hlt</div>' +
-        '<div class="bkbc-save"></div></div>' +
-        '<div class="bkbc-total">' + fmt(0) + '</div>' +
-      '</div>' +
-      '<button type="button" class="bkbc-cta" disabled>F\u00e4cher w\u00e4hlen</button>' +
-      '<div class="bkbc-msg bkbc-note"></div>' +
-    '</div>';
-  }
-
-  function bind(root){
-    var r = root || document;
-    var fs = Array.prototype.slice.call(r.querySelectorAll(".bkbc-f"));
-    if(!fs.length) return null;
-    var ho   = r.querySelector(".bkbc-ho"),
-        elT  = r.querySelector(".bkbc-total"),
-        elC  = r.querySelector(".bkbc-cnt"),
-        elS  = r.querySelector(".bkbc-save"),
-        cta  = r.querySelector(".bkbc-cta"),
-        msg  = r.querySelector(".bkbc-msg");
-    if(!ho || !elT || !cta) return null;
-
-    function upd(){
-      var picked = fs.filter(function(x){ return x.checked; });
-      var n = picked.length, h = !!ho.checked;
-      var total = preis(n, h), einzel = preis(1, h);
-      var save  = (n >= 2) ? (n * einzel - total) : 0;
-
-      fs.forEach(function(x){
-        var row = x.closest ? x.closest(".bkbc-row") : x.parentNode;
-        if(row) row.classList.toggle("sel", x.checked);
-      });
-      var hoRow = ho.closest ? ho.closest(".bkbc-row") : ho.parentNode;
-      if(hoRow) hoRow.classList.toggle("sel", h);
-
-      elT.textContent = fmt(total);
-      if(elC) elC.textContent = (n === 0)
-        ? "Noch keine F\u00e4cher gew\u00e4hlt"
-        : (n + (n === 1 ? " Fach" : " F\u00e4cher") + (h ? " \u00b7 mit allen Handouts" : " \u00b7 Klausur-Check"));
-      if(elS) elS.textContent = (save > 0) ? ("Du sparst " + fmt(save)) : "";
-
-      cta.disabled = (n === 0);
-      cta.textContent = (n === 0)
-        ? "F\u00e4cher w\u00e4hlen"
-        : ((CFG.CTA_MODUS === "bestellen" ? "Zahlungspflichtig bestellen \u00b7 " : "Paket vormerken \u00b7 ") + fmt(total));
-
-      cta._payload = {
-        faecher: picked.map(function(x){ return x.getAttribute("data-code"); }),
-        handouts: h, anzahl: n, total: total
-      };
-    }
-
-    fs.forEach(function(x){ x.addEventListener("change", upd); });
-    ho.addEventListener("change", upd);
-    cta.addEventListener("click", function(e){
-      e.preventDefault();
-      if(cta.disabled) return;
-      var p = cta._payload;
-      if(typeof window.bkbcOnCheckout === "function"){ window.bkbcOnCheckout(p); return; }
-      if(msg) msg.textContent = "Auswahl: " + p.anzahl + (p.anzahl === 1 ? " Fach" : " F\u00e4cher") +
-        (p.handouts ? " mit allen Handouts" : "") + " = " + fmt(p.total) + " (Checkout noch nicht angebunden)";
-    });
-    upd();
-    return {update: upd};
-  }
-
-  return {cfg: CFG, fmt: fmt, preis: preis, markup: markup, bind: bind};
-})();
-</script>
 <style id="welt-css">
 :root{--kauf:#102444;--kauf-2:#1D3B6E}
 [data-theme="dark"]{--kauf:#6E9BE0;--kauf-2:#8FB4EA}
@@ -751,28 +611,15 @@ window.BKBC = (function(){
 [data-theme="dark"] .btn-kauf{color:#0B1220}
 @media(max-width:560px){.appbar #weltBtn::after{content:none!important}.appbar .btn-kauf span{display:inline!important}.appbar .btn-kauf::after{content:none!important}}
 </style>
-<style id="akk-css">
-.pl-akk{margin:0}
-.pl-akk>summary{display:flex;width:100%;justify-content:center;cursor:pointer;list-style:none}
-.pl-akk>summary::-webkit-details-marker{display:none}
-.pl-akk>summary::after{content:"\25BE";margin-left:8px;font-size:.85em;opacity:.9}
-.pl-akk[open]>summary::after{content:"\25B4"}
-.pl-akk-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
-.pl-akk-list a{display:flex;gap:8px;align-items:baseline;padding:11px 14px;border-radius:10px;background:#fff;border:1px solid rgba(16,36,68,.16);color:#102444;text-decoration:none;font-weight:600;font-size:14px;line-height:1.3}
-.pl-akk-list a:hover{background:#eef2f8}
-.pl-akk-list a .kn{color:#1D3B6E;font-variant-numeric:tabular-nums;flex:none}
-[data-theme="dark"] .pl-akk-list a{background:#131a2a;color:#e8eef8;border-color:rgba(255,255,255,.14)}
-[data-theme="dark"] .pl-akk-list a .kn{color:#8FB4EA}
-</style>
 </head>
-<body data-fach="OSTA" data-preisziel="preise.html?kurs=osta">
+<body data-fach="BFIN" data-preisziel="preise.html?kurs=bfin">
 
 <!-- ============ APPBAR ============ -->
 <header class="appbar">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="BWL Kurse, zum Seitenanfang">
       <span class="mark"><img class="lg-l" src="data:image/png;base64,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" alt="BWL Kurse"><img class="lg-d" src="data:image/png;base64,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" alt=""></span>
-      <span><b>BWL Kurse</b><small>OSTA · Statistik · Prof. Hassler</small></span>
+      <span><b>BWL Kurse</b><small>BFIN · Finanzen 2 · Prof. Hackethal &amp; Prof. Maurer</small></span>
     </a>
     <div class="sp"></div>
     <span class="count-pill num" id="pillCount">Online&#8209;Vorteil endet in <b>…</b></span>
@@ -787,134 +634,130 @@ window.BKBC = (function(){
 <main id="top">
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="osta">
+<section class="hero" id="bfin">
   <div class="wrap">
     <div>
-      <span class="kicker">Dein Kurs · OSTA · Statistik</span>
-      <h1>Bist du <span class="hl">bereit</span> für deine OSTA Klausur?<span style="display:block;font-size:.42em;font-weight:500;color:var(--text-2);letter-spacing:0;margin-top:10px">am 28. Juli</span></h1>
-      <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Hassler.</p>
-      <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">geprüfte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
+      <span class="kicker">Dein Kurs &middot; BFIN &middot; Finanzen 2</span>
+      <h1>Bist du <span class="hl">bereit</span> f&uuml;r deine BFIN&#8209;Klausur?<span style="display:block;font-size:.42em;font-weight:500;color:var(--text-2);letter-spacing:0;margin-top:10px">Mittwoch, 29. Juli</span></h1>
+      <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Hackethal &amp; Prof.&nbsp;Maurer &ndash; diese Klausur hat <b>keinen Zweittermin</b>.</p>
+      <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">gepr&uuml;fte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion starten</a>
+        <a class="btn btn-primary" href="bfin-kap02-portfolio.html">Gratis&#8209;Lektion starten</a>
         <a class="btn btn-ghost" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck</a>
       </div>
-      
-      
+
+
     </div>
 
     <!-- Premium-Pfadkarte (Graphit + Silber-Inset) -->
-    
+
   </div>
 </section>
+
 
 
 
 <!-- ============ KLAUSURCHECK ============ -->
 <section id="klausurcheck">
   <div class="wrap">
-    
+
     <div class="card" style="max-width:760px">
       <div class="sc-head">
-        <h2 style="margin-bottom:4px">Wie fit bist du in Wahrscheinlichkeitsrechnung?</h2>
+        <h2 style="margin-bottom:4px">Wie fit bist du in Portfoliotheorie &amp; Diversifikation?</h2>
       </div>
-      <p class="sub" style="margin-bottom:4px">2 Fragen, 60 Sekunden. Läuft komplett lokal in deinem Browser: nichts wird gespeichert, nichts übertragen.</p>
+      <p class="sub" style="margin-bottom:4px">2 Fragen, 60 Sekunden. L&auml;uft komplett lokal in deinem Browser: nichts wird gespeichert, nichts &uuml;bertragen.</p>
       <div class="sc-gate">
-        <div class="v2-urne" id="v2Urne">
-          <div class="v2-urne-row">
-            <button type="button" class="v2-urne-btn" id="v2UrneBtn"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 9c0 7 3.6 11 8 11s8-4 8-11"/><path d="M3 9h18"/><path d="M8 5.5C9 4 10.4 3 12 3s3 1 4 2.5"/></svg><span>Kugel ziehen</span></button>
-            <div class="v2-urne-balls num" id="v2UrneBalls" aria-hidden="true"></div>
-          </div>
-          <p class="v2-urne-stat num" id="v2UrneStat" role="status" aria-live="polite">3 rote und 7 blaue Kugeln in der Urne — zieh und beobachte die Häufigkeit.</p>
-        </div>
         <button type="button" class="btn btn-primary" id="scStart">Check starten</button>
       </div>
       <div class="sc-body">
 
-      <div class="sc-q"><span class="qn num">1</span>In einer Urne liegen 3 rote und 7 blaue Kugeln. Du ziehst blind eine Kugel. Wie groß ist die Wahrscheinlichkeit, eine rote zu ziehen?</div>
+      <div class="sc-q"><span class="qn num">1</span>Zwei Aktien mit festen Einzelrisiken &sigma;<sub>A</sub> und &sigma;<sub>B</sub> werden gemischt. Was passiert mit dem Portfoliorisiko, wenn der Korrelationskoeffizient &rho;<sub>AB</sub> sinkt?</div>
       <div data-sc-q="0">
-        <button type="button" class="sc-opt num" data-q="0" data-i="0">3/7 &asymp; 43&nbsp;%: drei rote auf sieben blaue Kugeln</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="1">3/10 = 30&nbsp;%: drei rote von insgesamt zehn Kugeln</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="2">1/2 = 50&nbsp;%: es gibt ja nur rot oder blau</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="3">7/10 = 70&nbsp;%: die blauen Kugeln sind in der Überzahl</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="0">Es sinkt &ndash; je kleiner &rho;<sub>AB</sub>, desto st&auml;rker die Diversifikation</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="1">Es bleibt konstant &ndash; &rho;<sub>AB</sub> wirkt nur auf die erwartete Rendite</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="2">Es sinkt nur im Sonderfall &rho;<sub>AB</sub> = 0, sonst bleibt es konstant</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="3">Es steigt &ndash; je kleiner &rho;<sub>AB</sub>, desto gr&ouml;&szlig;er die Schwankung</button>
       </div>
-      <div class="sc-fb" id="scFb0"><b>Richtig ist 3/10 = 30&nbsp;%.</b> Laplace: P(A) = günstige durch alle möglichen Ergebnisse, also 3 rote von insgesamt 10 Kugeln. Häufigster Fehler: 3/7 teilt durch die ungünstigen statt durch alle.</div>
+      <div class="sc-fb" id="scFb0"><b>Der Kovarianzterm 2&nbsp;x<sub>A</sub>x<sub>B</sub>&rho;<sub>AB</sub>&sigma;<sub>A</sub>&sigma;<sub>B</sub> wird mit sinkendem &rho;<sub>AB</sub> kleiner.</b> Das PF&#8209;Risiko f&auml;llt, die Renditen bleiben unber&uuml;hrt (Folie: m&ouml;glichst geringe Korrelationen w&auml;hlen).</div>
 
-      <div class="sc-q v2-q2"><span class="qn num">2</span>Was sagt die bedingte Wahrscheinlichkeit P(A|B) inhaltlich aus?</div>
+      <div class="sc-q v2-q2"><span class="qn num">2</span>Was zeichnet Portfolios auf der Effizienzlinie aus?</div>
       <div data-sc-q="1" class="v2-q2">
-        <button type="button" class="sc-opt" data-q="1" data-i="0">Die Wahrscheinlichkeit, dass A und B gleichzeitig eintreten</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="1">Die Wahrscheinlichkeit von B, wenn man schon weiß, dass A eingetreten ist</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="2">Die Wahrscheinlichkeit von A, wenn man schon weiß, dass B eingetreten ist: der Ergebnisraum schrumpft auf B</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="3">Die Wahrscheinlichkeit, dass A oder B (oder beide) eintreten</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="0">Maximale erwartete Rendite f&uuml;r ihr jeweiliges Risikoniveau</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="1">Stets die absolut h&ouml;chste Rendite aller denkbaren Portfolios</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="2">Minimale erwartete Rendite f&uuml;r ihr jeweiliges Risikoniveau</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="3">Stets das absolut kleinste Risiko aller denkbaren Portfolios</button>
       </div>
-      <div class="sc-fb" id="scFb1"><b>P(A|B)</b> heißt: B ist schon eingetreten, gefragt ist A nur noch <i>innerhalb dieser Fälle</i>. Der Ergebnisraum „schrumpft" auf B. Das ist weder P(A&cap;B) („beide zusammen") noch P(B|A) (die umgekehrte Richtung).</div>
+      <div class="sc-fb" id="scFb1"><b>Effizient = bei gegebenem Risiko ist keine h&ouml;here Rendite erreichbar</b> (bzw. bei gegebener Rendite kein kleineres Risiko). Der untere Ast der PF&#8209;Kurve ist deshalb ineffizient.</div>
 
       <div class="sc-eval"><button type="button" class="btn btn-primary" id="scEval" disabled>Auswerten</button></div>
 
       <div class="sc-result r2" id="scR2">
         <b class="head num">2 von 2. Stark!</b>
-        <p>Die Grundlagen sitzen, du bist bereit für mehr. In der Klausur geht es genau hier weiter: totale Wahrscheinlichkeit, Satz von Bayes, Vierfeldertafel. Hol dir jetzt die komplette Gratis&#8209;Lektion und teste dich am ganzen Kapitel.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Zur Gratis&#8209;Lektion</a></div>
+        <p>Die Grundlagen sitzen, du bist bereit f&uuml;r mehr. In der Klausur geht es genau hier weiter: Portfoliorendite &amp; ‑risiko ausrechnen, Kovarianz &amp; Korrelation, die Kapitalmarktlinie und das Tangentialportfolio. Hol dir jetzt die komplette Gratis&#8209;Lektion und teste dich am ganzen Kapitel.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bfin-kap02-portfolio.html">Zur Gratis&#8209;Lektion</a></div>
       </div>
       <div class="sc-result r1" id="scR1">
         <b class="head num">1 von 2. Gar nicht schlecht!</b>
-        <p>Eine Frage saß, eine noch nicht. Genau an solchen Stellen entscheidet sich die Klausur. Die kostenlose Probe&#8209;Lektion schließt die Lücke Schritt für Schritt: klarer Rechenweg, durchgerechnetes Beispiel, adaptiver Selbsttest.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion starten</a></div>
+        <p>Eine Frage sa&szlig;, eine noch nicht. Genau an solchen Stellen entscheidet sich die Klausur. Die kostenlose Probe&#8209;Lektion schlie&szlig;t die L&uuml;cke Schritt f&uuml;r Schritt: klarer Rechenweg, durchgerechnetes Beispiel, adaptiver Selbsttest.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bfin-kap02-portfolio.html">Gratis&#8209;Lektion starten</a></div>
       </div>
       <div class="sc-result r0" id="scR0">
         <b class="head num">0 von 2. Gut, dass du es jetzt merkst.</b>
-        <p>Kein Grund zur Panik, noch ist Zeit. Aber Wahrscheinlichkeitsrechnung sicher zu beherrschen kann in der Klausur den Unterschied machen. Die kostenlose Probe&#8209;Lektion erklärt dir alles von Grund auf, Schritt für Schritt.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion starten</a></div>
+        <p>Kein Grund zur Panik, noch ist Zeit. Aber Portfoliotheorie (Diversifikation, Effizienzlinie, Kovarianz &amp; Korrelation) sicher zu beherrschen kann in der Klausur den Unterschied machen. Die kostenlose Probe&#8209;Lektion erkl&auml;rt dir alles von Grund auf, Schritt f&uuml;r Schritt.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bfin-kap02-portfolio.html">Gratis&#8209;Lektion starten</a></div>
       </div>
 
       <!-- Inline-Opt-in: erscheint nach der Auswertung -->
       <div class="sc-optin" id="scOptin" hidden>
         <b>Dein Willkommensgeschenk: ein komplettes Fach gratis!</b>
-        <p class="fnote" style="margin:4px 0 12px">Zu deiner OSTA-Vorbereitung schalten wir dir zusätzlich das ganze Fach Mikroökonomie (OMIK) in der App frei – kostenlos und unverbindlich.</p>
+        <p class="fnote" style="margin:4px 0 12px">Zu deiner BFIN-Vorbereitung schalten wir dir zus&auml;tzlich das ganze Fach Mikro&ouml;konomie (OMIK) in der App frei &ndash; kostenlos und unverbindlich.</p>
         <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="scForm">
           <input type="hidden" name="locale" value="de">
           <input type="hidden" name="html_type" value="simple">
           <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
           <input type="hidden" name="form-name" value="vormerkung">
-          <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse OSTA">
+          <input type="hidden" name="subject" value="Neue Vormerkung &middot; BWL Kurse BFIN">
           <input type="hidden" name="interesse" id="scInteresse" value="">
           <div class="f-row">
             <input type="text" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname" aria-label="Vorname">
             <input type="email" name="EMAIL" required autocomplete="email" placeholder="name@beispiel.de" aria-label="E-Mail-Adresse">
           </div>
           <label class="chk"><input type="checkbox" name="datenschutz_einverstaendnis" value="ja" required>
-            <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden.&nbsp;*</span></label>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><button type="submit" class="btn btn-primary">unverbindlich testen</button><a class="btn btn-app" href="https://osta.klausurchecker.de/">OSTA-App öffnen</a></div>
+            <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden.&nbsp;*</span></label>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><button type="submit" class="btn btn-primary">unverbindlich testen</button><a class="btn btn-app" href="https://bfin.klausurchecker.de/">BFIN-App &ouml;ffnen</a></div>
           <div class="form-err" id="scErr">Da ist etwas schiefgelaufen. Bitte versuch es erneut.</div>
         </form>
         <div class="form-ok" id="scOk"></div>
       </div>
 
       <button type="button" class="sc-retry" id="scRetry" style="display:none">Nochmal versuchen</button>
-      <p class="sc-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Dein Ergebnis bleibt auf deinem Gerät: keine Speicherung, keine Übertragung.</p>
+      <p class="sc-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Dein Ergebnis bleibt auf deinem Ger&auml;t: keine Speicherung, keine &Uuml;bertragung.</p>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- ============ GRATIS-LEKTION ============ -->
 <section id="gratis" style="padding-top:0">
   <div class="wrap">
     <div class="card gratis-card">
-      <span class="gratis-badge">KAPITEL 3 · GRATIS</span>
+      <span class="gratis-badge">KAPITEL 2 &middot; GRATIS</span>
       <div>
-        <h3>Wahrscheinlichkeitsrechnung: die komplette Probe&#8209;Lektion</h3>
-        <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der OSTA&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest mit 16 Fragen.</p>
+        <h3>Aktien &amp; Portfoliotheorie: die komplette Probe&#8209;Lektion</h3>
+        <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der BFIN&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest &uuml;ber alle 16 Fragen.</p>
         <div class="gratis-chips">
-          <span class="chip">Laplace</span><span class="chip">Bedingte WK</span><span class="chip">Unabhängigkeit</span><span class="chip">Satz von Bayes</span><span class="chip">Vierfeldertafel</span>
+          <span class="chip">Portfoliorendite</span><span class="chip">Diversifikation</span><span class="chip">Effizienzlinie</span><span class="chip">Kovarianz &amp; Korrelation</span><span class="chip">Systematisches Risiko</span>
         </div>
       </div>
       <div class="gratis-actions">
-        <a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Kostenlos starten</a>
-        <a class="btn btn-app" href="https://osta.klausurchecker.de/">OSTA&#8209;App öffnen</a>
+        <a class="btn btn-primary" href="bfin-kap02-portfolio.html">Kostenlos starten</a>
+        <a class="btn btn-app" href="https://bfin.klausurchecker.de/">BFIN&#8209;App &ouml;ffnen</a>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ KAPITEL-SWIPE (V2, Selbsteinschaetzung) ============ -->
 <section id="kapitel">
@@ -934,25 +777,27 @@ window.BKBC = (function(){
 <!-- ============ ANGEBOTS-STREIFEN (Live-Countdown) ============ -->
 <div class="offerstrip" id="offerstrip">
   <div class="wrap">
-    <div class="os-txt">Online&#8209;Vorteil bis 27.&nbsp;Juli 2026: <b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">89,00&nbsp;€</span> im Einzelkauf <span class="num">(10&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
-    <span class="os-clock num" id="osClock" aria-live="off">…</span>
+    <div class="os-txt">Online&#8209;Vorteil bis 28.&nbsp;Juli 2026: <b>Komplettpaket</b> f&uuml;r <span class="os-price num">49,90&nbsp;&euro;</span> statt <span class="num">62,30&nbsp;&euro;</span> &ndash; 7 Lektionen mit Selbsttest, 7 Handouts als WORKBOOK, Klausursimulator, Formelsammlung, Live&nbsp;Q&amp;A gratis, 10&nbsp;&euro; Cashback.</div>
+    <span class="os-clock num" id="osClock" aria-live="off">&#8230;</span>
     <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
   </div>
 </div>
 
+
 <!-- ============ SO FUNKTIONIERT'S ============ -->
 <section id="sofunktionierts">
   <div class="wrap">
-    <span class="kicker">So läuft's</span>
+    <span class="kicker">So l&auml;uft's</span>
     <h2>Testen, anmelden, in der App weiterlernen.</h2>
-    <p class="sub">Jeder Kurs hat 10 Kapitel mit Rechenweg und adaptivem Selbsttest. Hier steigst du kostenlos ein! Alles Weitere erwartet dich in der App.</p>
+    <p class="sub">Der Kurs hat 7 Kapitel mit Rechenweg und adaptivem Selbsttest. Hier steigst du kostenlos ein! Alles Weitere erwartet dich in der App.</p>
     <div class="steps v2-rail">
-      <div class="step"><span class="s-n num">1</span><h3>Gratis-Kapitel testen</h3><p>Kapitel&nbsp;3 „Wahrscheinlichkeitsrechnung" läuft sofort hier auf der Seite, ohne Anmeldung.</p></div>
-      <div class="step"><span class="s-n num">2</span><h3>Anmelden → Zugang zur App</h3><p>Nach der kostenlosen Anmeldung bekommst du deinen Zugang zur App per E-Mail – dazu das Handout zum Gratis-Kapitel als PDF.</p></div>
-      <div class="step"><span class="s-n num">3</span><h3>In der App weiter</h3><p>Alle 10 Kapitel, Selbsttests und Handouts schaltest du in der BWL&#8209;Kurse&#8209;App frei.</p></div>
+      <div class="step"><span class="s-n num">1</span><h3>Gratis-Kapitel testen</h3><p>Kapitel&nbsp;2 &bdquo;Aktien &amp; Portfoliotheorie&ldquo; l&auml;uft sofort hier auf der Seite, ohne Anmeldung.</p></div>
+      <div class="step"><span class="s-n num">2</span><h3>Anmelden &rarr; Zugang zur App</h3><p>Nach der kostenlosen Anmeldung bekommst du deinen Zugang zur App per E-Mail &ndash; dazu das Handout zum Gratis-Kapitel als PDF.</p></div>
+      <div class="step"><span class="s-n num">3</span><h3>In der App weiter</h3><p>Alle 7 Kapitel, Selbsttests und Handouts schaltest du in der BWL&#8209;Kurse&#8209;App frei.</p></div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ STIMMEN (Platzhalter, Testbetrieb) ============ -->
 <section id="stimmen">
@@ -978,19 +823,20 @@ window.BKBC = (function(){
       <img class="foto" src="rene-2026.jpg" loading="lazy" decoding="async" alt="René Flé, Diplom-Kaufmann" width="180" height="180">
       <div>
         <div class="pc-kicker">Wer dich vorbereitet</div>
-        <h2 style="color:var(--premium-ink)">René Flé <span style="font-size:.6em;font-weight:500;color:var(--premium-ink2)">(Dipl.&#8209;Kfm.)</span></h2>
-        <p>René Flé bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor, passgenau zur jeweiligen Vorlesung.</p>
+        <h2 style="color:var(--premium-ink)">Ren&eacute; Fl&eacute; <span style="font-size:.6em;font-weight:500;color:var(--premium-ink2)">(Dipl.&#8209;Kfm.)</span></h2>
+        <p>Ren&eacute; Fl&eacute; bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor, passgenau zur jeweiligen Vorlesung.</p>
         <div class="astats num">
           <div class="astat"><b>seit 1999</b><span>Goethe-Uni</span></div>
           <div class="astat"><b data-cnt="12000" data-pre="~">~12.000</b><span>zahlende Kunden</span></div>
-          <div class="astat"><b data-cnt="25000" data-suf="+ Std.">25.000+ Std.</b><span>universitäre Lehre</span></div>
-          <div class="astat"><b>seit 2012</b><span>Ausbilder Wirtschaftsprüfung</span></div>
+          <div class="astat"><b data-cnt="25000" data-suf="+ Std.">25.000+ Std.</b><span>universit&auml;re Lehre</span></div>
+          <div class="astat"><b>seit 2012</b><span>Honorardozent (CBS)</span></div>
         </div>
-        <p class="aq">„Ich zeige dir Kapitel für Kapitel genau das, was in der OSTA&#8209;Klausur bei Prof.&nbsp;Hassler wirklich zählt: klare Rechenwege und ein ehrlicher Blick auf typische Fehler. Kein Marketing&#8209;Zauber, sondern solide Vorbereitung."</p>
+        <p class="aq">&bdquo;Ich zeige dir Kapitel f&uuml;r Kapitel genau das, was in der Finanzen&#8209;2&#8209;Klausur bei Prof.&nbsp;Hackethal und Prof.&nbsp;Maurer wirklich z&auml;hlt: Portfoliotheorie, CAPM, Anleihen und Derivate mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing&#8209;Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.&ldquo;</p>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ============ VORMERKEN ============ -->
 <section id="vormerken" style="padding-top:0;scroll-margin-top:90px">
@@ -1005,7 +851,7 @@ window.BKBC = (function(){
         <input type="hidden" name="html_type" value="simple">
         <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
         <input type="hidden" name="form-name" value="vormerkung">
-        <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse OSTA">
+        <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse BFIN">
         <input type="hidden" name="interesse" id="vmInteresse" value="">
         <p hidden aria-hidden="true"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1"></label></p>
 
@@ -1037,45 +883,79 @@ window.BKBC = (function(){
   <div class="wrap">
     <span class="kicker">Alle Optionen &amp; Preise</span>
     <h2>Preise und Leistungen!</h2>
-    <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;€ je Kapitel. Wer alles will, zahlt 49,90&nbsp;€ statt 89,00&nbsp;€ und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
+    <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; statt 62,30&nbsp;&euro; (im Einzelkauf: 7&nbsp;&times;&nbsp;8,90&nbsp;&euro;) und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
 
-    <div class="ladder"><div class="tier feat"><span class="ribbon">Beliebteste Wahl</span><span class="rung">Komplettpaket</span><h3 style="color:var(--premium-ink)">OSTA Klausur-App + Workbook <span class="wb-sub">(alle Handouts)</span></h3><div class="price num"><span class="now">49,90&nbsp;€</span><span class="old">89,00&nbsp;€</span></div><p class="pd">Alle <b>10 Kapitel</b> als interaktive Lektionen · alle Handout-PDFs mit Aufgaben und Musterlösungen · Live Q&amp;A gratis dazu.</p><p class="cashback-hint">10&nbsp;€ Cashback für dein Feedback nach der Klausur (bis&nbsp;7.&nbsp;August).</p><a class="btn btn-kauf" href="https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l">Komplettpaket freischalten</a></div><div class="tier"><span class="rung">Einzelnes Kapitel</span><h3>Lektion + Handout</h3><div class="price num"><span class="now">8,90&nbsp;€</span></div><p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erhältlich.</p><p class="pd" style="margin-top:-4px">Ab <b>6 Kapiteln</b> ist das Komplettpaket günstiger.</p><details class="pl-akk"><summary class="btn btn-kauf">Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;01</span> Deskriptive Statistik I: Lage &amp; Streuung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;02</span> Deskriptive Statistik II: Zusammenhang &amp; Regression</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;03</span> Wahrscheinlich&shy;keits&shy;rechnung</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;04</span> Zufallsvariablen</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;05</span> Verteilungsmodelle: Binomial &amp; Poisson</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;06</span> Normalverteilung &amp; Stichprobenmittel</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;07</span> Schätzen: Punktschätzer &amp; Maximum Likelihood</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;08</span> Konfidenzintervalle</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;09</span> Testen I: Testprinzip &amp; Gauß-Test</a><a href="https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j"><span class="kn">Kap.&nbsp;10</span> Testen II: t-Test &amp; Chi-Quadrat</a></div></details></div><div class="tier"><span class="rung">Für Käufer</span><h3>Live Q&amp;A</h3><p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir lösen Sie ausführlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten!</p><p class="pd" style="margin-top:-4px">Den Termin stimmen wir in der WhatsApp-Gruppe ab.</p></div></div>
-    <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
-  </section>
+    <div class="ladder">
+      <div class="tier feat">
+        <span class="ribbon">Beliebteste Wahl</span>
+        <span class="rung">Komplettpaket</span>
+        <h3 style="color:var(--premium-ink)">BFIN Klausur-App + Workbook</h3>
+        <div class="price num"><span class="now">49,90&nbsp;&euro;</span><span class="old">62,30&nbsp;&euro;</span></div>
+        <ul class="pd" style="margin:0;padding-left:18px">
+          <li>Alle 7 Kapitel als interaktive Lektionen</li>
+          <li>7 Handouts als WORKBOOK</li>
+          <li>Klausursimulator</li>
+          <li>Formelsammlung</li>
+          <li>Live Q&amp;A gratis</li>
+          <li>10&nbsp;&euro; Cashback f&uuml;r dein Feedback nach der Klausur</li>
+        </ul>
+        <p class="cashback-hint">Ersparnis gegen&uuml;ber Einzelkauf: 12,40&nbsp;&euro; (&minus;20&nbsp;%).</p>
+        <!-- TODO-PLINK paket -->
+        <a class="btn btn-kauf" href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener">Komplettpaket freischalten</a>
+      </div>
+      <div class="tier">
+        <span class="rung">Einzelnes Kapitel</span>
+        <h3>Lektion + Handout</h3>
+        <div class="price num"><span class="now">8,90&nbsp;&euro;</span></div>
+        <p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF. Beides zusammen, nicht einzeln erh&auml;ltlich.</p>
+        <!-- TODO-PLINK bundle -->
+        <a class="btn btn-kauf" href="https://bfin.klausurchecker.de/" target="_blank" rel="noopener">Kapitel w&auml;hlen und freischalten</a>
+      </div>
+      <div class="tier">
+        <span class="rung">F&uuml;r K&auml;ufer</span>
+        <h3>Live Q&amp;A</h3>
+        <p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten, einzeln kostet sie 10,00&nbsp;&euro;.</p>
+      </div>
+    </div>
+    <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach &sect; 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
+  </div>
+</section>
+
 
 <!-- ============ FAQ ============ -->
 <section id="faq">
   <div class="wrap">
-    <span class="kicker">Fragen &amp; Einwände</span>
+    <span class="kicker">Fragen &amp; Einw&auml;nde</span>
     <h2>Bevor du dich entscheidest.</h2>
     <div class="faq">
       <details>
-        <summary>Reicht die Zeit bis zur Klausur überhaupt noch?</summary>
-        <div class="fa"><p>Die Klausur ist am 28.&nbsp;Juli. Der Kurs ist genau für diese Phase gebaut: 10 in sich geschlossene Kapitel, jedes mit Rechenweg und Selbsttest. Du startest mit dem Kapitel, das dir am meisten bringt, die Reihenfolge ist frei.</p></div>
+        <summary>Reicht die Zeit bis zur Klausur &uuml;berhaupt noch?</summary>
+        <div class="fa"><p>Die Klausur ist am Mittwoch, 29.&nbsp;Juli, 11:00&nbsp;Uhr &ndash; und es gibt keinen Zweittermin. Der Kurs ist genau f&uuml;r diese Phase gebaut: 7 in sich geschlossene Kapitel, jedes mit Rechenweg und Selbsttest. Du startest mit dem Kapitel, das dir am meisten bringt, die Reihenfolge ist frei.</p></div>
       </details>
       <details>
         <summary>Was kostet mich die Vormerkung?</summary>
-        <div class="fa"><p>Nichts. Sie ist kostenlos und unverbindlich, es entsteht keine Zahlungspflicht. Die Zahlung folgt später in einem separaten Checkout, erst wenn du dich bewusst entscheidest.</p></div>
+        <div class="fa"><p>Nichts. Sie ist kostenlos und unverbindlich, es entsteht keine Zahlungspflicht. Die Zahlung folgt sp&auml;ter in einem separaten Checkout, erst wenn du dich bewusst entscheidest.</p></div>
       </details>
       <details>
         <summary>Ist das ein offizielles Angebot der Goethe&#8209;Uni?</summary>
-        <div class="fa"><p>Nein. BWL Kurse ist ein unabhängiges Vorbereitungsangebot und wird nicht von der Hochschule herausgegeben. Die Inhalte sind auf die Vorlesung von Prof.&nbsp;Hassler im Sommersemester 2026 zugeschnitten, alle Aufgaben sind eigenständig formuliert oder abgewandelt.</p></div>
+        <div class="fa"><p>Nein. BWL Kurse ist ein unabh&auml;ngiges Vorbereitungsangebot und wird nicht von der Hochschule herausgegeben. Die Inhalte sind auf die Vorlesung von Prof.&nbsp;Hackethal und Prof.&nbsp;Maurer im Sommersemester 2026 zugeschnitten, alle Aufgaben sind eigenst&auml;ndig formuliert oder abgewandelt.</p></div>
       </details>
       <details>
         <summary>Brauche ich Vorwissen?</summary>
-        <div class="fa"><p>Du brauchst den Stoff deiner Vorlesung, mehr nicht. Jede Lektion beginnt mit einem Einstieg aus dem Alltag und baut den Rechenweg Schritt für Schritt auf. Starte im Zweifel mit der Gratis&#8209;Lektion und prüfe selbst, ob dir der Stil liegt.</p></div>
+        <div class="fa"><p>Du brauchst den Stoff deiner Vorlesung, mehr nicht. Jede Lektion beginnt mit einem Einstieg aus dem Alltag und baut den Rechenweg Schritt f&uuml;r Schritt auf. Starte im Zweifel mit der Gratis&#8209;Lektion und pr&uuml;fe selbst, ob dir der Stil liegt.</p></div>
       </details>
       <details>
         <summary>Warum nicht einfach YouTube und Altklausuren?</summary>
-        <div class="fa"><p>Kannst du zusätzlich nutzen. Der Unterschied: Dieser Kurs folgt der Vorlesung von Prof.&nbsp;Hassler Kapitel für Kapitel, mit geprüften Lösungen und einem Selbsttest, der dir sofort zeigt, wo du stehst. So verzettelst du dich nicht in der Suche.</p></div>
+        <div class="fa"><p>Kannst du zus&auml;tzlich nutzen. Der Unterschied: Dieser Kurs folgt der Vorlesung von Prof.&nbsp;Hackethal und Prof.&nbsp;Maurer Kapitel f&uuml;r Kapitel, mit gepr&uuml;ften L&ouml;sungen und einem Selbsttest, der dir sofort zeigt, wo du stehst. So verzettelst du dich nicht in der Suche.</p></div>
       </details>
       <details>
-        <summary>Auf welchen Geräten läuft das?</summary>
-        <div class="fa"><p>Im Browser auf Handy, Tablet und Laptop, ohne Installation. Dein Lernfortschritt wird auf deinem Gerät gespeichert, Details stehen in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p></div>
+        <summary>Auf welchen Ger&auml;ten l&auml;uft das?</summary>
+        <div class="fa"><p>Im Browser auf Handy, Tablet und Laptop, ohne Installation. Dein Lernfortschritt wird auf deinem Ger&auml;t gespeichert, Details stehen in der <a href="datenschutz.html">Datenschutzerkl&auml;rung</a>.</p></div>
       </details>
     </div>
   </div>
 </section>
+
 
 <!-- V2: Abschluss-Karte entfernt (redundant zu vormerken/gratis/offerstrip) -->
 
@@ -1094,25 +974,15 @@ window.BKBC = (function(){
   </div>
 </footer>
 
-<!-- ============ BUCHUNGS-MODAL ============ -->
-<div id="bkModal" class="bk-modal" hidden role="presentation">
-  <div class="bk-dialog" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
-    <button type="button" class="bk-close" aria-label="Schließen" onclick="closeBk()">&times;</button>
-    <div id="bkContent"></div>
-  </div>
-</div>
-
 <!-- Netlify-Registrierung Fortschritts-Formular (POST kommt aus den Lektionsseiten) -->
 <form name="fortschritt" data-netlify="true" hidden>
   <input type="text" name="sid"><input type="text" name="kapitel"><input type="text" name="prozent"><input type="email" name="email">
 </form>
 
 <script>
-/* ============ Transfer-Konstanten (Platzhalter, siehe Dateikopf) ============ */
-var CHECKOUT_URL = "{{CHECKOUT_URL}}";
-var GRATIS_URL   = "osta-kap03-wahrscheinlichkeit.html";
-var KLAUSUR_URL  = "{{KLAUSUR_URL}}";
-var FRIST_ISO    = "2026-07-27";
+/* ============ Transfer-Konstanten ============ */
+var GRATIS_URL   = "bfin-kap02-portfolio.html";
+var FRIST_ISO    = "2026-07-28";
 
 /* ============ Theme-Umschalter (Hell = Standard) ============ */
 (function(){
@@ -1198,7 +1068,7 @@ window.addEventListener("resize", drawRails);
 /* ============ Klausurcheck (rein lokal) ============ */
 (function(){
   "use strict";
-  var CORRECT = [1, 2];
+  var CORRECT = [0, 0];
   var picked = [null, null];
   var done = false;
   var opts = document.querySelectorAll("#klausurcheck .sc-opt");
@@ -1242,7 +1112,7 @@ window.addEventListener("resize", drawRails);
     if(optin){
       optin.hidden = false;
       var intr = document.getElementById("scInteresse");
-      if(intr) intr.value = "Klausurcheck OSTA: " + score + " von 2 richtig";
+      if(intr) intr.value = "Klausurcheck BFIN: " + score + " von 2 richtig";
     }
     retryBtn.style.display = "inline-block";
   });
@@ -1332,8 +1202,8 @@ window.addEventListener("resize", drawRails);
     var _tel = (data.get("handynummer") || "").replace(/[<>]/g,"").trim();
     if(_tel) body.append("HANDY", _tel);
     body.append("WHATSAPP", data.get("whatsapp_einverstaendnis") ? "ja" : "nein");
-    body.append("FACH", "osta");
-    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:(data.get("EMAIL")||"").trim().toLowerCase(), vorname:(data.get("vorname")||"").replace(/[<>]/g,"").trim(), fach:"osta", t:Date.now()})); }catch(e){}
+    body.append("FACH", "bfin");
+    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:(data.get("EMAIL")||"").trim().toLowerCase(), vorname:(data.get("vorname")||"").replace(/[<>]/g,"").trim(), fach:"bfin", t:Date.now()})); }catch(e){}
     fetch(f.getAttribute("action"), {method:"POST", mode:"no-cors", body: body})
       .then(function(){
         $("vmErr").style.display = "none";
@@ -1347,176 +1217,10 @@ window.addEventListener("resize", drawRails);
   });
 })();
 
-/* ============ Buchungs-Overlays (datengetrieben) ============ */
 window.BK_DATA = {
-  kursKuerzel: "OSTA",
-  bundlePreis: "8,90 €",   /* Lektion + Handout, untrennbar */
-  paketPreis:  "49,90 €",  /* App + Workbook, Live Q&A gratis */
-  qaPreis:     "10,00 €",  /* nur fuer Bundle-Kaeufer */
-  anker:       "89,00 €",  /* 10 x 8,90 */
-  cashback:    "10 €",     /* nach Klausur-Feedback ueber WhatsApp */
-  lektionen: [{"n":1,"thema":"Deskriptive Statistik I: Lage & Streuung","gratis":false,"slug":"osta-kap01-lage-streuung","keywords":["Mittelwert & Median","Modus","Quantile","Varianz & Standardabweichung","Häufigkeitsverteilungen"]},{"n":2,"thema":"Deskriptive Statistik II: Zusammenhang & Regression","gratis":false,"slug":"osta-kap02-regression","keywords":["Kovarianz","Korrelationskoeffizient","KQ-Regressionsgerade","Bestimmtheitsmaß"]},{"n":3,"thema":"Wahrscheinlichkeitsrechnung","gratis":true,"slug":"osta-kap03-wahrscheinlichkeit","keywords":["Laplace","Bedingte WK","Unabhängigkeit","Satz von Bayes","Vierfeldertafel"]},{"n":4,"thema":"Zufallsvariablen","gratis":false,"slug":"osta-kap04-zufallsvariablen","keywords":["Erwartungswert","Varianz","Dichte","Verteilungsfunktion","Exponentialverteilung"]},{"n":5,"thema":"Verteilungsmodelle: Binomial & Poisson","gratis":false,"slug":"osta-kap05-verteilungsmodelle","keywords":["Bernoulli-Experiment","Binomialverteilung","Poisson-Verteilung","Approximation"]},{"n":6,"thema":"Normalverteilung & Stichprobenmittel","gratis":false,"slug":"osta-kap06-normalverteilung","keywords":["Standardisieren","z-Wert","Quantile ablesen","Stichprobenmittel","Zentraler Grenzwertsatz"]},{"n":7,"thema":"Schätzen: Punktschätzer & Maximum Likelihood","gratis":false,"slug":"osta-kap07-schaetzen","keywords":["Erwartungstreue","Momentenmethode","Maximum Likelihood","Effizienz"]},{"n":8,"thema":"Konfidenzintervalle","gratis":false,"slug":"osta-kap08-konfidenzintervalle","keywords":["Konfidenzniveau","Intervall fürs Mittel","t-Verteilung","Stichprobenumfang"]},{"n":9,"thema":"Testen I: Testprinzip & Gauß-Test","gratis":false,"slug":"osta-kap09-testen1","keywords":["Hypothesenpaar","Fehler 1. & 2. Art","Gauß-Test","p-Wert","Signifikanzniveau"]},{"n":10,"thema":"Testen II: t-Test & Chi-Quadrat","gratis":false,"slug":"osta-kap10-testen2","keywords":["t-Test","Chi-Quadrat-Anpassungstest","Unabhängigkeitstest","Testauswahl"]}],
-  faecher: [{"k":"BMGT","n":"Management 1"},{"k":"OSTA","n":"Statistik"},{"k":"OMIK","n":"Mikroökonomie"},{"k":"OFIN","n":"Finanzen 1"},{"k":"BFIN","n":"Finanzen 2"}],
-  termine: [{"tag":"Fr 24.07.","zeit":"11:30","ausgebucht":true},{"tag":"Sa 25.07.","zeit":"10:00"},{"tag":"Fr 24.07.","zeit":"19:00"},{"tag":"Sa 25.07.","zeit":"19:00"},{"tag":"So 26.07.","zeit":"19:00"},{"tag":"Mo 27.07.","zeit":"18:00"}]
+  lektionen: [{"n":1,"thema":"Grundlagen: Kapitalwert, Markteffizienz, Dividendenmodell","gratis":false,"slug":"bfin-kap01-grundlagen"},{"n":2,"thema":"Aktien & Portfoliotheorie: Diversifikation, Effizienzlinie, Portfoliorisiko","gratis":true,"slug":"bfin-kap02-portfolio"},{"n":3,"thema":"CAPM & Multifaktormodelle: Wertpapiermarktlinie, Beta, Marktrisikoprämie","gratis":false,"slug":"bfin-kap03-capm"},{"n":4,"thema":"Anleihen / Fixed Income: Zinsstruktur, Bondbewertung, Duration","gratis":false,"slug":"bfin-kap04-anleihen"},{"n":5,"thema":"Derivate I – Forwards & Futures: No-Arbitrage-Preis, Pay-off, Cost-of-Carry","gratis":false,"slug":"bfin-kap05-forwards"},{"n":6,"thema":"Derivate II – Optionen & Risikomanagement: Put-Call-Parität, Binomialmodell, Pay-offs","gratis":false,"slug":"bfin-kap06-optionen"},{"n":7,"thema":"Klausurtraining: Die Muster-Klausur mit Originalaufgaben","gratis":false,"slug":"bfin-kap07-klausurtraining"}]
 };
 
-(function(){
-  "use strict";
-  var lastFocus = null;
-  function $(id){ return document.getElementById(id); }
-  function esc(s){
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
-      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
-    });
-  }
-
-  function renderLektionen(d){
-    var rows = (d.lektionen || []).map(function(l){
-      var titel = "Kap " + esc(l.n) + " · " + esc(l.thema);
-      var right;
-      if(l.gratis){
-        right = '<a class="bk-badge" href="' + esc(l.slug) + '.html">gratis · ansehen</a>';
-      } else {
-        var merk = esc("Einzellektion Kap " + l.n + " · " + l.thema);
-        right = '<span class="bk-preis num">' + esc(d.einzel) + '</span>' +
-                '<button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken</button>';
-      }
-      return '<li class="bk-row"><span class="bk-row-t">' + titel + '</span><span class="bk-row-r">' + right + '</span></li>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Alle ' + esc(d.kursKuerzel) + '-Lektionen einzeln buchen</h2><ul class="bk-list">' + rows + '</ul>';
-  }
-
-  function renderFaecher(d){
-    return '<h2 id="bkTitle" class="bk-h">Fächer-Paket zusammenstellen</h2>' + window.BKBC.markup();
-  }
-
-  function renderTermine(d){
-    var termine = d.termine || [];
-    var order = [], groups = {};
-    termine.forEach(function(t){
-      var g = t.tag || "Termine";
-      if(!groups[g]){ groups[g] = []; order.push(g); }
-      groups[g].push(t);
-    });
-    var blocks = order.map(function(g){
-      var opts = groups[g].map(function(t){
-        var val = esc(t.tag + ", " + t.zeit + " Uhr");
-        if(t.ausgebucht){
-          return '<label class="bk-opt num bk-out"><input type="radio" name="bkTermin" value="' + val + '" disabled><span><s>' + esc(t.zeit) + ' Uhr</s> · ausgebucht</span></label>';
-        }
-        return '<label class="bk-opt num"><input type="radio" name="bkTermin" value="' + val + '"><span>' + esc(t.zeit) + ' Uhr</span></label>';
-      }).join("");
-      return '<div class="bk-tgroup"><h3 class="bk-tgroup-h">' + esc(g) + '</h3>' + opts + '</div>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Wähle deinen Termin: Live Q&A</h2>' + blocks +
-           '<p class="bk-need" hidden>Bitte wähle zuerst einen Termin aus.</p>' +
-           '<div class="bk-actionrow"><button type="button" class="bk-btn" data-bk-action="termin-submit">Diesen Termin vormerken</button></div>' +
-           '<p class="bk-foot">Alle Termine nach der letzten Vorlesung und vor der Klausur.</p>';
-  }
-
-  function renderHandouts(d){
-    var preis = esc(d.handout);
-    var rows = (d.lektionen || []).map(function(l){
-      var titel = "Kap " + esc(l.n) + " · " + esc(l.thema);
-      var merk = esc("Handout-PDF Kap " + l.n + " · " + l.thema);
-      var chips = (l.keywords || []).map(function(k){ return '<span class="chip">' + esc(k) + '</span>'; }).join("");
-      var details = chips ? '<details class="bk-details"><summary>Inhalt</summary><div class="bk-chips">' + chips + '</div></details>' : "";
-      return '<li class="bk-row"><span class="bk-row-t">' + titel + details + '</span>' +
-             '<span class="bk-row-r"><button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken (' + preis + ')</button></span></li>';
-    }).join("");
-    return '<h2 id="bkTitle" class="bk-h">Handout-PDFs je Kapitel (' + preis + ')</h2><ul class="bk-list">' + rows + '</ul>';
-  }
-
-  var RENDER = {lektionen:renderLektionen, faecher:renderFaecher, termine:renderTermine, handouts:renderHandouts};
-
-  function focusables(modal){
-    var sel = 'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
-    return Array.prototype.filter.call(modal.querySelectorAll(sel), function(el){
-      return el.offsetParent !== null || el === document.activeElement;
-    });
-  }
-  function onKey(e){
-    if(e.key === "Escape" || e.key === "Esc"){ closeBk(); return; }
-    if(e.key !== "Tab") return;
-    var modal = $("bkModal"); if(!modal) return;
-    var f = focusables(modal); if(!f.length) return;
-    var first = f[0], last = f[f.length-1];
-    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
-    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
-  }
-
-  window.openBk = function(typ){
-    var modal = $("bkModal"), content = $("bkContent");
-    var render = RENDER[typ];
-    if(!modal || !content || !render) return;
-    content.innerHTML = render(window.BK_DATA || {});
-    if(typ === "faecher" && window.BKBC) window.BKBC.bind(content);
-    lastFocus = document.activeElement;
-    modal.hidden = false;
-    document.body.style.overflow = "hidden";
-    document.addEventListener("keydown", onKey);
-    var closeBtn = modal.querySelector(".bk-close");
-    if(closeBtn) closeBtn.focus();
-  };
-  window.closeBk = function(){
-    var modal = $("bkModal");
-    if(!modal || modal.hidden) return;
-    modal.hidden = true;
-    document.body.style.overflow = "";
-    document.removeEventListener("keydown", onKey);
-    if(lastFocus && typeof lastFocus.focus === "function"){ try{ lastFocus.focus(); }catch(e){} }
-    lastFocus = null;
-  };
-
-  document.addEventListener("click", function(e){
-    var t = e.target.closest ? e.target.closest("[data-bk]") : null;
-    if(t){ window.openBk(t.getAttribute("data-bk")); }
-  });
-
-  var modal = $("bkModal"), content = $("bkContent");
-  if(modal) modal.addEventListener("click", function(e){ if(e.target === modal) closeBk(); });
-  if(content){
-    content.addEventListener("click", function(e){
-      var m = e.target.closest ? e.target.closest("[data-bk-merken]") : null;
-      if(m){
-        var txt = m.getAttribute("data-bk-merken");
-        closeBk();
-        window.merken(txt);
-        return;
-      }
-      var sub = e.target.closest ? e.target.closest('[data-bk-action="termin-submit"]') : null;
-      if(sub){
-        var sel = content.querySelector('input[name="bkTermin"]:checked');
-        if(!sel){
-          var need = content.querySelector(".bk-need");
-          if(need) need.hidden = false;
-          return;
-        }
-        closeBk();
-        window.merken("Live-Termin: " + sel.value);
-        return;
-      }
-    });
-    content.addEventListener("change", function(e){
-      if(e.target && e.target.name === "bkTermin"){
-        Array.prototype.forEach.call(content.querySelectorAll(".bk-opt"), function(o){
-          var r = o.querySelector("input");
-          o.classList.toggle("bk-sel", !!(r && r.checked));
-        });
-        var need = content.querySelector(".bk-need");
-        if(need) need.hidden = true;
-      }
-    });
-  }
-})();
-
-/* ---- BKBC-Konfigurator: Checkout-Hook an den bestehenden Merken-Flow ---- */
-window.bkbcOnCheckout = function(p){
-  var art = p.handouts ? "Klausur-Check + alle Handouts" : "Klausur-Check";
-  var txt = "Fächer-Paket: " + p.faecher.join(" + ") + " · " + art + " · " + window.BKBC.fmt(p.total);
-  if(typeof window.closeBk === "function") window.closeBk();
-  if(typeof window.merken === "function") window.merken(txt);
-};
 </script>
 <style id="v43-politur">
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform}
@@ -1578,10 +1282,11 @@ h1,h2{letter-spacing:-.015em}
    +'<h3>Auf dieser Seite</h3>'+sl
    +'<h3>Kurse</h3>'
    +'<a href="index.html"><span class="nk">⌂</span> Alle Kurse</a>'
-   +'<a href="bmgt.html"><span class="nk">BMGT</span> Management</a>'
+   +'<a href="bmgt.html"><span class="nk">BMGT</span> Management 1</a>'
    +'<a href="osta.html"><span class="nk">OSTA</span> Statistik</a>'
    +'<a href="omik.html"><span class="nk">OMIK</span> Mikroökonomie</a>'
    +'<a href="ofin.html"><span class="nk">OFIN</span> Finanzen</a>'
+   +'<a href="bfin.html"><span class="nk">BFIN</span> Finanzen 2</a>'
    +'<h3>Rechtliches</h3><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="agb.html">AGB</a><a href="widerruf.html">Widerruf</a>'
    +(document.getElementById('preise')?'<a class="v43-navcta" href="#preise" data-close>Zu den Preisen</a>':'')
    +'</nav>';
@@ -1602,7 +1307,7 @@ h1,h2{letter-spacing:-.015em}
 /* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
    mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
 (function(){
-  var FACH = (location.pathname.match(/(osta|omik|ofin)/) || [])[1] || "osta";
+  var FACH = (location.pathname.match(/(bmgt|osta|omik|ofin|bfin|bmak|pfin)/) || [])[1] || "bfin";
   var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
   document.addEventListener('submit', function(e){
     var f = e.target;
@@ -1644,45 +1349,12 @@ h1,h2{letter-spacing:-.015em}
   }, true);
 })();
 </script>
-<script>
-(function(){
-  "use strict";
-  if(!window.BKBC || !window.BKBC.cfg) return;
-  window.BKBC.cfg.CTA_MODUS = "bestellen";
-  window.bkbcOnCheckout = function(p){
-    if(!p || p.widerrufsverzicht !== true) return;
-    /* Zugangs-Adresse VOR dem Bezahlen festlegen. Hier ist niemand angemeldet (anders als in
-       der App, wo der Kauf am Anmelde-Token haengt). Ohne diesen Schritt fragt Stripe die
-       Adresse frei ab — dann kann der Zugang auf einer zweiten, versehentlich getippten
-       Adresse landen (Fehler vom 22.07.). Mit Adresse ist das Feld bei Stripe fest. */
-    var vorbelegt = "";
-    try {
-      var sg = JSON.parse(localStorage.getItem("bwlk-signup") || "{}");
-      if (sg && sg.email) vorbelegt = sg.email;
-    } catch(e){}
-    var mail = (window.prompt(
-      "An welche E-Mail-Adresse soll dein Zugang gehen?\n\n" +
-      "Mit genau dieser Adresse meldest du dich danach in der App an.",
-      vorbelegt) || "").trim().toLowerCase();
-    var koerper = { typ:"bundle", faecher:p.faecher, handouts:p.handouts,
-      widerrufsverzicht:p.widerrufsverzicht, verzichtZeitpunkt:p.verzichtZeitpunkt };
-    if (mail.indexOf("@") > 0) koerper.email = mail;
-    fetch("https://adrfijztnbebzghumdxn.supabase.co/functions/v1/create-checkout", {
-      method:"POST", headers:{"Content-Type":"application/json"},
-      body: JSON.stringify(koerper)
-    }).then(function(r){ return r.json(); }).then(function(d){
-      if(d && d.url) location.href = d.url;
-      else alert(d && d.error ? d.error : "Fehler beim Start der Zahlung.");
-    }).catch(function(){ alert("Fehler beim Start der Zahlung."); });
-  };
-})();
-</script>
 
 <div id="v2Bar" aria-hidden="true"></div>
-<div class="scta" id="v2Scta"><a class="btn btn-primary" href="osta-kap03-wahrscheinlichkeit.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=osta">Ab&nbsp;8,90&nbsp;&euro;</a></div>
+<div class="scta" id="v2Scta"><a class="btn btn-primary" href="bfin-kap02-portfolio.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=bfin">Ab&nbsp;8,90&nbsp;&euro;</a></div>
 <style id="v2-mobil">
 /* ============================================================
-   V2-MOBIL-LAYER · osta.html (Livegang 22.07., V3) · Stand 22.07. (V3 nach Simons Feedback)
+   V2-MOBIL-LAYER · bfin.html (uebernommen aus bmgt.html) · Stand 2026-07-28.
    Preise wie in der App (nichts wischen/verstecken) · wenige, gezielte
    Aufklapper · kompakte Abstände · einheitlicher Hintergrund.
    ============================================================ */
@@ -1828,29 +1500,9 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 [data-theme="dark"] summary:focus-visible,[data-theme="dark"] input:focus-visible{outline-color:var(--accent-2)!important}
 
 
-/* ---------- NEU 2 · Urnen-Spiel (Gesetz der großen Zahlen) ---------- */
-.v2-urne{background:var(--surface-2);border-radius:var(--r-md);
-  box-shadow:inset 0 0 0 1px var(--hair);padding:12px 14px;margin:12px 0 14px}
-.v2-urne-row{display:flex;align-items:center;gap:12px}
-.v2-urne-btn{display:inline-flex;align-items:center;gap:8px;flex:none;
-  min-height:44px;padding:8px 14px;border-radius:999px;cursor:pointer;
-  border:1px solid var(--hair);background:var(--surface);color:var(--text);font-weight:700}
-.v2-urne-btn:active{transform:scale(.97)}
-.v2-urne-balls{display:flex;gap:5px;flex-wrap:wrap;min-height:18px;align-items:center}
-.v2-urne-balls i{width:14px;height:14px;border-radius:50%;flex:none;
-  transform:translateY(-8px) scale(.6);opacity:0;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1),opacity .2s}
-.v2-urne-balls i.in{transform:none;opacity:1}
-.v2-urne-balls i.rot{background:var(--wrong)}
-.v2-urne-balls i.blau{background:#3E6DA6}
-.v2-urne-stat{margin:10px 0 0;color:var(--text-2)}
-@media(prefers-reduced-motion:reduce){
-  .v2-urne-balls i{transition:none;transform:none;opacity:1}
-}
-
 /* ---------- NEU 3 · Kapitel-Profil (persönliches Balkendiagramm) ---------- */
 .v2-profil{margin-top:14px}
-.v2-profil-bars{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;align-items:end;height:44px}
+.v2-profil-bars{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;align-items:end;height:44px}
 .v2-profil-bars b{display:block;border-radius:4px 4px 0 0;background:var(--hair);
   height:30%;transition:height .3s ease,background-color .3s ease}
 .v2-profil-bars b.ok{background:var(--done);height:100%}
@@ -1912,13 +1564,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 </style>
 <script id="v2-mobil-js">
 /* ============================================================
-   V2-MOBIL-JS · osta.html (Livegang 22.07., V3) · V3 nach Simons Feedback
+   V2-MOBIL-JS · bfin.html (uebernommen aus bmgt.html)
    Läuft NACH allen Original-Skripten. Nichts davon wird ersetzt.
    ============================================================ */
 (function(){
   "use strict";
   var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var KLAUSUR_TAG = "2026-07-28";
+  var KLAUSUR_TAG = "2026-07-29";
 
   /* ---------- Scroll-Fortschrittsbalken ---------- */
   var bar = document.getElementById("v2Bar");
@@ -1944,7 +1596,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
     if(d === 1) return "Morgen ist Klausur";
     var offen = kapGesamt;
     try{
-      var st = JSON.parse(localStorage.getItem("kc_osta_selbstcheck") || "{}") || {};
+      var st = JSON.parse(localStorage.getItem("kc_bfin_selbstcheck") || "{}") || {};
       var wack = Object.keys(st).filter(function(k){ return st[k] === "no"; }).length;
       if(wack > 0) offen = wack;
     }catch(e){}
@@ -1958,45 +1610,6 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
     Array.prototype.forEach.call(els, function(e){ e.textContent = t; });
   }
   planUpdate();
-
-  /* ---------- NEU 2 · Urnen-Spiel: 3 rote, 7 blaue — Häufigkeit erleben ---------- */
-  (function(){
-    var btn = document.getElementById("v2UrneBtn");
-    var balls = document.getElementById("v2UrneBalls");
-    var stat = document.getElementById("v2UrneStat");
-    if(!btn || !balls || !stat) return;
-    var zuege = 0, rot = 0, MAX_SICHTBAR = 14;
-    btn.addEventListener("click", function(){
-      zuege++;
-      var istRot = Math.random() < 0.3;
-      if(istRot) rot++;
-      var i = document.createElement("i");
-      i.className = istRot ? "rot" : "blau";
-      balls.appendChild(i);
-      while(balls.children.length > MAX_SICHTBAR) balls.removeChild(balls.firstChild);
-      if(RM){ i.classList.add("in"); }
-      else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ i.classList.add("in"); }); }); }
-      upd();
-    });
-    function upd(){
-      if(!zuege) return;
-      var q = Math.round(rot / zuege * 100);
-      var basis = zuege + " gezogen · " + rot + "× rot (" + q + " %)";
-      if(window.v2QuizDone){
-        stat.textContent = basis + " · rechnerisch: 30 % — je öfter du ziehst, desto näher kommst du ran.";
-      } else {
-        stat.textContent = basis + (zuege >= 8 ? " · Wohin pendelt sich das ein? Frage 1 will es wissen." : "");
-      }
-    }
-    var evalBtn = document.getElementById("scEval");
-    if(evalBtn) evalBtn.addEventListener("click", function(){
-      window.v2QuizDone = true; upd();
-    });
-    var retryB = document.getElementById("scRetry");
-    if(retryB) retryB.addEventListener("click", function(){
-      window.v2QuizDone = false; upd();
-    });
-  })();
 
   /* ---------- Quiz: Gate + Frage 2 erst nach Antwort 1 ---------- */
   (function(){
@@ -2022,7 +1635,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
     var rail = document.getElementById("kapRail");
     var data = window.BK_DATA && window.BK_DATA.lektionen;
     if(!rail || !data || !data.length) return;
-    var LS = "kc_osta_selbstcheck";
+    var LS = "kc_bfin_selbstcheck";
     var state = {};
     try{ state = JSON.parse(localStorage.getItem(LS) || "{}") || {}; }catch(e){}
     function kurz(t){
@@ -2044,7 +1657,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
         '<button type="button" data-v="ok" aria-pressed="false">sitzt</button>' +
         '<button type="button" data-v="no" aria-pressed="false">wackelt</button></div></div>';
     }).join("") +
-    '<div class="kap-sum"><b class="kap-t" id="kapSumT">Bewerte alle 10 Kapitel.</b>' +
+    '<div class="kap-sum"><b class="kap-t" id="kapSumT">Bewerte alle 7 Kapitel.</b>' +
     '<span id="kapSumS" class="chk"></span>' +
     '<a class="btn btn-primary" href="#vormerken" id="kapSumBtn" data-merken="">Jetzt kostenlos anmelden</a></div>';
     rail.innerHTML = html;
