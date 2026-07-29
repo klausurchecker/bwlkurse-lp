@@ -1,17 +1,29 @@
 <!DOCTYPE html>
 <!--
-  BWL Kurse - BMGT - Management 1 - LANDINGPAGE (Funnel)
+  BWL Kurse - BMAK - Makrooekonomik 1 - LANDINGPAGE (Funnel)
   Design-System: Silber/Orange, zwei Modi (Hell = Standard, Dunkel = Schwarz+Orange)
-  Struktur/CSS/Tonfall 1:1 aus osta.html (Commit dd4a7a8, "Funnel-Fixes vor den
-  Klausuren") uebernommen, nur Fachliches ersetzt. Erstellt 2026-07-26.
+  Struktur/CSS/JS-Grundgeruest/Logos byte-exakt aus bmgt.html uebernommen (live,
+  gepruefte B-Fach-Seite mit 6 Kapiteln), nur Fachliches ersetzt. Erstellt 2026-07-29.
 
-  Dokumentierte Annahme (nicht uebernommen, weil auf BMGT nicht zutreffend):
+  BMAK-Besonderheit (wichtigstes Verkaufsargument, siehe Hero + Kaufabschnitt):
+  reine Wiederholungsklausur im SoSe 2026, keine eigene Vorlesung in diesem
+  Semester, KEIN Zweittermin. Dozent: Dr. Johannes Zahner (nicht "Prof.").
+
+  Dokumentierte Annahme (nicht uebernommen, weil auf BMAK nicht zutreffend):
   - BKBC-Faecher-Konfigurator + Buchungs-Modal (Termine/Handouts/Einzel-Stripe-
-    Links): das ist die Cross-Sell-Logik der OMIK/OSTA/OFIN-Familie, fuer BMGT
+    Links): das ist die Cross-Sell-Logik der OMIK/OSTA/OFIN-Familie, fuer BMAK
     nicht verifiziert und wuerde neue, nicht belegte Fakten einfuehren.
   - Urnen-Widget vor dem Klausurcheck (Statistik-Anschauungsstueck, hier fachfremd).
-  Alle Kauf-CTAs zeigen auf https://bmgt.klausurchecker.de/ (dort laeuft der
-  Store), BMGT-Stripe-Links sind eingetragen (26.07.2026, LIVE).
+  - "Willkommensgeschenk: OMIK gratis" aus dem Klausurcheck-Optin (BMGT-Cross-
+    Sell) NICHT uebernommen: fuer BMAK nicht bestaetigt, daher entfernt.
+
+  STAND 29.07.2026 abends:
+  - Stripe-Links am 29.07.2026 eingetragen (Bundle 8,90 / Paket 49,90 /
+    Q&A 10,00). Die Live-Q&A hat wie in bmgt.html keinen eigenen Kauf-
+    Button auf dieser Seite - sie wird in der App gebucht.
+  - Online-Vorteil-Countdown (FRIST_ISO) auf 2026-07-30 gesetzt, den Klausurtag.
+    Vorher stand er auf dem 29.07. - der Angebotsstreifen waere dann um
+    Mitternacht verschwunden, mitten in der Lernnacht vor der Klausur.
 -->
 <html lang="de">
 <head>
@@ -19,7 +31,7 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#EAE9E5">
-<title>BMGT · Management 1 · Prof. Friebel &amp; Dr. Sabet · Klausurchecker.de</title>
+<title>BMAK · Makroökonomik 1 · Dr. Johannes Zahner · Klausurchecker.de</title>
 <link rel="icon" href="data:image/png;base64,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">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -610,14 +622,14 @@ footer .fbrand b{font-family:var(--serif)}
 @media(max-width:560px){.appbar #weltBtn::after{content:none!important}.appbar .btn-kauf span{display:inline!important}.appbar .btn-kauf::after{content:none!important}}
 </style>
 </head>
-<body data-fach="BMGT" data-preisziel="preise.html?kurs=bmgt">
+<body data-fach="BMAK" data-preisziel="preise.html?kurs=bmak">
 
 <!-- ============ APPBAR ============ -->
 <header class="appbar">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="BWL Kurse, zum Seitenanfang">
       <span class="mark"><img class="lg-l" src="data:image/png;base64,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" alt="BWL Kurse"><img class="lg-d" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKAAAACgCAYAAACLz2ctAAAODElEQVR42u2dbYxU13nH/885d+68z7IsLOY92G0cv8SAbcCAiFm1wpFVVZVarSorkhu1cauWplX6oWmlllpt06rpt7iqlES2P7SJuvhDVEWR2tTZTUMwuGTBrZM42I6wTTBv3p3Zeb9zz3n64c7il1iwuywzsPv/SYAEyyLO/Ob/nOecM/cIFoiqysTEhB0ZGYlnf+/48R8NBYHfEXvdraLbVPUO9boG0CKAEIBgqaAeGuSQnvohNnz7U4AYkLljBHCKWrAA80QBIyIOQHzkyI+LYTZ+FMCvq8Z7vZh1mWwa3ns45+Ccg/ceqrq0RlAEUA+fykNtGuKiroRKu+bBvAQcGxuzoyJOAPfdEyfW5mz297x3n85msxsBoNlsIYoi7XQ6XlVFRND9VZbi4Ik6+FQBGuRg4iaUKXjjBBwfHw9GRkbiZ555JnP31h1/bASfy2azq5uNBmZmZtyVZE1ks7POLVH3ktmEevggC5/KwzYvdVORCbioAqqqJB5JfOTYS/vS6eBLuWxua61WRaVcjruy2WU5euqhNg0XlhCqY/FdbAG78kFE/LEXT/1ZkAr+xhhryuXpWfGC5T18CrUhXGZlN/mERi2WgIcOHTIi4k+cOJE6fuL/ni4UC5+aqVS8dy0vxgQcOkCggFi4zBCgSftBBRdBwG7y6SOPPJJ1SH2jWCwcmJ4udwANxBiO8Qc0jLNrOAyLJaCqyuHDh83tt99uJMx/o1AoHZiemu6IkRTf3x8swMlPcXZ4ti0h8+Tn1g0mJibs6Oioa8f22YHiwIHy9Kx85EM7YTjEuTWA4RrgdSegqloRib/3/ROfHxwcfGya8l1TQPExXHYVfJAB1HNIFpqAY2NjVkTcsWMvPZTNZb9QrVZiQNlsXCsAfYw4vRI+LELUsRAvJAFnm45vnT6d1nLjq8ZYiaL2kt3BWNQEVAcfDiDODME2LgOpgJV4AQloRMSXpup/VBoYuKfZbMTAMl1cnncnkuyGxLm1TMCFCHjo0CEDwE9OTq4OjHy+Xqt5AJRvzhmogAnQKWzsrgVSwHkJuH//fiMi2mzrwWJpYLDT6XiW3vkTlTZzEBYi4MjISHzq1Km8iPlMo1FXER7pmFcFhgDeoVPYDDUWAnbC854DNtr6aLFUWhtFkceHrA2Sq9VggfgIcWE9fLoIeM954AKakFEAKiLs3xbSCfsYcXY14uxtEB8lx7LI3AQ8efLkCq/+E61WU1SVzceC6nByMDUqbYZ4dsLzErARya50mB6OokjZfFxHJywWnYFfvHIqhsy1BHu3JwxDiAhnz9fTiKhHa/AuwEgiJJmjgCLbveeAXfc80LURDdwBF5YAH7MMz0PAO5yLoarsfq+rE+4gzt+GTmEDG5F5Cai6xjnHkbheB9XBBwW0B++GOM8dkbkKKCIF7z3YgCxKJUZz9XZW33kQqGrIYVicRkRchPbKe+BTue7BBDKXBOT7dVHSz0BcG53iZkSlLRDX5uM65jQHJIs7DwyLaK3aDnGO80AK2OsyDEA9mmt2JZ0x1wMpYM/LcNxEc9V9iHPDyQOLmIIUsJdtsPgIcX4tWqu3QVzEBxZRwF4rmCRhbf1+DgYF7MM8cLYMD+9CnB1KdkVYhilgLzPQuAid4gY0h3fCxFyOoYA974aTxxTVNh1g+lHAfoSghek00LhtD6LSJohrUUQK2GMHtQOXXYXaxgOQuMNumAL2ugwnZwSrH3kUPsxBNOagUMBeRmDSDbcH70Zj7V6YTosPm6CA/emKK78w2i3B3JqjgD1OQdOpoXHbHrSG74fpNLgkQwF7jYfaENMfexyzCzSEAvYwBS1Mp4r6hhE0hh+AZQpSwN63xAqVFKbv/gwTkAL2ay5YRX39ftQ37IeJalB2xBSw5x6qx9THD8IHWX5mhAL2IQXjOlqrtqJy52MwUQPK+34oYE+ngt1lmal7fhfRwBaYTnPZNyQUsLcxCPgOXHoQlx/4U5ZhCtgPBy1sVEFt4y+j/NHfhGnXlnUppoB9LMWXt/0JWkN3w0T1ZbtPTAH7VopjaCqPi7v/FhpkkydqLcNnBFDAPpZiE1XRGroPF3f+BUzcxHI8tEoB+1mKTQDbnsbMHb+BqXufgG0tv/lgAFXuDvWxEisMTLuMy1s/h6B2DqWffhMuU5LlcoCVF1DfBBICCqsRLu35OwTxDPJn/xtxugTxS19COXr8ZIcW3Az12ENtCuIirH/+tyV76SXrMktXQiOAU9QCF3Xu5Kt/E5DOwNbeMfWhu/yFPf+wc+Opv/66PXPEu2zJLOUkZPm9CZn437O7S1o9uuK/ft8X3xw3LlPsXoa9dKbrVxKwe1smuQlYt26dPXfuCZeuH0trfiXOfeIpDP/gC1jxyr/Ch7lk33iJ3crOBLyJGBsbs6Ojo+7oi5MPZ8L0RKvV9j4smRWvPIvVk18ENIZP5ZfEvPBKAo6Pj/NMUK9L7MSEf/LJJ68eZWKgUJiojPJdn0Z78C6sOf6XCMuvw6cLVxqXW51gZGSEn5juR9Oraq59O5UAYmDbU2gOP4i3HvkaVk1+EQOvPQe1qeRg6y2ehsHR45OPU4celR2T0sAG8XS9ekxEfqqqMpcbSlUCmE4VajO4sOfv0Vj3MIZO/SPSlTfgwhxU7C17tCsoFgeepRo9yz0AgqGgVD96fPIJEfna3JIQyWkZdTDtMqqbP4nGmh1Y+cOvYODVr8NGVfiwkCTmLSZiUK3OsAT3tvRqJpPJA/LlF1544XkRuTDXJExKcnKeUIMsLj3456h+5Few8uV/Rv7s8xDvbjkRg+4P0qtlBxG0Wi2XzeXyzYbcA+DC4cOHDYA5G6PdNLTtabQH78S5h59C/twRrPjx08i9fRSiHj6VT57WepOvH1K+PnkIQHFdlwRJMveLmxAA9bV7UV+7B/lz38OKn/wLcudfgIkj+FQGalLJlRE3YddMAfsr4SJ8l2QfwXRqAID6uodRX7cP2UuTGHjtOeTPfgdBqwxvLTTIJo+Nu4lSkQIuGZ1nRawCAJqr70dzzU6ElddRPPMtFN78D6TLPwG8QlNpqOleEdhnGSngkhWxDoGik1+Pd7Z+FtN3PY7shf9B4c3/RP789xHUzyf+BSHUhEkywgM9Ph5KAZewiApAXATjWlAJUN8wgvrGX0JQO4fcxReRPzuO7KUfJDIqoNZCbTqZW/YoHSng0m+7obAAFCaqQqBw6RWY2fJrmNnyqwgaF5C5fAq5t48ie2kSYfUMTNRIVnJsKklHMd0Jq3YTUikguY5U1BgmKkMBuHAAtU2fRG3zozDtMsLK68hePonsxRNIT7+CoHEBJo4SIY1N5o7Gdkv29UtJAZdpAz77dC7RGBJVknUhCdAe+jhaww9g+mO/BdueQjhzBpl3XkZ66mWky6cR1M/BRjOA166UBjApqATvCj4rJnT2ClEKSK6yGiS2q4hC4gZMXIdCoEEOzdXb0VyzE1AP06khaJxHOHMGYfk00pXXkJo5g6B5AbZdhrgIooBKt/SbIBFdbHcq8J6Vp+7GDwUkH1qmEx/dlW5aAUAsOoVNiAbuADYdSKSMG7CtKQSN80jV3kJYPYOg9jOk6udgm5dg22WYuA5xnXeDUJLzgF4MBSTXSsf3X7strg1xze5WTiJlnF2FTn4tmsM7oJIsdItrw3TqsFEZtvUOguYlBM2LsM2LCBqXkYqmgHaFApL5d9WAfb+UvtO9nFvfI6aBBhl0UusRFTd3y3D30x+qsOKhnSYFJIuXlD/XbqiDeAdx7Styzn6NGAtVpYDkRouJ9/XF751rQh2fDUP6CwUkFJBQQEIoIKGAhFBAQgEJoYCEAhJCAQkFJIQCEgpICAUkFJAQCkgoICEUkFBAQiggoYCEUEBCAQmhgIQCEkIBCQUkhAISCkgIBSQUkBAKSCggoYCEUEBCAQmhgIQCEkIBCQUkhAISCkgIBSQUkBAKSCggIRSQUEBCKCChgIRQQEIBCZkbqqoiAgUiCkj6k3zGAMAMBSR9CUFrLUTlbQpIeo6IqDEWKniVApJ+hSBEcZICkn5gW62Wd3DHKCDpNT4M03Bx/Ea8ZugUBSQ9FzCTzSgMvjOyZUuLApLezvxUjYtjMV7+DeBCNOmtfD6TyUi1WnstlfITqioUkPTUwHQmI9bgSw8++GBnYgI24KiQnjUf6bSpVGZ+FuXDp1VVADgmIOlV+vlsLifq/F+N3HtvDYAREaWApBeV1+UKhaBSLr+wd/f2p8fGxqyIOABgCSY3Wj4NggCdKGpb4HdExKu+G3xMQHJDETFxoVCwrWbjsw89dP+PVNWKiKeApAfph86KwRWpcqX81L69O788Pj4ezJbeWViCyQ2Tb3BwMFUpl8f27rr/D8dU7X7AffDrKCBZ9DmfiLjBlYOpmUpl7K0zpx/rzvm8iCgFJDe02zXG2GKxFFQq5X/avWPbwe56Hz5MPs4ByaKlnqrG+XzBplKpVrVa/oOufOZq8jEByfWq56HwqTAMctlc0Gw0jkYuPrh35/0nu2t9HoBe7TswAclC0s6peh+GaVMaWBEI5K1GvXHwm/9+eN/endtOjo+PB6Ojo+5a8jEByVwaCn2PSDYM05LNZqzzHu1W69Vmo/7VVkO/sm/ffdPdv2NEJJ7rvxGICEe69y+sXGvcu38u/Xp9RAQiRqy1YgMLEUG71YJ37o1Gvf5dG8hz9ZnL3x4ZGWl1/09WRNx7F5nnJKCqxlSi53jvvYWqXm1SD+B921Y9fItAVdoiOqPqzzsXv2aNmTQ2dcy17eSuhz46M/uV4+Pjwf79+90HF5jnyv8DR9P5/XJ+aRsAAAAASUVORK5CYII=" alt=""></span>
-      <span><b>BWL Kurse</b><small>BMGT · Management 1 · Prof. Friebel &amp; Dr. Sabet</small></span>
+      <span><b>BWL Kurse</b><small>BMAK · Makroökonomik 1 · Dr. Johannes Zahner</small></span>
     </a>
     <div class="sp"></div>
     <span class="count-pill num" id="pillCount">Online&#8209;Vorteil endet in <b>…</b></span>
@@ -632,15 +644,15 @@ footer .fbrand b{font-family:var(--serif)}
 <main id="top">
 
 <!-- ============ HERO ============ -->
-<section class="hero" id="bmgt">
+<section class="hero" id="bmak">
   <div class="wrap">
     <div>
-      <span class="kicker">Dein Kurs &middot; BMGT &middot; Management 1</span>
-      <h1>Bist du <span class="hl">bereit</span> f&uuml;r deine BMGT&#8209;Klausur?<span style="display:block;font-size:.42em;font-weight:500;color:var(--text-2);letter-spacing:0;margin-top:10px">Montag, 27. Juli</span></h1>
-      <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Abgestimmt auf die Vorlesungsinhalte von Prof.&nbsp;Friebel &amp; Dr.&nbsp;Sabet &ndash; diese Klausur hat <b>keinen Zweittermin</b>.</p>
-      <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">gepr&uuml;fte Rechenwege</span><span class="chip">adaptive Selbsttests</span></div>
+      <span class="kicker">Dein Kurs &middot; BMAK &middot; Makro&ouml;konomik 1</span>
+      <h1>Bist du <span class="hl">bereit</span> f&uuml;r deine BMAK&#8209;Wiederholungsklausur?<span style="display:block;font-size:.42em;font-weight:500;color:var(--text-2);letter-spacing:0;margin-top:10px">Donnerstag, 30. Juli</span></h1>
+      <p class="lead">Eine komplette Klausurvorbereitung mit Workbook und App! Im Sommersemester 2026 gab es zu BMAK <b>keine eigene Vorlesung</b> &ndash; diese Wiederholungsklausur von Dr.&nbsp;Johannes&nbsp;Zahner hat au&szlig;erdem <b>keinen Zweittermin</b>. Bereite dich gezielt auf deinen einen Versuch vor.</p>
+      <div class="v2-chips"><span class="chip">interaktive Lektionen</span><span class="chip">gepr&uuml;fte Rechenwege</span><span class="chip">adaptive Selbsttests</span><span class="chip">kein Zweittermin</span></div>
       <div class="hero-cta">
-        <a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a>
+        <a class="btn btn-primary" href="bmak-kap02-geld.html">Gratis&#8209;Lektion starten</a>
         <a class="btn btn-ghost" href="#klausurcheck">60&#8209;Sekunden&#8209;Klausurcheck</a>
       </div>
 
@@ -661,7 +673,7 @@ footer .fbrand b{font-family:var(--serif)}
 
     <div class="card" style="max-width:760px">
       <div class="sc-head">
-        <h2 style="margin-bottom:4px">Wie fit bist du in Cournot, Bertrand &amp; Stackelberg?</h2>
+        <h2 style="margin-bottom:4px">Wie fit bist du in Geld, Inflation &amp; Quantit&auml;tstheorie?</h2>
       </div>
       <p class="sub" style="margin-bottom:4px">2 Fragen, 60 Sekunden. L&auml;uft komplett lokal in deinem Browser: nichts wird gespeichert, nichts &uuml;bertragen.</p>
       <div class="sc-gate">
@@ -669,52 +681,52 @@ footer .fbrand b{font-family:var(--serif)}
       </div>
       <div class="sc-body">
 
-      <div class="sc-q"><span class="qn num">1</span>Was gibt die <b>Reaktionsfunktion</b> einer Firma im Cournot&#8209;Wettbewerb an?</div>
+      <div class="sc-q"><span class="qn num">1</span>Was besagt die <b>Quantit&auml;tsgleichung</b> M&nbsp;&middot;&nbsp;V&nbsp;=&nbsp;P&nbsp;&middot;&nbsp;Y?</div>
       <div data-sc-q="0">
-        <button type="button" class="sc-opt num" data-q="0" data-i="0">Die gewinnmaximale eigene Menge als Funktion der (erwarteten) Konkurrenzmenge</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="1">Den einheitlichen Marktpreis als Funktion der insgesamt nachgefragten Gesamtmenge</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="2">Die Kostenfunktion des Konkurrenten als Funktion der eigenen (geplanten) Kapazit&auml;t</button>
-        <button type="button" class="sc-opt num" data-q="0" data-i="3">Die abgesetzte Gesamtmenge als Funktion des eigenen (historischen) Preisniveaus</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="0">Geldmenge (M) mal Umlaufgeschwindigkeit (V) entspricht dem nominalen BIP, also Preisniveau (P) mal Realoutput (Y)</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="1">Der Realzins entspricht dem Nominalzins abz&uuml;glich des Geldmengenwachstums</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="2">Die Zentralbankbilanz entspricht der Summe aus Bargeld und Sichteinlagen der Geschäftsbanken</button>
+        <button type="button" class="sc-opt num" data-q="0" data-i="3">Der Staatsausgabenmultiplikator entspricht dem Kehrwert der Sparquote</button>
       </div>
-      <div class="sc-fb" id="scFb0"><b>Die Reaktionsfunktion gibt f&uuml;r jede Konkurrenzmenge die eigene gewinnmaximale Menge an.</b> Sie kommt aus der Bedingung erster Ordnung der eigenen Gewinnmaximierung &ndash; der Schnittpunkt beider RF ist das Cournot&#8209;Nash&#8209;Gleichgewicht.</div>
+      <div class="sc-fb" id="scFb0"><b>M&nbsp;&middot;&nbsp;V&nbsp;=&nbsp;P&nbsp;&middot;&nbsp;Y ist eine Identit&auml;t:</b> Geldmenge mal Umlaufgeschwindigkeit muss dem nominalen Output entsprechen. Sie ist der Ausgangspunkt der Quantit&auml;tstheorie des Geldes.</div>
 
-      <div class="sc-q v2-q2"><span class="qn num">2</span>Homogenes Gut, zwei Anbieter mit identischen konstanten Grenzkosten, simultaner Preiswettbewerb (Bertrand). Was gilt im Nash&#8209;Gleichgewicht?</div>
+      <div class="sc-q v2-q2"><span class="qn num">2</span>Klassische Quantit&auml;tstheorie: V und (langfristig) Y gelten als exogen/konstant. Welche Implikation folgt daraus f&uuml;r die Inflation?</div>
       <div data-sc-q="1" class="v2-q2">
-        <button type="button" class="sc-opt" data-q="1" data-i="0">p = GK &ndash; beide Firmen machen Nullgewinn (Bertrand&#8209;Paradoxon)</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="1">p = GK plus fester Aufschlag &ndash; beide Gewinne bleiben strikt positiv (Marge)</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="2">p = Monopolpreis &ndash; beide Firmen teilen sich den Monopolgewinn (halbe/halbe)</button>
-        <button type="button" class="sc-opt" data-q="1" data-i="3">p knapp unter GK &ndash; beide Firmen machen dauerhaft Verlust (Preiskampf)</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="0">Die Inflationsrate entspricht langfristig etwa der Wachstumsrate der Geldmenge minus der Wachstumsrate des Realoutputs</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="1">Geldmengenwachstum senkt langfristig die Inflation, weil die Umlaufgeschwindigkeit automatisch sinkt</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="2">Die Inflationsrate ist von der Geldmenge vollst&auml;ndig unabh&auml;ngig, solange die Zentralbank unabh&auml;ngig ist</button>
+        <button type="button" class="sc-opt" data-q="1" data-i="3">Ein Anstieg der Geldmenge erh&ouml;ht ausschlie&szlig;lich den Realzins, das Preisniveau bleibt konstant</button>
       </div>
-      <div class="sc-fb" id="scFb1"><b>Im Nash&#8209;Gleichgewicht gilt p = GK &ndash; Nullgewinn f&uuml;r beide (Bertrand&#8209;Paradoxon).</b> Jeder Preis &uuml;ber GK l&auml;dt zum minimalen Unterbieten ein &ndash; der Billigere bekommt den GANZEN Markt. Schon zwei Anbieter reichen f&uuml;r das Wettbewerbsergebnis.</div>
+      <div class="sc-fb" id="scFb1"><b>Aus M&nbsp;&middot;&nbsp;V&nbsp;=&nbsp;P&nbsp;&middot;&nbsp;Y folgt bei konstantem V und exogenem Y:</b> Geldmengenwachstum &uuml;ber das Wachstum des Realoutputs hinaus schl&auml;gt sich langfristig eins zu eins in Inflation nieder &ndash; der Kerngedanke der klassischen Quantit&auml;tstheorie.</div>
 
       <div class="sc-eval"><button type="button" class="btn btn-primary" id="scEval" disabled>Auswerten</button></div>
 
       <div class="sc-result r2" id="scR2">
         <b class="head num">2 von 2. Stark!</b>
-        <p>Die Grundlagen sitzen, du bist bereit f&uuml;r mehr. In der Klausur geht es genau hier weiter: Cournot&#8209;Mengen ausrechnen, den Stackelberg&#8209;Vorteil des Erstziehers, Kollusion &amp; kritischer Diskontfaktor. Hol dir jetzt die komplette Gratis&#8209;Lektion und teste dich am ganzen Kapitel.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Zur Gratis&#8209;Lektion</a></div>
+        <p>Die Grundlagen sitzen, du bist bereit f&uuml;r mehr. In der Klausur geht es genau hier weiter: Geldmengenwachstum und Inflation sauber verkn&uuml;pfen, nominale und reale Gr&ouml;&szlig;en sicher unterscheiden, die Quantit&auml;tsgleichung in Aufgaben einsetzen. Hol dir jetzt die komplette Gratis&#8209;Lektion und teste dich am ganzen Kapitel.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmak-kap02-geld.html">Zur Gratis&#8209;Lektion</a></div>
       </div>
       <div class="sc-result r1" id="scR1">
         <b class="head num">1 von 2. Gar nicht schlecht!</b>
         <p>Eine Frage sa&szlig;, eine noch nicht. Genau an solchen Stellen entscheidet sich die Klausur. Die kostenlose Probe&#8209;Lektion schlie&szlig;t die L&uuml;cke Schritt f&uuml;r Schritt: klarer Rechenweg, durchgerechnetes Beispiel, adaptiver Selbsttest.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a></div>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmak-kap02-geld.html">Gratis&#8209;Lektion starten</a></div>
       </div>
       <div class="sc-result r0" id="scR0">
         <b class="head num">0 von 2. Gut, dass du es jetzt merkst.</b>
-        <p>Kein Grund zur Panik, noch ist Zeit. Aber Oligopoltheorie (Cournot, Bertrand, Stackelberg) sicher zu beherrschen kann in der Klausur den Unterschied machen. Die kostenlose Probe&#8209;Lektion erkl&auml;rt dir alles von Grund auf, Schritt f&uuml;r Schritt.</p>
-        <div class="sc-actions"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion starten</a></div>
+        <p>Kein Grund zur Panik, noch ist Zeit. Aber Geldtheorie und die Quantit&auml;tsgleichung sicher zu beherrschen kann in der Klausur den Unterschied machen. Die kostenlose Probe&#8209;Lektion erkl&auml;rt dir alles von Grund auf, Schritt f&uuml;r Schritt.</p>
+        <div class="sc-actions"><a class="btn btn-primary" href="bmak-kap02-geld.html">Gratis&#8209;Lektion starten</a></div>
       </div>
 
       <!-- Inline-Opt-in: erscheint nach der Auswertung -->
       <div class="sc-optin" id="scOptin" hidden>
-        <b>Dein Willkommensgeschenk: ein komplettes Fach gratis!</b>
-        <p class="fnote" style="margin:4px 0 12px">Zu deiner BMGT-Vorbereitung schalten wir dir zus&auml;tzlich das ganze Fach Mikro&ouml;konomie (OMIK) in der App frei &ndash; kostenlos und unverbindlich.</p>
+        <b>Dein Zugang zur App</b>
+        <p class="fnote" style="margin:4px 0 12px">Trag dich mit Vorname und E&#8209;Mail ein &ndash; wir schicken dir sofort deinen kostenlosen Zugang zu BMAK in der App.</p>
         <form target="brevo_sink" method="POST" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung" id="scForm">
           <input type="hidden" name="locale" value="de">
           <input type="hidden" name="html_type" value="simple">
           <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
           <input type="hidden" name="form-name" value="vormerkung">
-          <input type="hidden" name="subject" value="Neue Vormerkung &middot; BWL Kurse BMGT">
+          <input type="hidden" name="subject" value="Neue Vormerkung &middot; BWL Kurse BMAK">
           <input type="hidden" name="interesse" id="scInteresse" value="">
           <div class="f-row">
             <input type="text" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname" aria-label="Vorname">
@@ -722,7 +734,7 @@ footer .fbrand b{font-family:var(--serif)}
           </div>
           <label class="chk"><input type="checkbox" name="datenschutz_einverstaendnis" value="ja" required>
             <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerkl&auml;rung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden.&nbsp;*</span></label>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><button type="submit" class="btn btn-primary">unverbindlich testen</button><a class="btn btn-app" href="https://bmgt.klausurchecker.de/">BMGT-App &ouml;ffnen</a></div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:14px"><button type="submit" class="btn btn-primary">unverbindlich testen</button><a class="btn btn-app" href="https://bmak.klausurchecker.de/">BMAK-App &ouml;ffnen</a></div>
           <div class="form-err" id="scErr">Da ist etwas schiefgelaufen. Bitte versuch es erneut.</div>
         </form>
         <div class="form-ok" id="scOk"></div>
@@ -742,15 +754,15 @@ footer .fbrand b{font-family:var(--serif)}
     <div class="card gratis-card">
       <span class="gratis-badge">KAPITEL 2 &middot; GRATIS</span>
       <div>
-        <h3>Oligopol: die komplette Probe&#8209;Lektion</h3>
-        <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der BMGT&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest &uuml;ber alle 16 Fragen.</p>
+        <h3>Geld, Inflation &amp; Quantit&auml;tstheorie: die komplette Probe&#8209;Lektion</h3>
+        <p class="sub" style="max-width:none">Eine echte Kapitel&#8209;Lektion aus der BMAK&#8209;Vorbereitung, sofort und ohne Anmeldung spielbar: Einstieg, Rechenweg, durchgerechnetes Beispiel und ein adaptiver Selbsttest zum ganzen Kapitel.</p>
         <div class="gratis-chips">
-          <span class="chip">Cournot-NE</span><span class="chip">Reaktionsfunktion</span><span class="chip">Bertrand</span><span class="chip">Stackelberg</span><span class="chip">Kollusion</span>
+          <span class="chip">Quantit&auml;tsgleichung</span><span class="chip">Geldmenge</span><span class="chip">Inflation</span><span class="chip">Umlaufgeschwindigkeit</span>
         </div>
       </div>
       <div class="gratis-actions">
-        <a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Kostenlos starten</a>
-        <a class="btn btn-app" href="https://bmgt.klausurchecker.de/">BMGT&#8209;App &ouml;ffnen</a>
+        <a class="btn btn-primary" href="bmak-kap02-geld.html">Kostenlos starten</a>
+        <a class="btn btn-app" href="https://bmak.klausurchecker.de/">BMAK&#8209;App &ouml;ffnen</a>
       </div>
     </div>
   </div>
@@ -775,7 +787,7 @@ footer .fbrand b{font-family:var(--serif)}
 <!-- ============ ANGEBOTS-STREIFEN (Live-Countdown) ============ -->
 <div class="offerstrip" id="offerstrip">
   <div class="wrap">
-    <div class="os-txt">Online&#8209;Vorteil bis 26.&nbsp;Juli 2026: <b>Komplettpaket</b> f&uuml;r <span class="os-price num">49,90&nbsp;&euro;</span> &ndash; 6 Lektionen mit Selbsttest, 6 Handouts als WORKBOOK, Klausursimulator, Formelsammlung, Live&nbsp;Q&amp;A gratis, 10&nbsp;&euro; Cashback.</div>
+    <div class="os-txt">Online&#8209;Vorteil bis 29.&nbsp;Juli 2026: <b>Komplettpaket</b> f&uuml;r <span class="os-price num">49,90&nbsp;&euro;</span> &ndash; 6 Lektionen mit Selbsttest, 6 Handouts als WORKBOOK, Klausursimulator, Formelsammlung, Live&nbsp;Q&amp;A gratis, 10&nbsp;&euro; Cashback.</div>
     <span class="os-clock num" id="osClock" aria-live="off">&#8230;</span>
     <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
   </div>
@@ -789,7 +801,7 @@ footer .fbrand b{font-family:var(--serif)}
     <h2>Testen, anmelden, in der App weiterlernen.</h2>
     <p class="sub">Der Kurs hat 6 Kapitel mit Rechenweg und adaptivem Selbsttest. Hier steigst du kostenlos ein! Alles Weitere erwartet dich in der App.</p>
     <div class="steps v2-rail">
-      <div class="step"><span class="s-n num">1</span><h3>Gratis-Kapitel testen</h3><p>Kapitel&nbsp;2 &bdquo;Oligopol&ldquo; l&auml;uft sofort hier auf der Seite, ohne Anmeldung.</p></div>
+      <div class="step"><span class="s-n num">1</span><h3>Gratis-Kapitel testen</h3><p>Kapitel&nbsp;2 &bdquo;Geld, Inflation &amp; Quantit&auml;tstheorie&ldquo; l&auml;uft sofort hier auf der Seite, ohne Anmeldung.</p></div>
       <div class="step"><span class="s-n num">2</span><h3>Anmelden &rarr; Zugang zur App</h3><p>Nach der kostenlosen Anmeldung bekommst du deinen Zugang zur App per E-Mail &ndash; dazu das Handout zum Gratis-Kapitel als PDF.</p></div>
       <div class="step"><span class="s-n num">3</span><h3>In der App weiter</h3><p>Alle 6 Kapitel, Selbsttests und Handouts schaltest du in der BWL&#8209;Kurse&#8209;App frei.</p></div>
     </div>
@@ -829,7 +841,7 @@ footer .fbrand b{font-family:var(--serif)}
           <div class="astat"><b data-cnt="25000" data-suf="+ Std.">25.000+ Std.</b><span>universit&auml;re Lehre</span></div>
           <div class="astat"><b>seit 2012</b><span>Honorardozent (CBS)</span></div>
         </div>
-        <p class="aq">&bdquo;Ich zeige dir Kapitel f&uuml;r Kapitel genau das, was in der Management&#8209;1&#8209;Klausur bei Prof.&nbsp;Friebel und Dr.&nbsp;Sabet wirklich z&auml;hlt: Spieltheorie, Oligopol, Anreize und Organisation mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing&#8209;Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.&ldquo;</p>
+        <p class="aq">&bdquo;Ich zeige dir Kapitel f&uuml;r Kapitel genau das, was in der Makro&ouml;konomik&#8209;1&#8209;Wiederholungsklausur bei Dr.&nbsp;Johannes&nbsp;Zahner wirklich z&auml;hlt: Volkswirtschaftliche Gesamtrechnung, Geld und Inflation, das IS&#8209;LM&#8209;Modell, AD&#8209;AS mit Phillips&#8209;Kurve und das Solow&#8209;Wachstumsmodell &ndash; mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing&#8209;Zauber, sondern solide Vorbereitung, die dich sicher durch die Klausur bringt.&ldquo;</p>
       </div>
     </div>
   </div>
@@ -849,7 +861,7 @@ footer .fbrand b{font-family:var(--serif)}
         <input type="hidden" name="html_type" value="simple">
         <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute!important;left:-5000px!important;width:1px;height:1px;overflow:hidden">
         <input type="hidden" name="form-name" value="vormerkung">
-        <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse BMGT">
+        <input type="hidden" name="subject" value="Neue Vormerkung · BWL Kurse BMAK">
         <input type="hidden" name="interesse" id="vmInteresse" value="">
         <p hidden aria-hidden="true"><label>Bitte nicht ausfüllen: <input name="bot-field" tabindex="-1"></label></p>
 
@@ -881,13 +893,13 @@ footer .fbrand b{font-family:var(--serif)}
   <div class="wrap">
     <span class="kicker">Alle Optionen &amp; Preise</span>
     <h2>Preise und Leistungen!</h2>
-    <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App.</p>
+    <p class="sub">Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Wer alles will, zahlt 49,90&nbsp;&euro; und bekommt die Live Q&amp;A dazu. Freigeschaltet wird in der App. BMAK ist diesmal eine Wiederholungsklausur ohne eigene Vorlesung und ohne Zweittermin &ndash; nutze deinen einen Versuch gut vorbereitet.</p>
 
     <div class="ladder">
       <div class="tier feat">
         <span class="ribbon">Beliebteste Wahl</span>
         <span class="rung">Komplettpaket</span>
-        <h3 style="color:var(--premium-ink)">BMGT Klausur-App + Workbook</h3>
+        <h3 style="color:var(--premium-ink)">BMAK Klausur-App + Workbook</h3>
         <div class="price num"><span class="now">49,90&nbsp;&euro;</span></div>
         <ul class="pd" style="margin:0;padding-left:18px">
           <li>6 Lektionen mit Selbsttest</li>
@@ -897,19 +909,20 @@ footer .fbrand b{font-family:var(--serif)}
           <li>Live Q&amp;A gratis</li>
           <li>10&nbsp;&euro; Cashback f&uuml;r dein Feedback nach der Klausur</li>
         </ul>
-        <a class="btn btn-kauf" href="https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q" target="_blank" rel="noopener">Komplettpaket freischalten</a>
+        <!-- Kauf-Link: BMAK Komplettpaket 49,90 --><a class="btn btn-kauf" href="https://buy.stripe.com/bJe8wP8OH56g4mrdHr8bS0w" target="_blank" rel="noopener">Komplettpaket freischalten</a>
       </div>
       <div class="tier">
         <span class="rung">Einzelnes Kapitel</span>
         <h3>Lektion + Handout</h3>
         <div class="price num"><span class="now">8,90&nbsp;&euro;</span></div>
         <p class="pd">Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF. Beides zusammen, nicht einzeln erh&auml;ltlich.</p>
-        <a class="btn btn-kauf" href="https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p" target="_blank" rel="noopener">Kapitel w&auml;hlen und freischalten</a>
+        <!-- Kauf-Link: BMAK Kapitel-Bundle 8,90 --><a class="btn btn-kauf" href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener">Kapitel w&auml;hlen und freischalten</a>
       </div>
       <div class="tier">
         <span class="rung">F&uuml;r K&auml;ufer</span>
         <h3>Live Q&amp;A</h3>
         <p class="pd">Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten, einzeln kostet sie 10,00&nbsp;&euro;.</p>
+        <!-- Live-Q&A: kein eigener Kauf-Button auf der Landingpage, wie bmgt.html -->
       </div>
     </div>
     <p class="note" style="margin-top:16px">Die hier genannten Leistungen sind nach &sect; 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit.</p>
@@ -925,7 +938,7 @@ footer .fbrand b{font-family:var(--serif)}
     <div class="faq">
       <details>
         <summary>Reicht die Zeit bis zur Klausur &uuml;berhaupt noch?</summary>
-        <div class="fa"><p>Die Klausur ist am Montag, 27.&nbsp;Juli, 11:00&nbsp;Uhr &ndash; und es gibt keinen Zweittermin. Der Kurs ist genau f&uuml;r diese Phase gebaut: 6 in sich geschlossene Kapitel, jedes mit Rechenweg und Selbsttest. Du startest mit dem Kapitel, das dir am meisten bringt, die Reihenfolge ist frei.</p></div>
+        <div class="fa"><p>Die Klausur ist am Donnerstag, 30.&nbsp;Juli, 11:00&nbsp;Uhr. BMAK ist im Sommersemester 2026 eine reine Wiederholungsklausur ohne eigene Vorlesung &ndash; und es gibt keinen Zweittermin. Der Kurs ist genau f&uuml;r diese Phase gebaut: 6 in sich geschlossene Kapitel, jedes mit Rechenweg und Selbsttest. Du startest mit dem Kapitel, das dir am meisten bringt, die Reihenfolge ist frei.</p></div>
       </details>
       <details>
         <summary>Was kostet mich die Vormerkung?</summary>
@@ -933,7 +946,7 @@ footer .fbrand b{font-family:var(--serif)}
       </details>
       <details>
         <summary>Ist das ein offizielles Angebot der Goethe&#8209;Uni?</summary>
-        <div class="fa"><p>Nein. BWL Kurse ist ein unabh&auml;ngiges Vorbereitungsangebot und wird nicht von der Hochschule herausgegeben. Die Inhalte sind auf die Vorlesung von Prof.&nbsp;Friebel und Dr.&nbsp;Sabet im Sommersemester 2026 zugeschnitten, alle Aufgaben sind eigenst&auml;ndig formuliert oder abgewandelt.</p></div>
+        <div class="fa"><p>Nein. BWL Kurse ist ein unabh&auml;ngiges Vorbereitungsangebot und wird nicht von der Hochschule herausgegeben. Die Inhalte sind auf die Wiederholungsklausur von Dr.&nbsp;Johannes&nbsp;Zahner zugeschnitten &ndash; im Sommersemester 2026 gab es zu BMAK keine eigene Vorlesung. Alle Aufgaben sind eigenst&auml;ndig formuliert oder abgewandelt.</p></div>
       </details>
       <details>
         <summary>Brauche ich Vorwissen?</summary>
@@ -941,7 +954,7 @@ footer .fbrand b{font-family:var(--serif)}
       </details>
       <details>
         <summary>Warum nicht einfach YouTube und Altklausuren?</summary>
-        <div class="fa"><p>Kannst du zus&auml;tzlich nutzen. Der Unterschied: Dieser Kurs folgt der Vorlesung von Prof.&nbsp;Friebel und Dr.&nbsp;Sabet Kapitel f&uuml;r Kapitel, mit gepr&uuml;ften L&ouml;sungen und einem Selbsttest, der dir sofort zeigt, wo du stehst. So verzettelst du dich nicht in der Suche.</p></div>
+        <div class="fa"><p>Kannst du zus&auml;tzlich nutzen. Der Unterschied: Dieser Kurs folgt den Themen der Wiederholungsklausur von Dr.&nbsp;Johannes&nbsp;Zahner Kapitel f&uuml;r Kapitel, mit gepr&uuml;ften L&ouml;sungen und einem Selbsttest, der dir sofort zeigt, wo du stehst. So verzettelst du dich nicht in der Suche.</p></div>
       </details>
       <details>
         <summary>Auf welchen Ger&auml;ten l&auml;uft das?</summary>
@@ -976,8 +989,8 @@ footer .fbrand b{font-family:var(--serif)}
 
 <script>
 /* ============ Transfer-Konstanten ============ */
-var GRATIS_URL   = "bmgt-kap02-oligopol.html";
-var FRIST_ISO    = "2026-07-26";
+var GRATIS_URL   = "bmak-kap02-geld.html";
+var FRIST_ISO    = "2026-07-30";
 
 /* ============ Theme-Umschalter (Hell = Standard) ============ */
 (function(){
@@ -1107,7 +1120,7 @@ window.addEventListener("resize", drawRails);
     if(optin){
       optin.hidden = false;
       var intr = document.getElementById("scInteresse");
-      if(intr) intr.value = "Klausurcheck BMGT: " + score + " von 2 richtig";
+      if(intr) intr.value = "Klausurcheck BMAK: " + score + " von 2 richtig";
     }
     retryBtn.style.display = "inline-block";
   });
@@ -1197,8 +1210,8 @@ window.addEventListener("resize", drawRails);
     var _tel = (data.get("handynummer") || "").replace(/[<>]/g,"").trim();
     if(_tel) body.append("HANDY", _tel);
     body.append("WHATSAPP", data.get("whatsapp_einverstaendnis") ? "ja" : "nein");
-    body.append("FACH", "bmgt");
-    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:(data.get("EMAIL")||"").trim().toLowerCase(), vorname:(data.get("vorname")||"").replace(/[<>]/g,"").trim(), fach:"bmgt", t:Date.now()})); }catch(e){}
+    body.append("FACH", "bmak");
+    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:(data.get("EMAIL")||"").trim().toLowerCase(), vorname:(data.get("vorname")||"").replace(/[<>]/g,"").trim(), fach:"bmak", t:Date.now()})); }catch(e){}
     fetch(f.getAttribute("action"), {method:"POST", mode:"no-cors", body: body})
       .then(function(){
         $("vmErr").style.display = "none";
@@ -1213,7 +1226,7 @@ window.addEventListener("resize", drawRails);
 })();
 
 window.BK_DATA = {
-  lektionen: [{"n":1,"thema":"Spieltheorie kompakt: Nash-Gleichgewicht, Spielbaum, wiederholte Spiele","gratis":false,"slug":"bmgt-kap01-spieltheorie"},{"n":2,"thema":"Oligopol: Cournot, Bertrand & Stackelberg – Reaktionsfunktionen und Gleichgewichte","gratis":true,"slug":"bmgt-kap02-oligopol"},{"n":3,"thema":"Moral Hazard & Anreizverträge: First best, Teilnahme- und Anreizbedingung","gratis":false,"slug":"bmgt-kap03-moral-hazard"},{"n":4,"thema":"Organisation & Anreize: Team, Delegation, Abstimmung, Transferpreise","gratis":false,"slug":"bmgt-kap04-organisation"},{"n":5,"thema":"MC-Wissen: Adverse Selection & Integration – Lemons, Hold-up, Five Forces","gratis":false,"slug":"bmgt-kap05-mc-wissen"},{"n":6,"thema":"Klausurtraining: Die Muster-Klausur mit vier Originalaufgaben","gratis":false,"slug":"bmgt-kap06-klausurtraining"}]
+  lektionen: [{"n":1,"thema":"Volkswirtschaftliche Gesamtrechnung & BIP","gratis":false,"slug":"bmak-kap01-vgr"},{"n":2,"thema":"Geld, Inflation & Quantitätstheorie","gratis":true,"slug":"bmak-kap02-geld"},{"n":3,"thema":"Gütermarkt & IS-LM-Modell","gratis":false,"slug":"bmak-kap03-islm"},{"n":4,"thema":"AD-AS, Phillips-Kurve & Stabilisierungspolitik","gratis":false,"slug":"bmak-kap04-adas"},{"n":5,"thema":"Solow-Wachstumsmodell & Arbeitsmarkt","gratis":false,"slug":"bmak-kap05-solow"},{"n":6,"thema":"Klausurtraining","gratis":false,"slug":"bmak-kap06-klausurtraining"}]
 };
 
 </script>
@@ -1303,7 +1316,7 @@ h1,h2{letter-spacing:-.015em}
 /* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
    mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
 (function(){
-  var FACH = (location.pathname.match(/(bmgt|osta|omik|ofin|bfin|bmak|pfin)/) || [])[1] || "bmgt";
+  var FACH = (location.pathname.match(/(bmgt|osta|omik|ofin|bfin|bmak|pfin)/) || [])[1] || "bmak";
   var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
   document.addEventListener('submit', function(e){
     var f = e.target;
@@ -1347,10 +1360,10 @@ h1,h2{letter-spacing:-.015em}
 </script>
 
 <div id="v2Bar" aria-hidden="true"></div>
-<div class="scta" id="v2Scta"><a class="btn btn-primary" href="bmgt-kap02-oligopol.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=bmgt">Ab&nbsp;8,90&nbsp;&euro;</a></div>
+<div class="scta" id="v2Scta"><a class="btn btn-primary" href="bmak-kap02-geld.html">Gratis&#8209;Lektion</a><a class="btn btn-kauf" href="preise.html?kurs=bmak">Ab&nbsp;8,90&nbsp;&euro;</a></div>
 <style id="v2-mobil">
 /* ============================================================
-   V2-MOBIL-LAYER · bmgt.html (uebernommen aus osta.html, Commit dd4a7a8) · Stand 26.07.
+   V2-MOBIL-LAYER · bmak.html (uebernommen aus bmgt.html) · Stand 29.07.
    Preise wie in der App (nichts wischen/verstecken) · wenige, gezielte
    Aufklapper · kompakte Abstände · einheitlicher Hintergrund.
    ============================================================ */
@@ -1560,13 +1573,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
 </style>
 <script id="v2-mobil-js">
 /* ============================================================
-   V2-MOBIL-JS · bmgt.html (uebernommen aus osta.html, Commit dd4a7a8)
+   V2-MOBIL-JS · bmak.html (uebernommen aus bmgt.html)
    Läuft NACH allen Original-Skripten. Nichts davon wird ersetzt.
    ============================================================ */
 (function(){
   "use strict";
   var RM = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var KLAUSUR_TAG = "2026-07-27";
+  var KLAUSUR_TAG = "2026-07-30";
 
   /* ---------- Scroll-Fortschrittsbalken ---------- */
   var bar = document.getElementById("v2Bar");
@@ -1592,7 +1605,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
     if(d === 1) return "Morgen ist Klausur";
     var offen = kapGesamt;
     try{
-      var st = JSON.parse(localStorage.getItem("kc_bmgt_selbstcheck") || "{}") || {};
+      var st = JSON.parse(localStorage.getItem("kc_bmak_selbstcheck") || "{}") || {};
       var wack = Object.keys(st).filter(function(k){ return st[k] === "no"; }).length;
       if(wack > 0) offen = wack;
     }catch(e){}
@@ -1631,7 +1644,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{o
     var rail = document.getElementById("kapRail");
     var data = window.BK_DATA && window.BK_DATA.lektionen;
     if(!rail || !data || !data.length) return;
-    var LS = "kc_bmgt_selbstcheck";
+    var LS = "kc_bmak_selbstcheck";
     var state = {};
     try{ state = JSON.parse(localStorage.getItem(LS) || "{}") || {}; }catch(e){}
     function kurz(t){

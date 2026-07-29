@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+  BMAK · Kapitel 2 – Geld, Inflation & Quantitätstheorie (GRATIS-Probe-Lektion)
+  Rahmen (Kopf/CSS/Preismodul/Buchungsmodul/vm-Anmeldemodal/Sticky-Bar/Quiz-Huelle/
+  Tooltip-JS) analog zum BMGT-Umbau uebernommen aus der LP-Form-Referenz
+  osta-kap03-wahrscheinlichkeit.html (live, V3-Preise; Vorbild: _repos/bwlkurse-lp/
+  bmgt-kap02-oligopol.html) · Lehrinhalt (Einstieg/Fahrplan/①-④/FAQ/Fragenbank/
+  Grafik-JS/Person-Bio) unveraendert aus BMAK/lektionen/bmak-kap02-geld.html
+  uebernommen - siehe dort fuer Quellenangaben/Zahlen-Verifikation. Preise V3,
+  KEIN Streichpreis (6 Kap. x 8,90 = 53,40, Ersparnis 6,6 % < 15 %-Schwelle ->
+  Leistungsliste statt Streichpreis), Kauf-Farblogik (--kauf), Kauf-CTAs -> noch
+  Stripe-Links am 29.07.2026 eingetragen (Bundle 8,90 / Paket 49,90 / Q&A 10,00).
+--------------------------------------------------------------------------------
+  Eingesetzte Werte:
+    MARKE=BWL Kurse · FARBE_NAVY=#20232A (Redesign) · FARBE_AKZENT=#E8760A ·
+    LOGO_PFAD=bwlkurse-mark.png · LOGO_ALT=BWL Kurse · FACH_NAME=Makroökonomik 1 ·
+    FACH_KUERZEL=BMAK (Domain bmak.klausurchecker.de) · VORLESUNGSTEIL=Makroökonomik 1 (BMAK) Goethe-Uni Frankfurt ·
+    KAPITEL_NR=2 · KAPITEL_THEMA=Geld, Inflation & Quantitätstheorie ·
+    KAPITEL_SLUG=bmak-kap02-geld · LIVEQ_KEY=liveQ_bmak-kap02-geld ·
+    PREIS_KOMPLETT=49,90 EUR (V3, kein Streichpreis) · PREIS_EINZELLEKTION=8,90 EUR
+    (Lektion+Handout untrennbar) · PREIS_QA=10,00 EUR (im Komplettpaket gratis) ·
+    CASHBACK=10,00 EUR nach Klausur-Feedback · CTA_TEXT=weitere Kapitel (btn kauf) ·
+    KLAUSUR=Do 30.07.2026, 11:00 Uhr (Dr. Johannes Zahner) - Wiederholungsklausur
+    ohne Zweittermin, keine Vorlesung im SoSe 2026 · PERSON_NAME=René Flé ·
+    PERSON_FOTO=rene-2026.jpg.
+  Prof-USP (Verkaufsargument, faktisch belegt, Rene 2026-07-21 als Klausursteller
+  bestaetigt): "Passgenau zur Makroökonomik-1-Vorlesung von Dr. Johannes Zahner ·
+  Sommersemester 2026" (NICHT "Prof." - Zahner ist Dr.).
+  STRIPE-LINKS: am 29.07.2026 eingetragen - Kapitel-Bundle 8,90 EUR,
+  Komplettpaket 49,90 EUR, Live-Q&A 10,00 EUR. Kein Streichpreis:
+  6 x 8,90 = 53,40 gegen 49,90 sind 6,6 %, die Hausregel verlangt 15 %.
+================================================================================
+-->
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" type="image/png" href="bwlkurse-mark.png">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap">
+<title>BWL Kurse · Makroökonomik 1 · Kapitel 2: Geld, Inflation & Quantitätstheorie</title>
+<style>
+:root{
+  --navy:#3a4a5e; --navy2:#4e769c; --blue:#4e769c; --blue-d:#3d5d7d;
+  --grey:#586a80; --line:#d9e1ec; --bg:#eef2f7; --card:#fff; --ink:#1b2733;
+  --ok:#1c8c5a; --ok-bg:#e7f6ef; --bad:#cf4b34; --bad-bg:#fceae6; --gold:#ffc041; --gold-bg:#fff6e0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px}
+h1,h2,h3,h4{line-height:1.25;color:var(--navy)}
+h2{font-size:1.5rem;margin:2.4rem 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--line)}
+h3{font-size:1.15rem;margin:1.4rem 0 .5rem}
+a{color:var(--blue-d)}
+.btn{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;padding:.8rem 1.4rem;border-radius:8px;font-weight:700;border:0;cursor:pointer;font-size:1rem;transition:.15s}
+.btn:hover{background:var(--blue-d)}
+.btn.alt{background:var(--gold)} .btn.alt:hover{background:#b8740f}
+.btn.ghost{background:transparent;color:var(--navy);border:2px solid var(--navy)}
+.btn.ghost:hover{background:var(--navy);color:#fff}
+.topbar{background:var(--navy);color:#fff;position:sticky;top:0;z-index:20}
+.topbar .wrap{display:flex;align-items:center;gap:14px;height:100px}
+.topbar img{height:84px;width:84px;border-radius:50%;background:#fff;object-fit:contain}
+.topbar .brand{font-weight:800;letter-spacing:.3px}
+.topbar .brand small{display:block;font-weight:500;color:#9fc0e6;font-size:.7rem;letter-spacing:.6px}
+.topbar .spacer{flex:1}
+.pill{background:var(--gold);color:#3a2700;font-weight:800;font-size:1.55rem;padding:.75rem 1.5rem;border-radius:999px;text-decoration:none}
+.hero{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#eaf1fb;padding:2.6rem 0 2.2rem}
+.badge{display:inline-block;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#cfe0f5;padding:.25rem .7rem;border-radius:999px;font-size:.8rem;font-weight:600;margin-bottom:.8rem}
+.hero h1{color:#fff;font-size:2.1rem;margin:.2rem 0 .6rem}
+.hero p.lead{font-size:1.12rem;color:#d6e3f4;max-width:42rem}
+.hero .tagline{margin-top:.8rem;font-weight:700;color:#fff;border-left:4px solid var(--gold);padding-left:.8rem}
+.hero .cta{margin-top:1.4rem;display:flex;gap:.7rem;flex-wrap:wrap}
+.freebar{background:var(--gold-bg);border-top:1px solid #f0dcb6;border-bottom:1px solid #f0dcb6;color:#6b4708;text-align:center;padding:.6rem;font-weight:600;font-size:.95rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem;margin:1rem 0;box-shadow:0 1px 3px rgba(20,40,70,.05)}
+.callout{background:#eef5fc;border-left:5px solid var(--blue);border-radius:8px;padding:1rem 1.2rem;margin:1rem 0}
+.callout.birken{background:var(--card);border-left-color:var(--accent)}
+.muted{color:var(--grey);font-size:.92rem}
+.tag{display:inline-block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--blue-d);background:#e7f0fa;padding:.15rem .5rem;border-radius:5px}
+table.mx{border-collapse:collapse;margin:.6rem 0;font-variant-numeric:tabular-nums}
+table.mx th,table.mx td{border:1px solid var(--line);padding:.45rem .75rem;text-align:center;min-width:48px}
+table.mx th{background:#f3f6fb;color:var(--navy)}
+table.mx td.rowlab,table.mx th.rowlab{background:#eef2f7;font-weight:700}
+table.mx td.hi{background:var(--ok);color:#fff;font-weight:800}
+table.mx td.himax{background:var(--blue);color:#fff;font-weight:800}
+table.mx td.txt{text-align:left}
+.win{color:var(--ok);font-weight:800}
+.formula{background:#f6f8fb;border:1px solid var(--line);border-radius:8px;padding:.5rem .8rem;display:inline-block;font-family:"Cambria Math",Georgia,serif;font-size:1.05rem;margin:.3rem 0}
+.fblock{display:block;text-align:center;margin:.6rem auto}
+.rulegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.rulecard{background:#fff;border:1px solid var(--line);border-top:4px solid var(--blue);border-radius:10px;padding:.9rem 1rem}
+.rulecard h4{margin:.1rem 0 .4rem} .rulecard .res{margin-top:.5rem;font-weight:700}
+#quiz{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.2rem;margin:1rem 0}
+.qhead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem}
+.qhead .score{background:#eaf1fb;color:var(--navy);font-weight:700;padding:.2rem .6rem;border-radius:6px;font-size:.9rem}
+.progress{height:8px;background:#e6ecf4;border-radius:99px;overflow:hidden;margin:.7rem 0 1.1rem}
+.progress>i{display:block;height:100%;background:var(--blue);width:0;transition:width .4s}
+.q{border:1px solid var(--line);border-radius:10px;padding:1rem;margin:.8rem 0;background:#fff}
+.q .stem{font-weight:600;margin-bottom:.6rem}
+.opt{display:block;border:1px solid var(--line);border-radius:8px;padding:.55rem .8rem;margin:.35rem 0;cursor:pointer}
+.opt:hover{background:#f4f8fd} .opt input{margin-right:.5rem}
+input.num{font-size:1rem;padding:.5rem;border:1px solid #b9c6d8;border-radius:8px;width:150px}
+.fb{margin-top:.7rem;padding:.6rem .8rem;border-radius:8px;font-size:.95rem;display:none}
+.fb.ok{background:var(--ok-bg);border:1px solid #b8e3cd;color:#13633f}
+.fb.bad{background:var(--bad-bg);border:1px solid #f0c4ba;color:#8c2c19}
+.q.locked .opt{cursor:default;opacity:.92}
+textarea.live{width:100%;border:1px solid #b9c6d8;border-radius:8px;padding:.6rem;font-family:inherit;font-size:.95rem;resize:vertical}
+details.faq{background:#fff;border:1px solid var(--line);border-radius:8px;margin:.5rem 0;padding:.2rem .9rem}
+details.faq summary{cursor:pointer;font-weight:600;color:var(--navy);padding:.6rem 0}
+details.faq p{margin:.2rem 0 .8rem}
+#angebot{scroll-margin-top:110px} #einstieg{scroll-margin-top:110px}
+.offer{background:linear-gradient(160deg,#fff,#eef4fb);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin:1.4rem 0}
+.modebtns{display:flex;gap:.5rem;flex-wrap:wrap;margin:.2rem 0 1rem}
+.modebtn{border:2px solid var(--line);background:#fff;border-radius:8px;padding:.5rem .9rem;cursor:pointer;font-weight:700;color:var(--grey)}
+.modebtn.active{border-color:var(--blue);background:#eaf1fb;color:var(--navy)}
+.price{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:.6rem 0}
+.price .now{font-size:2rem;font-weight:800;color:var(--navy)}
+.price .old{text-decoration:line-through;color:var(--grey)}
+.price .save{background:var(--gold-bg);color:#6b4708;font-weight:700;padding:.25rem .6rem;border-radius:6px}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:.25rem 0 .25rem 1.7rem;position:relative}
+ul.check li:before{content:"✓";position:absolute;left:0;color:var(--ok);font-weight:800}
+ul.check li.off{color:var(--grey)} ul.check li.off:before{content:"–";color:var(--grey)}
+.person{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.mono{width:92px;height:92px;border-radius:50%;flex:0 0 auto;display:flex;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 32% 28%,#4e769c,#3a4a5e 70%);border:2px solid #ffc041;
+  font-family:Georgia,"Times New Roman",serif;font-style:italic;font-weight:700;font-size:2.1rem;color:#f0d9a3;
+  letter-spacing:1px;box-shadow:0 2px 8px rgba(20,40,70,.25);object-fit:cover}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin:.6rem 0}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:.6rem .9rem;text-align:center;min-width:120px}
+.stat b{display:block;font-size:1.4rem;color:var(--blue-d)}
+footer{background:var(--navy);color:#b9cbe2;font-size:.85rem;padding:1.4rem 0;margin-top:2rem}
+footer a{color:#cfe0f5}
+.note{font-size:.8rem;color:var(--grey)}
+@media(max-width:560px){.hero h1{font-size:1.7rem}.topbar .brand{font-size:.92rem}}
+
+/* ===== Responsive / Mobile (verbindlich fuer alle Lektionen) ===== */
+html{overflow-x:clip}
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%;margin:.6rem 0}
+.tw table.mx{margin:0}
+.formula{max-width:100%;overflow-x:auto}
+img,svg{max-width:100%}
+.btn,.modebtn{max-width:100%;white-space:normal}
+input.num{max-width:100%}
+@media(max-width:600px){
+  body{overflow-x:clip}
+  .wrap{padding:0 14px}
+  .topbar .wrap{height:auto;min-height:60px;gap:10px;padding:7px 0}
+  .topbar img{height:50px;width:50px}
+  .topbar .brand{font-size:.88rem;min-width:0;line-height:1.15}
+  .topbar .brand small{font-size:.58rem;letter-spacing:.2px}
+  .pill{font-size:.9rem;padding:.45rem .85rem}
+  .hero{padding:1.8rem 0 1.6rem}
+  .hero h1{font-size:1.6rem}
+  .hero p.lead{font-size:1rem}
+  .hero .cta{flex-direction:column;align-items:stretch}
+  h2{font-size:1.3rem}
+  h3{font-size:1.05rem}
+  .modebtns{flex-direction:column}
+  .modebtn{width:100%;text-align:center}
+  .price .now{font-size:1.6rem}
+  .rulegrid{grid-template-columns:1fr}
+  .stat{min-width:0;flex:1 1 40%}
+}
+/* ===== Fachbegriff-Tooltips (v2) ===== */
+.term{color:var(--blue-d);font-weight:600;border-bottom:1px dotted var(--blue-d);cursor:help}
+.term:focus{outline:2px solid var(--blue);outline-offset:2px;border-radius:3px}
+.term>.tip{display:none;position:fixed;z-index:60;max-width:280px;background:var(--navy);color:#fff;
+  font-weight:400;font-size:.82rem;line-height:1.45;padding:.55rem .75rem;border-radius:8px;
+  box-shadow:0 8px 20px rgba(20,40,70,.32);white-space:normal;text-align:left;pointer-events:none}
+/* Roter Faden (Fahrplan) + Neugier-Fragen: Unterpunkte/Fragen IMMER linksbuendig in eigener Zeile (alle Endgeraete) */
+.fahrplan>b{display:block;margin-bottom:.2rem}
+.fahrplan .fp-step{display:block;text-align:left;margin:.3rem 0 0;padding-left:1.5rem;text-indent:-1.5rem}
+.neugier-list{list-style:none;margin:.5rem 0 0;padding:0}
+.neugier-list li{display:block;text-align:left;margin:.34rem 0 0;padding-left:1.15rem;position:relative}
+.neugier-list li::before{content:"•";position:absolute;left:.1rem;color:var(--blue);font-weight:700}
+
+/* ===== PREISMODUL · BLOCK E (nur preisspezifische Regeln) =====
+   Host-Design gewinnt: var(--x, <fallback>). Fallback = FARBE_*-Markenwerte.
+   Reaktiviert Modus-Umschalter + Frühbucher-/Streichpreis-Mechanik. */
+/* --- Header-Preis-Pill (Block A) --- */
+.pill{
+  background:var(--gold, #ffc041);
+  color:#3a2700;
+  font-weight:800;
+  font-size:1.05rem;
+  padding:.6rem 1.1rem;
+  border-radius:999px;
+  text-decoration:none;
+  cursor:pointer;
+  border:0;
+  white-space:nowrap;
+}
+.pill:hover{filter:brightness(.96)}
+/* --- Freebar (Block C) --- */
+.freebar{
+  background:var(--gold-bg, #fdf3e2);
+  border-top:1px solid #f0dcb6;
+  border-bottom:1px solid #f0dcb6;
+  color:#6b4708;
+  text-align:center;
+  padding:.6rem;
+  font-weight:600;
+  font-size:.95rem;
+}
+/* --- Angebots-Sektion (Block B) --- */
+#angebot{scroll-margin-top:110px}
+.offer{
+  background:linear-gradient(160deg,#fff,#eef4fb);
+  border:1px solid var(--line, #d9e1ec);
+  border-radius:14px;
+  padding:1.4rem;
+  margin:1.4rem 0;
+}
+/* Modus-Umschalter */
+.modebtns{display:flex;gap:.5rem;flex-wrap:wrap;margin:.2rem 0 1rem}
+.modebtn{
+  border:2px solid var(--line, #d9e1ec);
+  background:#fff;
+  border-radius:8px;
+  padding:.5rem .9rem;
+  cursor:pointer;
+  font-weight:700;
+  color:var(--grey, #586a80);
+  font-family:inherit;
+  font-size:1rem;
+}
+.modebtn.active{
+  border-color:var(--blue, #4e769c);
+  background:#eaf1fb;
+  color:var(--navy, #3a4a5e);
+}
+/* Preisanzeige */
+.price{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin:.6rem 0}
+.price .now{font-size:2rem;font-weight:800;color:var(--navy, #3a4a5e)}
+.price .old{text-decoration:line-through;color:var(--grey, #586a80)}
+.price .save{
+  background:var(--gold-bg, #fdf3e2);
+  color:#6b4708;
+  font-weight:700;
+  padding:.25rem .6rem;
+  border-radius:6px;
+}
+/* Leistungs-Checkliste */
+ul.check{list-style:none;padding:0}
+ul.check li{padding:.25rem 0 .25rem 1.7rem;position:relative}
+ul.check li:before{content:"\2713";position:absolute;left:0;color:var(--ok, #1c8c5a);font-weight:800}
+ul.check li.off{color:var(--grey, #586a80)}
+ul.check li.off:before{content:"\2013";color:var(--grey, #586a80)}
+.offer .note{color:var(--grey, #586a80);font-size:.85rem}
+/* Vollbreiter CTA-Button in der Sektion */
+.offer .cta-wide{display:block;width:100%;text-align:center;font-size:1.1rem}
+/* --- Mobile: Buttons vollbreit gestapelt, kein Überlauf (verbindlich) --- */
+.btn,.modebtn{max-width:100%;white-space:normal}
+@media(max-width:600px){
+  .modebtns{flex-direction:column}
+  .modebtn{width:100%;text-align:center}
+  .price .now{font-size:1.6rem}
+  .pill{font-size:.9rem;padding:.45rem .85rem}
+}
+/* Prof-USP-Badge (dezente Zeile, faktisch belegt) */
+.profbadge{display:inline-block;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);color:#e7d7a6;padding:.2rem .6rem;border-radius:999px;font-size:.76rem;font-weight:600;margin:0 0 .2rem .4rem}
+
+/* ===== Vormerk-Modal (öffentliches Probepaket) ===== */
+.vm-ov{display:none;position:fixed;inset:0;background:rgba(15,25,40,.6);z-index:1000;padding:16px;overflow:auto}
+.vm-ov.open{display:flex;align-items:flex-start;justify-content:center}
+.vm-box{background:#fff;max-width:520px;width:100%;margin:auto;border-radius:14px;padding:1.3rem 1.4rem;box-shadow:0 20px 60px rgba(15,25,40,.45);position:relative}
+.vm-box h3{margin:.1rem 2rem .3rem 0;color:var(--navy,#16273f);font-size:1.3rem}
+.vm-box label.f{display:block;font-weight:700;margin:.8rem 0 .25rem;font-size:.92rem;color:#1b2733}
+.vm-box input[type=text],.vm-box input[type=email],.vm-box input[type=tel]{width:100%;padding:.6rem .7rem;border:1px solid #b9c6d8;border-radius:8px;font-size:1rem;font-family:inherit}
+.vm-box input:focus{outline:2px solid var(--blue,#2f6db5);outline-offset:1px;border-color:var(--blue,#2f6db5)}
+.vm-chk{display:flex;gap:.55rem;align-items:flex-start;margin:.8rem 0 0;font-size:.86rem;font-weight:400;line-height:1.45;color:#1b2733}
+.vm-chk input{margin-top:.2rem;flex:0 0 auto;width:18px;height:18px}
+.vm-intro{font-size:.9rem;color:#42536a;margin:.2rem 0 .2rem}
+.vm-note{font-size:.78rem;color:#6b7a90;margin:.7rem 0 0}
+.vm-fnote{font-size:.78rem;color:#6b7a90;margin:.3rem 0 .2rem;line-height:1.4}
+.vm-opt{font-weight:400;color:#6b7a90;font-size:.85rem}
+.vm-x{position:absolute;top:.6rem;right:.7rem;background:transparent;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#8194ab}
+.vm-act{margin-top:1.1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.vm-btn{display:inline-block;background:var(--blue,#2f6db5);color:#fff;border:0;border-radius:8px;padding:.7rem 1.3rem;font-weight:700;font-size:1rem;cursor:pointer;text-decoration:none}
+.vm-btn:hover{filter:brightness(.95)}.vm-btn.gold{background:var(--gold,#d98a1f)}
+.vm-btn.gh{background:transparent;color:var(--navy,#16273f);border:2px solid var(--navy,#16273f)}
+.vm-ok{display:none;background:#e7f6ef;border:1px solid #b8e3cd;color:#13633f;padding:.9rem;border-radius:8px;margin-top:.4rem;line-height:1.5}
+.vm-err{display:none;background:#fceae6;border:1px solid #f0c4ba;color:#8c2c19;padding:.6rem .8rem;border-radius:8px;margin-top:.7rem;font-size:.9rem}
+</style>
+
+<!-- ============================================================ -->
+<!-- BUCHUNGSMODUL · BLOCK A · CSS (Overlay / Modal / Chips)      -->
+<!-- Host-Design gewinnt: var(--x, <fallback>). Marke/Navy #3a4a5e -->
+<!-- bleibt ueber die Host-Variablen unveraendert.                -->
+<!-- ============================================================ -->
+<style id="buchungsmodul-css">
+/* --- Overlay/Backdrop --- */
+.bk-modal{
+  position:fixed; inset:0; z-index:1000;
+  display:flex; align-items:center; justify-content:center;
+  padding:1.2rem;
+  background:rgba(20,30,50,.55);
+  -webkit-overflow-scrolling:touch;
+}
+.bk-modal[hidden]{ display:none; }
+/* --- Dialog-Karte --- */
+.bk-dialog{
+  position:relative;
+  background:var(--card, #fff);
+  color:var(--ink, #2b3440);
+  border:1px solid var(--line, #dde3ea);
+  border-radius:14px;
+  box-shadow:0 12px 40px rgba(20,40,70,.28);
+  width:100%;
+  max-width:560px;
+  max-height:88vh;
+  overflow-y:auto;
+  padding:1.4rem 1.4rem 1.6rem;
+}
+/* --- Schliessen-Button (×) --- */
+.bk-close{
+  position:absolute; top:.5rem; right:.6rem;
+  width:2.2rem; height:2.2rem;
+  border:0; border-radius:999px;
+  background:transparent; cursor:pointer;
+  font-size:1.7rem; line-height:1; color:var(--grey, #586a80);
+  font-family:inherit;
+}
+.bk-close:hover{ background:var(--bg, #eef1f5); color:var(--navy, #3a4a5e); }
+.bk-close:focus-visible{ outline:3px solid var(--blue, #4e769c); outline-offset:2px; }
+/* --- Ueberschriften/Texte im Modal --- */
+.bk-h{
+  margin:.1rem 2rem .9rem 0;
+  color:var(--navy, #3a4a5e);
+  font-size:1.3rem; line-height:1.25;
+}
+.bk-hint, .bk-foot{
+  color:var(--grey, #586a80); font-size:.86rem; margin-top:1rem;
+}
+/* --- Liste (Lektionen / Handouts) --- */
+.bk-list{ list-style:none; margin:0; padding:0; }
+.bk-row{
+  display:flex; align-items:center; gap:.8rem; flex-wrap:wrap;
+  padding:.7rem 0; border-bottom:1px solid var(--line, #dde3ea);
+}
+.bk-row:last-child{ border-bottom:0; }
+.bk-row-t{ flex:1 1 60%; min-width:0; font-weight:600; color:var(--navy, #3a4a5e); }
+.bk-row-r{ display:flex; align-items:center; gap:.6rem; flex-wrap:wrap; margin-left:auto; }
+.bk-preis{ font-weight:800; color:var(--navy, #3a4a5e); white-space:nowrap; }
+/* Gratis-Badge (verlinkt auf slug.html) */
+.bk-badge{
+  display:inline-block; text-decoration:none; white-space:nowrap;
+  background:var(--gold, #ffc041); color:#3a2700;
+  font-weight:800; font-size:.85rem;
+  padding:.35rem .7rem; border-radius:999px;
+}
+.bk-badge:hover{ filter:brightness(.96); }
+/* --- Generischer Button im Modul --- */
+.bk-btn{
+  display:inline-block; cursor:pointer; font-family:inherit;
+  border:2px solid var(--blue, #4e769c);
+  background:var(--blue, #4e769c); color:#fff;
+  font-weight:700; font-size:.95rem;
+  padding:.5rem .9rem; border-radius:8px;
+  max-width:100%; white-space:normal; text-align:center;
+}
+.bk-btn:hover{ filter:brightness(.96); }
+.bk-btn:focus-visible{ outline:3px solid var(--gold, #ffc041); outline-offset:2px; }
+.bk-btn.ghost{ background:#fff; color:var(--navy, #3a4a5e); }
+/* --- Faecher-Liste --- */
+.bk-fach{
+  display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
+  padding:.75rem 0; border-bottom:1px solid var(--line, #dde3ea);
+}
+.bk-fach:last-child{ border-bottom:0; }
+.bk-fach-t{ display:flex; flex-direction:column; gap:.1rem; flex:1 1 auto; min-width:0; }
+.bk-fach-k{ font-size:1.6rem; font-weight:800; color:var(--navy, #3a4a5e); line-height:1; }
+.bk-fach-n{ font-size:.9rem; color:var(--grey, #586a80); }
+/* --- Termine (radio-artige Optionen) --- */
+.bk-tgroup{ margin:.4rem 0 1rem; }
+.bk-tgroup-h{
+  font-size:.8rem; text-transform:uppercase; letter-spacing:.05em;
+  color:var(--grey, #586a80); margin:.6rem 0 .4rem;
+}
+.bk-opt{
+  display:flex; align-items:center; gap:.7rem;
+  border:2px solid var(--line, #dde3ea); border-radius:10px;
+  padding:.6rem .8rem; margin:.4rem 0; cursor:pointer;
+  font-weight:600; color:var(--navy, #3a4a5e);
+}
+.bk-opt:hover{ border-color:var(--blue, #4e769c); }
+.bk-opt input{ accent-color:var(--blue, #4e769c); width:1.1rem; height:1.1rem; }
+.bk-opt.bk-sel{ border-color:var(--blue, #4e769c); background:#eef4fb; }
+.bk-need{ color:#b23b3b; font-size:.85rem; font-weight:600; margin:.2rem 0 .6rem; }
+/* --- Handout-Inhalt (aufklappbar) + Chips --- */
+.bk-details{ margin:.3rem 0 0; }
+.bk-details > summary{
+  cursor:pointer; font-size:.85rem; color:var(--blue, #4e769c); font-weight:600;
+  list-style:revert;
+}
+.bk-chips{ display:flex; flex-wrap:wrap; gap:.4rem; margin:.5rem 0 .2rem; }
+.bk-chip{
+  background:var(--gold-bg, #fff6e0); color:#6b4708;
+  border:1px solid #f0dcb6; border-radius:999px;
+  font-size:.78rem; font-weight:600; padding:.2rem .6rem;
+}
+/* Vollbreite Aktions-Zeile (z. B. "Diesen Termin vormerken") */
+.bk-actionrow{ margin-top:.6rem; }
+.bk-actionrow .bk-btn{ display:block; width:100%; font-size:1.05rem; }
+/* --- Mobil: Dialog vollbreit, scrollbar, kein Overflow --- */
+@media (max-width:600px){
+  .bk-modal{ padding:0; align-items:stretch; }
+  .bk-dialog{
+    max-width:100%; width:100%;
+    min-height:100%; max-height:100%;
+    border-radius:0; border:0;
+  }
+  .bk-h{ font-size:1.15rem; }
+  .bk-fach-k{ font-size:1.35rem; }
+  .bk-row-r{ margin-left:0; }
+}
+</style>
+<style id="bk-cashback-css">.bk-cashback{font-size:16px;font-weight:600;color:#C25A00;margin:10px 0 4px;line-height:1.45}</style>
+
+<style id="bk-sticky-kauf">
+  .bkstick{position:fixed;left:0;right:0;bottom:0;z-index:60;display:flex;gap:10px;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:#F8F7F4;border-top:1px solid #D9D5CC}
+  .bkstick a{flex:1;min-height:48px;display:inline-flex;align-items:center;
+    justify-content:center;border-radius:12px;font-weight:700;font-size:14.5px;
+    text-decoration:none;text-align:center;line-height:1.2;padding:0 8px}
+  .bkstick .frei{background:#E8760A;color:#FFFFFF}
+  .bkstick .kauf{background:#14304A;color:#FFFFFF}
+  @media(min-width:900px){.bkstick{display:none}}
+  body{padding-bottom:78px}
+</style>
+</head>
+<body data-fach="BMAK" data-kapitel-slug="bmak-kap02-geld">
+
+<style id="redesign-override">
+:root{--navy:#20232A;--navy2:#2A2E36;--blue:#E8760A;--blue-d:#B85E00;--grey:#5F6169;--line:#DEDCD4;--bg:#EAE9E5;--card:#F8F7F4;--ink:#1B1D21;--gold:#E8760A;--gold-bg:#FBEAD4;--accent:#E8760A;--se:"Fraunces",Georgia,serif;--sa:"Inter",system-ui,-apple-system,sans-serif}
+body{font-family:var(--sa)}
+h1,h2,h3,h4{font-family:var(--se);color:var(--ink);letter-spacing:-.01em}
+h2{border-bottom:0;padding-bottom:0;margin:2.1rem 0 .7rem;font-size:1.5rem;font-weight:600}
+h3{font-weight:600}
+a{color:var(--blue-d)}
+.btn{background:linear-gradient(180deg,#F59440,#E8760A);color:#2A1500;border-radius:11px;font-weight:600}
+.btn:hover{filter:brightness(1.05);background:linear-gradient(180deg,#F59440,#E8760A)}
+.btn.alt{background:linear-gradient(180deg,#F59440,#E8760A);color:#2A1500}
+.btn.alt:hover{filter:brightness(1.05)}
+/* Farblogik: orange = kostet nichts, blau = kostet Geld.
+   ACHTUNG: --blue zeigt in dieser Datei historisch auf Orange (#E8760A),
+   deshalb eigene Variable --kauf, identisch zu den Landingpages. */
+/* Diese Seite hat (noch) keinen Dark Mode. Explizit hell deklarieren, damit der
+   Browser Formularfelder, Scrollbars und Auswahlmenues nicht dunkel dazumischt. */
+:root{color-scheme:light}
+:root{--kauf:#102444;--kauf-2:#1D3B6E}
+.btn.kauf{background:var(--kauf);color:#FFFFFF}
+.btn.kauf:hover{background:var(--kauf-2);filter:none}
+.bk-btn[href^="https://buy.stripe.com/"]{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+/* Kauf-Farbe explizit per Klasse: die href-Regel greift nur bei buy.stripe.com-Zielen */
+.bk-btn.kauf{background:var(--kauf);border-color:var(--kauf);color:#FFFFFF}
+.bk-btn.kauf:hover{background:var(--kauf-2);border-color:var(--kauf-2)}
+.btn.ghost{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.btn.ghost:hover{background:#EFECE4;color:var(--ink)}
+.topbar{background:var(--card);color:var(--ink);border-bottom:1px solid var(--line)}
+.topbar .wrap{height:auto;min-height:62px;padding:10px 16px;gap:12px}
+.topbar img{height:40px;width:40px;border-radius:9px;background:transparent}
+.topbar .brand{font-weight:600;color:var(--ink)}
+.topbar .brand small{color:var(--grey)}
+.pill{background:linear-gradient(180deg,#F59440,#E8760A);color:#2A1500;font-weight:600;font-size:1rem;padding:.5rem 1rem;border-radius:10px}
+.hero{background:var(--bg);color:var(--ink);border-bottom:1px solid var(--line);padding:2.2rem 0 2rem}
+.hero h1{color:var(--ink);font-size:2rem;font-weight:600}
+.hero p.lead{color:var(--grey)}
+.hero .badge,.hero .profbadge{background:var(--card);border:1px solid var(--line);color:var(--grey)}
+.hero .tagline{color:var(--ink);border-left:4px solid var(--accent)}
+.freebar{background:var(--gold-bg);border-top:1px solid #F0D6AE;border-bottom:1px solid #F0D6AE;color:#8A4A06}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:none}
+.callout{background:var(--card);border-left:4px solid var(--accent);border-radius:0 12px 12px 0}
+.callout.birken{border-left-color:var(--accent);background:var(--card)}
+.formula{background:var(--bg);border:1px solid var(--line);border-radius:10px;font-family:"Fraunces",Georgia,serif;color:var(--ink)}
+.tw{border:1px solid var(--line);border-radius:12px;overflow:hidden}
+table.mx{margin:0;border:0}
+table.mx th,table.mx td{border-color:var(--line)}
+table.mx th{background:var(--navy);color:#ECEBE7}
+table.mx td.rowlab,table.mx th.rowlab{background:var(--bg);color:var(--ink)}
+table.mx td.hi{background:#FBE1C4;color:#8A4A06}
+table.mx td.himax{background:var(--navy);color:#fff}
+#quiz{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.qhead .score{background:var(--bg);color:var(--ink)}
+.progress{background:#DEDCD4}.progress>i{background:var(--accent)}
+.q{background:var(--bg);border:1px solid var(--line);border-radius:12px}
+.opt{background:var(--card);border:1px solid var(--line);border-radius:10px}
+.opt:hover{background:#EFECE4}
+.modebtn{background:var(--card);color:var(--grey);border:1px solid var(--line)}
+.modebtn.active{border-color:var(--accent);background:var(--bg);color:var(--ink)}
+input.num,textarea.live{border:1px solid var(--line);background:var(--card);border-radius:10px}
+.stat{background:var(--bg);border:1px solid var(--line)}
+.stat b{color:var(--accent)}
+.offer{background:var(--card);border:1px solid var(--line);border-radius:16px}
+.price .now{color:var(--ink)}
+.price .save{background:var(--gold-bg);color:#8A4A06}
+footer{background:var(--navy);color:#B9BDC4}
+footer a{color:#E9E7E1}
+#lernpfad{margin-top:1.3rem}
+.baustein{background:var(--card);border:1px solid var(--line);border-radius:14px;margin:12px 0;overflow:hidden}
+.baustein .bh{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;padding:16px;cursor:pointer;font-family:inherit}
+.baustein .bnum{width:27px;height:27px;flex:none;border-radius:8px;background:var(--bg);color:var(--accent);font-weight:600;display:flex;align-items:center;justify-content:center;font-size:14px;font-family:var(--sa)}
+.baustein .bt{flex:1;font-family:var(--se);font-weight:600;font-size:1.12rem;color:var(--ink);line-height:1.25}
+.baustein .bchev{color:var(--grey);transition:transform .2s;flex:none;font-size:.9rem}
+.baustein.op .bchev{transform:rotate(180deg)}
+.baustein .bb{display:none;padding:2px 16px 16px;border-top:1px solid var(--line)}
+.baustein.op .bb{display:block}
+.baustein .bb>*:first-child{margin-top:.9rem}
+h1,h2,h3,h4{font-weight:500}
+.hero h1{font-weight:500;font-size:1.9rem}
+.baustein .bt{font-weight:500}
+.person{gap:22px;align-items:center}
+.person>div{min-width:0}
+.mono{width:148px;height:148px;font-size:3.1rem;flex:0 0 auto}
+.person h3{font-size:1.35rem;margin:0 0 .3rem}
+.stats{gap:10px;margin-top:.8rem}
+.stat{flex:1 1 130px;min-width:110px}
+@media(max-width:600px){.person{gap:16px;align-items:flex-start}.mono{width:110px;height:110px;font-size:2.4rem}}
+h1,h2,h3,h4{overflow-wrap:break-word;word-break:normal;hyphens:auto}
+@media(max-width:600px){.hero h1{font-size:1.5rem}.wrap,body{overflow-x:clip}}
+.q .opt{display:block;width:100%;text-align:left;font-family:inherit;font-size:.95rem;color:var(--ink);-webkit-text-fill-color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:10px;padding:.75rem .9rem;margin:.45rem 0;cursor:pointer;transition:.12s}
+.q .opt:hover{border-color:#C9C6BC}
+.q .opt.correct{border-color:#1C8C5A;background:#E7F1EA;color:#13633F;-webkit-text-fill-color:#13633F;font-weight:500}
+.q .opt.wrong{border-color:#C0453E;background:#FBEAE6;color:#8C2C19;-webkit-text-fill-color:#8C2C19}
+.q .opt:disabled{cursor:default}
+.qmeta{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:.6rem}
+.qcount{font-size:.8rem;color:var(--ink2)}
+.numrow{display:flex;gap:8px;align-items:center;margin:.5rem 0}
+.q .stem{font-size:1.02rem}
+.pgroup{font-size:11px;letter-spacing:.09em;font-weight:600;color:var(--accent);text-transform:uppercase;margin:.4rem 0 .7rem}
+.pgroup.k2{margin-top:1.4rem}
+.pk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:10px;position:relative}
+.pk.feat{border:2px solid var(--accent)}
+.pk .pkrb{position:absolute;top:-9px;left:16px;background:var(--accent);color:#2A1500;font-size:10.5px;font-weight:600;padding:3px 9px;border-radius:20px}
+.pk h4{font-family:var(--se);font-size:1.08rem;font-weight:600;margin:0 0 2px}
+.pk small{color:var(--grey);font-size:12.5px;display:block;line-height:1.45}
+.pk .pkpr{font-family:var(--se);font-size:1.5rem;font-weight:600;margin-top:8px}
+.pk .pkpr s{font-family:var(--sa);font-size:.8rem;color:var(--grey);font-weight:400;margin-left:6px}
+.pk .pksub{font-size:12.5px;color:var(--grey);margin-top:8px;line-height:1.5}
+.pk .pkbtn{margin-top:10px}
+.ez{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line)}
+.ez:last-of-type{border-bottom:0}
+.ez .ezn{font-size:14px}.ez .ezn small{display:block;color:var(--grey);font-size:12px;margin-top:1px;line-height:1.4}
+.ez .ezr{display:flex;align-items:center;gap:10px;white-space:nowrap}
+.ez .ezp{font-weight:600}
+.bk-btn.pkbtn{font-size:.8rem;padding:.35rem .8rem;white-space:nowrap}
+/* Kapitel-Akkordeon: blau + ausklappbar wie Kursseite */
+.pl-akk{margin:.55rem 0 0}
+.pl-akk>summary{display:flex;width:100%;justify-content:center;align-items:center;cursor:pointer;list-style:none;background:#16273f;color:#fff;padding:.75rem 1.1rem;border-radius:8px;font-weight:700;min-height:44px;box-sizing:border-box;transition:.15s}
+.pl-akk>summary:hover{background:#22344f}
+.pl-akk>summary::-webkit-details-marker{display:none}
+.pl-akk>summary::after{content:"\25BE";margin-left:8px;font-size:.85em;opacity:.9}
+.pl-akk[open]>summary::after{content:"\25B4"}
+.pl-akk-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.pl-akk-list a{display:flex;gap:8px;align-items:baseline;padding:11px 14px;border-radius:10px;background:#fff;border:1px solid rgba(58,74,94,.22);color:#1b2733;text-decoration:none;font-weight:600;font-size:.9rem;line-height:1.3}
+.pl-akk-list a:hover{background:#eef2f7}
+.pl-akk-list a .kn{color:#3d5d7d;font-variant-numeric:tabular-nums;flex:none}
+.pv-head{display:flex;gap:16px;align-items:center;margin-bottom:14px}
+.pv-head .mono{width:100px;height:100px;flex:0 0 auto}
+.pv-head h3{font-family:var(--se);font-size:1.35rem;margin:0}
+.pv-bio{font-size:.92rem;color:var(--grey);margin:.3rem 0 0;line-height:1.5}
+.pv-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.person-v2 .stat{background:var(--bg);text-align:center;min-width:0}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:1rem 0}
+.tstars{color:#E2A93B;letter-spacing:2px;margin-bottom:8px;font-size:1.05rem}
+.tquote{font-family:var(--se);font-style:italic;font-size:1.05rem;line-height:1.55;color:var(--ink);margin:0}
+.tby{display:flex;align-items:center;gap:10px;margin-top:12px}
+.tav{width:38px;height:38px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex:none}
+.tby b{display:block;font-size:.95rem}.tby span{font-size:.82rem;color:var(--grey)}
+</style>
+<div class="topbar"><div class="wrap">
+  <a href="bmak.html" style="display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;min-width:0">
+  <img src="data:image/png;base64,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" alt="BWL Kurse">
+  <div class="brand">BWL Kurse</div>
+  </a>
+  <div class="spacer"></div>
+  <!-- PREISMODUL · BLOCK A (Header-Preis-Pill): führt per Anker zur Angebots-Sektion #angebot -->
+  <a class="pill" href="#angebot">weitere Kapitel</a>
+</div></div>
+
+<section class="hero"><div class="wrap">
+  <span class="badge">Passgenau zur Makroökonomik-1-Vorlesung von Dr. Johannes Zahner · Sommersemester 2026</span>
+  <h1>Geld, Inflation & Quantitätstheorie</h1>
+  <p class="lead">Woher kommt eigentlich das Geld – und warum steigen die Preise, wenn es zu viel davon gibt? Dieses Kapitel zeigt, wie Geschäftsbanken aus der Geldbasis über den Geldschöpfungsmultiplikator Geld schaffen, wie die Quantitätstheorie M&middot;V = P&middot;Y Geldmenge, Inflation und Wachstum verknüpft und wie die Fisher-Gleichung Nominalzins, Realzins und Inflation verbindet.</p>
+  <p class="tagline">Deine Klausurvorbereitung an der Goethe-Uni – seit 1999, passgenau zu deiner Vorlesung.</p>
+  <div class="cta">
+    <a class="btn kauf" href="#angebot">weitere Kapitel</a>
+  </div>
+</div></section>
+<!-- PREISMODUL · BLOCK C (Freebar, optional): schmaler Hinweisstreifen direkt unter dem Hero.
+     Wird bei Fristablauf per Block-D-JS ausgeblendet. -->
+<div class="freebar" id="freebar">
+  ★ Klausur Do 30.07.2026, 11:00 Uhr (Dr. Johannes Zahner) – sichere dir jetzt deine Unterlagen.
+</div>
+
+<div class="wrap">
+
+  <!-- EINSTIEG -->
+  <div id="lernpfad">
+  <h2 id="einstieg">Einstieg</h2>
+  <!-- EINSTIEG_ANALOGIE: 1-2 <p> mit einer Alltags-Analogie zum Kapitelthema.
+       Danach ein generischer Erklär-Absatz zu den Neugier-Fragen (brand-neutral, bleibt stehen),
+       gefolgt von 3 <li>. NEUGIER_1 = einmal vorgemachtes Beispiel (Frage → Denk-Schritt → Antwort);
+       NEUGIER_2 und NEUGIER_3 = offene Fragen zum Selbst-Beantworten. -->
+  <div class="callout birken">
+    <p><b>Stell dir ein kleines Dorf vor, in dem am Montagmorgen genau <i>ein</i> einziger 10-&euro;-Schein existiert.</b> Der Bäcker gibt ihn dem Bauern für Mehl, der Bauer der Wirtin für ein Essen, die Wirtin dem Bäcker für Brötchen. Am Abend sind Waren im Wert von 30&nbsp;&euro; den Besitzer gewechselt &ndash; mit nur 10&nbsp;&euro; Bargeld. Genau das steckt hinter der Quantitätsgleichung: Es kommt nicht nur darauf an, <i>wie viel</i> Geld da ist (M), sondern auch, <i>wie oft</i> es umläuft (V).</p><p>Und jetzt das Verblüffende am Bankensystem: Zahlst du 100&nbsp;&euro; auf dein Konto ein, behält die Bank nur einen kleinen Teil als Reserve und verleiht den Rest weiter. Der Kredit landet wieder auf einem Konto, wird wieder verliehen &hellip; So schaffen die Banken aus wenig &bdquo;Basisgeld&ldquo; ein Vielfaches an Buchgeld. Dieses Kapitel zeigt, <b>wie</b> dieses Geld entsteht, <b>warum</b> zu viel davon die Preise treibt und <b>wie</b> Inflation und Zins über die Fisher-Gleichung zusammenhängen.</p>
+    <p class="muted" style="margin:.6rem 0 0"><b>Kurz erklärt – „Neugier-Fragen":</b> kleine Fragen, die du dir <i>selbst</i> stellst, um aktiv mitzudenken – nicht zum Googeln, sondern zum inneren Beantworten, während die Lektion läuft. <b>So funktioniert's</b> – an einer Frage einmal vorgemacht (Frage → Denk-Schritt → Antwort, die du gleich prüfst):</p>
+  <ul class="neugier-list muted"><li><b>Vorgemacht:</b> Die Zentralbank bringt 100&nbsp;&euro; neues Basisgeld in Umlauf. Angenommen, niemand hält Bargeld (Bargeldquote c = 0) und die Banken halten 10&nbsp;% ihrer Einlagen als Reserve (r = 0,1). Wie viel Geldmenge M entsteht daraus? &rarr; <i>Denk-Schritt:</i> Jede Bank verleiht 90&nbsp;% weiter, das landet wieder auf einem Konto und wird erneut zu 90&nbsp;% verliehen &hellip; die Summe 100 + 90 + 81 + &hellip; ist eine geometrische Reihe mit dem Wert 100 / 0,1. &rarr; <i>Antwort:</i> M = 100 &middot; (1 / 0,1) = <b>1.000&nbsp;&euro;</b>, also das Zehnfache. Unten rechnest du die realistischere Variante <i>mit</i> Bargeldabfluss (c &gt; 0) selbst nach.</li><li>Die Zentralbank verdoppelt über Nacht die Geldmenge M, während real gleich viel produziert wird (Y bleibt unverändert und V ist konstant). Was passiert laut M&middot;V = P&middot;Y mit dem Preisniveau P &ndash; und warum wirkt Inflation deshalb wie eine &bdquo;Steuer&ldquo; auf dein Bargeld?</li><li>Die Inflation steigt von 2&nbsp;% auf 5&nbsp;%, dein Sparzins bleibt bei 3&nbsp;%. Gewinnst oder verlierst du real an Kaufkraft &ndash; und was sagt die Fisher-Gleichung i = r + &pi; über deinen <i>Realzins</i>?</li></ul>
+  </div>
+
+  <!-- FAHRPLAN (Roter Faden) -->
+  <div class="callout fahrplan" style="border-left-color:var(--gold);background:#fbf6ee;margin-top:1.2rem"><b>Dein Fahrplan durch dieses Thema:</b><div class="fp-step">① <b>Geldangebot &amp; Geldschöpfung:</b> von der Geldbasis B über den Geldschöpfungsmultiplikator zur Geldmenge M &ndash; und was M1, M2, M3 unterscheidet.</div><div class="fp-step">② <b>Geldnachfrage:</b> warum wir überhaupt Geld halten, die Realkasse M/P = k&middot;Y und ihre Abhängigkeit von Einkommen (+) und Zins (&minus;).</div><div class="fp-step">③ <b>Quantitätstheorie:</b> die Gleichung M&middot;V = P&middot;Y und ihre Wachstumsform g<sub>M</sub> = &pi; + g<sub>Y</sub> &ndash; die Brücke von der Geldmenge zur Inflation.</div><div class="fp-step">④ <b>Zins &amp; Inflation:</b> die Fisher-Gleichung i = r + &pi;, erwartete Inflation und die Seigniorage als &bdquo;Inflationssteuer&ldquo;.</div></div>
+
+  <h2>&#9312; Geldangebot: Wie aus wenig Basisgeld viel Geld wird</h2><p>Das <b>Geldangebot</b> steuert nicht die Zentralbank allein &ndash; sie liefert nur den Rohstoff. Ausgangspunkt ist die <span class="term" tabindex="0">Geldbasis B<span class="tip">Zentralbankgeldmenge (&bdquo;Geldbasis&ldquo; oder Monetary Base): umlaufendes Bargeld plus die Reserven der Geschäftsbanken bei der Zentralbank &ndash; zusammen die Passiva der Zentralbank.</span></span>: das umlaufende Bargeld plus die Reserven, die die Geschäftsbanken bei der Zentralbank halten. Aus dieser Basis machen die Banken durch Kreditvergabe ein Vielfaches an <span class="term" tabindex="0">Giralgeld<span class="tip">Buchgeld auf Giro-/Sichtkonten. Es entsteht, wenn Banken Kredite vergeben und dem Kreditnehmer eine Einlage gutschreiben &ndash; ganz ohne neues Bargeld.</span></span>.</p><p>Zwei Verhaltensgrößen bestimmen, wie stark: die <span class="term" tabindex="0">Bargeldquote c<span class="tip">Anteil der Geldmenge, den die Menschen als Bargeld halten: c = C / M. Bei c = 0 bliebe alles auf den Konten.</span></span> (Bargeld je Euro Geldmenge, c = C/M) und die <span class="term" tabindex="0">Reservequote r<span class="tip">Anteil der Einlagen, den eine Bank als Reserve zurückhält: r = R / D. Sie ist mindestens so hoch wie der gesetzliche Mindestreservesatz.</span></span> (Reserve je Euro Einlage, r = R/D). Mit den Einlagen D = (1 &minus; c)&middot;M zerlegt sich die Basis so:</p><p class="fblock"><span class="formula">B = C + R = c&middot;M + r&middot;(1 &minus; c)&middot;M = [c + r&middot;(1 &minus; c)]&middot;M</span></p><p>Stellt man nach der Geldmenge M um, erscheint der <span class="term" tabindex="0">Geldschöpfungsmultiplikator<span class="tip">Faktor 1 / [c + r&middot;(1&minus;c)], mit dem sich die Geldbasis in die Geldmenge übersetzt. Weil c und r kleiner als 1 sind, ist er größer als 1: überproportionaler Anstieg von M.</span></span>:</p><p class="fblock"><span class="formula">M = B &middot; 1 / [c + r&middot;(1 &minus; c)]&nbsp;&nbsp;&nbsp;(Multiplikator &gt; 1)</span></p><div class="card"><h3 style="margin-top:.2rem">Lehrbeispiel: Geldschöpfung in &bdquo;Zahlenland&ldquo;</h3><p>Die Zentralbank stellt eine Geldbasis von B = 200 (Mrd.&nbsp;&euro;) bereit. Die Menschen halten c = 0,25 ihrer Geldmenge bar, die Banken r = 0,20 ihrer Einlagen als Reserve.</p><p class="fblock"><span class="formula">Nenner: c + r&middot;(1 &minus; c) = 0,25 + 0,20&middot;0,75 = 0,25 + 0,15 = <b>0,40</b></span></p><p class="fblock"><span class="formula">M = B / 0,40 = 200 / 0,40 = <b>500</b>&nbsp;&nbsp;&rArr;&nbsp; Multiplikator = 1 / 0,40 = 2,5</span></p><p>Gegenprobe über die Zerlegung: Bargeld C = c&middot;M = 0,25&middot;500 = 125, Einlagen D = (1&minus;c)&middot;M = 375, Reserven R = r&middot;D = 0,20&middot;375 = 75. Und tatsächlich ist B = C + R = 125 + 75 = <b>200</b>.</p></div><svg id="chart" viewBox="0 0 640 340" role="img" aria-label="Zwei Säulen: Geldbasis B=200 (Bargeld 125 + Reserven 75) und Geldmenge M=500 (Bargeld 125 + Giralgeld 375), verbunden durch den Multiplikator 2,5" style="width:100%;height:auto;background:#fff;border:1px solid var(--line);border-radius:10px"></svg><p class="muted">Die linke Säule ist die Geldbasis B = 200, die rechte die daraus geschöpfte Geldmenge M = 500. Das Bargeld (blau) ist in beiden gleich; das Giralgeld (orange) ist die eigentliche Schöpfung der Banken.</p><p>Wie viel Geld es gibt, hängt also auch davon ab, wie viel <b>Basis</b> die Zentralbank bereitstellt. Diese <b>Geldbasis</b> weitet sie über drei Wege aus:</p><div class="rulegrid"><div class="rulecard"><h4>1 &middot; Bargeld schaffen</h4>Neues Bargeld direkt in Umlauf bringen.<div class="res">&rarr; B steigt</div></div><div class="rulecard"><h4>2 &middot; Kredite an Banken</h4>Die Zentralbank leiht den Geschäftsbanken Zentralbankgeld.<div class="res">&rarr; B steigt</div></div><div class="rulecard"><h4>3 &middot; Offenmarktkäufe (OMO)</h4>Die Zentralbank kauft Wertpapiere bei den Banken.<div class="res">&rarr; B steigt</div></div></div><p>Wie viel &bdquo;Geld&ldquo; man mitzählt, hängt von der Abgrenzung ab. Die EZB unterscheidet drei Aggregate &ndash; je höher die Nummer, desto weniger sofort verfügbar (liquide):</p><div class="tw"><table class="mx"><tr><th class="rowlab">Aggregat</th><th class="txt">Enthält zusätzlich</th></tr><tr><td class="rowlab">M1</td><td class="txt">Bargeld + täglich fällige Sichteinlagen (Giro)</td></tr><tr><td class="rowlab">M2</td><td class="txt">M1 + Termineinlagen + Spareinlagen (mit Kündigungsfrist)</td></tr><tr><td class="rowlab">M3</td><td class="txt">M2 + Geldmarktpapiere (marktfähige Instrumente)</td></tr></table></div><h2>&#9313; Geldnachfrage: Warum wir überhaupt Geld halten</h2><p>Geld auf dem Girokonto bringt kaum Zinsen &ndash; trotzdem halten wir es, weil wir damit unsere täglichen Transaktionen bezahlen. Die <b>Realkasse</b> M/P ist diese Geldnachfrage, gemessen in Kaufkraft (der Zusatz &bdquo;real&ldquo; heißt: durch das Preisniveau P geteilt). In der einfachen (Cambridge-)Fassung hängt sie am realen Einkommen Y:</p><p class="fblock"><span class="formula">M/P = k&middot;Y&nbsp;&nbsp;mit&nbsp;&nbsp;k = 1/V</span></p><p>Der <b>Kassenhaltungskoeffizient k</b> (Anteil des Einkommens, der als Kasse gehalten wird) ist der Kehrwert der <span class="term" tabindex="0">Umlaufgeschwindigkeit V<span class="tip">Wie oft dieselbe Geldeinheit in einer Periode für Transaktionen den Besitzer wechselt (Umschlag). Aus M&middot;V = P&middot;Y folgt V = P&middot;Y / M.</span></span>: Wer sein Geld schnell wieder ausgibt (großes V), muss weniger Kasse halten (kleines k). Realistischer hängt die Geldnachfrage zusätzlich vom <b>Zins</b> ab &ndash; höhere Zinsen machen das Halten von zinslosem Geld teurer:</p><p class="fblock"><span class="formula">M/P = k(i)&middot;Y&nbsp;&nbsp;&rarr;&nbsp;&nbsp;Y wirkt positiv (+), der Zins i negativ (&minus;)</span></p><p>In der Mitschrift steht dafür die Schätzform M = P&middot;Y<sup>0,4</sup>&middot;i<sup>&minus;0,2</sup>: Steigt das Einkommen um 1&nbsp;%, wächst die Geldnachfrage um 0,4&nbsp;%; steigt der Zins um 1&nbsp;%, sinkt sie um 0,2&nbsp;%.</p><div class="callout"><b>V ist nicht wirklich konstant.</b> Die Quantitätstheorie <i>nimmt</i> V als konstant an. In der Realität ist die Umlaufgeschwindigkeit seit rund 2008 eher gefallen &ndash; unter anderem, weil Karten und niedrige Zinsen das Halten von Geld verbilligt haben. Für Klausuraufgaben gilt aber meist die Annahme &bdquo;V konstant&ldquo;.</div><h2>&#9314; Quantitätstheorie: Geldmenge, Umsatz und das Preisniveau</h2><p>Die <span class="term" tabindex="0">Quantitätsgleichung<span class="tip">M&middot;V = P&middot;Y. Links das Zahlungsvolumen (Geldmenge mal Umlaufgeschwindigkeit), rechts das nominale BIP (Preisniveau mal reale Produktion). Eine Identität.</span></span> verbindet die Geldseite mit der Güterseite:</p><p class="fblock"><span class="formula">M &middot; V = P &middot; Y&nbsp;&nbsp;(links: Zahlungsvolumen &nbsp;|&nbsp; rechts: nominales BIP)</span></p><div class="card"><h3 style="margin-top:.2rem">Lehrbeispiel: dieselbe Geldmenge, im Kreislauf</h3><p>Die eben geschöpften M = 500 (Mrd.&nbsp;&euro;) laufen mit V = 4 um. Das reale BIP sei Y = 1.000 (Mengen-Index).</p><p class="fblock"><span class="formula">M&middot;V = 500&middot;4 = <b>2.000</b> = P&middot;Y&nbsp;&nbsp;&rArr;&nbsp;&nbsp;P = 2.000 / 1.000 = <b>2</b></span></p><p>Das Preisniveau ist also P = 2, das nominale BIP P&middot;Y = 2.000. Der Kassenhaltungskoeffizient wäre hier k = 1/V = 0,25.</p></div><p>Interessant wird es in <b>Wachstumsraten</b>. Aus der Näherung (M<sub>1</sub>&minus;M<sub>0</sub>)/M<sub>0</sub> &asymp; (P<sub>1</sub>&minus;P<sub>0</sub>)/P<sub>0</sub> + (Y<sub>1</sub>&minus;Y<sub>0</sub>)/Y<sub>0</sub> wird die <b>Quantitätstheorie</b> greifbar (Inflation als Geldphänomen: bei konstantem V treibt jedes Geldmengenwachstum über dem Produktionswachstum die Preise):</p><p class="fblock"><span class="formula">g<sub>M</sub> + g<sub>V</sub> = &pi; + g<sub>Y</sub>&nbsp;&nbsp;&rarr;&nbsp; bei konstantem V (g<sub>V</sub> = 0):&nbsp; g<sub>M</sub> = &pi; + g<sub>Y</sub></span></p><p class="fblock"><span class="formula">&rArr;&nbsp;&nbsp;&pi; = g<sub>M</sub> &minus; g<sub>Y</sub></span></p><div class="card"><h3 style="margin-top:.2rem">Lehrbeispiel: woher die Inflation kommt</h3><p>Die Geldmenge wächst mit g<sub>M</sub> = 5&nbsp;%, das reale BIP mit g<sub>Y</sub> = 2&nbsp;%, V ist konstant.</p><p class="fblock"><span class="formula">&pi; = g<sub>M</sub> &minus; g<sub>Y</sub> = 5&nbsp;% &minus; 2&nbsp;% = <b>3&nbsp;%</b></span></p><p>Wächst das Geld schneller als die Gütermenge, bleibt die Differenz als Teuerung übrig. Fällt V (wie real seit 2008), dämpft das die Inflation zusätzlich: g<sub>M</sub> + g<sub>V</sub> = &pi; + g<sub>Y</sub>.</p></div><h2>&#9315; Vom Geld zum Zins: Fisher-Gleichung und Inflationssteuer</h2><p>Sparer interessiert nicht der ausgewiesene Zins, sondern was real übrig bleibt. Die <span class="term" tabindex="0">Fisher-Gleichung<span class="tip">i = r + &pi;, umgestellt r = i &minus; &pi;. Sie zerlegt den Nominalzins in Realzins plus (erwartete) Inflation.</span></span> zerlegt den <b>Nominalzins</b> i (den vertraglich gezahlten Zins) in <b>Realzins</b> r (die um die Inflation bereinigte Verzinsung, r = i &minus; &pi; &ndash; bei &pi; &gt; i sogar negativ) und Inflation:</p><p class="fblock"><span class="formula">i = r + &pi;&nbsp;&nbsp;&hArr;&nbsp;&nbsp;r = i &minus; &pi;</span></p><div class="card"><h3 style="margin-top:.2rem">Lehrbeispiel: Nominal- aus Realzins</h3><p>Der Realzins beträgt r = 2&nbsp;%, die erwartete Inflation E[&pi;] = 3&nbsp;%.</p><p class="fblock"><span class="formula">i = r + E[&pi;] = 2&nbsp;% + 3&nbsp;% = <b>5&nbsp;%</b></span></p></div><p>Weil die Geldnachfrage vom Nominalzins abhängt, greift eine <b>erwartete</b> Inflation direkt durch: M/P = k(r + E[&pi;])&middot;Y. Das ergibt eine Wirkungskette &ndash; mehr Geld heute lässt die erwartete Inflation steigen, das hebt den Nominalzins und damit die Preise:</p><p class="fblock"><span class="formula">M&uarr; &rArr; E[&pi;]&uarr; &rArr; i&uarr; &rArr; P&uarr;</span></p><p>Der Staat verdient am Gelddrucken: Die <span class="term" tabindex="0">Seigniorage<span class="tip">Einnahmen des Staates durch das Ausweiten der Geldmenge (&bdquo;Gelddrucken&ldquo;). Die dadurch ausgelöste Inflation wirkt wie eine Steuer auf alle, die Geld halten.</span></span> ist der reale Gewinn aus dem Ausweiten der Geldmenge. Die Kehrseite: Die dadurch erzeugte Inflation ist eine <b>Steuer auf die Geldhaltung</b> &ndash; wer Bargeld hält, verliert real an Kaufkraft.</p><div class="callout" style="border-left-color:var(--ok)"><b>Kern-Erkenntnis:</b> Geld verbindet alles Weitere. Die Geldnachfrage M/P = k(i)&middot;Y ist genau die <b>LM-Kurve</b> des nächsten Kapitels (Geld-/Gütermarkt-Gleichgewicht im IS-LM-Modell). Die Inflation aus g<sub>M</sub> = &pi; + g<sub>Y</sub> taucht später in <b>AD-AS und der Phillips-Kurve</b> wieder auf. Und die Fisher-Gleichung trennt den Nominal- vom Realzins, der über Investitionen den Gütermarkt steuert. Wer den Geldmarkt sicher beherrscht, hat den Schlüssel zu drei weiteren Klausuraufgaben.</div>
+
+  <!-- FAQ -->
+  </div>
+
+  <h2>Häufige Fragen (kurz &amp; klar)</h2>
+  <details class="faq"><summary>Muss ich den Geldschöpfungsmultiplikator und die Quantitätsgleichung beide können?</summary><p>In der Regel ja &ndash; sie beantworten verschiedene Fragen. Der <b>Geldschöpfungsmultiplikator</b> M = B / [c + r&middot;(1&minus;c)] erklärt, <i>wie viel</i> Geld aus der Basis entsteht (Geldangebot). Die <b>Quantitätsgleichung</b> M&middot;V = P&middot;Y erklärt, was diese Geldmenge für Preise und Inflation bedeutet. In den uns vorliegenden Musterklausuren tauchten meist beide Bausteine auf &ndash; oft nacheinander in einer Aufgabe.</p></details>
+  <details class="faq"><summary>Rechne ich Inflation über M·V = P·Y oder über die Wachstumsraten?</summary><p>Meist über die <b>Wachstumsform</b>: g<sub>M</sub> = &pi; + g<sub>Y</sub> (bei konstantem V), also &pi; = g<sub>M</sub> &minus; g<sub>Y</sub>. Sie ist schneller, wenn Wachstumsraten gegeben sind. Die Niveaugleichung M&middot;V = P&middot;Y brauchst du, wenn nach dem Preisniveau P, dem nominalen BIP oder der Umlaufgeschwindigkeit V selbst gefragt ist. Ist V <i>nicht</i> konstant, nimmst du die vollständige Form g<sub>M</sub> + g<sub>V</sub> = &pi; + g<sub>Y</sub>.</p></details>
+  <details class="faq"><summary>Warum ist der Multiplikator 1/[c+r·(1−c)] und nicht einfach 1/r?</summary><p>1/r gilt nur im Spezialfall <b>ohne Bargeldabfluss</b> (c = 0): Dann bleibt jeder verliehene Euro im Bankensystem. Sobald die Menschen einen Teil bar halten (c &gt; 0), &bdquo;versickert&ldquo; bei jeder Runde etwas Geld außerhalb der Banken und kann nicht weiterverliehen werden &ndash; der Multiplikator wird kleiner. Deshalb steht im Nenner c + r&middot;(1&minus;c). Setzt du c = 0 ein, erhältst du wieder 1/r.</p></details>
+  <details class="faq"><summary>Kommt die Fisher-Gleichung wirklich in der Klausur dran?</summary><p>In den uns vorliegenden Unterlagen gehörte i = r + &pi; regelmäßig zum Geld-Kapitel &ndash; oft verknüpft mit der Geldnachfrage und der erwarteten Inflation E[&pi;]. Es lohnt sich, die Umstellung r = i &minus; &pi; sicher zu beherrschen und zu wissen, dass ein Realzins auch <b>negativ</b> sein kann, wenn die Inflation über dem Nominalzins liegt.</p></details>
+  <details class="faq"><summary>Ich habe eine konkrete inhaltliche Rückfrage – wohin damit?</summary><p>Tippe sie unten direkt in das Eingabefeld &ndash; sie wird lokal auf deinem Gerät gespeichert, und du bringst sie in die nächste Live-Q&amp;A-Session mit. Dort rechnen wir sie gemeinsam durch, meist Schritt für Schritt an einer alten Klausuraufgabe zum Geldmarkt.</p></details>
+
+  <div class="card">
+    <h3 style="margin-top:.2rem">Gib deine komplexeste aktuelle Frage direkt hier ein – bring sie in die nächste Live-Q&amp;A mit.</h3>
+    <textarea class="live" id="liveQ" rows="3" placeholder="Deine Frage zu &bdquo;Geld, Inflation & Quantitätstheorie&ldquo; &hellip;"></textarea>
+    <div style="margin-top:.6rem"><button class="btn" id="liveQbtn">Für die Live-Session vormerken</button>
+      <span id="liveQok" class="muted" style="margin-left:.6rem;display:none;color:var(--ok)">✓ Notiert – bring sie ins nächste Live-Q&amp;A mit.</span></div>
+    <p class="note" style="margin-top:.5rem">Wird lokal auf deinem Gerät gespeichert – keine automatische Antwort auf dieser Seite.</p>
+  </div>
+
+  <!-- QUIZ -->
+  <h2>Teste dich – adaptive Fragerunde</h2>
+  <p>Starte mit 5 Fragen. <b>3 oder mehr richtig</b> → es geht schwerer weiter, sonst bekommst du Festigungsfragen. Danach kannst du beliebig oft <b>weitere Fragen</b> anfordern – dein Gesamtergebnis bleibt immer sichtbar.</p>
+  <div id="quiz">
+    <div class="qhead">
+      <b id="roundTitle">Runde 1</b>
+      <span class="score" id="scoreTag">Gesamt: 0 / 0 richtig</span>
+    </div>
+    <div class="progress"><i id="bar"></i></div>
+    <div id="qarea"></div>
+    <div id="qactions" style="margin-top:1rem"></div>
+  </div>
+
+  <!-- PERSON -->
+  <h2>Wer dich begleitet</h2>
+  <div class="card person">
+    <img class="mono" src="rene-2026.jpg" alt="René Flé" style="object-fit:cover">
+    <div style="flex:1;min-width:240px">
+      <h3 style="margin:.1rem 0">René Flé</h3>
+      <p>René Flé (Dipl.-Kfm.) bereitet seit 1999 Frankfurter Studierende gezielt auf ihre Klausuren vor – passgenau zur jeweiligen Vorlesung.</p><div class="stats"><div class="stat"><b>seit 1999</b>Frankfurter Examens-Repetitorien</div><div class="stat"><b>~12.000</b>vorbereitete Studierende</div><div class="stat"><b>25.000+ Std.</b>universitäre Lehre</div><div class="stat"><b>seit 2012</b>Honorardozent (CBS)</div></div>
+      <p class="muted">Ich zeige dir Kapitel für Kapitel genau das, was in der Makroökonomik-1-Klausur bei Dr. Zahner wirklich zählt – Volkswirtschaftliche Gesamtrechnung, Geldmarkt, IS-LM und AD-AS, Phillips-Kurve und das Solow-Modell mit klaren Rechenwegen und ehrlichem Blick auf typische Fehler. Kein Marketing-Zauber, sondern solide Vorbereitung, die dich sicher durch die Wiederholungsklausur bringt.</p>
+    </div>
+  </div>
+
+  <!-- ANGEBOT · BWL Kurse (Online-Value-Ladder) -->
+  <h2 id="angebot">Dein Weg durch die Klausur &ndash; mit BWL Kurse</h2>
+  <div class="offer">
+    <p>Diese Probe-Lektion ist ein Ausschnitt. <b>BWL Kurse</b> bringt dich Kapitel
+       für Kapitel durch den gesamten BMAK-Stoff &ndash; mit geprüften Lösungen,
+       einem <b>Live Q&A</b> kurz vor der Klausur.</p>
+
+    <ul class="check">
+      <li>Alle Themen als interaktive <b>Kursmodule</b> (wie diese Probe-Lektion)</li>
+      <li>Original-nahe Aufgaben mit geprüften Lösungen &amp; Rechenwegen</li>
+      <li><b>Live Q&A</b> kurz vor der Klausur: die kniffligsten Aufgabentypen live vorgerechnet</li>
+    </ul>
+
+    <a class="btn alt cta-wide" id="offerCta" href="#" onclick="vmOpen();return false;">unverbindlich testen</a>
+
+    <h3 style="margin-top:1.6rem">Alle Optionen &amp; Preise</h3>
+    <p class="note" style="margin:.2rem 0 1rem">Preise und Leistungen! Lektion und Handout gibt es immer zusammen: 8,90&nbsp;&euro; je Kapitel. Das Komplettpaket b&uuml;ndelt alle 6 Kapitel inkl. Live Q&amp;A. Freigeschaltet wird in der App.</p>
+
+    <div class="pgroup">Pakete &middot; das Rundum-Sorglos</div>
+    <div class="pk feat"><span class="pkrb">Beliebteste Wahl</span><h4>Komplettpaket BMAK</h4><small>Klausur-App + Workbook (alle Handouts)</small><div class="pkpr">49,90 &euro;</div><div class="pksub">6 Lektionen mit Selbsttest &middot; 6 Handouts als WORKBOOK (16&ndash;22 Seiten) &middot; Klausursimulator &middot; Formelsammlung &middot; Live Q&amp;A gratis &middot; 10&nbsp;&euro; Cashback.</div><div class="pksub" style="display:none"></div><!-- Kauf-Link: BMAK Komplettpaket 49,90 --><a class="bk-btn pkbtn kauf" style="min-height:44px;display:inline-flex;align-items:center;justify-content:center" href="https://buy.stripe.com/bJe8wP8OH56g4mrdHr8bS0w" target="_blank" rel="noopener">Komplettpaket freischalten</a></div>
+
+    <div class="pgroup k2">Einzeln buchbar</div>
+    <div class="ez"><span class="ezn">Einzelnes Kapitel<small>Ein Kapitel deiner Wahl: die Lektion in der App und das Handout als PDF, innerhalb von 15 Minuten per E-Mail. Beides zusammen, nicht einzeln erh&auml;ltlich. Ab 6 Kapiteln ist das Komplettpaket g&uuml;nstiger.</small></span><span class="ezr"><span class="ezp">8,90 &euro;</span></span></div>
+    <!-- Kauf-Link: BMAK Kapitel-Bundle 8,90 -->
+    <details class="pl-akk"><summary>Kapitel w&auml;hlen und freischalten</summary><div class="pl-akk-list"><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;01</span> Volkswirtschaftliche Gesamtrechnung &amp; BIP</a><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;02</span> Geld, Inflation &amp; Quantit&auml;tstheorie</a><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;03</span> G&uuml;termarkt &amp; IS-LM-Modell</a><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;04</span> AD-AS, Phillips-Kurve &amp; Stabilisierungspolitik</a><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;05</span> Solow-Wachstumsmodell &amp; Arbeitsmarkt</a><a href="https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v" target="_blank" rel="noopener"><span class="kn">Kap.&nbsp;06</span> Klausurtraining</a></div></details>
+    <div class="ez"><span class="ezn">Live Q&amp;A<small>Dauer: 120 Minuten! In den Tagen vor der Klausur. Du sendest deine schwierigsten Aufgaben vorab ein. Wir l&ouml;sen Sie ausf&uuml;hrlich und beantworten Fragen! Im Komplettpaket ist die Live Q&amp;A Session gratis enthalten! Den Termin stimmen wir in der WhatsApp-Gruppe ab.</small></span><span class="ezr"><!-- Kauf-Link: BMAK Live Q&A 10,00 --><a class="ezp" href="https://buy.stripe.com/14AcN54yraqA6uz9rb8bS0x" target="_blank" rel="noopener">10,00 &euro;</a></span></div>
+    <p class="note">Die hier genannten Leistungen sind nach § 4 Nr. 21 Buchstabe b UStG umsatzsteuerbefreit. Freigeschaltet wird in deinem Konto in der App.</p>
+  </div>
+
+</div>
+
+<footer><div class="wrap">
+  <b>BWL Kurse</b> · Examensvorbereitung · René Flé<br>
+  <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a> · <a href="agb.html">AGB</a> · <a href="widerruf.html">Widerruf</a>
+  <p class="note" style="color:#8fa6c2;margin-top:.6rem">Unabhängiges Vorbereitungsangebot, nicht von der jeweiligen Hochschule herausgegeben. Aufgaben sind eigenständig formuliert/abgewandelt.</p>
+</div></footer>
+
+<!-- FRAGENBANK: Der QBANK-Marker unten wird von build/_inject_qbank.py durch das
+     geprüfte JSON ersetzt (Struktur: {topic, engine{…}, questions:[…]}).
+     NICHT manuell befüllen und NICHT als Doppel-Klammer schreiben. -->
+<script id="qbank" type="application/json">{"topic": "Makroökonomik 1 (BMAK) · Goethe-Uni Frankfurt · Kapitel 2 – Geld, Inflation & Quantitätstheorie", "engine": {"startDifficulty": "mittel", "startCount": 5, "passThreshold": 3, "onPass": "schwer", "onFail": "leicht", "followupCount": 2, "moreCount": 3}, "questions": [{"id": "m1", "difficulty": "mittel", "subtopic": "Quantitätsgleichung", "type": "numeric", "stem": "In einer Volkswirtschaft gilt die Quantitätsgleichung M&middot;V = P&middot;Y. Gegeben sind die Geldmenge M = 600, die Umlaufgeschwindigkeit V = 8 und das reale BIP Y = 1200 (alle in passenden Einheiten). Wie hoch ist das Preisniveau P?", "answer": 4.0, "tolerance": 0.05, "feedback": "Aus M&middot;V = P&middot;Y folgt P = M&middot;V / Y = 600&middot;8 / 1200 = 4800 / 1200 = <b>4</b>. Das Produkt M&middot;V = 4800 ist zugleich das nominale BIP."}, {"id": "m2", "difficulty": "mittel", "subtopic": "Umlaufgeschwindigkeit", "type": "single", "stem": "Was misst die <b>Umlaufgeschwindigkeit des Geldes</b> V in der Gleichung M&middot;V = P&middot;Y?", "options": ["Wie hoch der Anteil der privaten Ersparnis am gesamten verfügbaren Volkseinkommen ausfällt (Quote)", "Wie oft dieselbe Geldeinheit je Periode für Transaktionen weitergereicht wird (Umschlag)", "Wie viele Geschäftsbanken je Periode überhaupt neue Kredite an ihre Privatkunden vergeben (Anzahl)", "Wie stark die Zentralbank die umlaufende reale Bargeldmenge je Jahr gezielt ausweitet (Politik)"], "answer": "Wie oft dieselbe Geldeinheit je Periode für Transaktionen weitergereicht wird (Umschlag)", "feedback": "V ist der <b>Umschlag</b>: Wie oft dieselbe Geldeinheit (z. B. ein 10-&euro;-Schein) in einer Periode für Transaktionen den Besitzer wechselt. Aus M&middot;V = P&middot;Y (nominales BIP) folgt sie als V = P&middot;Y / M."}, {"id": "m3", "difficulty": "mittel", "subtopic": "Inflation aus Wachstumsraten", "type": "numeric", "stem": "Die Umlaufgeschwindigkeit V ist konstant (g<sub>V</sub> = 0). Die Geldmenge wächst mit g<sub>M</sub> = 7 %, das reale BIP mit g<sub>Y</sub> = 3 %. Wie hoch ist laut Quantitätstheorie die Inflationsrate &pi; (in Prozent)?", "answer": 4.0, "tolerance": 0.05, "feedback": "In Wachstumsraten gilt g<sub>M</sub> + g<sub>V</sub> = &pi; + g<sub>Y</sub>. Mit g<sub>V</sub> = 0 folgt &pi; = g<sub>M</sub> &minus; g<sub>Y</sub> = 7 % &minus; 3 % = <b>4 %</b>. Mehr Geld bei knapp wachsender Gütermenge treibt die Preise."}, {"id": "m4", "difficulty": "mittel", "subtopic": "Fisher-Gleichung", "type": "single", "stem": "Wie verbindet die <b>Fisher-Gleichung</b> Nominalzins, Realzins und Inflation?", "options": ["Der Nominalzins ist der Realzins geteilt durch die Inflationsrate (Teuerung als Nenner)", "Der Nominalzins ist der Realzins minus die Inflationsrate (die Teuerung senkt ihn)", "Der Nominalzins ist der Realzins mal die Inflationsrate (die beiden werden multipliziert)", "Der Nominalzins ist der Realzins plus die Inflationsrate (Ausgleich für die Teuerung)"], "answer": "Der Nominalzins ist der Realzins plus die Inflationsrate (Ausgleich für die Teuerung)", "feedback": "Fisher: i = r + &pi;. Der <b>Nominalzins</b> gleicht den Kaufkraftverlust durch Inflation aus; der <b>Realzins</b> ist r = i &minus; &pi;. Mit erwarteter Inflation E[&pi;] gilt i = r + E[&pi;]."}, {"id": "m5", "difficulty": "mittel", "subtopic": "Geldmengen-Aggregate", "type": "single", "stem": "Welche Bestandteile umfasst das enge Geldmengen-Aggregat <b>M1</b>?", "options": ["Ausschließlich das von der Zentralbank neu gedruckte Bargeld ohne jede Art von Bankguthaben (Basis)", "Bargeld sowie sämtliche Termin- und Spareinlagen mit vereinbarter Kündigungsfrist (das ist M2)", "Bargeld, Spareinlagen und zusätzlich die kurzfristig handelbaren Geldmarktpapiere (das ist M3)", "Bargeld und täglich fällige Sichteinlagen (die sofort verfügbaren Giroguthaben)"], "answer": "Bargeld und täglich fällige Sichteinlagen (die sofort verfügbaren Giroguthaben)", "feedback": "M1 = Bargeld + Sichteinlagen (Giro). M2 = M1 + Termin-/Spareinlagen. M3 = M2 + Geldmarktpapiere. Je höher die Nummer, desto weniger &bdquo;liquide&ldquo; die zusätzlichen Bestandteile."}, {"id": "s1", "difficulty": "schwer", "subtopic": "Fisher / Realzins", "type": "numeric", "stem": "Der Nominalzins beträgt i = 6 %, die Inflationsrate &pi; = 2 %. Wie hoch ist nach der Fisher-Gleichung der Realzins r (in Prozent)?", "answer": 4.0, "tolerance": 0.05, "feedback": "Fisher umgestellt: r = i &minus; &pi; = 6 % &minus; 2 % = <b>4 %</b>. Der Realzins misst die Verzinsung nach Abzug der Teuerung &ndash; nur er zählt für die Kaufkraft."}, {"id": "s2", "difficulty": "schwer", "subtopic": "Geldschöpfungsmultiplikator", "type": "single", "stem": "Warum ist die Geldmenge M meist ein <b>Vielfaches</b> der Geldbasis B?", "options": ["Der Staat verdoppelt jede Bargeldeinzahlung der Haushalte über zusätzliche Steuermittel gezielt (Fiskus)", "Banken verleihen ihre Einlagen weiter, sodass aus der Basis mehrfach Giralgeld entsteht (Multiplikator)", "Die Zentralbank verzinst die Basis so hoch, dass sie sich rein rechnerisch jede Periode verdoppelt (Zins)", "Das Bargeld verliert durch die laufende Inflation an Wert und muss darum stets neu gedruckt werden (Ersatz)"], "answer": "Banken verleihen ihre Einlagen weiter, sodass aus der Basis mehrfach Giralgeld entsteht (Multiplikator)", "feedback": "Weil c &lt; 1 und r &lt; 1 sind, ist der Nenner c + r&middot;(1&minus;c) kleiner als 1 &ndash; der <b>Geldschöpfungsmultiplikator</b> 1/[c + r&middot;(1&minus;c)] ist also &gt; 1. Geschäftsbanken schöpfen aus jeder Reserve zusätzliches Giralgeld: überproportionaler Anstieg von M."}, {"id": "s3", "difficulty": "schwer", "subtopic": "Geldschöpfung / Geldmenge", "type": "numeric", "stem": "Die Bargeldquote ist c = 0.10, die Reservequote r = 0.25, die Geldbasis B = 130. Wie groß ist die Geldmenge M = B / [c + r&middot;(1&minus;c)]?", "answer": 400.0, "tolerance": 0.5, "feedback": "Nenner = c + r&middot;(1&minus;c) = 0.10 + 0.25&middot;0.90 = 0.325. M = B / 0.325 = 130 / 0.325 = <b>400</b>. Der Multiplikator ist 1/0.325 &asymp; 3.08."}, {"id": "s4", "difficulty": "schwer", "subtopic": "EZB / Geldbasis erhöhen", "type": "single", "stem": "Mit welchem Instrument weitet die Zentralbank die <b>Geldbasis</b> B typischerweise aus?", "options": ["Über Offenmarktkäufe, also den Ankauf von Wertpapieren bei den Geschäftsbanken (neues Zentralbankgeld)", "Über den Verkauf ihrer eigenen Devisenreserven direkt an die privaten Haushalte im ganzen Währungsraum (Tausch)", "Über eine höhere Einkommensteuer, deren Mehreinnahmen sie unmittelbar als frisches Bargeld ausgibt (Haushalt)", "Über eine Anhebung des Mindestreservesatzes, die den Banken mehr freie Reserven zum Verleihen belässt (Lockerung)"], "answer": "Über Offenmarktkäufe, also den Ankauf von Wertpapieren bei den Geschäftsbanken (neues Zentralbankgeld)", "feedback": "Die Zentralbank erhöht B v. a. durch <b>Offenmarktkäufe</b> (Wertpapierkäufe bei den Banken), durch Kredite an die Geschäftsbanken oder durch das Drucken von Bargeld. Ein <i>höherer</i> Mindestreservesatz würde die Geldschöpfung dagegen bremsen."}, {"id": "s5", "difficulty": "schwer", "subtopic": "Seigniorage / Inflationssteuer", "type": "single", "stem": "Was versteht man unter <b>Seigniorage</b> (und dem Begriff &bdquo;Inflationssteuer&ldquo;)?", "options": ["Den Aufschlag, den heimische Exporteure bei einer kräftigen Aufwertung der eigenen Währung zusätzlich verdienen (Kursgewinn)", "Die gesetzliche Abgabe auf private Wertpapiergewinne, die Anleger am Jahresende an das Finanzamt abführen müssen (Steuer)", "Den realen Gewinn des Staates aus dem Ausweiten der Geldmenge, den die Inflation den Geldhaltern abnimmt", "Die feste Gebühr, die Geschäftsbanken für jede einzelne Bargeldabhebung ihrer Kunden am Automaten erheben (Entgelt)"], "answer": "Den realen Gewinn des Staates aus dem Ausweiten der Geldmenge, den die Inflation den Geldhaltern abnimmt", "feedback": "<b>Seigniorage</b> = Einnahmen des Staates durch Gelddrucken bzw. Geldmengenerhöhung. Die dadurch ausgelöste Inflation wirkt wie eine <b>Steuer auf die Geldhaltung</b>: Wer Bargeld hält, verliert real an Kaufkraft."}, {"id": "s6", "difficulty": "schwer", "subtopic": "Geldnachfrage & Zins", "type": "single", "stem": "Wie reagiert die reale Geldnachfrage auf das Einkommen Y und den Nominalzins i?", "options": ["Sie sinkt mit dem Einkommen und steigt mit dem Zins (weniger Umsätze, aber lohnendere Kassenhaltung)", "Sie bleibt vom Einkommen und vom Zins gänzlich unberührt, weil allein das Preisniveau sie bestimmt (starr)", "Sie steigt mit dem Einkommen und sinkt mit dem Zins (mehr Umsätze, aber teurere Kassenhaltung)", "Sie steigt sowohl mit dem Einkommen als auch mit dem Zins (beide Effekte wirken gleichgerichtet nach oben)"], "answer": "Sie steigt mit dem Einkommen und sinkt mit dem Zins (mehr Umsätze, aber teurere Kassenhaltung)", "feedback": "Höheres <b>Einkommen</b> Y bedeutet mehr Transaktionen &rarr; mehr Geldnachfrage (+). Ein höherer <b>Zins</b> i macht das Halten von Geld teurer (entgangene Zinsen) &rarr; weniger Geldnachfrage (&minus;). In der Mitschrift: M = P&middot;Y<sup>0,4</sup>&middot;i<sup>&minus;0,2</sup>."}, {"id": "l1", "difficulty": "leicht", "subtopic": "Kassenhaltungskoeffizient", "type": "numeric", "stem": "Die Umlaufgeschwindigkeit des Geldes beträgt V = 5. Wie groß ist der Kassenhaltungskoeffizient k = 1/V?", "answer": 0.2, "tolerance": 0.005, "feedback": "k = 1/V = 1/5 = <b>0.2</b>. k ist der Anteil des Einkommens, den die Menschen als Kasse (Bargeld) halten. Aus M/P = k&middot;Y ist k = 1/V der Kehrwert der Umlaufgeschwindigkeit."}, {"id": "l2", "difficulty": "leicht", "subtopic": "Zentralbankgeldmenge", "type": "single", "stem": "Was zählt zur <b>Zentralbankgeldmenge</b> (Geldbasis B)?", "options": ["Das gesamte reale Bruttoinlandsprodukt einer Periode, bewertet zu den laufenden Marktpreisen (Produktion)", "Nur die von Unternehmen kurzfristig gehaltenen Geldmarktpapiere und Anleihen mit kurzer Laufzeit (Wertpapiere)", "Sämtliche Giro-, Termin- und Spareinlagen der privaten Haushalte bei ihren Geschäftsbanken (das ist M2)", "Das umlaufende Bargeld plus die Reserven der Geschäftsbanken bei der Zentralbank (deren Passiva)"], "answer": "Das umlaufende Bargeld plus die Reserven der Geschäftsbanken bei der Zentralbank (deren Passiva)", "feedback": "Geldbasis B = Bargeld + Reserven der Geschäftsbanken bei der Zentralbank (= Passiva der ZB). Nur daraus &ndash; nicht aus den Kundeneinlagen &ndash; schöpfen die Banken über den Multiplikator die gesamte Geldmenge M."}, {"id": "l3", "difficulty": "leicht", "subtopic": "Realkasse / Geldnachfrage", "type": "single", "stem": "Wofür steht die <b>Realkasse</b> M/P in der Quantitätstheorie?", "options": ["Für das nominale Bruttoinlandsprodukt einer Periode, also die Summe aus Preis mal Menge (Leistung)", "Für die reale Ersparnis der Haushalte nach Abzug ihrer gesamten laufenden Konsumausgaben im Jahr (Sparen)", "Für die reale Geldnachfrage: die in Kaufkraft gemessene Geldmenge, die man halten will (Realkasse)", "Für die von der Zentralbank gehaltenen Währungsreserven in Gold und in ausländischen Devisen (Reserve)"], "answer": "Für die reale Geldnachfrage: die in Kaufkraft gemessene Geldmenge, die man halten will (Realkasse)", "feedback": "M/P = k&middot;Y ist die <b>Realkasse</b> = reale Geldnachfrage. Sie misst die Geldmenge in Kaufkraft (nominale Menge M geteilt durch das Preisniveau P) und hängt am realen Einkommen Y."}, {"id": "l4", "difficulty": "leicht", "subtopic": "Umlaufgeschwindigkeit im Zeitverlauf", "type": "single", "stem": "Warum ist die Umlaufgeschwindigkeit V in der Realität langfristig eher <b>gefallen</b>?", "options": ["Weil bargeldloses Zahlen per Karte und niedrige Zinsen die Kassenhaltung verbilligt haben (Karten)", "Weil die Zentralbank die Umlaufgeschwindigkeit V jedes Jahr per Beschluss gezielt nach unten festsetzt (Dekret)", "Weil die Menschen ihr Bargeld immer schneller ausgeben, um der drohenden Hyperinflation zu entgehen (Flucht)", "Weil das reale Bruttoinlandsprodukt Y regelmäßig schrumpft und deshalb spürbar weniger Umsätze anfallen (Rezession)"], "answer": "Weil bargeldloses Zahlen per Karte und niedrige Zinsen die Kassenhaltung verbilligt haben (Karten)", "feedback": "Laut Mitschrift ist V seit ~2008 tendenziell gefallen &ndash; u. a. wegen Kredit-/EC-Karten und niedriger Zinsen, die die Kassenhaltung verbilligen. Die Annahme &bdquo;V konstant&ldquo; ist also eine Vereinfachung."}, {"id": "l5", "difficulty": "leicht", "subtopic": "Nominal- vs. Realzins", "type": "single", "stem": "Worin unterscheiden sich <b>Nominalzins</b> i und <b>Realzins</b> r?", "options": ["Der Nominalzins wird von der Bank gezahlt, der Realzins dagegen allein vom Staat gesetzlich garantiert (Anbieter)", "Der Nominalzins gilt nur für Sparanlagen, der Realzins ausschließlich für aufgenommene Kredite (Anlageart)", "Der Nominalzins ist der ausgezahlte Zins, der Realzins zieht zusätzlich die Inflation ab (Kaufkraft)", "Der Nominalzins gilt allein im Inland, der Realzins hingegen nur für Anlagen in fremder Währung (Devisen)"], "answer": "Der Nominalzins ist der ausgezahlte Zins, der Realzins zieht zusätzlich die Inflation ab (Kaufkraft)", "feedback": "Der <b>Nominalzins</b> i ist die vertraglich gezahlte Verzinsung. Der <b>Realzins</b> r = i &minus; &pi; zieht die Inflation ab und zeigt den echten Kaufkraftgewinn. Bei &pi; &gt; i ist der Realzins negativ."}]}</script>
+
+<script>
+/* Frage für Live-Session lokal vormerken */
+document.getElementById('liveQbtn').addEventListener('click', function(){
+  var t=document.getElementById('liveQ').value.trim();
+  if(!t) return;
+  try{ var k='liveQ_bmak-kap02-geld'; var arr=JSON.parse(localStorage.getItem(k)||'[]'); arr.push(t); localStorage.setItem(k, JSON.stringify(arr)); }catch(e){}
+  document.getElementById('liveQok').style.display='inline';
+});
+
+/* Lernteil-Grafik + adaptive Fragerunde */
+(function(){
+  "use strict";
+  var bank = JSON.parse(document.getElementById('qbank').textContent);
+  var cfg = bank.engine;
+  var pools = {mittel:[],schwer:[],leicht:[]};
+  bank.questions.forEach(function(q){ if(pools[q.difficulty]) pools[q.difficulty].push(q); });
+
+  /* GRAFIK_JS: Reaktionsfunktionen beider Anbieter + Cournot-NE + Stackelberg-Punkt */
+  
+  (function buildChart(){
+    var svg=document.getElementById('chart'); if(!svg) return;
+    /* Werte code-verifiziert in BMAK/compute/compute_bmak-kap02-geld.py:
+       c=0,25 r=0,20 B=200 -> Nenner 0,40 -> Multiplikator 2,5 -> M=500.
+       Geldbasis B = Bargeld C(125) + Reserven R(75).
+       Geldmenge M = Bargeld C(125) + Giralgeld/Einlagen D(375). */
+    var BASE=[{k:'Bargeld C',v:125,c:'#2f6db5'},{k:'Reserven R',v:75,c:'#1c8c5a'}];
+    var GELD=[{k:'Bargeld C',v:125,c:'#2f6db5'},{k:'Giralgeld D',v:375,c:'#d98a1f'}];
+    var MAXV=500, BASEY=300, TOP=95, H=BASEY-TOP, sy=H/MAXV;
+    var s='';
+    var leg=[{k:'Bargeld C',c:'#2f6db5'},{k:'Reserven R',c:'#1c8c5a'},{k:'Giralgeld D',c:'#d98a1f'}];
+    var lx=40, ly=26;
+    leg.forEach(function(o){
+      s+='<rect x="'+lx+'" y="'+(ly-11)+'" width="14" height="14" rx="3" fill="'+o.c+'"/>';
+      s+='<text x="'+(lx+20)+'" y="'+(ly+1)+'" font-size="13" fill="#1b2733">'+o.k+'</text>';
+      lx += 34 + o.k.length*7.3 + 22;
+    });
+    s+='<text x="40" y="58" font-size="13" fill="#586a80">Geldschöpfung: aus der Geldbasis B wird über den Multiplikator (&#215;2,5) die Geldmenge M</text>';
+    function column(x,label,total,parts){
+      var y=BASEY, out='';
+      parts.forEach(function(p){
+        var h=p.v*sy; y-=h;
+        out+='<rect x="'+x+'" y="'+y.toFixed(1)+'" width="120" height="'+h.toFixed(1)+'" fill="'+p.c+'"/>';
+        if(h>20) out+='<text x="'+(x+60)+'" y="'+(y+h/2+5).toFixed(1)+'" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">'+p.k.split(' ')[0]+' '+p.v+'</text>';
+      });
+      out+='<rect x="'+x+'" y="'+(BASEY-total*sy).toFixed(1)+'" width="120" height="'+(total*sy).toFixed(1)+'" fill="none" stroke="#3a4a5e" stroke-width="1.5"/>';
+      out+='<text x="'+(x+60)+'" y="'+(BASEY+20)+'" font-size="13" font-weight="bold" fill="#3a4a5e" text-anchor="middle">'+label+'</text>';
+      return out;
+    }
+    s+=column(120,'Geldbasis B = 200',200,BASE);
+    s+=column(400,'Geldmenge M = 500',500,GELD);
+    s+='<defs><marker id="ah" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#cf4b34"/></marker></defs>';
+    s+='<line x1="248" y1="150" x2="392" y2="150" stroke="#cf4b34" stroke-width="2.5" marker-end="url(#ah)"/>';
+    s+='<text x="320" y="140" font-size="15" font-weight="bold" fill="#cf4b34" text-anchor="middle">&#215; 2,5</text>';
+    s+='<text x="320" y="330" font-size="12" fill="#586a80" text-anchor="middle">Dasselbe Bargeld C = 125 steckt in beiden Säulen; das Giralgeld D = 375 schöpfen die Banken hinzu.</text>';
+    svg.innerHTML=s;
+  })();
+
+
+  var used={}, totalCorrect=0, totalAnswered=0, roundIndex=0, lastBatch={correct:0,n:1};
+  var qarea=document.getElementById('qarea'), actions=document.getElementById('qactions'),
+      bar=document.getElementById('bar'), roundTitle=document.getElementById('roundTitle'), scoreTag=document.getElementById('scoreTag');
+
+  function remaining(){ return bank.questions.length - Object.keys(used).length; }
+  function take(diff,n){
+    var out=[], order=[diff].concat(['mittel','schwer','leicht'].filter(function(d){return d!==diff;}));
+    order.forEach(function(d){ (pools[d]||[]).forEach(function(q){ if(out.length<n && !used[q.id]){ used[q.id]=true; out.push(q); } }); });
+    return out;
+  }
+  function miniMatrix(q){
+    if(!q.matrix) return "";
+    var h="<div class='tw'><table class='mx'><tr><th class='rowlab'></th>"; q.colLabels.forEach(function(c){h+="<th>"+c+"</th>";}); h+="</tr>";
+    q.matrix.forEach(function(row,i){ h+="<tr><td class='rowlab'>"+q.rowLabels[i]+"</td>"; row.forEach(function(v){h+="<td>"+v+"</td>";}); h+="</tr>"; });
+    return h+"</table></div>";
+  }
+  function setBar(){ bar.style.width = Math.min(100, 25 + roundIndex*18) + '%'; }
+  var curSet=null, curIdx=0, curCorrect=0, curIntro=null;
+  function parseNum(s){ if(s.indexOf("/")>0){var p=s.split("/"); return p.length===2?parseFloat(p[0])/parseFloat(p[1]):NaN;} return parseFloat(s); }
+  function renderSet(set,title,intro){ curSet=set; curIdx=0; curCorrect=0; curIntro=intro||null; roundTitle.textContent=title; renderOne(); }
+  function renderOne(){
+    var q=curSet[curIdx];
+    qarea.innerHTML = (curIdx===0 && curIntro) ? "<div class='callout' style='margin-top:0'>"+curIntro+"</div>" : "";
+    var box=document.createElement('div'); box.className='q'; box.id='box_'+q.id;
+    var h="<div class='qmeta'><span class='tag'>"+q.subtopic+"</span><span class='qcount num'>Frage "+(curIdx+1)+" / "+curSet.length+"</span></div><div class='stem'>"+q.stem+"</div>"+miniMatrix(q);
+    if(q.type==='single'){ q.options.forEach(function(o,oi){ h+="<button type='button' class='opt' data-oi='"+oi+"'>"+o+"</button>"; }); }
+    else { h+="<div class='numrow'><input class='num' id='num_"+q.id+"' inputmode='decimal' placeholder='Zahl eingeben'><button type='button' class='btn' id='numchk_"+q.id+"'>Prüfen</button></div>"; }
+    h+="<div class='fb' id='fb_"+q.id+"'></div>";
+    box.innerHTML=h; qarea.appendChild(box);
+    if(q.type==='single'){
+      box.querySelectorAll('.opt').forEach(function(b){ b.addEventListener('click',function(){ answer(q, q.options[parseInt(b.dataset.oi,10)]===q.answer, b, box); }); });
+    } else {
+      document.getElementById('numchk_'+q.id).onclick=function(){
+        var el=document.getElementById('num_'+q.id), raw=(el.value||'').replace(',','.').trim(); if(raw===''){ el.focus(); return; }
+        var v=parseNum(raw), ok=!isNaN(v)&&Math.abs(v-q.answer)<=(q.tolerance||0.001);
+        answer(q, ok, null, box);
+      };
+    }
+  }
+  function answer(q, ok, btn, box){
+    box.classList.add('locked');
+    if(q.type==='single'){
+      box.querySelectorAll('.opt').forEach(function(x){
+        var isC=(q.options[parseInt(x.dataset.oi,10)]===q.answer);
+        if(isC) x.classList.add('correct'); else if(x===btn) x.classList.add('wrong');
+        x.disabled=true;
+      });
+    } else { box.querySelectorAll('input,button').forEach(function(i){ i.disabled=true; }); }
+    var fb=document.getElementById('fb_'+q.id); fb.style.display='block'; fb.className='fb '+(ok?'ok':'bad');
+    fb.innerHTML=(ok?'✓ Richtig. ':'✗ Noch nicht. ')+q.feedback;
+    if(ok) curCorrect++;
+    var isLast=(curIdx>=curSet.length-1);
+    actions.innerHTML="<button class='btn' id='nextBtn'>"+(isLast?'Weiter':'Nächste Frage &rarr;')+"</button>";
+    document.getElementById('nextBtn').onclick=function(){ if(isLast){ finishSet(); } else { curIdx++; renderOne(); } };
+  }
+  function finishSet(){
+    var correct=curCorrect, setLen=curSet.length;
+    totalCorrect+=correct; totalAnswered+=setLen; lastBatch={correct:correct,n:setLen};
+    scoreTag.textContent="Gesamt: "+totalCorrect+" / "+totalAnswered+" richtig"; setBar(); actions.innerHTML="";
+    if(roundIndex===1){
+      var pass=correct>=cfg.passThreshold, nd=pass?cfg.onPass:cfg.onFail, nextSet=take(nd,cfg.followupCount);
+      var intro=pass ? "🚀 <b>Stark – "+correct+"/"+setLen+"!</b> Zwei schwerere Aufgaben." : "🧭 <b>"+correct+"/"+setLen+".</b> Zwei Aufgaben zum Festigen.";
+      roundIndex=2; renderSet(nextSet, pass?'Runde 2 · Vertiefung':'Runde 2 · Festigung', intro);
+    } else { moreOrFinish(); }
+  }
+  function moreOrFinish(){
+    if(remaining()<=0){ finish(); return; }
+    actions.innerHTML="<button class='btn' id='moreBtn'>Mehr Fragen ("+Math.min(cfg.moreCount,remaining())+")</button> "+
+                      "<button class='btn ghost' id='finBtn'>Abschließen &amp; Ergebnis</button>";
+    document.getElementById('moreBtn').onclick=function(){
+      var harder=(lastBatch.correct/lastBatch.n)>=0.5, nd=harder?'schwer':'leicht', nextSet=take(nd,cfg.moreCount);
+      roundIndex++; renderSet(nextSet,'Runde '+roundIndex+(harder?' · schwerer':' · leichter'), harder?'Du bist gut drauf – wir legen nach.':'Wir festigen weiter.');
+    };
+    document.getElementById('finBtn').onclick=finish;
+  }
+  function finish(){
+    bar.style.width='100%'; actions.innerHTML="";
+    var pct= totalAnswered? Math.round(100*totalCorrect/totalAnswered):0;
+    var done=document.createElement('div'); done.className='callout'; done.style.borderLeftColor='#1c8c5a';
+    done.innerHTML="<b>Dein Ergebnis: "+totalCorrect+" / "+totalAnswered+" richtig ("+pct+" %).</b><br>"+
+      "Den Feinschliff – und deine persönlichen Fragen – machen wir im <b>Live Q&A</b>."+
+      "<div style='margin-top:.7rem'><a class='btn kauf' href='#angebot'>Bestehe Deine Klausur – Platz sichern</a></div>";
+    qarea.appendChild(done); scoreTag.textContent="Endergebnis: "+totalCorrect+" / "+totalAnswered+" richtig";
+  }
+  roundIndex=1; renderSet(take('mittel',cfg.startCount), 'Runde 1 · '+cfg.startCount+' Fragen', null);
+})();
+</script>
+<script>
+/* Fachbegriff-Tooltips: position:fixed (viewport-sicher), Hover am Desktop + Tap-Toggle mobil */
+(function(){
+  var terms=[].slice.call(document.querySelectorAll('.term')), isTouch=false;
+  document.addEventListener('touchstart',function(){ isTouch=true; },{passive:true});
+  function hideAll(){ terms.forEach(function(t){ var p=t.querySelector('.tip'); if(p) p.style.display='none'; }); }
+  function place(t){
+    var tip=t.querySelector('.tip'); if(!tip) return;
+    hideAll(); tip.style.display='block'; tip.style.maxWidth=Math.min(280, window.innerWidth-16)+'px';
+    var r=t.getBoundingClientRect(), tw=tip.offsetWidth, th=tip.offsetHeight;
+    var left=Math.min(Math.max(8, r.left), window.innerWidth-tw-8);
+    var top=r.top-th-8; if(top<8) top=r.bottom+8;
+    top=Math.max(8, Math.min(top, window.innerHeight-th-8));
+    tip.style.left=left+'px'; tip.style.top=top+'px';
+  }
+  terms.forEach(function(t){
+    var tip=t.querySelector('.tip'); if(!tip) return;
+    t.addEventListener('mouseenter',function(){ if(!isTouch) place(t); });
+    t.addEventListener('mouseleave',function(){ if(!isTouch) tip.style.display='none'; });
+    t.addEventListener('click',function(e){ e.stopPropagation(); var open=tip.style.display==='block'; hideAll(); if(!open) place(t); });
+    t.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); var open=tip.style.display==='block'; hideAll(); if(!open) place(t); } });
+  });
+  document.addEventListener('click',hideAll);
+  window.addEventListener('scroll',hideAll,{passive:true});
+  window.addEventListener('resize',hideAll);
+})();
+</script>
+
+<!-- ============================================================ -->
+<!-- PREISMODUL · BLOCK D · JS (setMode + Frist-/Countdown-Logik)  -->
+<!-- ============================================================ -->
+<script id="preismodul-js">
+(function(){
+  "use strict";
+
+  var FRIST_ISO = "2026-07-29";
+
+  function $(id){ return document.getElementById(id); }
+
+  function fristAbgelaufen(){
+    if(!/^\d{4}-\d{2}-\d{2}/.test(FRIST_ISO)) return false;
+    var d = new Date(FRIST_ISO + "T23:59:59");
+    return !isNaN(d.getTime()) && Date.now() > d.getTime();
+  }
+
+  window.setMode = function(mode){
+    var btns = document.querySelectorAll('#modebtns .modebtn');
+    var active = null;
+    btns.forEach(function(b){
+      var on = (b.getAttribute('data-mode') === mode);
+      b.classList.toggle('active', on);
+      if(on) active = b;
+    });
+    if(!active) return;
+
+    var abgelaufen = fristAbgelaufen();
+    var now = active.getAttribute('data-now');
+    var old = active.getAttribute('data-old');
+    var regular = active.getAttribute('data-regular') || now;
+
+    var elNow = $('priceNow'), elOld = $('priceOld'), elSave = $('saveTag');
+    if(elNow) elNow.textContent = abgelaufen ? regular : now;
+    if(elOld) elOld.style.display = abgelaufen ? 'none' : '';
+    if(elSave) elSave.style.display = abgelaufen ? 'none' : '';
+    if(elOld && !abgelaufen) elOld.textContent = old;
+
+
+    var note = $('modeNote');
+    if(note) note.innerHTML = active.getAttribute('data-note') || '';
+  };
+
+  window.onCtaClick = function(){
+    var el = $('offerCta');
+    if(el) el.setAttribute('data-clicked','1');
+  };
+
+  if(fristAbgelaufen()){
+    var fb = $('freebar'); if(fb) fb.style.display = 'none';
+  }
+
+  if(document.getElementById('modebtns')) window.setMode('komplett');
+})();
+</script>
+
+<!-- ============================================================ -->
+<!-- BUCHUNGSMODUL · DATEN (window.BK_DATA) – fuer BMAK angepasst;   -->
+<!-- Struktur identisch zu den OSTA/OFIN-Lektionen.                -->
+<!-- ============================================================ -->
+<script id="bk-data">
+window.BK_DATA = {
+  kursKuerzel: 'BMAK',
+  preise: { gratis:'gratis', einzel:'8,90 €', bundle:'49,90 €', klausur:'10,00 €', handout:'8,90 €', cashback:'10,00 €' },
+  lektionen: [
+    { nr:1, thema:'Volkswirtschaftliche Gesamtrechnung & BIP', gratis:false, keywords:['BIP-Entstehung/Verwendung/Verteilung','nominal vs. real','BIP-Deflator','Preisindizes','Wechselkurse'] },
+    { nr:2, thema:'Geld, Inflation & Quantitätstheorie', slug:'bmak-kap02-geld', gratis:true, keywords:['Geldangebot/-nachfrage','Geldschöpfung','EZB','Quantitätstheorie','Fisher-Gleichung'] },
+    { nr:3, thema:'Gütermarkt & IS-LM-Modell', gratis:false, keywords:['Gütermarkt-Gleichgewicht','Multiplikator','IS-Kurve','LM-Kurve','gemeinsames Geld-/Gütermarkt-Gleichgewicht'] },
+    { nr:4, thema:'AD-AS, Phillips-Kurve & Stabilisierungspolitik', gratis:false, keywords:['aggregierte Nachfrage/Angebot','Phillips-Kurve','Inflationserwartungen','Geld-/Fiskalpolitik','Angebots-/Nachfrageschocks'] },
+    { nr:5, thema:'Solow-Wachstumsmodell & Arbeitsmarkt', gratis:false, keywords:['Kapitalakkumulation','Steady State','Goldene Regel','technischer Fortschritt','natürliche Arbeitslosigkeit/Effizienzlöhne'] },
+    { nr:6, thema:'Klausurtraining', gratis:false, keywords:['offene Rechenaufgaben','5-Aufgaben-Format','show all your work','Zeitmanagement'] }
+  ],
+  faecher: [ {k:'OMIK',n:'Mikroökonomik 1'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'}, {k:'BFIN',n:'Finanzen 2'}, {k:'BMGT',n:'Management 1'}, {k:'BMAK',n:'Makroökonomik 1'} ],
+  /* TODO-QA-TERMIN: Rene muss den Slot festlegen. Die Klausur ist Do 30.07. um
+     11:00 - moeglich ist also nur noch heute spaet oder morgen frueh davor.
+     Ein Agent hatte hier "Mi 29.07. 19:00" eingetragen, das war beim Bau schon
+     vorbei. Lieber ein Platzhalter, der auffaellt, als ein Termin, den niemand
+     zugesagt hat: das Komplettpaket verspricht die Q&A gratis. */
+  termine: [
+    {tag:'{{QA_TAG}}', zeit:'{{QA_ZEIT}}', block:'{{QA_BLOCK}}'}
+  ]
+};
+</script>
+
+<!-- ============================================================ -->
+<!-- BUCHUNGSMODUL · BLOCK B · HTML (leeres Modal-Geruest)         -->
+<!-- ============================================================ -->
+<div id="bkModal" class="bk-modal" hidden role="presentation">
+  <div class="bk-dialog" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+    <button type="button" class="bk-close" aria-label="Schliessen" onclick="closeBk()">&times;</button>
+    <div id="bkContent"></div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- BUCHUNGSMODUL · BLOCK C · JS (openBk/closeBk, Render je Typ,  -->
+<!-- ARIA/Fokus, ESC/Backdrop, Funnel-Hilfsfunktion merken()).    -->
+<!-- Preis-/Nr-Zugriff kompatibel zur gemeinsamen BK_DATA          -->
+<!-- (verschachtelte preise.* und Lektions-Feld nr).              -->
+<!-- ============================================================ -->
+<script id="buchungsmodul-js">
+(function(){
+  "use strict";
+
+  var lastFocus = null;
+
+  function $(id){ return document.getElementById(id); }
+
+  /* HTML-escapen fuer alle datengetriebenen Werte (Text UND Attribute). */
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return { "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c];
+    });
+  }
+
+  /* Kompatibilitaets-Helfer fuer die gemeinsame BK_DATA-Struktur. */
+  function prices(d){ return d.preise || d; }            // preise.* oder top-level
+  function lekNr(l){ return l.nr != null ? l.nr : l.n; } // nr oder n
+
+  /* ---------- Render-Funktionen je Typ (liefern HTML-String) ---------- */
+
+  /* 1) 'lektionen' – alle Lektionen einzeln buchen. */
+  function renderLektionen(d){
+    var kurs = esc(d.kursKuerzel || "OSTA");
+    var pr = prices(d);
+    var rows = (d.lektionen || []).map(function(l){
+      var titel = "Kap " + esc(lekNr(l)) + " · " + esc(l.thema);
+      var right;
+      if(l.gratis){
+        right = '<a class="bk-badge" href="' + esc(l.slug) + '.html">gratis · ansehen</a>';
+      } else {
+        var preis = esc(l.einzel || pr.einzel || "");
+        var merk  = esc("Einzellektion Kap " + lekNr(l) + " · " + l.thema);
+        right = '<span class="bk-preis">' + preis + '</span>' +
+                '<button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken</button>';
+      }
+      return '<li class="bk-row"><span class="bk-row-t">' + titel + '</span>' +
+             '<span class="bk-row-r">' + right + '</span></li>';
+    }).join("");
+    return '<h2 id="bkTitle" class="bk-h">Alle ' + kurs + '-Lektionen einzeln buchen</h2>' +
+           '<ul class="bk-list">' + rows + '</ul>';
+  }
+
+  /* 2) 'faecher' – nur Kuerzel (gross) + Klarname, je "einzeln buchen". */
+  function renderFaecher(d){
+    var pr = prices(d);
+    var rows = (d.faecher || []).map(function(f){
+      var merk = esc("Fach-Bundle: " + f.k + " – " + f.n);
+      return '<li class="bk-fach">' +
+               '<span class="bk-fach-t">' +
+                 '<span class="bk-fach-k">' + esc(f.k) + '</span>' +
+                 '<span class="bk-fach-n">' + esc(f.n) + '</span>' +
+               '</span>' +
+               '<a class="bk-btn" href="' + esc(f.k.toLowerCase()) + '.html">einzeln buchen</a>' +
+             '</li>';
+    }).join("");
+    var hinweis = '<p class="bk-hint">Das Paket „2–3 Kurse parallel“ (' +
+                  esc(pr.multi || "") + ') kombiniert 2–3 dieser Fächer – jedes ist ' +
+                  'auch einzeln als Fach-Bundle (' + esc(pr.bundle || "") + ') buchbar.</p>';
+    return '<h2 id="bkTitle" class="bk-h">Diese Fächer bieten wir dieses Semester an</h2>' +
+           '<ul class="bk-list">' + rows + '</ul>' + hinweis;
+  }
+
+  /* 3) 'termine' – nach block gruppiert, radio-artige Auswahl + Vormerken. */
+  function renderTermine(d){
+    var termine = d.termine || [];
+    var order = [], groups = {};
+    termine.forEach(function(t){
+      var b = t.block || "Termine";
+      if(!groups[b]){ groups[b] = []; order.push(b); }
+      groups[b].push(t);
+    });
+    var blocks = order.map(function(b){
+      var opts = groups[b].map(function(t){
+        var val = esc(t.tag + ", " + t.zeit + " Uhr");
+        return '<label class="bk-opt">' +
+                 '<input type="radio" name="bkTermin" value="' + val + '">' +
+                 '<span>' + esc(t.tag) + ", " + esc(t.zeit) + " Uhr</span>" +
+               '</label>';
+      }).join("");
+      return '<div class="bk-tgroup"><h3 class="bk-tgroup-h">' + esc(b) + '</h3>' + opts + '</div>';
+    }).join("");
+    return '<h2 id="bkTitle" class="bk-h">Wähle deinen Termin – Live Q&A</h2>' +
+           blocks +
+           '<p class="bk-need" hidden>Bitte wähle zuerst einen Termin aus.</p>' +
+           '<div class="bk-actionrow">' +
+             '<button type="button" class="bk-btn" data-bk-action="termin-submit">Diesen Termin vormerken</button>' +
+           '</div>' +
+           '<p class="bk-foot">Alle Termine nach der letzten Vorlesung und vor der Klausur.</p>';
+  }
+
+  /* 4) 'handouts' – je Kapitel Vormerken + aufklappbarer Inhalt (Keyword-Chips). */
+  function renderHandouts(d){
+    var pr = prices(d);
+    var preis = esc(pr.handout || "");
+    var rows = (d.lektionen || []).map(function(l){
+      var titel = "Kap " + esc(lekNr(l)) + " · " + esc(l.thema);
+      var merk  = esc("Handout-PDF Kap " + lekNr(l) + " · " + l.thema);
+      var chips = (l.keywords || []).map(function(k){
+        return '<span class="bk-chip">' + esc(k) + '</span>';
+      }).join("");
+      var details = chips
+        ? '<details class="bk-details"><summary>Inhalt</summary>' +
+          '<div class="bk-chips">' + chips + '</div></details>'
+        : "";
+      return '<li class="bk-row">' +
+               '<span class="bk-row-t">' + titel + details + '</span>' +
+               '<span class="bk-row-r">' +
+                 '<button type="button" class="bk-btn" data-bk-merken="' + merk + '">Vormerken (' + preis + ')</button>' +
+               '</span>' +
+             '</li>';
+    }).join("");
+    return '<h2 id="bkTitle" class="bk-h">Handout-PDFs je Kapitel (' + preis + ')</h2>' +
+           '<ul class="bk-list">' + rows + '</ul>';
+  }
+
+  var RENDER = {
+    lektionen: renderLektionen,
+    faecher:   renderFaecher,
+    termine:   renderTermine,
+    handouts:  renderHandouts
+  };
+
+  /* ---------- Fokus-Falle innerhalb des Dialogs ---------- */
+  function focusables(modal){
+    var sel = 'a[href],button:not([disabled]),input:not([disabled]),' +
+              'select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
+    return Array.prototype.filter.call(modal.querySelectorAll(sel), function(el){
+      return el.offsetParent !== null || el === document.activeElement;
+    });
+  }
+
+  function onKey(e){
+    if(e.key === "Escape" || e.key === "Esc"){ closeBk(); return; }
+    if(e.key !== "Tab") return;
+    var modal = $("bkModal"); if(!modal) return;
+    var f = focusables(modal); if(!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if(e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+  }
+
+  /* ---------- Oeffentliche API: openBk / closeBk ---------- */
+
+  window.openBk = function(typ){
+    var modal   = $("bkModal");
+    var content = $("bkContent");
+    var data    = window.BK_DATA || {};
+    var render  = RENDER[typ];
+    if(!modal || !content || !render) return;
+
+    content.innerHTML = render(data);
+
+    lastFocus = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";     // Hintergrund nicht scrollen
+    document.addEventListener("keydown", onKey);
+
+    var closeBtn = modal.querySelector(".bk-close");
+    if(closeBtn) closeBtn.focus();
+  };
+
+  window.closeBk = function(){
+    var modal = $("bkModal");
+    if(!modal || modal.hidden) return;
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    document.removeEventListener("keydown", onKey);
+    if(lastFocus && typeof lastFocus.focus === "function"){
+      try { lastFocus.focus(); } catch(e){}
+    }
+    lastFocus = null;
+  };
+
+  /* ---------- Funnel-Hilfsfunktion merken() ----------
+     Setzt das Hidden-Feld name="interesse" und scrollt zu #vormerken.
+     Nur definieren, wenn die Seite noch KEIN merken() hat. */
+  if(typeof window.merken !== "function"){
+    window.merken = function(text){
+      var f = document.querySelector('[name="interesse"]') || $("vmInteresse");
+      if(!f){
+        var form = $("vmForm") ||
+                   document.querySelector("#vormerken form") ||
+                   document.querySelector("form");
+        if(form){
+          f = document.createElement("input");
+          f.type = "hidden"; f.name = "interesse"; f.id = "vmInteresse";
+          form.appendChild(f);
+        }
+      }
+      if(f) f.value = text || "";
+
+      var picked = $("vmPicked");
+      if(picked){
+        if(text){
+          picked.innerHTML = "Dein Interesse: <b>" +
+            String(text).replace(/[<>]/g, "") +
+            "</b> — trag dich unten ein, wir merken dich vor.";
+          picked.style.display = "block";
+        } else {
+          picked.style.display = "none";
+        }
+      }
+
+      var t = $("vormerken");
+      if(t) t.scrollIntoView({ behavior:"smooth", block:"start" });
+      var v = $("vmVorname");
+      if(v) setTimeout(function(){
+        try { v.focus({ preventScroll:true }); } catch(e){ v.focus(); }
+      }, 500);
+    };
+  }
+
+  /* ---------- Verdrahtung (einmalig, delegiert auf persistente Knoten) ---------- */
+  var modal   = $("bkModal");
+  var content = $("bkContent");
+
+  if(modal){
+    modal.addEventListener("click", function(e){
+      if(e.target === modal) closeBk();
+    });
+  }
+
+  if(content){
+    content.addEventListener("click", function(e){
+      var m = e.target.closest ? e.target.closest("[data-bk-merken]") : null;
+      if(m){
+        var txt = m.getAttribute("data-bk-merken");
+        closeBk();
+        window.merken(txt);
+        return;
+      }
+      var sub = e.target.closest ? e.target.closest('[data-bk-action="termin-submit"]') : null;
+      if(sub){
+        var sel = content.querySelector('input[name="bkTermin"]:checked');
+        if(!sel){
+          var need = content.querySelector(".bk-need");
+          if(need) need.hidden = false;
+          return;
+        }
+        closeBk();
+        window.merken("Live-Termin: " + sel.value);
+        return;
+      }
+    });
+
+    content.addEventListener("change", function(e){
+      if(e.target && e.target.name === "bkTermin"){
+        Array.prototype.forEach.call(content.querySelectorAll(".bk-opt"), function(o){
+          var r = o.querySelector("input");
+          o.classList.toggle("bk-sel", !!(r && r.checked));
+        });
+        var need = content.querySelector(".bk-need");
+        if(need) need.hidden = true;
+      }
+    });
+  }
+})();
+</script>
+
+<div class="vm-ov" id="vmOv" role="dialog" aria-modal="true" aria-labelledby="vmT">
+  <div class="vm-box">
+    <button type="button" class="vm-x" aria-label="Schließen" onclick="vmClose()">&times;</button>
+    <h3 id="vmT">Dein Zugang zur App.</h3>
+    <p class="vm-intro">Melde dich kostenlos an, deine Zugangsdaten kommen per Mail. Die Nutzung der App ist kostenfrei. Unsere Kursbausteine machen Dich zum Klausur-Checker!</p>
+    <form id="vmForm" method="POST" target="brevo_sink" action="https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung"><input type="hidden" name="email_address_check" value=""><input type="hidden" name="locale" value="de">
+      <input type="hidden" name="form-name" value="vormerkung">
+      <input type="hidden" name="subject" value="Neue Vormerkung &ndash; BWL Kurse">
+      <p hidden><label>Bitte nicht ausfüllen: <input name="bot-field"></label></p>
+      <label class="f" for="vmVorname">Vorname *</label>
+      <input type="text" id="vmVorname" name="vorname" required autocomplete="given-name" placeholder="Dein Vorname">
+      <label class="f" for="vmEmail">E-Mail-Adresse *</label>
+      <input type="email" id="vmEmail" name="EMAIL" required autocomplete="email" placeholder="name@beispiel.de">
+        <p class="fnote">Du bekommst deinen Zugang und das Willkommensgeschenk an diese Adresse. Kein Newsletter, keine Weitergabe &ndash; abmelden mit einem Klick.</p>
+      <label class="vm-chk"><input type="checkbox" name="datenschutz_einverstaendnis" value="ja" required>
+        <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Vormerkung einverstanden. *</span></label>
+      <div class="vm-act">
+        <button type="submit" class="vm-btn gold">App-Zugang erhalten</button>
+        <button type="button" class="vm-btn gh" onclick="vmClose()">Abbrechen</button>
+      </div>
+      <div class="vm-err" id="vmErr">Da ist etwas schiefgelaufen. Bitte versuch es erneut.</div>
+      <p class="vm-note">* Pflichtfelder. Die Vormerkung ist kostenlos und unverbindlich.</p>
+    </form>
+    <div class="vm-ok" id="vmOk"></div>
+  </div>
+</div>
+
+<script>
+function vmOpen(){var o=document.getElementById('vmOv');if(o){o.classList.add('open');document.body.style.overflow='hidden';var v=document.getElementById('vmVorname');if(v)setTimeout(function(){v.focus();},50);}}
+function vmClose(){var o=document.getElementById('vmOv');if(o){o.classList.remove('open');document.body.style.overflow='';}}
+(function(){
+  var ov=document.getElementById('vmOv'); if(!ov) return;
+  ov.addEventListener('click',function(e){ if(e.target===ov) vmClose(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') vmClose(); });
+  var f=document.getElementById('vmForm');
+  if(f) f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!f.checkValidity()){ f.reportValidity(); return; }
+    var data=new FormData(f), name=(data.get('vorname')||'').replace(/[<>]/g,'');
+    fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()})
+      .then(function(r){ if(!r.ok) throw new Error('net');
+        document.getElementById('vmErr').style.display='none'; f.style.display='none';
+        var ok=document.getElementById('vmOk');
+        ok.innerHTML='<b>Danke, '+name+'!</b><br>Deine Vormerkung ist bei uns eingegangen. Wir melden uns per E-Mail – inklusive WhatsApp-Beitrittslink. Viel Erfolg beim Probearbeiten!';
+        ok.style.display='block';
+      })
+      .catch(function(){ document.getElementById('vmErr').style.display='block'; });
+  });
+})();
+</script>
+<script>
+(function(){
+  var lp=document.getElementById("lernpfad"); if(!lp) return;
+  var nodes=[].slice.call(lp.childNodes), groups=[], cur=null;
+  nodes.forEach(function(n){
+    if(n.nodeType===1 && n.tagName==="H2"){ cur={h:n,body:[]}; groups.push(cur); }
+    else if(cur){ cur.body.push(n); }
+  });
+  if(!groups.length) return;
+  lp.innerHTML="";
+  groups.forEach(function(g,i){
+    var title=(g.h.textContent||"").replace(/^[\s①②③④⑤⑥]+/,"").trim();
+    var sec=document.createElement("div"); sec.className="baustein"+(i===0?" op":"");
+    var bh=document.createElement("button"); bh.type="button"; bh.className="bh";
+    bh.setAttribute("aria-expanded", i===0?"true":"false");
+    var num=document.createElement("span"); num.className="bnum"; num.textContent=(i+1);
+    var t=document.createElement("span"); t.className="bt"; t.textContent=title;
+    var ch=document.createElement("span"); ch.className="bchev"; ch.innerHTML="&#9662;";
+    bh.appendChild(num); bh.appendChild(t); bh.appendChild(ch);
+    var bb=document.createElement("div"); bb.className="bb";
+    g.body.forEach(function(x){ bb.appendChild(x); });
+    bh.addEventListener("click",function(){ var o=sec.classList.toggle("op"); bh.setAttribute("aria-expanded", o?"true":"false"); });
+    sec.appendChild(bh); sec.appendChild(bb); lp.appendChild(sec);
+  });
+})();
+</script>
+<iframe name="brevo_sink" title="Anmeldung" aria-hidden="true" tabindex="-1" style="position:absolute;width:0;height:0;border:0;left:-9999px"></iframe>
+<script>
+/* Anmeldung (23.07.): Lead-Formulare posten an unsere anmeldung-Function (eigener Double-Opt-in
+   mit Instant-Token) statt an Brevo. preventDefault unterbindet das alte sibforms-Post. */
+(function(){
+  var FACH = (location.pathname.match(/(osta|omik|ofin|bmgt|bmak)/) || [])[1] || "bmak";
+  var AN = "https://adrfijztnbebzghumdxn.supabase.co/functions/v1/anmeldung";
+  document.addEventListener('submit', function(e){
+    var f = e.target;
+    if(!f || f.nodeName !== 'FORM') return;
+    if(!f.querySelector('input[name="EMAIL"]')) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if(f.checkValidity && !f.checkValidity()){ if(f.reportValidity) f.reportValidity(); return; }
+    var hp1 = f.querySelector('input[name="email_address_check"]');
+    var hp2 = f.querySelector('input[name="bot-field"]');
+    if((hp1 && hp1.value) || (hp2 && hp2.value)) return;
+    var data = new FormData(f);
+    var email = (data.get("EMAIL") || "").trim().toLowerCase();
+    var vorname = (data.get("vorname") || "").replace(/[<>]/g, "").trim();
+    var handy = (data.get("handynummer") || "").replace(/[<>]/g, "").trim();
+    if(email.indexOf("@") < 1) return;
+    try{ localStorage.setItem("bwlk-signup", JSON.stringify({email:email, vorname:vorname, fach:FACH, t:Date.now()})); }catch(_e){}
+    var errBox = f.querySelector('.form-err');
+    if(errBox) errBox.style.display = "none";
+    function zeigeOk(){
+      var box = f.parentNode.querySelector('.brevo-ok');
+      if(!box){
+        box = document.createElement('div');
+        box.className = 'brevo-ok';
+        box.setAttribute('role', 'status');
+        box.style.cssText = 'margin-top:14px;padding:14px 16px;border-radius:12px;background:rgba(46,125,50,.10);color:#1f5130;font-size:15px;line-height:1.5;border:1px solid rgba(46,125,50,.30)';
+        f.parentNode.insertBefore(box, f.nextSibling);
+      }
+      var vn = vorname.replace(/[<&>"]/g, "");
+      box.innerHTML = '<b>Fast geschafft' + (vn ? ', ' + vn : '') + '!</b> Wir haben dir eine E-Mail geschickt \u2013 best\u00e4tige kurz den Link darin, dann geht\u2019s direkt los. Schau auch im Spam-Ordner nach.';
+      box.style.display = 'block';
+      f.style.display = 'none';
+      /* Auto-Scroll nach Anmeldung entfernt (Simon 23.07.): Seite bleibt an der Position */
+    }
+    fetch(AN, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({email:email, vorname:vorname, fach:FACH, handy:handy})})
+      .then(function(r){ return r.json().catch(function(){ return {}; }); })
+      .then(function(d){ if(d && d.error && errBox){ errBox.style.display = 'block'; } else { zeigeOk(); } })
+      .catch(function(){ if(errBox){ errBox.style.display = 'block'; } else { zeigeOk(); } });
+  }, true);
+})();
+</script>
+
+<div class="bkstick" role="region" aria-label="Schnellzugriff">
+  <a class="frei" href="#angebot" onclick="try{vmOpen();return false;}catch(e){}">unverbindlich testen</a>
+  <a class="kauf" href="#angebot">Ab 8,90&nbsp;&euro;</a>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "8f1261b869214e90b82cb2a1d5683f5c"}'></script><!-- End Cloudflare Web Analytics --></body>
+</html>

@@ -111,6 +111,23 @@
       }
     },
     {
+      "kuerzel": "BMAK",
+      "name": "Makroökonomik 1",
+      "appName": "Makroökonomik 1",
+      "prof": "Dr. Johannes Zahner",
+      "aktiv": true,
+      "gratisFach": false,
+      "fachseite": "bmak.html",
+      "gratislektion": "bmak-kap02-geld.html",
+      "app": "https://bmak.klausurchecker.de/",
+      "appRedirect": "app/bmak/",
+      "stripe": {
+        "bundle": "https://buy.stripe.com/6oU3cve91dCM3in9rb8bS0v",
+        "paket": "https://buy.stripe.com/bJe8wP8OH56g4mrdHr8bS0w",
+        "qa": "https://buy.stripe.com/14AcN54yraqA6uz9rb8bS0x"
+      }
+    },
+    {
       "kuerzel": "OMIK",
       "name": "Mikrooekonomie",
       "appName": "Mikrooekonomie",
@@ -124,9 +141,7 @@
       "stripe": {}
     }
   ],
-  "nichtLive": [
-    "bmak"
-  ],
+  "nichtLive": [],
   "signup": {
     "_hinweis": "Die Kette LP-Formular -> Bestaetigungsmail -> bestaetigt.html -> Zugangsdaten -> App-Login. Bricht sie fuer EIN Fach, merkt es niemand, weil die anderen Faecher weiter funktionieren.",
     "funktionsBasis": "https://adrfijztnbebzghumdxn.supabase.co/functions/v1",
