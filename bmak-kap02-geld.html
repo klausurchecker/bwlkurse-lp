@@ -946,14 +946,19 @@ window.BK_DATA = {
     { nr:6, thema:'Klausurtraining', gratis:false, keywords:['offene Rechenaufgaben','5-Aufgaben-Format','show all your work','Zeitmanagement'] }
   ],
   faecher: [ {k:'OMIK',n:'Mikroökonomik 1'}, {k:'OSTA',n:'Statistik'}, {k:'OFIN',n:'Finanzen 1'}, {k:'BFIN',n:'Finanzen 2'}, {k:'BMGT',n:'Management 1'}, {k:'BMAK',n:'Makroökonomik 1'} ],
-  /* TODO-QA-TERMIN: Rene muss den Slot festlegen. Die Klausur ist Do 30.07. um
-     11:00 - moeglich ist also nur noch heute spaet oder morgen frueh davor.
-     Ein Agent hatte hier "Mi 29.07. 19:00" eingetragen, das war beim Bau schon
-     vorbei. Lieber ein Platzhalter, der auffaellt, als ein Termin, den niemand
-     zugesagt hat: das Komplettpaket verspricht die Q&A gratis. */
-  termine: [
-    {tag:'{{QA_TAG}}', zeit:'{{QA_ZEIT}}', block:'{{QA_BLOCK}}'}
-  ]
+  /* Keine feste Terminliste fuer BMAK (Rene, 29.07.): Der Q&A-Termin wird
+     telefonisch abgestimmt, nicht angekuendigt. Voraussetzung ist die
+     Handynummer beim Kauf - beim Komplettpaket Pflichtfeld, beim Kapitel-
+     Buendel freiwillig. Genau so stehen die Stripe-Links auch eingestellt.
+     Eine leere Liste ist hier Absicht: renderTermine zeigt dann den Hinweis
+     unten statt eines leeren Auswahlkastens. */
+  termine: [],
+  terminHinweis: 'Für die Live&#8209;Q&amp;A gibt es keine feste Terminliste. Wer beim Kauf eine '
+               + 'Handynummer hinterlässt, wird von uns direkt kontaktiert und der Termin wird '
+               + 'persönlich abgestimmt. Beim Komplettpaket ist die Nummer Pflichtangabe, beim '
+               + 'Kapitel&#8209;Bündel freiwillig. '
+               + '<b>Zur Klausur am 30.&nbsp;Juli ist die Zeit dafür sehr knapp</b> – rechne '
+               + 'nicht fest damit, dass sich davor noch ein Termin findet.'
 };
 </script>
 
@@ -1039,6 +1044,17 @@ window.BK_DATA = {
   /* 3) 'termine' – nach block gruppiert, radio-artige Auswahl + Vormerken. */
   function renderTermine(d){
     var termine = d.termine || [];
+    /* Ohne angekuendigte Termine keinen leeren Auswahlkasten zeigen, sondern
+       sagen, wie der Termin wirklich zustande kommt (telefonisch). Vorher waere
+       hier "Waehle deinen Termin" ueber einer leeren Liste gestanden. */
+    if(!termine.length){
+      /* Kein eigener Schliessen-Knopf: das Modal hat oben sein eigenes "×"
+         (.bk-close, onclick=closeBk). Klasse bk-hint statt einer erfundenen -
+         im Stylesheet dieser Seite gibt es nur die bk-* Klassen, die hier
+         schon benutzt werden. */
+      return '<h2 id="bkTitle" class="bk-h">Live Q&A</h2>' +
+             '<p class="bk-hint">' + (d.terminHinweis || '') + '</p>';
+    }
     var order = [], groups = {};
     termine.forEach(function(t){
       var b = t.block || "Termine";
