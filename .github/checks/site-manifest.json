@@ -1,21 +1,46 @@
 {
   "version": 1,
   "beschreibung": "Soll-Zustand von Landingpage + Apps. Einzige Wahrheit fuer check-site.ps1. Beim Anlegen eines neuen Fachs HIER den Eintrag ergaenzen - dann prueft die Automatik das Fach ab sofort mit.",
-  "stand": "2026-07-26",
+  "stand": "2026-07-29",
   "basis": "https://www.klausurchecker.de",
-
   "globaleSeiten": [
-    { "pfad": "index.html",       "titelEnthaelt": "BWL Kurse" },
-    { "pfad": "preise.html",      "titelEnthaelt": "" },
-    { "pfad": "anmelden.html",    "titelEnthaelt": "Anmelden" },
-    { "pfad": "bestaetigt.html",  "titelEnthaelt": "best" },
-    { "pfad": "impressum.html",   "titelEnthaelt": "" },
-    { "pfad": "datenschutz.html", "titelEnthaelt": "" },
-    { "pfad": "agb.html",         "titelEnthaelt": "" },
-    { "pfad": "widerruf.html",    "titelEnthaelt": "" },
-    { "pfad": "zahlung-erfolg.html", "titelEnthaelt": "" }
+    {
+      "pfad": "index.html",
+      "titelEnthaelt": "BWL Kurse"
+    },
+    {
+      "pfad": "preise.html",
+      "titelEnthaelt": ""
+    },
+    {
+      "pfad": "anmelden.html",
+      "titelEnthaelt": "Anmelden"
+    },
+    {
+      "pfad": "bestaetigt.html",
+      "titelEnthaelt": "best"
+    },
+    {
+      "pfad": "impressum.html",
+      "titelEnthaelt": ""
+    },
+    {
+      "pfad": "datenschutz.html",
+      "titelEnthaelt": ""
+    },
+    {
+      "pfad": "agb.html",
+      "titelEnthaelt": ""
+    },
+    {
+      "pfad": "widerruf.html",
+      "titelEnthaelt": ""
+    },
+    {
+      "pfad": "zahlung-erfolg.html",
+      "titelEnthaelt": ""
+    }
   ],
-
   "faecher": [
     {
       "kuerzel": "BMGT",
@@ -30,8 +55,8 @@
       "appRedirect": "app/bmgt/",
       "stripe": {
         "bundle": "https://buy.stripe.com/9B65kD2qj8isg595aV8bS0p",
-        "paket":  "https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q",
-        "qa":     "https://buy.stripe.com/4gMeVdc0T8isf158n78bS0r"
+        "paket": "https://buy.stripe.com/4gMfZh0ibfKUbOTdHr8bS0q",
+        "qa": "https://buy.stripe.com/4gMeVdc0T8isf158n78bS0r"
       }
     },
     {
@@ -47,8 +72,8 @@
       "appRedirect": "app/osta/",
       "stripe": {
         "bundle": "https://buy.stripe.com/9B69AT1mfdCM8CH7j38bS0j",
-        "paket":  "https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l",
-        "qa":     "https://buy.stripe.com/9B600j6Gz42ccSX0UF8bS0m"
+        "paket": "https://buy.stripe.com/3cIdR99SL56g06bcDn8bS0l",
+        "qa": "https://buy.stripe.com/9B600j6Gz42ccSX0UF8bS0m"
       }
     },
     {
@@ -64,8 +89,25 @@
       "appRedirect": "app/ofin/",
       "stripe": {
         "bundle": "https://buy.stripe.com/5kQcN5e911U44mreLv8bS0n",
-        "paket":  "https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k",
-        "qa":     "https://buy.stripe.com/bJe5kDaWP8is4mrbzj8bS0o"
+        "paket": "https://buy.stripe.com/aFa9AT8OHdCM8CHbzj8bS0k",
+        "qa": "https://buy.stripe.com/bJe5kDaWP8is4mrbzj8bS0o"
+      }
+    },
+    {
+      "kuerzel": "BFIN",
+      "name": "Finanzen 2",
+      "appName": "Finanzen 2",
+      "prof": "Prof. Hackethal",
+      "aktiv": true,
+      "gratisFach": false,
+      "fachseite": "bfin.html",
+      "gratislektion": "bfin-kap02-portfolio.html",
+      "app": "https://bfin.klausurchecker.de/",
+      "appRedirect": "app/bfin/",
+      "stripe": {
+        "bundle": "https://buy.stripe.com/cNi00j5CvgOYg596eZ8bS0s",
+        "paket": "https://buy.stripe.com/bJebJ1gh9dCM9GL32N8bS0t",
+        "qa": "https://buy.stripe.com/8x24gzaWPfKUf151YJ8bS0u"
       }
     },
     {
@@ -82,34 +124,65 @@
       "stripe": {}
     }
   ],
-
-  "nichtLive": ["bfin", "bmak"],
-
+  "nichtLive": [
+    "bmak"
+  ],
   "signup": {
     "_hinweis": "Die Kette LP-Formular -> Bestaetigungsmail -> bestaetigt.html -> Zugangsdaten -> App-Login. Bricht sie fuer EIN Fach, merkt es niemand, weil die anderen Faecher weiter funktionieren.",
     "funktionsBasis": "https://adrfijztnbebzghumdxn.supabase.co/functions/v1",
-    "funktionen": ["anmeldung", "free-signup", "magic-login", "passwort-reset"],
+    "funktionen": [
+      "anmeldung",
+      "free-signup",
+      "magic-login",
+      "passwort-reset"
+    ],
     "formularAktionEnthaelt": "functions/v1/anmeldung",
     "appBackendUrl": "https://adrfijztnbebzghumdxn.supabase.co",
     "appAnonPraefix": "sb_publishable_",
-    "verboteneAppMuster": ["start2026", "Vorschau-Demo", "Demo-Passwort"],
+    "verboteneAppMuster": [
+      "start2026",
+      "Vorschau-Demo",
+      "Demo-Passwort"
+    ],
     "_hinweisDemo": "Die Apps enthielten ein zweites, aelteres Login-Modul mit hartcodiertem Start-Passwort. Es sollte sich per Flag abschalten, aber sein Guard las window.BK_BACKEND, das erst SPAETER im Dokument gesetzt wurde - der Guard griff also nie. Folge: ein Klick auf 'Anmelden' fuehrte auf die Erstanmeldung, wo 'start2026' plus ein frei gewaehltes Passwort ein lokales Schein-Konto anlegte und die App oeffnete. Bezahlinhalte blieben zu, aber ein zahlender Kunde konnte sich dort ein Phantom-Konto bauen.",
-    "skriptReihenfolge": { "zuerst": "bkBackendCfg", "danach": "bklgScript" }
+    "skriptReihenfolge": {
+      "zuerst": "bkBackendCfg",
+      "danach": "bklgScript"
+    }
   },
-
   "regeln": {
-    "fachMussVorkommenAuf": ["index.html", "preise.html", "bestaetigt.html", "anmelden.html"],
+    "fachMussVorkommenAuf": [
+      "index.html",
+      "preise.html",
+      "bestaetigt.html",
+      "anmelden.html"
+    ],
     "fachMussAufAnderenFachseitenVorkommen": true,
     "appsMuessenAlleFaecherFuehren": true,
     "preiszielMussPreisseiteSein": true,
     "_hinweisPreisziel": "Der Kauf-Einstieg (Header-Button 'Ab 8,90 EUR' und der Sticky-Balken) liest sein Ziel aus <body data-preisziel>. Steht dort der Seitenanker '#preise' statt preise.html, springt der Nutzer nur innerhalb der Fachseite und sieht die gemeinsame Preisliste nie. Genau das war auf bmgt.html der Fall - '#preise' ist der Fallback-Wert, den die Fabrik nie ersetzt hat.",
-    "kaufButtonKlassen": ["btn-kauf", "pkbtn"],
+    "kaufButtonKlassen": [
+      "btn-kauf",
+      "pkbtn"
+    ],
     "_hinweisKauf": "btn-kauf = Fachseiten/preise.html (statisch im HTML). pkbtn = Lektionsseiten; dort haengt JS zur Laufzeit zusaetzlich 'kauf' an, was die blaue Farbe #102444 setzt. Beide gelten als korrekt gekennzeichneter Kauf-CTA.",
     "keineFremdenStripeLinksAufFachseite": true,
     "verboteneStrings": [
-      { "text": "alle drei",  "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 },
-      { "text": "Alle drei",  "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 },
-      { "text": "drei Kurse", "gilt": "wenn Fachzahl ungleich 3", "nurAufAnzahl": 3 }
+      {
+        "text": "alle drei",
+        "gilt": "wenn Fachzahl ungleich 3",
+        "nurAufAnzahl": 3
+      },
+      {
+        "text": "Alle drei",
+        "gilt": "wenn Fachzahl ungleich 3",
+        "nurAufAnzahl": 3
+      },
+      {
+        "text": "drei Kurse",
+        "gilt": "wenn Fachzahl ungleich 3",
+        "nurAufAnzahl": 3
+      }
     ]
   }
 }
