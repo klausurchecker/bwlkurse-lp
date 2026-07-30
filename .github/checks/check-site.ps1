@@ -510,6 +510,21 @@ if (Soll-Laufen "Termine") {
       }
     }
   }
+
+  # Die Apps holen ihre Termine ebenfalls aus termine.js. Verliert eine App
+  # die Einbindung - etwa weil ein Fach aus einer alten Schale gebaut wurde -,
+  # zeigt sie wieder ein fest verdrahtetes Datum und nach dessen Ablauf
+  # "0 Tage bis Klausur" samt abgeschaltetem Notfallplan.
+  foreach ($f in $Aktive) {
+    $s = Get-SeiteFuerPruefung -Url $f.app -Bereich "Termine" -Was "$($f.kuerzel)-App"
+    if (-not $s.Ok) { continue }
+    if ($s.Inhalt -notmatch 'termine\.js') {
+      Add-Befund FEHLER "Termine" "$($f.kuerzel)-App bindet termine.js nicht ein - sie fuehrt ihren Klausurtermin wieder selbst und veraltet unbemerkt"
+    }
+    if ($s.Inhalt -match 'var KLAUSUR\s*=\s*"\d{4}-') {
+      Add-Befund FEHLER "Termine" "$($f.kuerzel)-App enthaelt wieder ein fest verdrahtetes Klausurdatum (var KLAUSUR)"
+    }
+  }
   Write-Host " fertig"
 }
 
