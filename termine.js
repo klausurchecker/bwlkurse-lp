@@ -373,13 +373,78 @@
     start();
   }
 
+  /* ---------------------------------------------------------------
+     9. API fuer die Apps.
+
+     Die sechs Klausur-Apps liegen in eigenen Repos auf eigenen
+     Subdomains und laden diese Datei per <script src="https://www.
+     klausurchecker.de/termine.js">. Sie haben ihre Termine bisher
+     doppelt gefuehrt (planData.klausur + eine KLAUSUR-Konstante) und
+     zeigten nach dem Termin "Die Klausur ist geschrieben" sowie
+     "0 Tage bis Klausur" — auch fuer jemanden, der gerade erst fuer
+     den Nachschreibtermin gekauft hat.
+
+     Statt in sechs Apps eigene Logik zu bauen, liefert diese Funktion
+     alle Texte fertig. Die Apps fragen nur noch ab.
+     --------------------------------------------------------------- */
+  function appTexte(fach) {
+    var eintrag = TERMINE[fach];
+    var t = eintrag ? naechsterTermin(fach) : null;
+    var p = eintrag ? phase(fach) : "ohne-termin";
+
+    var erg = {
+      phase: p,
+      /* ISO-Tag fuer die Countdown-Rechnung der App, null wenn offen */
+      klausurTag: t ? (t.datum.getFullYear() + "-" + pad2(t.datum.getMonth() + 1) + "-" + pad2(t.datum.getDate())) : null,
+      klausurIso: t ? (t.datum.getFullYear() + "-" + pad2(t.datum.getMonth() + 1) + "-" + pad2(t.datum.getDate()) +
+                       "T" + pad2(t.datum.getHours()) + ":" + pad2(t.datum.getMinutes())) : null,
+      /* Ersatzbeschriftung, wenn kein Datum feststeht */
+      zaehlerWert: "–",
+      zaehlerLabel: "Termin folgt",
+      hubSub: "",
+      planZusatz: ""
+    };
+
+    if (p === "laufend") {
+      erg.hubSub = "Klausur bei " + eintrag.dozent + " am " +
+                   pad2(t.datum.getDate()) + "." + pad2(t.datum.getMonth() + 1) + "." +
+                   t.datum.getFullYear() + ". Ein Kapitel nach dem anderen.";
+      return erg;                       // Zaehler rechnet die App selbst
+    }
+
+    if (p === "zwischen") {
+      erg.zaehlerLabel = "bis zum Nachschreiben";
+      erg.hubSub = eintrag.fenster.text + ". Der komplette Kurs bleibt für dich offen.";
+      erg.planZusatz = "Dein nächster Anlauf: " + eintrag.fenster.text +
+                       ". Sobald dein Termin feststeht, rechnet der Plan wieder rückwärts – " +
+                       "bis dahin stehen dir alle Kapitel offen.";
+      return erg;
+    }
+
+    /* ohne-termin: unterscheiden, ob es je einen Termin gab. OMIK hatte
+       nie einen (Geschenk-Kurs) — "Die Klausur ist geschrieben" waere
+       dort schlicht falsch. */
+    var hatteTermin = eintrag && eintrag.termine.length > 0;
+    erg.zaehlerLabel = hatteTermin ? "Klausur geschrieben" : "ohne Termin";
+    erg.hubSub = hatteTermin
+      ? "Die Klausur ist geschrieben. Der komplette Kurs bleibt für dich offen."
+      : "Kein fester Klausurtermin – lern in deinem Tempo.";
+    erg.planZusatz = hatteTermin
+      ? "Der komplette Kurs bleibt für dich offen – für eine Wiederholung oder zum Nachschlagen."
+      : "Für diesen Kurs gibt es keinen festen Klausurtermin. Alle Kapitel stehen dir dauerhaft offen.";
+    erg.hatteTermin = !!hatteTermin;
+    return erg;
+  }
+
   /* Nach aussen sichtbar — der Site-Check liest TERMINE aus, um zu
-     warnen, bevor alle Termine veraltet sind. */
+     warnen, bevor alle Termine veraltet sind; die Apps holen sich
+     ueber appTexte() ihre Beschriftungen. */
   window.BWLK_TERMINE = {
     tabelle: TERMINE,
     phase: phase,
     naechsterTermin: naechsterTermin,
     irgendwoLaufend: irgendwoLaufend,
-    kachelLabel: kachelLabel
+    kachelLabel: kachelLabel,
+    appTexte: appTexte
   };
 })();
