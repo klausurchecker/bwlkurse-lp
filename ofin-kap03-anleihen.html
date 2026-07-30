@@ -878,18 +878,19 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
 <!-- ============================================================ -->
 <!-- PREISMODUL · BLOCK D · JS (setMode + Frist-/Countdown-Logik)  -->
 <!-- ============================================================ -->
+<script src="termine.js"></script>
 <script id="preismodul-js">
 (function(){
   "use strict";
 
-  var FRIST_ISO = "2026-07-28";
-
   function $(id){ return document.getElementById(id); }
 
+  /* Frist kommt aus termine.js — kein zweites Datum in dieser Datei. */
   function fristAbgelaufen(){
-    if(!/^\d{4}-\d{2}-\d{2}/.test(FRIST_ISO)) return false;
-    var d = new Date(FRIST_ISO + "T23:59:59");
-    return !isNaN(d.getTime()) && Date.now() > d.getTime();
+    var api = window.BWLK_TERMINE;
+    if(!api) return false;
+    var fach = (document.body.getAttribute("data-fach") || "").toLowerCase();
+    return api.tabelle[fach] ? api.phase(fach) !== "laufend" : false;
   }
 
   window.setMode = function(mode){
@@ -923,9 +924,8 @@ document.getElementById('liveQbtn').addEventListener('click', function(){
     if(el) el.setAttribute('data-clicked','1');
   };
 
-  if(fristAbgelaufen()){
-    var fb = $('freebar'); if(fb) fb.style.display = 'none';
-  }
+  /* Der Hinweisbalken wird nicht mehr ausgeblendet — termine.js
+     schreibt ihn stattdessen auf den naechsten Termin um. */
 
   if(document.getElementById('modebtns')) window.setMode('komplett');
 })();

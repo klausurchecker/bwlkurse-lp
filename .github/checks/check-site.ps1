@@ -475,6 +475,44 @@ if ((Soll-Laufen "Signup") -and $Cfg.signup) {
   Write-Host " fertig"
 }
 
+# --------------------------------------------------------------- Termine
+# Alle Seiten holen ihre Klausurtermine aus termine.js. Laufen die dort ab,
+# nennen die Seiten keinen naechsten Pruefungstermin mehr - sie funktionieren
+# zwar weiter, verkaufen aber nichts Konkretes. Frueher fiel so etwas erst
+# auf, wenn jemand zufaellig hinsah. Diese Pruefung warnt VORHER.
+if (Soll-Laufen "Termine") {
+  Write-Host "Termine..." -NoNewline
+  $tj = Get-SeiteFuerPruefung -Url "$($Cfg.basis)/termine.js" -Bereich "Termine" -Was "termine.js"
+
+  if (-not $tj.Ok) {
+    Add-Befund FEHLER "Termine" "termine.js nicht abrufbar (HTTP $($tj.Code)) - ohne diese Datei bleiben auf ALLEN Seiten die Fristtexte leer"
+  } else {
+    $heute = Get-Date
+    function AlsDatum { param([string]$s) return [datetime]::ParseExact($s, 'yyyy-MM-dd', [Globalization.CultureInfo]::InvariantCulture) }
+
+    $termine = @([regex]::Matches($tj.Inhalt, 'iso:\s*"(\d{4}-\d{2}-\d{2})') | ForEach-Object { AlsDatum $_.Groups[1].Value })
+    $fenster = @([regex]::Matches($tj.Inhalt, 'bis:\s*"(\d{4}-\d{2}-\d{2})') | ForEach-Object { AlsDatum $_.Groups[1].Value })
+
+    if ($termine.Count -eq 0) {
+      Add-Befund FEHLER "Termine" "termine.js enthaelt keinen einzigen Termin - Struktur geaendert oder Datei beschaedigt"
+    }
+
+    $kuenftig = @($termine | Where-Object { $_ -gt $heute })
+    $offen    = @($fenster | Where-Object { $_ -gt $heute })
+
+    if ($kuenftig.Count -eq 0 -and $offen.Count -eq 0) {
+      Add-Befund FEHLER "Termine" "Weder ein Klausurtermin noch ein Nachschreibfenster liegt noch in der Zukunft - die Seiten nennen keinen naechsten Pruefungstermin mehr. Termine des kommenden Semesters in termine.js eintragen."
+    } elseif ($kuenftig.Count -eq 0) {
+      $letztes = ($offen | Sort-Object)[-1]
+      $tage    = [int]($letztes - $heute).TotalDays
+      if ($tage -le 21) {
+        Add-Befund WARNUNG "Termine" "Kein datierter Klausurtermin mehr hinterlegt; das Nachschreibfenster laeuft in $tage Tagen ab ($($letztes.ToString('dd.MM.yyyy'))). Jetzt die naechsten Termine eintragen, bevor die Seiten unbestimmt werden."
+      }
+    }
+  }
+  Write-Host " fertig"
+}
+
 # --------------------------------------------------------------- Bericht
 $fehler   = @($script:Befunde | Where-Object { $_.Stufe -eq "FEHLER" })
 $warnung  = @($script:Befunde | Where-Object { $_.Stufe -eq "WARNUNG" })

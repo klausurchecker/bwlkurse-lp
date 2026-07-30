@@ -805,80 +805,20 @@ window.BKBC = (function(){
 <h1 style="max-width:18ch">Schaffst Du den Klausurcheck?</h1>
 <p class="lead" style="max-width:60ch">Wähle dein Gratis-Kapitel oder komm direkt ins Showroom:</p>
 <div class="courses">
-<a class="course" href="bmgt.html" data-fach="bmgt" data-klausur="2026-07-27T11:00" data-kap="6"><div class="c-k">BMGT</div><div class="c-n">Management 1 · Prof. Friebel</div><div class="c-meta"><span class="c-date num c-count">Klausur 27.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 6 Kapiteln offen · ~15 Min</span></div></a>
-<a class="course" href="osta.html" data-fach="osta" data-klausur="2026-07-28T08:00" data-kap="10"><div class="c-k">OSTA</div><div class="c-n">Statistik · Prof. Hassler</div><div class="c-meta"><span class="c-date num c-count">Klausur 28.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 10 Kapiteln offen · ~15 Min</span></div></a>
+<a class="course" href="bmgt.html" data-fach="bmgt" data-kap="6"><div class="c-k">BMGT</div><div class="c-n">Management 1 · Prof. Friebel</div><div class="c-meta"><span class="c-date num c-count">Klausur 27.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 6 Kapiteln offen · ~15 Min</span></div></a>
+<a class="course" href="osta.html" data-fach="osta" data-kap="10"><div class="c-k">OSTA</div><div class="c-n">Statistik · Prof. Hassler</div><div class="c-meta"><span class="c-date num c-count">Klausur 28.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 10 Kapiteln offen · ~15 Min</span></div></a>
 <a class="course course-gift" href="omik.html" data-fach="omik" data-kap="10"><span class="c-band">Geschenk</span><div class="c-k">OMIK</div><div class="c-n">Mikroökonomie · Prof. Blonski</div><div class="c-meta"><span class="c-date">ohne Klausurtermin</span></div><div class="c-btn c-btn-orange">Kompletter Kurs, kostenlos<span class="c-btn-cap">alle 10 Kapitel offen</span></div></a>
-<a class="course" href="bfin.html" data-fach="bfin" data-klausur="2026-07-29T11:00" data-kap="7"><div class="c-k">BFIN</div><div class="c-n">Finanzen 2 &middot; Prof. Hackethal</div><div class="c-meta"><span class="c-date num c-count">Klausur 29.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 7 Kapiteln offen &middot; ~15 Min</span></div></a>
-<a class="course" href="ofin.html" data-fach="ofin" data-klausur="2026-07-29T08:00" data-kap="9"><div class="c-k">OFIN</div><div class="c-n">Finanzen · Prof. Schmeling</div><div class="c-meta"><span class="c-date num c-count">Klausur 29.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 9 Kapiteln offen · ~15 Min</span></div></a>
+<a class="course" href="bfin.html" data-fach="bfin" data-kap="7"><div class="c-k">BFIN</div><div class="c-n">Finanzen 2 &middot; Prof. Hackethal</div><div class="c-meta"><span class="c-date num c-count">Klausur 29.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 7 Kapiteln offen &middot; ~15 Min</span></div></a>
+<a class="course" href="ofin.html" data-fach="ofin" data-kap="9"><div class="c-k">OFIN</div><div class="c-n">Finanzen · Prof. Schmeling</div><div class="c-meta"><span class="c-date num c-count">Klausur 29.07.</span></div><div class="c-btn c-btn-orange">Kapitel 3 gratis starten<span class="c-btn-cap">1 von 9 Kapiteln offen · ~15 Min</span></div></a>
+<a class="course" href="bmak.html" data-fach="bmak" data-kap="6"><div class="c-k">BMAK</div><div class="c-n">Makro&ouml;konomik 1 &middot; Dr. Zahner</div><div class="c-meta"><span class="c-date num c-count">Klausur 30.07.</span></div><div class="c-btn c-btn-orange">Kapitel 2 gratis starten<span class="c-btn-cap">1 von 6 Kapiteln offen &middot; ~15 Min</span></div></a>
 </div>
 </div>
 </section>
 
-<script id="kachelLogik">
-/* ================= Fach-Kacheln =================
-   Drei Dinge, alle ohne Pflegeaufwand:
-   1. Sortierung nach Klausurnaehe - am Donnerstag steht nicht mehr Montag oben.
-   2. Countdown statt Datum, gekoppelt an Machbarkeit (Ziel-Gradient-Effekt);
-      reine Fristen erhoehen bei Lernenden die Vermeidung, Frist + machbarer
-      Rest erhoeht das Handeln.
-   3. ?fach=bmgt aus dem WhatsApp-Link: die richtige Kachel nach oben, markiert
-      und angesteuert. Weniger Auswahl = mehr Klick, und der Parameter macht
-      endlich sichtbar, welche Gruppe liefert.
-   Farbe bleibt aussen vor: sie kodiert den Preis, nicht die Dringlichkeit. */
-(function(){
-  "use strict";
-  var wrap = document.querySelector(".courses");
-  if(!wrap) return;
-  var kacheln = [].slice.call(wrap.querySelectorAll(".course"));
-
-  function stunden(el){
-    var k = el.getAttribute("data-klausur");
-    if(!k) return Infinity;                       // OMIK: kein Termin -> ans Ende
-    return (new Date(k) - new Date()) / 36e5;
-  }
-
-  function beschriften(){
-    kacheln.forEach(function(el){
-      var feld = el.querySelector(".c-count");
-      if(!feld) return;
-      var h = stunden(el);
-      if(h === Infinity) return;
-      if(h < 0){ feld.textContent = "Klausur geschrieben"; el.classList.add("course-vorbei"); return; }
-      feld.textContent = h < 48 ? ("noch " + Math.floor(h) + " Std")
-                                : ("noch " + Math.floor(h / 24) + " Tage");
-    });
-  }
-
-  function sortieren(){
-    kacheln.slice().sort(function(a, b){
-      var ha = stunden(a), hb = stunden(b);
-      if(ha < 0 && hb >= 0) return 1;             // Geschriebenes nach hinten
-      if(hb < 0 && ha >= 0) return -1;
-      return ha - hb;
-    }).forEach(function(el){ wrap.appendChild(el); });
-
-    kacheln.forEach(function(el){ el.classList.remove("course-ziel"); });
-    var naechste = kacheln.filter(function(el){
-      var h = stunden(el); return h >= 0 && h !== Infinity;
-    }).sort(function(a, b){ return stunden(a) - stunden(b); })[0];
-    if(naechste) naechste.classList.add("course-ziel");   // Von-Restorff, ueber Form
-  }
-
-  function ausLink(){
-    var m = /[?&]fach=([a-z]{4})/i.exec(location.search);
-    if(!m) return;
-    var ziel = wrap.querySelector('.course[data-fach="' + m[1].toLowerCase() + '"]');
-    if(!ziel) return;
-    wrap.insertBefore(ziel, wrap.firstChild);
-    kacheln.forEach(function(el){ el.classList.remove("course-ziel"); });
-    ziel.classList.add("course-ziel");
-    setTimeout(function(){ ziel.scrollIntoView({behavior:"smooth", block:"center"}); }, 250);
-  }
-
-  beschriften(); sortieren(); ausLink();
-  setInterval(beschriften, 60000);
-})();
-</script>
+<!-- Kachel-Logik, Countdown und Fristtexte kommen aus termine.js.
+     Dort steht auch, warum: die alte Logik kannte nur "laeuft" und
+     "vorbei" und liess nach der Klausurphase eine tote Seite zurueck. -->
+<script src="termine.js"></script>
 
 </main>
 
@@ -953,7 +893,7 @@ window.BKBC = (function(){
 var CHECKOUT_URL = "{{CHECKOUT_URL}}";
 var GRATIS_URL   = "https://osta.klausurchecker.de/";
 var KLAUSUR_URL  = "{{KLAUSUR_URL}}";
-var FRIST_ISO    = "2026-07-27";
+/* FRIST_ISO ist entfallen — Termine stehen zentral in termine.js. */
 
 /* ============ Theme-Umschalter (Hell = Standard) ============ */
 (function(){
@@ -982,31 +922,8 @@ var FRIST_ISO    = "2026-07-27";
   });
 })();
 
-/* ============ Countdown (Fruehbucher bis 27.07.2026, 23:59) ============ */
-(function(){
-  "use strict";
-  var end = new Date(FRIST_ISO + "T23:59:59");
-  var clock = document.getElementById("osClock");
-  var pill  = document.getElementById("pillCount");
-  var strip = document.getElementById("offerstrip");
-  function pad(n){ return (n < 10 ? "0" : "") + n; }
-  function tick(){
-    var ms = end.getTime() - Date.now();
-    if(isNaN(end.getTime())) return;
-    if(ms <= 0){
-      if(strip) strip.style.display = "none";
-      if(pill)  pill.style.display  = "none";
-      return;
-    }
-    var s = Math.floor(ms/1000);
-    var d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), sec = s%60;
-    var txt = d + " T " + pad(h) + ":" + pad(m) + ":" + pad(sec);
-    if(clock) clock.textContent = "endet in " + txt;
-    if(pill)  pill.innerHTML = "Online&#8209;Vorteil endet in <b>" + txt + "</b>";
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
+/* Countdown und Fristlogik stehen jetzt in termine.js — eine Datei
+   fuer alle Seiten, drei Phasen statt zwei. Siehe dort. */
 
 /* ============ Lernpfad: geschwungene Schiene durch die Orbs ============ */
 function drawRails(){

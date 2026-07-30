@@ -931,7 +931,7 @@ window.BKBC = (function(){
 <!-- ============ ANGEBOTS-STREIFEN (Live-Countdown) ============ -->
 <div class="offerstrip" id="offerstrip">
   <div class="wrap">
-    <div class="os-txt">Online&#8209;Vorteil bis 28.&nbsp;Juli 2026:<br><b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">80,10&nbsp;€</span> im Einzelkauf <span class="num">(9&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
+    <div class="os-txt"><span class="os-frist">Online&#8209;Vorteil:</span> <br><b>Komplettpaket</b> für <span class="os-price num">49,90&nbsp;€</span> statt <span class="num">80,10&nbsp;€</span> im Einzelkauf <span class="num">(9&nbsp;×&nbsp;8,90&nbsp;€)</span>.</div>
     <span class="os-clock num" id="osClock" aria-live="off">…</span>
     <a class="btn btn-kauf" href="#preise">Zu den Preisen</a>
   </div>
@@ -1104,12 +1104,13 @@ window.BKBC = (function(){
   <input type="text" name="sid"><input type="text" name="kapitel"><input type="text" name="prozent"><input type="email" name="email">
 </form>
 
+<script src="termine.js"></script>
 <script>
 /* ============ Transfer-Konstanten (Platzhalter, siehe Dateikopf) ============ */
 var CHECKOUT_URL = "{{CHECKOUT_URL}}";
 var GRATIS_URL   = "ofin-kap03-anleihen.html";
 var KLAUSUR_URL  = "{{KLAUSUR_URL}}";
-var FRIST_ISO    = "2026-07-27";
+/* FRIST_ISO ist entfallen — Termine stehen zentral in termine.js. */
 
 /* ============ Theme-Umschalter (Hell = Standard) ============ */
 (function(){
@@ -1138,31 +1139,8 @@ var FRIST_ISO    = "2026-07-27";
   });
 })();
 
-/* ============ Countdown (Fruehbucher bis 27.07.2026, 23:59) ============ */
-(function(){
-  "use strict";
-  var end = new Date(FRIST_ISO + "T23:59:59");
-  var clock = document.getElementById("osClock");
-  var pill  = document.getElementById("pillCount");
-  var strip = document.getElementById("offerstrip");
-  function pad(n){ return (n < 10 ? "0" : "") + n; }
-  function tick(){
-    var ms = end.getTime() - Date.now();
-    if(isNaN(end.getTime())) return;
-    if(ms <= 0){
-      if(strip) strip.style.display = "none";
-      if(pill)  pill.style.display  = "none";
-      return;
-    }
-    var s = Math.floor(ms/1000);
-    var d = Math.floor(s/86400), h = Math.floor(s%86400/3600), m = Math.floor(s%3600/60), sec = s%60;
-    var txt = d + " T " + pad(h) + ":" + pad(m) + ":" + pad(sec);
-    if(clock) clock.textContent = "endet in " + txt;
-    if(pill)  pill.innerHTML = "Online&#8209;Vorteil endet in <b>" + txt + "</b>";
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
+/* Countdown und Fristtexte stehen jetzt in termine.js —
+   drei Phasen statt zwei, das Band bleibt immer stehen. */
 
 /* ============ Lernpfad: geschwungene Schiene durch die Orbs ============ */
 function drawRails(){
